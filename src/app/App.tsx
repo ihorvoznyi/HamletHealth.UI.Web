@@ -2,10 +2,10 @@ import AppProvider from './providers';
 
 const App = () => {
   return (
-    <div>
+    <div className="">
       <AppProvider />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
