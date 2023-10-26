@@ -1,8 +1,3 @@
-const poppinsSemiBoldFont = {
-  fontWeight: 600, 
-  fontFamily: 'Poppins SemiBold',
-};
-
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -24,12 +19,12 @@ export default {
       'headline-large': ['32px', { lineHeight: '40px' }],
       'headline-medium': ['28px', { lineHeight: '36px' }],
       'headline-small': ['24px', { lineHeight: '32px' }],
-      'title-large': ['22px', { lineHeight: '28px', ...poppinsSemiBoldFont }],
-      'title-medium': ['16px', { lineHeight: '24px', ...poppinsSemiBoldFont, letterSpacing: '0.15px' }],
-      'title-small': ['14px', { lineHeight: '20px', ...poppinsSemiBoldFont, letterSpacing: '0.1px' }],
-      'label-large': ['14px', { lineHeight: '20px', ...poppinsSemiBoldFont, letterSpacing: '0.1px' }],
-      'label-medium': ['12px', { lineHeight: '16px', ...poppinsSemiBoldFont, letterSpacing: '0.5px' }],
-      'label-small': ['11px', { lineHeight: '16px', ...poppinsSemiBoldFont, letterSpacing: '0.5px' }],
+      'title-large': ['22px', { lineHeight: '28px',  }],
+      'title-medium': ['16px', { lineHeight: '24px', fontWeight: 600, letterSpacing: '0.15px' }],
+      'title-small': ['14px', { lineHeight: '20px', fontWeight: 600, letterSpacing: '0.1px' }],
+      'label-large': ['14px', { lineHeight: '20px', fontWeight: 600, letterSpacing: '0.1px' }],
+      'label-medium': ['12px', { lineHeight: '16px', fontWeight: 600, letterSpacing: '0.5px' }],
+      'label-small': ['11px', { lineHeight: '16px', fontWeight: 600, letterSpacing: '0.5px' }],
       'body-large': ['16px', { lineHeight: '24px', letterSpacing: '0.15px' }],
       'body-medium': ['14px', { lineHeight: '20px', letterSpacing: '0.25px' }],
       'body-small': ['12px', { lineHeight: '16px', letterSpacing: '0.4px' }],
@@ -53,6 +48,11 @@ export default {
       white: '#FFFFFF',
 
       transparent: 'transparent',
+    },
+    extend: {
+      backgroundColor: {
+        inherit: 'inherit'
+      },
     },
     fontFamily: {
       poppins: ['Poppins Regular', 'sans-serif'],

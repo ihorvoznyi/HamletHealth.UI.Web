@@ -3,10 +3,11 @@
     "baseUrl": "./",
     "paths": {
       "@assets/*": ["public/assets/*"],
+      "@components/*": ["src/components/*"],
       "@ui/*": ["src/components/ui/*"],
       "@utils/*": ["src/shared/lib/utils/*"],
       "@styles/*": ["src/shared/styles/*"],
-      "@screens/*": ["src/screens/*"]
+      "@screens/*": ["src/screens/*"],
     }
   }
 }
