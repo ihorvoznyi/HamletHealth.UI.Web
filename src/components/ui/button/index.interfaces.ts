@@ -4,7 +4,6 @@ export type ButtonTypes = 'primary' | 'outlined' | 'inherit';
 
 type ClassesType = {
   container: string;
-  content: string;
 };
 
 export interface ButtonProps {

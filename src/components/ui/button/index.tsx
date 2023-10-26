@@ -1,10 +1,10 @@
-import { FC, MouseEvent } from "react";
+import { FC, MouseEvent } from 'react';
 
-import { cn } from "@utils/style.util";
+import { cn } from '@utils/style.util';
 
-import { styleMapper } from "./lib";
-import { ButtonProps } from "./index.interfaces";
-import { btnContainerStyle, btnContentStyle } from "./index.tailwind";
+import { styleMapper } from './lib';
+import { ButtonProps } from './index.interfaces';
+import { classes } from './index.tailwind';
 
 const Button: FC<ButtonProps> = ({ type = 'primary', children, styles, onClick }) => {
   const handleClick = (event: MouseEvent) => {
@@ -14,19 +14,15 @@ const Button: FC<ButtonProps> = ({ type = 'primary', children, styles, onClick }
     onClick();
   };
 
-  const classNames = {
-    content: cn(btnContentStyle, styles?.content),
-    container: cn(
-      btnContainerStyle,
-      styleMapper(type),
-      styles?.container)
-  };
-
   return (
-    <button className={classNames.container} onClick={handleClick}>
-      <div className={classNames.content}>{children}</div>
-    </button>
+    <button 
+      className={cn(
+        classes.container,
+        styleMapper(type),
+        styles?.container
+      )}
+      onClick={handleClick}>{children}</button>
   );
-}
+};
 
 export default Button;
