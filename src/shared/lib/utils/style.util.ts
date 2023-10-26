@@ -1,5 +1,4 @@
 import { twMerge } from 'tw-merge';
-// import { clsx } from 'clsx';
 
 type ClassValue = 
   string 
@@ -27,7 +26,3 @@ export const cn = (...args: ClassValue[]): string => {
     .map((classNames) => twMerge(classNames)) // Merge classes with twMerge
     .join(' '); // Concatenate all class names together
 };
-
-// export const cn = (...args: ClassValue[]) => {
-//   return twMerge(clsx(args));
-// }
