@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import Button from "@ui/button";
-import { btnStyle, containerStyle, headerStyle, listStyle, listWrapperStyle, mainStyle, titleStyle } from "./index.tailwind";
+
+import Button from '@ui/button';
+import { classes } from './index.tailwind';
 
 const GreetingScreen = () => {
   const navigate = useNavigate();
@@ -10,19 +11,19 @@ const GreetingScreen = () => {
   };
 
   return (
-    <div className={containerStyle}>
-      <header className={headerStyle}>
+    <div className={classes.container}>
+      <header className={classes.header}>
         WEB APP PROTOTYPES
       </header>
 
-      <main className={mainStyle}>
-        <h1 className={titleStyle}>
+      <main className={classes.main}>
+        <h1 className={classes.title}>
           Test a Hamlett Health provider&rsquo;s web app
         </h1>
 
-        <div className={listWrapperStyle}>
+        <div className={classes.listWrapper}>
           The goals are:
-          <ul className={listStyle}>
+          <ul className={classes.list}>
             <li>To create a provider&rsquo;s account</li>
             <li>To add a new patient (Amanda Hug)</li>
             <li>To add 4 activities to her daily routine</li>
@@ -31,10 +32,10 @@ const GreetingScreen = () => {
           To fill in inputs and dropdowns, click on it.
         </div>
 
-        <Button styles={{ container: btnStyle }} onClick={handleClick}>Start Testing</Button>
+        <Button styles={classes.btn} onClick={handleClick}>Start Testing</Button>
       </main>
     </div>
-  )
-}
+  );
+};
 
 export default GreetingScreen;
