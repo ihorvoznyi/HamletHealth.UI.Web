@@ -1,4 +1,11 @@
-export type InputTypes = 'select' | 'phone' | 'password';
+import { ChangeEvent } from "react";
+
+export type InputTypes = 'text' | 'password' | 'phone';
+
+export type CustomInputRef = {
+  focus: () => void;
+  getCursorPosition: () => number | null;
+}
 
 export type InputClasses = {
   input: string;
@@ -7,8 +14,19 @@ export type InputClasses = {
   icon: string;
 };
 
-export interface InputProps { 
+export interface InputProps {
+  type?: 'text' | 'password';
   label: string;
-  classes?: Partial<InputClasses>;
+  styles?: Partial<InputClasses>;
   isValid?: boolean;
+}
+
+export interface FieldProps {
+  type: InputTypes;
+  value: string;
+  onBlur: () => void;
+  onFocus: () => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+
+  className?: string;
 }
