@@ -6,6 +6,7 @@
       "@components/*": ["src/components/*"],
       "@ui/*": ["src/components/ui/*"],
       "@utils/*": ["src/shared/lib/utils/*"],
+      "@hooks/*": ["src/shared/lib/hooks/*"],
       "@styles/*": ["src/shared/styles/*"],
       "@screens/*": ["src/screens/*"],
     }

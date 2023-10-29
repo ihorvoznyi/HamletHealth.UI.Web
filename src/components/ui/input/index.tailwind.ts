@@ -44,7 +44,7 @@ export const classes = {
     w-full
     px-4
     py-3
-    text-label-large
+    text-body-medium
     placeholder:text-label-large
     placeholder:text-black/[.12]
     text-black/[.88]

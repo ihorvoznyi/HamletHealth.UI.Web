@@ -1,7 +1,5 @@
 import { ChangeEvent, FC, useRef, useState } from 'react';
 
-import { cn } from '@utils/style.util';
-
 import FieldVariant from './variants';
 import { CheckIcon } from '@ui/icons';
 import { CustomInputRef, InputProps } from './index.interfaces';
@@ -12,6 +10,7 @@ import {
   labelInactiveStyle, 
   labelUnfocusedStyle 
 } from './index.tailwind';
+import { cn } from '@utils/style.util';
 
 const Input: FC<InputProps> = ({ type = 'text', label, styles }) => {
   const [value, setValue] = useState('');
@@ -45,7 +44,7 @@ const Input: FC<InputProps> = ({ type = 'text', label, styles }) => {
         onBlur={() => setIsFocused(false)}
         onFocus={() => setIsFocused(true)}
       />
-      {isInputValid && !isFocused && <CheckIcon className={classes.icon} />}
+      {isInputValid && <CheckIcon className={classes.icon} />}
     </div>
   );
 };

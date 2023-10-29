@@ -1,5 +1,4 @@
 import GreetingScreen from '@screens/greeting';
-import TempComponent from '@screens/temp';
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 import Layout from '../layouts';
 import { SignUp } from '@screens/auth';
@@ -22,7 +21,6 @@ export const AppRouter = createBrowserRouter(
       </Route>
 
       <Route index element={<GreetingScreen />} />
-      <Route path="test" element={<TempComponent />} />
     </Route>
   ),
 );

@@ -1,6 +1,5 @@
 import ctl from '@netlify/classnames-template-literals';
 import { cn } from '@utils/style.util';
-import React from 'react';
 
 interface PropsType {
   state: '1' | '2' | '3';

@@ -1,10 +1,9 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent } from 'react';
 
 export type InputTypes = 'text' | 'password' | 'phone';
 
 export type CustomInputRef = {
   focus: () => void;
-  getCursorPosition: () => number | null;
 }
 
 export type InputClasses = {

@@ -3,6 +3,7 @@ import Input from '@components/ui/input';
 
 import { classes } from './index.tailwind';
 import { useNavigate } from 'react-router-dom';
+import Select from '@components/ui/select';
 
 const CreateAccountForm = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const CreateAccountForm = () => {
           <Input label="First name" />
           <Input label="Last name" />
           <Input label="National Provided Identifier" />
-          <Input label="Your speciality" />
+          <Select label="Your speciality" options={options} />
           <Input styles={classes.gridWideInput} label="Email" />
           <Input type="password" label="Create password" />
           <Input type="password" label="Confirm password" />
@@ -47,5 +48,20 @@ const CreateAccountForm = () => {
     </div>
   );
 };
+
+const options = [
+  {
+    label: 'Clinical Psychologist',
+    value: 'clinical-psychologist'
+  },
+  {
+    label: 'Health Psychologist',
+    value: 'health-psychologist'
+  },
+  {
+    label: 'Neuropsychologist',
+    value: 'neuropsychologist',
+  }
+];
 
 export default CreateAccountForm;

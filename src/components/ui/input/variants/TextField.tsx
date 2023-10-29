@@ -5,7 +5,7 @@ import { useHandleImperative } from './lib/useHandleImperative';
 const TextField = forwardRef<CustomInputRef, FieldProps>((props, ref) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useHandleImperative(ref, inputRef);
+  useHandleImperative(ref, inputRef);  
 
   return <input ref={inputRef} {...props} />;
 });
