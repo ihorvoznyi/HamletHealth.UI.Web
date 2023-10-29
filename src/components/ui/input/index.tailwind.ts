@@ -52,5 +52,6 @@ export const classes = {
   icon: ctl(`
     absolute 
     right-[17px]
+    cursor-pointer
   `),
 };

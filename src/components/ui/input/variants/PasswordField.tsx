@@ -9,6 +9,7 @@ import { hidePassword } from './lib/input.helpers';
 import { useHandleImperative } from './lib/useHandleImperative';
 
 const PasswordField = forwardRef<CustomInputRef, FieldProps>(({ className, onChange, ...props }, ref) => {
+  const [isHidden, setIsHidden] = useState(true);
   const [actualValue, setActualValue] = useState<string>('');
   const hiddenValue = hidePassword(actualValue);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -39,14 +40,15 @@ const PasswordField = forwardRef<CustomInputRef, FieldProps>(({ className, onCha
         type="text"
         ref={inputRef}
         className={cn(
-          className, 
-          'tracking-[2.8px]'
+          className,
+          'text-body-medium',
+          isHidden && 'tracking-[2.8px]'
         )}
-        value={hiddenValue}
+        value={isHidden ? hiddenValue : actualValue}
         onChange={handleChange}
       />
 
-      <EyeIcon className={classes.icon} />
+      <EyeIcon isShowLine={isHidden} className={classes.icon} onClick={() => setIsHidden(prev => !prev)} />
     </>
   );
 });
