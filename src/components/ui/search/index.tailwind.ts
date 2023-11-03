@@ -4,18 +4,22 @@ export const classes = {
   container: ctl(`
     flex 
     items-center 
-    w-full 
-    py-[16px] 
-    px-[14px] 
+    w-full  
+    px-[14px]
     border 
     border-sonic-silver 
     rounded-[4px]
   `),
-  input: 'w-full placeholder:text-black',
+  input: ctl(`
+    w-full 
+    tracking-[0.5px]
+    placeholder:text-eerie-black 
+    placeholder:font-roboto-400
+    py-[16px]
+  `),
   searchIcon: ctl(`
     mr-[16px] 
-    min-w-[24px] 
-    min-h-[24px]
+    min-w-[24px]
   `),
   crossIcon: 'cursor-pointer',
 };

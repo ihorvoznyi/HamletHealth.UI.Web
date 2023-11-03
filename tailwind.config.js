@@ -45,6 +45,7 @@ export default {
       rajah: '#FFA553',
       red: '#FF0000',
       timberwolf: '#D8D3CF',
+      'eerie-black': '#1c1b1f',
       'sonic-silver': '#79747e',
       white: '#FFFFFF',
 
@@ -60,6 +61,8 @@ export default {
       'poppins-500': ['Poppins Medium', 'sans-serif'],
       'poppins-600': ['Poppins SemiBold', 'sans-serif'],
       'poppins-700': ['Poppins Bold', 'sans-serif'],
+      'roboto-400': ['Roboto Regular', 'sans-serif'],
+      'roboto-500': ['Roboto Medium', 'sans-serif']
     },
   },
   plugins: [],

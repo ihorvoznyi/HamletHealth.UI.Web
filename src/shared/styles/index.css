@@ -26,6 +26,18 @@
   font-weight: 700;
 }
 
+@font-face {
+  font-family: 'Roboto Regular';
+  src: url('fonts/Roboto-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Roboto Medium';
+  src: url('fonts/Roboto-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+
 input {
   margin: 0;
   padding: 0;
