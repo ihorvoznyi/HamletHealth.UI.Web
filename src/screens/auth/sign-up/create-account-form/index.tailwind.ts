@@ -3,7 +3,7 @@ import ctl from '@netlify/classnames-template-literals';
 export const classes = {
   title: ctl(`
     text-headline-large 
-    font-poppins-bold
+    font-poppins-700
   `),
   container: ctl(`
     flex
@@ -34,7 +34,7 @@ export const classes = {
   signInBtn: { 
     container: ctl(`
       text-han-blue
-      font-poppins-semi
+      font-poppins-600
     `),
   },
   createBtn: {

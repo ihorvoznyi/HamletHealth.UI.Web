@@ -27,7 +27,7 @@ export const classes = {
   title: ctl(`
     mb-[24px] 
     text-headline-large 
-    font-poppins-bold
+    font-poppins-700
   `),
   paragraph: ctl(`
     text-body-medium 

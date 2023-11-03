@@ -27,7 +27,7 @@ export const classes = {
   title: ctl(`
     text-[40px] 
     leading-[48px] 
-    font-poppins-bold
+    font-poppins-700
   `),
   list: ctl(`
     list-disc 

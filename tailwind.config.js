@@ -56,9 +56,10 @@ export default {
       },
     },
     fontFamily: {
-      poppins: ['Poppins Regular', 'sans-serif'],
-      'poppins-semi': ['Poppins SemiBold', 'sans-serif'],
-      'poppins-bold': ['Poppins Bold', 'sans-serif'],
+      'poppins-400': ['Poppins Regular', 'sans-serif'],
+      'poppins-500': ['Poppins Medium', 'sans-serif'],
+      'poppins-600': ['Poppins SemiBold', 'sans-serif'],
+      'poppins-700': ['Poppins Bold', 'sans-serif'],
     },
   },
   plugins: [],

@@ -27,7 +27,7 @@ export const classes = {
       pl-[8px] 
       pr-[16px] 
       text-label-medium 
-      font-poppins-semi
+      font-poppins-600
     `),
   },
   line: ctl(`

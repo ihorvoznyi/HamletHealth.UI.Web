@@ -16,7 +16,7 @@ export const classes = {
   `),
   title: ctl(`
     mt-[24px] 
-    font-poppins-semi 
+    font-poppins-600
     text-[26px] 
     leading-[32px]
   `),

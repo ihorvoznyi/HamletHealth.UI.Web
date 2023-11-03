@@ -17,7 +17,7 @@ export const classes = {
       bg-han-blue 
       w-full 
       py-[17px] 
-      font-poppins-semi 
+      font-poppins-600
       tracing-[1px]
     `),
   }

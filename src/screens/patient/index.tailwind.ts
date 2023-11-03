@@ -42,7 +42,7 @@ export const classes = {
   `),
   title: ctl(`
     text-headline-large 
-    font-poppins-semi 
+    font-poppins-600
     text-[26px] 
     leading-[32px]
   `),
@@ -52,6 +52,6 @@ export const classes = {
     mb-[56px]
   `),
   button: {
-    container: 'self-center font-poppins-semi'
+    container: 'self-center font-poppins-600'
   },
 };

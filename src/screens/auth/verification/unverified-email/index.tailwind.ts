@@ -20,6 +20,6 @@ export const classes = {
   link: ctl(`
     cursor-pointer 
     text-han-blue 
-    font-poppins-semi
+    font-poppins-600
   `),
 };
