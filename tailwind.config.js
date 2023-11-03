@@ -45,6 +45,7 @@ export default {
       rajah: '#FFA553',
       red: '#FF0000',
       timberwolf: '#D8D3CF',
+      'sonic-silver': '#79747e',
       white: '#FFFFFF',
 
       transparent: 'transparent',
@@ -61,5 +62,5 @@ export default {
     },
   },
   plugins: [],
-}
+};
 
