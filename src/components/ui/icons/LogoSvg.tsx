@@ -1,4 +1,5 @@
-const Logo = () => {
+/* eslint-disable max-len */
+const LogoSvg = () => {
   return (
     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g id="Logomark">
@@ -11,4 +12,4 @@ const Logo = () => {
   );
 };
 
-export default Logo
+export default LogoSvg;

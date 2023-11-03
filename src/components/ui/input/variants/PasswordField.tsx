@@ -1,7 +1,7 @@
 import { ChangeEvent, forwardRef, useRef, useState } from 'react';
 
 import { cn } from '@utils/style.util';
-import { EyeIcon } from '@components/ui/icons';
+import { EyeSvg } from '@components/ui/icons';
 
 import { classes } from '../index.tailwind';
 import { CustomInputRef, FieldProps } from '../index.interfaces';
@@ -48,7 +48,7 @@ const PasswordField = forwardRef<CustomInputRef, FieldProps>(({ className, onCha
         onChange={handleChange}
       />
 
-      <EyeIcon isShowLine={isHidden} className={classes.icon} onClick={() => setIsHidden(prev => !prev)} />
+      <EyeSvg isShowLine={isHidden} className={classes.icon} onClick={() => setIsHidden(prev => !prev)} />
     </>
   );
 });

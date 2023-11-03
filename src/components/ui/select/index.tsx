@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 
 import OptionEl from './OptionEl';
-import { CheckIcon, DropDownIcon } from '../icons';
+import { CheckSvg, DropDownSvg } from '../icons';
 
 import { cn } from '@utils/style.util';
 import useClickOutside from '@hooks/useClickOutside';
@@ -85,7 +85,7 @@ const Select: FC<PropsType> = ({ label, styles, options }) => {
       </div>
 
       
-      {isValid ? <CheckIcon className={classes.icon} /> : <DropDownIcon className={classes.icon} />}
+      {isValid ? <CheckSvg className={classes.icon} /> : <DropDownSvg className={classes.icon} />}
     </div>
   );
 };

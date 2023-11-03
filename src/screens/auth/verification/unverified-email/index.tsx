@@ -1,4 +1,4 @@
-import FlowerIcon from '@components/ui/icons/Flower';
+import FlowerIcon from '@components/ui/icons/FlowerSvg';
 
 import { classes as commonClasses } from '../index.tailwind';
 import { classes } from './index.tailwind';

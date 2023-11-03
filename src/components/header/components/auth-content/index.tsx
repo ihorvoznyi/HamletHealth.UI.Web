@@ -1,7 +1,7 @@
 import React from 'react';
 import { classes } from './index.tailwind';
 import { Link } from 'react-router-dom';
-import { PlusIcon } from '@components/ui/icons';
+import { PlusSvg } from '@components/ui/icons';
 import Button from '@components/ui/button';
 
 const navLinks = [
@@ -28,7 +28,7 @@ export const AuthHeaderContent = () => {
     </nav>
 
     <Button styles={classes.btn} onClick={() => {}}>
-      <PlusIcon />
+      <PlusSvg />
       <span>Add new patient</span>
     </Button>
 

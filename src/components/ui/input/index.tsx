@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, useRef, useState } from 'react';
 
 import FieldVariant from './variants';
-import { CheckIcon } from '@ui/icons';
+import { CheckSvg } from '@ui/icons';
 import { CustomInputRef, InputProps } from './index.interfaces';
 
 import { 
@@ -44,7 +44,7 @@ const Input: FC<InputProps> = ({ type = 'text', label, styles }) => {
         onBlur={() => setIsFocused(false)}
         onFocus={() => setIsFocused(true)}
       />
-      {isInputValid && <CheckIcon className={classes.icon} />}
+      {isInputValid && <CheckSvg className={classes.icon} />}
     </div>
   );
 };
