@@ -7,7 +7,6 @@ export const classes = {
     font-roboto-400
   `),
   head: 'mb-[20px]',
-  list: 'mt-[5px]',
   item: ctl(`
     p-[20px] 
     text-body-large

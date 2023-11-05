@@ -14,7 +14,7 @@ const Diagnosis = () => {
 
       <div>
         <Search />
-        <ul className={classes.list}>
+        <ul className={commonClasses.list}>
           {DIAGNOSIS.map(diagnos => (
               <li 
                 key={diagnos.name}

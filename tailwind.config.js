@@ -37,6 +37,7 @@ export default {
         primary: '#F8F8F8',
         secondary: '#F7F2F9'
       },
+      gainsboro: '#DFDFDF',
       green: '#92C2A0',
       inchworm: '#A7E35A',
       lavendar: '#EA94FF',
@@ -55,6 +56,9 @@ export default {
       backgroundColor: {
         inherit: 'inherit'
       },
+      boxShadow: {
+        'gray': '0px 4px 20px 0px rgba(0, 0, 0, 0.15)',
+      }
     },
     fontFamily: {
       'poppins-400': ['Poppins Regular', 'sans-serif'],

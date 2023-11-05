@@ -1,5 +1,6 @@
-import ActivitiesMedicine from './activities';
 import Diagnosis from './diagnosis';
+import ActivitiesMedicine from './activities';
+import TreatmentList from './treatment-plan-list';
 
 const AddPatient = () => {
   return (
@@ -14,7 +15,7 @@ const AddPatient = () => {
       <div className="flex gap-[24px] mt-[50px]">
         <Diagnosis />
         <ActivitiesMedicine />
-        <Diagnosis />
+        <TreatmentList />
       </div>
     </div>
   );

@@ -9,4 +9,9 @@ export const classes = {
     tracking-[0.15px]
   `),
   subtitle: 'text-body-medium font-roboto-400',
+  list: ctl(`
+    mt-[5px]
+    max-h-[330px]
+    overflow-auto
+  `),
 };
