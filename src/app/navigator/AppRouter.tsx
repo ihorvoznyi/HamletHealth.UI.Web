@@ -5,7 +5,7 @@ import { SignUp } from '@screens/auth';
 import AuthLayout from '../layouts/AuthLayout';
 import Verification from '@screens/auth/verification';
 import Home from '@screens/patient';
-import AddPatient from '@screens/patient/add-patient';
+import AddPatient from '@screens/patient/add-treatment';
 
 export const AppRouter = createBrowserRouter(
   createRoutesFromElements(

@@ -32,7 +32,7 @@ export default {
     colors: {
       black: '#000000',
       'han-blue': '#4366C6',
-      'vivid-cerulean': '029FF8',
+      'vivid-cerulean': '#029FF8',
       cultured: {
         primary: '#F8F8F8',
         secondary: '#F7F2F9'

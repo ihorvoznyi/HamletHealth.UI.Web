@@ -1,3 +1,4 @@
+import ActivitiesMedicine from './activities';
 import Diagnosis from './diagnosis';
 
 const AddPatient = () => {
@@ -12,7 +13,7 @@ const AddPatient = () => {
 
       <div className="flex gap-[24px] mt-[50px]">
         <Diagnosis />
-        <Diagnosis />
+        <ActivitiesMedicine />
         <Diagnosis />
       </div>
     </div>

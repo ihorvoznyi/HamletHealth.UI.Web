@@ -58,3 +58,16 @@ body {
 
 /* Setup fonts */
 
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  /* Customize the scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+  /* Customize the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  /* Customize the scrollbar thumb */
+}
