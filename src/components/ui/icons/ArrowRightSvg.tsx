@@ -1,4 +1,4 @@
-const ArrowRightSvg = () => {
+export const ArrowRightSvg = () => {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g id="Icon" clipPath="url(#clip0_1443_20714)">
@@ -12,5 +12,3 @@ const ArrowRightSvg = () => {
     </svg>
   );
 };
-
-export default ArrowRightSvg;

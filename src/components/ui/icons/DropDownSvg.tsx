@@ -1,6 +1,6 @@
 import { FC, SVGProps } from 'react';
 
-const DropDownSvg: FC<SVGProps<SVGSVGElement>> = ({ ...props }) => {
+export const DropDownSvg: FC<SVGProps<SVGSVGElement>> = ({ ...props }) => {
   return (
     <svg 
       xmlns="http://www.w3.org/2000/svg" 
@@ -21,5 +21,3 @@ const DropDownSvg: FC<SVGProps<SVGSVGElement>> = ({ ...props }) => {
     </svg>
   );
 };
-
-export default DropDownSvg;
