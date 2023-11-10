@@ -14,6 +14,7 @@ export default defineConfig({
       { find: '@assets', replacement: path.resolve(__dirname, 'public/assets') },
       { find: '@screens', replacement:  path.resolve(__dirname, 'src/screens')},
       { find: '@components', replacement:  path.resolve(__dirname, 'src/components')},
+      { find: '@configs', replacement: path.resolve(__dirname, 'src/shared/lib/configs') },
     ]
   }
 });

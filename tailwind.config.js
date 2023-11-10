@@ -33,6 +33,7 @@ export default {
       black: '#000000',
       'han-blue': '#4366C6',
       'vivid-cerulean': '#029FF8',
+      snow: '#FFFBFE',
       cultured: {
         primary: '#F8F8F8',
         secondary: '#F7F2F9'
@@ -43,6 +44,7 @@ export default {
       lavendar: '#EA94FF',
       mustand: '#F9DB55',
       orange: '#EC8813',
+      'royal-purple': '#6750A4',
       rajah: '#FFA553',
       red: '#FF0000',
       timberwolf: '#D8D3CF',
@@ -58,6 +60,7 @@ export default {
       },
       boxShadow: {
         'gray': '0px 4px 20px 0px rgba(0, 0, 0, 0.15)',
+        'black': '0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30)'
       }
     },
     fontFamily: {
