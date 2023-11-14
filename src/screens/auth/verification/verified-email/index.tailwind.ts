@@ -8,7 +8,7 @@ export const classes = {
   paragraph: ctl(`
     opacity-[.8] 
     text-black 
-    text-body-medium 
+    fs14Regular
     mt-[24px] 
     mb-[63px]
   `),

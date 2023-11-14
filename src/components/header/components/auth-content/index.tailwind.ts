@@ -10,7 +10,7 @@ export const classes = {
     flex
     items-center
     gap-[24px]
-    text-body-medium
+    fs14Regular
   `),
   inactiveLink: ctl(`
     text-black/[.54]
@@ -26,8 +26,6 @@ export const classes = {
       py-[6px] 
       pl-[8px] 
       pr-[16px] 
-      text-label-medium 
-      font-poppins-600
     `),
   },
   line: ctl(`

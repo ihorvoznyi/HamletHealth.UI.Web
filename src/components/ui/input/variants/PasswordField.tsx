@@ -41,7 +41,7 @@ const PasswordField = forwardRef<CustomInputRef, FieldProps>(({ className, onCha
         ref={inputRef}
         className={cn(
           className,
-          'text-body-medium',
+          'fs14Regular',
           isHidden && 'tracking-[2.8px]'
         )}
         value={isHidden ? hiddenValue : actualValue}

@@ -1,10 +1,7 @@
 import ctl from '@netlify/classnames-template-literals';
 
 export const classes = {
-  title: ctl(`
-    text-headline-large 
-    font-poppins-700
-  `),
+  title: 'fs32Bold',
   container: ctl(`
     flex
     flex-col
@@ -40,19 +37,18 @@ export const classes = {
   createBtn: {
     container: ctl(`
       w-full 
-      text-label-medium 
       bg-han-blue 
       py-[17px]
     `),
   },
   signInParagraph: ctl(`
-    text-body-medium 
+    fs14Regular
     text-black 
     opacity-[.8]
   `),
   policyParagraph: ctl(`
     mt-[16px] 
-    text-body-small 
+    fs12Regular
     text-black/[.4]
   `),
   policySpan: 'text-han-blue',

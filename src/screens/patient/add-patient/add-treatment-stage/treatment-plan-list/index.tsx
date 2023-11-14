@@ -1,7 +1,7 @@
 import TreatmentItem from './treatment-item';
 
 import { classes } from './index.tailwind';
-import { classes as commonClasses } from '@screens/patient/add-treatment/index.tailwind';
+import { classes as commonClasses } from '@screens/patient/add-patient/add-treatment-stage/index.tailwind';
 
 // TODO: Rename
 const TreatmentList = () => {

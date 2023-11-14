@@ -4,13 +4,16 @@ import { cn } from '@utils/style.util';
 const btnContentClasses = ctl(`
   flex 
   items-center 
+  tracking-[0.25px]
+  normal-case
   w-full 
   gap-[6px]
+  fs14Regular
 `);
 
 export const classes = {
   container: ctl(`
-    w-[170px] 
+    w-[175px] 
     items-start 
 
     absolute

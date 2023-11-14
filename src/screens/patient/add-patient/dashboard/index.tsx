@@ -1,8 +1,9 @@
 import Button from '@components/ui/button';
 import { classes } from './index.tailwind';
 import { useNavigate } from 'react-router-dom';
+import { appRoutes } from '@configs/routes.config';
 
-const Home = () => {
+const PatientDashboard = () => {
   const navigate = useNavigate();
 
   return (
@@ -22,7 +23,7 @@ const Home = () => {
 
         <Button 
           styles={classes.button} 
-          onClick={() => navigate('/add-patient')}
+          onClick={() => navigate(appRoutes.addPatient)}
         >
           Add new patient
         </Button>
@@ -31,4 +32,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default PatientDashboard;

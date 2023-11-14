@@ -8,25 +8,19 @@ export const classes = {
     mb-[20px]
   `),
   title: ctl(`
-    text-[20px] 
     mb-[4px] 
-    font-roboto-500 
-    leading-[24px] 
-    tracking-[0.15px]
+    fs20RobotoMedium
   `),
-  subtitle: 'text-body-medium font-roboto-400',
+  subtitle: 'fs14RobotoRegular',
   filter: {
     container: 'flex items-center',
     item: ctl(`
-      font-poppins-500 
       px-[8px] 
       py-[6px]
       cursor-pointer 
       border
       rounded-[16px]
-      tracking-[0.15px]
-      leading-[16px]
-      text-[14px]
+      fs14Medium
     `),
     active: 'border-black bg-[#F6F6F6]',
     inactive: 'border-white'

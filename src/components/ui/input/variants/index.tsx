@@ -13,7 +13,8 @@ const FieldVariant = forwardRef<CustomInputRef, FieldProps>((props, ref) => {
   const mapper: FieldMapper = {
     password: <PasswordField {...props} ref={ref} />,
     text: <TextField {...props} ref={ref} />,
-    phone: <></>
+    phone: <></>,
+    textarea: <></>
   };
 
   return mapper[type];

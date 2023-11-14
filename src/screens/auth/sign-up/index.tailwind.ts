@@ -26,12 +26,10 @@ export const classes = {
   `),
   title: ctl(`
     mb-[24px] 
-    text-headline-large 
-    font-poppins-700
+    fs32Bold
   `),
   paragraph: ctl(`
-    text-body-medium 
+    fs14Regular
     opacity-[.8] 
-    leading-[20px]
   `),
 };

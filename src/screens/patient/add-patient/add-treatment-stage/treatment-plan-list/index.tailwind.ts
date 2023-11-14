@@ -2,7 +2,7 @@ import ctl from '@netlify/classnames-template-literals';
 
 export const classes = {
   container: ctl(`
-    flex-[30%]
+    w-[300px]
     text-left
     font-roboto-400
   `),

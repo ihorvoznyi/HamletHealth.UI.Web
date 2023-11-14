@@ -8,14 +8,14 @@ export const classes = {
   thankParagraph: ctl(`
     opacity-[.8] 
     text-black 
-    text-body-medium 
+    fs14Regular 
     mt-[24px]
   `),
   emailParagraph: ctl(`
     mt-[72px] 
     opacity-[.8] 
     text-black 
-    text-body-medium
+    fs14Regular
   `),
   link: ctl(`
     cursor-pointer 

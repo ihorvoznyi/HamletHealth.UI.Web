@@ -9,9 +9,7 @@ export const classes = {
   head: 'mb-[20px]',
   item: ctl(`
     p-[20px] 
-    text-body-large
-    font-roboto-500
-    tracking-[0.15px] 
+    fs16RobotoMedium 
     roudned-[4px]
     hover:bg-han-blue/[.10]
     hover:cursor-pointer

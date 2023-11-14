@@ -1,6 +1,6 @@
 import ctl from '@netlify/classnames-template-literals';
 
-export const labelUnfocusedStyle = 'bg-black text-black/[.12]';
+export const labelUnfocusedStyle = 'text-black/[.12]';
 
 export const labelActiveStyle = ctl(`
   -top-[10px] 
@@ -36,7 +36,7 @@ export const classes = {
     px-[3px] 
     left-3
     bg-white
-    text-label-large
+    fs14Regular
   `),
   input: ctl(`
     relative
@@ -44,8 +44,8 @@ export const classes = {
     w-full
     px-4
     py-3
-    text-body-medium
-    placeholder:text-label-large
+    fs14Regular
+    placeholder:fs14SemiBold
     placeholder:text-black/[.12]
     text-black/[.88]
   `),

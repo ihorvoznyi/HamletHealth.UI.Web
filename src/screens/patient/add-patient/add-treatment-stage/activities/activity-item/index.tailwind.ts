@@ -10,25 +10,17 @@ export const classes = {
     hover:bg-han-blue/[.10]
   `),
   contentContainer: ctl(`
-    text-[16px] 
-    tracking-[0.15px] 
+    fs16Regular
     text-black
   `),
   name: 'font-roboto-500',
-  type: ctl(`
-    text-[13px] 
-    tracking-[0.15px]
-    font-roboto-400
-  `),
+  type: 'fs13RobotoRegular',
   btn: {
     container: ctl(`
       border-none 
-      gap-[2px] 
-      text-[#000] 
-      text-[15px] 
+      gap-[2px]  
+      fs15Regular
       normal-case
-      tracking-[0.15px]
-      leading-normal
     `),
   },
   icon: {

@@ -23,7 +23,7 @@ export const classes = {
       px-[3px] 
       left-3
       bg-white
-      text-label-large
+      fs14Regular
     `),
     active: ctl(`
       -top-[10px] 
@@ -37,7 +37,7 @@ export const classes = {
       -translate-y-1/2 
       text-black/[.12]
     `),
-    unfocused: 'bg-black text-black/[.12]',
+    unfocused: 'text-black/[.12]',
   },
   drowdown: ctl(`
     absolute 
@@ -52,15 +52,15 @@ export const classes = {
     border-black/[.12]
     text-black/[.88]
   `),
-  dropdownContainer: 'w-full text-body-medium',
+  dropdownContainer: 'w-full fs14Regular',
   item: ctl(`
     px-4
-    py-2
+    py-3
     cursor-pointer
     first:rounded-t-[4px]
     last:rounded-b-[4px]
     hover:bg-black/[.12]
   `),
-  input: 'cursor-pointer w-full px-4 py-2',
+  input: 'cursor-pointer w-full px-4 py-3',
   icon: 'absolute right-[17px]',
 };

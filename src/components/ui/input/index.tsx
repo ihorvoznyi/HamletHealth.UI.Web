@@ -28,11 +28,12 @@ const Input: FC<InputProps> = ({ type = 'text', label, styles }) => {
     >
       {label && (
         <label
-          className={cn(classes.label, {
-            [labelActiveStyle]: isLabelActive,
-            [labelInactiveStyle]: !isLabelActive,
-            [labelUnfocusedStyle]: !isFocused,
-          })}
+          className={cn(
+            classes.label, 
+            isLabelActive 
+              ? labelActiveStyle 
+              : labelInactiveStyle, 
+            !isFocused && labelUnfocusedStyle)}
           onClick={() => inputRef.current?.focus()}>{label}</label>
       )}
       <FieldVariant

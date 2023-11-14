@@ -7,6 +7,6 @@ export const classes = {
     gap-[12px] 
     cursor-default 
     text-han-blue 
-    text-title-medium
+    fs16SemiBold
   `),
 };

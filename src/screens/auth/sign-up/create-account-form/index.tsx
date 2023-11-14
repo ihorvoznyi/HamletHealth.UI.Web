@@ -4,6 +4,7 @@ import Input from '@components/ui/input';
 import { classes } from './index.tailwind';
 import { useNavigate } from 'react-router-dom';
 import Select from '@components/ui/select';
+import { appRoutes } from '@configs/routes.config';
 
 const CreateAccountForm = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const CreateAccountForm = () => {
           <Input type="password" label="Confirm password" />
         </form>
 
-        <Button styles={classes.createBtn} onClick={() => navigate('/verify')}>
+        <Button styles={classes.createBtn} onClick={() => navigate(appRoutes.auth.verify)}>
           Create Account
         </Button>
 

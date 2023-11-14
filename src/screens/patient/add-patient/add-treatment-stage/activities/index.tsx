@@ -3,7 +3,7 @@ import Search from '@components/ui/search';
 import ListItem from './activity-item';
 
 import { classes } from './index.tailwind';
-import { classes as commonClasses } from '@screens/patient/add-treatment/index.tailwind';
+import { classes as commonClasses } from '@screens/patient/add-patient/add-treatment-stage/index.tailwind';
 import { ACTIVITIES } from '../lib/activities.constants';
 
 const ActivitiesMedicine = () => {  

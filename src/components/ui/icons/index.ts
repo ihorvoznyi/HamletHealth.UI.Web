@@ -1,6 +1,7 @@
 export * from './MoreHorizontalSvg';
 export * from './CircleCrossSvg';
 export * from './ArrowRightSvg';
+export * from './ArrowLeftSvg';
 export * from './DropDownSvg';
 export * from './SearchSvg';
 export * from './DeleteSvg';

@@ -6,7 +6,7 @@ import { styleMapper } from './lib';
 import { ButtonProps } from './index.interfaces';
 import { classes } from './index.tailwind';
 
-const Button: FC<ButtonProps> = ({ type = 'primary', children, styles, onClick }) => {
+const Button: FC<ButtonProps> = ({ type = 'primary', children, styles, disabled = false, onClick }) => {
   const handleClick = (event: MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
@@ -16,12 +16,12 @@ const Button: FC<ButtonProps> = ({ type = 'primary', children, styles, onClick }
 
   return (
     <button 
-      className={cn(
-        classes.container,
-        styleMapper(type),
-        styles?.container
-      )}
-      onClick={handleClick}>{children}</button>
+      className={cn(classes.container, styleMapper(type), styles?.container)}
+      onClick={handleClick}
+      disabled={disabled}
+    >
+      {children}
+    </button>
   );
 };
 

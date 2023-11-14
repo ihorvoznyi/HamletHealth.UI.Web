@@ -8,12 +8,12 @@ export const classes = {
     gap-2
     px-[14px]
     py-[10px]
-    text-label-medium
+    fs12SemiBold
     uppercase
     rounded-[4px]
   `),
   primary: ctl(`
-    bg-green 
+    bg-green
     text-white
   `),
   outlined: ctl(`

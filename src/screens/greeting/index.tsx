@@ -2,12 +2,13 @@ import { useNavigate } from 'react-router-dom';
 
 import Button from '@ui/button';
 import { classes } from './index.tailwind';
+import { appRoutes } from '@configs/routes.config';
 
 const GreetingScreen = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/sign-up');
+    navigate(appRoutes.auth.signUp);
   };
 
   return (

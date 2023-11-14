@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react';
 
-export type InputTypes = 'text' | 'password' | 'phone';
+export type InputTypes = 'text' | 'password' | 'phone' | 'textarea';
 
 export type CustomInputRef = {
   focus: () => void;

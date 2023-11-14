@@ -54,12 +54,9 @@ const Select: FC<PropsType> = ({ label, styles, options }) => {
       {label && (
         <label
           className={cn(
-            classes.label.base, 
-            {
-              [classes.label.active]: isLabelActive,
-              [classes.label.inactive]: !isLabelActive,
-              [classes.label.unfocused]: !isFocused,
-            },
+            classes.label.base,
+            isLabelActive ? classes.label.active : classes.label.inactive,
+            !isFocused && classes.label.unfocused,
             styles?.label)}
         >
           {label}

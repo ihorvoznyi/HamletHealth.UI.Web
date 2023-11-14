@@ -17,11 +17,7 @@ export const classes = {
     relative
   `),
   content: 'flex items-center gap-[4px]',
-  text: ctl(`
-    text-[14px] 
-    leading-[20px] 
-    font-poppins-400
-  `),
+  text: 'fs14Regular',
   dotsIcon: 'p-[4px] rounded-[16px] relative',
 
 };

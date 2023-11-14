@@ -14,10 +14,5 @@ export const classes = {
     py-[72px] 
     bg-cultured-primary
   `),
-  title: ctl(`
-    mt-[24px] 
-    font-poppins-600
-    text-[26px] 
-    leading-[32px]
-  `),
+  title: 'mt-[24px] fs26SemiBold',
 };

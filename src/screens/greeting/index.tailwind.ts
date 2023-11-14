@@ -22,13 +22,9 @@ export const classes = {
     -translate-x-1/2 
     -translate-y-1/2 
     mt-[81px] 
-    text-body-medium 
+    fs14Regular 
   `),
-  title: ctl(`
-    text-[40px] 
-    leading-[48px] 
-    font-poppins-700
-  `),
+  title: 'fs40Bold',
   list: ctl(`
     list-disc 
     pl-[23px] 
@@ -36,7 +32,7 @@ export const classes = {
   `),
   listWrapper: ctl(`
     mt-[32px] 
-    text-body-medium 
+    fs14Regular 
     text-black/[.8]
   `),
   btn: {

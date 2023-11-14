@@ -1,17 +1,19 @@
-import React from 'react';
-import { classes } from './index.tailwind';
 import { Link } from 'react-router-dom';
+
 import { PlusSvg } from '@components/ui/icons';
 import Button from '@components/ui/button';
+
+import { classes } from './index.tailwind';
+import { appRoutes } from '@configs/routes.config';
 
 const navLinks = [
   {
     text: 'Dashboard',
-    to: '/dashboard',
+    to: appRoutes.dashboard,
   },
   {
     text: 'My patients',
-    to: '/patients',
+    to: appRoutes.patients,
   },
 ];
 
@@ -20,7 +22,7 @@ export const AuthHeaderContent = () => {
     <div className={classes.container}>
     <nav className={classes.nav}>
       {navLinks.map(link => {
-        const linkStyle = '/dashboard' === link.to ? classes.activeLink : classes.inactiveLink; // TODO: remove mock
+        const linkStyle = appRoutes.dashboard === link.to ? classes.activeLink : classes.inactiveLink; // TODO: remove mock
 
         return <Link key={link.to} to={link.to} className={linkStyle}>{link.text}</Link>;
       })}

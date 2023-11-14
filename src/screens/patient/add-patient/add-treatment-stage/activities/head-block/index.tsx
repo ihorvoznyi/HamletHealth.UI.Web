@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
 import { FILTER_ITEMS } from './index.constants';
-import { classes as commonClasses } from '@screens/patient/add-treatment/index.tailwind';
+import { classes as commonClasses } from '@screens/patient/add-patient/add-treatment-stage/index.tailwind';
 
 const Head = () => {
   const [activeId, setActiveId] = useState(FILTER_ITEMS[0].id);

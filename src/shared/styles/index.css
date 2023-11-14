@@ -56,18 +56,96 @@ body {
   background-color: inherit;
 }
 
+.purple-gradient {
+  background: linear-gradient(0deg, rgba(103, 80, 164, 0.05) 0%, rgba(103, 80, 164, 0.05) 100%);
+  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30);
+}
+
 /* Setup fonts */
 
 /* Scrollbar */
 
-::-webkit-scrollbar {
-  /* Customize the scrollbar width */
+/* Colors */
+
+@layer base {
+  :root {
+    --color-black: 0 0 0;
+    --color-han-blue: 67 102 198;
+    --color-vivid-cerulean: 2 159 248;
+    --color-snow: 255 251 254;
+    --color-cultured-primary: 248 248 248;
+    --color-cultured-secondary: 247 242 249;
+    --color-gainsboro: 223 223 223;
+    --color-green: 146 194 160;
+    --color-inchworm: 167 227 90;
+    --color-lavendar: 234 148 255;
+    --color-mustand: 249 219 85;
+    --color-orange: 236 136 19;
+    --color-royal-purple: 103 80 164;
+    --color-rajah: 255 165 83;
+    --color-red: 255 0 0;
+    --color-timberwolf: 216 211 207;
+    --color-eerie-black: 28 27 31;
+    --color-sonic-silver: 121, 116, 126;
+    --color-white: 255 255 255;
+
+    /* Font Sizes */
+    --font-size-11: 11px;
+    --font-size-12: 12px;
+    --font-size-14: 14px;
+    --font-size-16: 16px;
+    --font-size-22: 22px;
+    --font-size-24: 24px;
+    --font-size-28: 28px;
+    --font-size-32: 32px;
+    --font-size-36: 36px;
+    --font-size-45: 45px;
+    --font-size-57: 57px;
+
+    /* Line Heights */
+    --line-height-16: 16px;
+    --line-height-20: 20px;
+    --line-height-24: 24px;
+    --line-height-28: 28px;
+    --line-height-32: 32px;
+    --line-height-36: 36px;
+    --line-height-40: 40px;
+    --line-height-44: 44px;
+    --line-height-52: 52px;
+    --line-height-64: 64px;
+  }
 }
 
-::-webkit-scrollbar-track {
-  /* Customize the scrollbar track */
-}
+/* Poppins */
+.fs12Regular { @apply text-[12px] leading-[16px] tracking-[0.4px] font-poppins-400 }
+.fs14Regular { @apply text-[14px] leading-[20px] tracking-[0.25px] font-poppins-400 }
+.fs15Regular { @apply text-[15px] leading-normal tracking-[0.15px] }
+.fs16Regular { @apply text-[16px] leading-[24px] tracking-[0.15px] font-poppins-400 }
+.fs14Medium { @apply text-[14px] leading-[16px] tracking-[0.15px] font-poppins-500 }
+.fs10SemiBold { @apply text-[10px] leading-[16px] tracking-[1px] font-poppins-600 }
+.fs11SemiBold { @apply text-[11px] leading-[16px] font-poppins-600 tracking-[0.5px] }
+.fs12SemiBold { @apply text-[12px] leading-[16px] font-poppins-600 tracking-[1px] }
+.fs14SemiBold { @apply text-[14px] leading-[20px] font-poppins-600 tracking-[0.1px] }
+.fs16SemiBold { @apply text-[16px] leading-[24px] font-poppins-600 tracking-[0.15px] }
+.fs22SemiBold { @apply text-[16px] leading-[28px] font-poppins-600 tracking-[0.15px] }
+.fs26SemiBold { @apply text-[26px] leading-[32px] font-poppins-600 }
+.fs32SemiBold { @apply text-[32px] leading-[40px] font-poppins-600 tracking-[0.15px] }
+.fs32Bold { @apply text-[32px] leading-[40px] tracking-[0.15px] font-poppins-700 }
+.fs40Bold { @apply text-[40px] leading-[48px] font-poppins-700 }
 
-::-webkit-scrollbar-thumb {
-  /* Customize the scrollbar thumb */
+/* Roboto */
+.fs13RobotoRegular { @apply text-[13px] tracking-[0.15px] font-roboto-400 }
+.fs15RobotoMedium { @apply text-[15px] tracking-[0.15px] font-roboto-500 }
+.fs16RobotoMedium { @apply text-[16px] leading-[24px] tracking-[0.15px] font-roboto-500 }
+.fs20RobotoMedium { @apply text-[20px] leading-[24px] tracking-[0.15px] font-roboto-500 }
+
+.btnPurple { @apply text-royal-purple rounded-[4px] tracking-[1.25px] leading-[16px] font-roboto-500 }
+
+
+.dashed-spaced {
+  background-image: linear-gradient(to right, #333 30%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 60%, #333 0%);
+  background-position: top;
+  background-size: 5px 1px;
+  background-repeat: repeat-x;
+  height: 20px; /* Adjust the height as needed */
 }

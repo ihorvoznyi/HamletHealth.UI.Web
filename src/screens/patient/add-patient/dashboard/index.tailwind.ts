@@ -41,13 +41,10 @@ export const classes = {
     text-center
   `),
   title: ctl(`
-    text-headline-large 
-    font-poppins-600
-    text-[26px] 
-    leading-[32px]
+    fs26SemiBold
   `),
   paragraph: ctl(`
-    text-body-medium 
+    fs14Regular
     mt-[24px] 
     mb-[56px]
   `),
