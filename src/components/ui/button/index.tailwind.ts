@@ -8,7 +8,10 @@ export const classes = {
     gap-2
     px-[14px]
     py-[10px]
-    fs12SemiBold
+    text-[12px] 
+    leading-[16px] 
+    font-poppins-600 
+    tracking-[1px]
     uppercase
     rounded-[4px]
   `),

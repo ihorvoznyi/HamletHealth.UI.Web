@@ -14,6 +14,8 @@ export default {
     },
     colors: {
       'black': 'rgb(var(--color-black) / <alpha-value>)',
+      'bright-gray': '#EFEFEF',
+      'dark-charcoal': '#323232',
       'han-blue': 'rgb(var(--color-han-blue) / <alpha-value>)',
       'vivid-cerulean': 'rgb(var(--color-vivid-cerulean) / <alpha-value>)',
       'snow': 'rgb(var(--color-snow) / <alpha-value>)',
@@ -25,6 +27,7 @@ export default {
       'green': 'rgb(var(--color-green) / <alpha-value>)',
       'inchworm': 'rgb(var(--color-inchworm) / <alpha-value>)',
       'lavendar': 'rgb(var(--color-lavendar) / <alpha-value>)',
+      'light-silver': 'rgb(var(--color-light-silver) / <alpha-value>)',
       'mustand': 'rgb(var(--color-mustand) / <alpha-value>)',
       'orange': 'rgb(var(--color-orange) / <alpha-value>)',
       'royal-purple': 'rgb(var(--color-royal-purple) / <alpha-value>)',
@@ -39,9 +42,6 @@ export default {
       'inherit': 'inherit'
     },
     extend: {
-      // backgroundColor: {
-      //   'inherit': 'inherit'
-      // },
       boxShadow: {
         'gray': '0px 4px 20px 0px rgba(0, 0, 0, 0.15)',
         'black': '0px 1px 3px 1px rgba(0, 0, 0, 0.15), 0px 1px 2px 0px rgba(0, 0, 0, 0.30)'

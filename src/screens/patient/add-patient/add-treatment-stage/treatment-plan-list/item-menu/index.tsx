@@ -16,7 +16,8 @@ const Menu: FC<PropsType> = ({ onDefine, onDelete, onEdit }) => (
     <Button 
       type="outlined"
       styles={classes.btn}
-      onClick={onDelete}>
+      onClick={onDelete}
+    >
       <p className={classes.deleteBtnContent}>
         <DeleteSvg />
         Delete
@@ -26,7 +27,8 @@ const Menu: FC<PropsType> = ({ onDefine, onDelete, onEdit }) => (
     <Button 
       type="outlined"
       styles={classes.btn}
-      onClick={onDefine}>
+      onClick={onDefine}
+    >
       <p className={classes.defineBtnContent}>
         <ClockSvg />
         Define as a goal
@@ -36,7 +38,8 @@ const Menu: FC<PropsType> = ({ onDefine, onDelete, onEdit }) => (
     <Button 
       type="outlined"
       styles={classes.btn}
-      onClick={onEdit}>
+      onClick={onEdit}
+    >
       <p className={classes.editBtnContent}>
         <EditSvg />
         Rename

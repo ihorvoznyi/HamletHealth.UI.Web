@@ -3,12 +3,13 @@ import { FC, useState } from 'react';
 
 import Diagnosis from './diagnosis';
 import ActivitiesMedicine from './activities';
-import TreatmentList from './treatment-plan-list';
+import Treatment from './treatment-plan-list';
 import Button from '@components/ui/button';
 import { ArrowLeftSvg } from '@components/ui/icons';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
+import { treatmentList } from './treatment-plan-list/index.constants';
 
 interface PropsType {
   onProcess: () => void;
@@ -17,6 +18,7 @@ interface PropsType {
 
 const AddTreatmentStage: FC<PropsType> = ({ onReturn, onProcess }) => {
   const [isDefined, setIsDefined] = useState(false);
+  const [isEmpty, _] = useState(!treatmentList.length);
   
   return (
     <>
@@ -26,10 +28,19 @@ const AddTreatmentStage: FC<PropsType> = ({ onReturn, onProcess }) => {
         <div className={classes.sections}>
           <Diagnosis />
           <ActivitiesMedicine />
-          <TreatmentList />
+          <Treatment />
         </div>
 
-        <Button styles={classes.defineBtn} onClick={() => setIsDefined(prev => !prev)}>
+        <Button 
+          styles={{ container: cn(
+            classes.defineBtn.base,
+            isEmpty 
+              ? classes.defineBtn.disabled 
+              : classes.defineBtn.active
+          )}}
+          disabled={isEmpty}
+          onClick={() => setIsDefined(prev => !prev)}
+        >
           Define all as a plan
         </Button>
       </div>

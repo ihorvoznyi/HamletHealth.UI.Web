@@ -1,5 +1,4 @@
 import ctl from '@netlify/classnames-template-literals';
-import { cn } from '@utils/style.util';
 
 export const classes = {
   title: ctl(`
@@ -20,11 +19,10 @@ export const classes = {
     justify-center
   `),
   defineBtn: {
-    container: ctl(`
+    base: ctl(`  
       mt-[20px] 
-      float-right 
+      float-right
       bg-white 
-      purple-gradient 
       text-royal-purple 
       rounded-[4px] 
       tracking-[1.25px] 
@@ -34,9 +32,11 @@ export const classes = {
       py-[14px] 
       px-[16px]
     `),
+    active: 'purple-gradient',
+    disabled: 'text-eerie-black/[.38] bg-white border border-eerie-black/[.12]',
   },
   processBtn: {
     base: 'w-[208px]',
-    disabled: 'text-eerie-black bg-[#d2dbd5]'
+    disabled: 'text-eerie-black bg-light-silver'
   },
 };

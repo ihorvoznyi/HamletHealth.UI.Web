@@ -38,7 +38,7 @@
   font-weight: 500;
 }
 
-input {
+input, textarea {
   margin: 0;
   padding: 0;
   border: 0;
@@ -46,6 +46,10 @@ input {
   font-size: 100%;
   vertical-align: baseline;
   background: transparent;
+}
+
+textarea {
+  resize: none;
 }
 
 body {
@@ -79,6 +83,7 @@ body {
     --color-green: 146 194 160;
     --color-inchworm: 167 227 90;
     --color-lavendar: 234 148 255;
+    --color-light-silver: 210 219 213;
     --color-mustand: 249 219 85;
     --color-orange: 236 136 19;
     --color-royal-purple: 103 80 164;
@@ -135,12 +140,13 @@ body {
 
 /* Roboto */
 .fs13RobotoRegular { @apply text-[13px] tracking-[0.15px] font-roboto-400 }
+.fs14RobotoRegular { @apply text-[14px] leading-[20px] tracking-[0.1px] font-roboto-400 }
+.fs14RobotoMedium { @apply text-[14px] leading-[16px] tracking-[1.25px] font-roboto-500 }
 .fs15RobotoMedium { @apply text-[15px] tracking-[0.15px] font-roboto-500 }
 .fs16RobotoMedium { @apply text-[16px] leading-[24px] tracking-[0.15px] font-roboto-500 }
 .fs20RobotoMedium { @apply text-[20px] leading-[24px] tracking-[0.15px] font-roboto-500 }
 
 .btnPurple { @apply text-royal-purple rounded-[4px] tracking-[1.25px] leading-[16px] font-roboto-500 }
-
 
 .dashed-spaced {
   background-image: linear-gradient(to right, #333 30%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 60%, #333 0%);

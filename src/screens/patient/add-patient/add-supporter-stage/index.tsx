@@ -31,6 +31,8 @@ const AddSupporterStage: FC<PropsType> = ({ onReturn }) => {
         <Button type="outlined" onClick={onReturn}><ArrowLeftSvg /></Button>
         <Button styles={classes.saveBtn} onClick={() => {}}>Save and finish</Button>
       </div>
+
+      <Button type="outlined" onClick={() => {}} styles={classes.skipBtn}>Skip this step</Button>
     </div>
   )
 }

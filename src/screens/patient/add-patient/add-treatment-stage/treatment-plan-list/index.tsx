@@ -1,10 +1,10 @@
 import TreatmentItem from './treatment-item';
 
 import { classes } from './index.tailwind';
-import { classes as commonClasses } from '@screens/patient/add-patient/add-treatment-stage/index.tailwind';
+import { treatmentList } from './index.constants';
+import { classes as commonClasses } from '../index.tailwind';
 
-// TODO: Rename
-const TreatmentList = () => {
+const Treatment = () => {
   return (
     <div className={classes.container}>
       <div className={classes.head}>
@@ -12,13 +12,21 @@ const TreatmentList = () => {
         <p className={commonClasses.subtitle}>All activity & medicine you&rsquo;ve selected</p>
       </div>
 
-      <ul className={classes.list}>
-        <TreatmentItem type='sleep' text="Have a sleep" />
-        <TreatmentItem type='movie' text="Watch a movie" />
-        <TreatmentItem type='medicine' text="Omidon 10mg" />
-      </ul> 
+      <TreatmentList />
     </div>
   );
 };
 
-export default TreatmentList;
+const TreatmentList = () => {
+  return treatmentList.length ? (
+    <ul className={classes.list}>
+      {treatmentList.map(item => <TreatmentItem key={item.text} type={item.type} text={item.text} />)}
+    </ul>
+  ) : (
+    <div className={classes.emptyMessage.container}>
+      <p className={classes.emptyMessage.text}>Empty</p> 
+    </div>
+  );
+};
+
+export default Treatment;
