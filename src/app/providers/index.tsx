@@ -1,11 +1,15 @@
+import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
+
+import { store } from '@app/store';
 import { AppRouter } from '../navigator';
 
-// Component contains all Providers of the appication
 const AppProvider = () => {
   return (
-    <RouterProvider router={AppRouter} />
-  )
-}
+    <Provider store={store}>
+      <RouterProvider router={AppRouter} />
+    </Provider>
+  );
+};
 
 export default AppProvider;

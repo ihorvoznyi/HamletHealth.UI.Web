@@ -1,4 +1,4 @@
-import ctl from "@netlify/classnames-template-literals";
+import ctl from '@netlify/classnames-template-literals';
 
 export const classes = {
   container: 'max-w-[600px] mx-auto flex flex-col',

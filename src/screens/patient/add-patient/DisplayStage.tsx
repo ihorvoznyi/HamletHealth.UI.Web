@@ -1,10 +1,10 @@
-import { FC, ReactElement } from "react";
+import { FC, ReactElement } from 'react';
 
-import AddPatientStage from "./add-patient-stage";
-import AddTreatmentStage from "./add-treatment-stage";
+import AddPatientStage from './stages/add-patient-stage';
+import AddTreatmentStage from './stages/add-treatment-stage';
+import AddSupporterStage from './stages/add-supporter-stage';
 
-import { StageType } from "./index.interfaces";
-import AddSupporterStage from "./add-supporter-stage";
+import { StageType } from './index.interfaces';
 
 interface PropsType {
   stage: StageType;
@@ -28,6 +28,6 @@ const DisplayStage: FC<PropsType> = ({ stage, onStage }) => {
   };
 
   return mapper[stage];
-}
+};
 
 export default DisplayStage;

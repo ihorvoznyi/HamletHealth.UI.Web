@@ -16,7 +16,7 @@ export default {
       'black': 'rgb(var(--color-black) / <alpha-value>)',
       'bright-gray': '#EFEFEF',
       'dark-charcoal': '#323232',
-      'han-blue': 'rgb(var(--color-han-blue) / <alpha-value>)',
+      'han-blue': '#4366C5',
       'vivid-cerulean': 'rgb(var(--color-vivid-cerulean) / <alpha-value>)',
       'snow': 'rgb(var(--color-snow) / <alpha-value>)',
       'cultured': {
@@ -24,7 +24,7 @@ export default {
         'secondary': 'rgb(var(--color-cultured-secondary) / <alpha-value>)',
       },
       'gainsboro': 'rgb(var(--color-gainsboro) / <alpha-value>)',
-      'green': 'rgb(var(--color-green) / <alpha-value>)',
+      'green': '#92C2A0',
       'inchworm': 'rgb(var(--color-inchworm) / <alpha-value>)',
       'lavendar': 'rgb(var(--color-lavendar) / <alpha-value>)',
       'light-silver': 'rgb(var(--color-light-silver) / <alpha-value>)',

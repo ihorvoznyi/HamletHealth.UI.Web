@@ -1,9 +1,9 @@
-import ctl from "@netlify/classnames-template-literals";
+import ctl from '@netlify/classnames-template-literals';
 
 export const classes = {
   container: ctl(`
-    max-w-[1440px] 
-    mx-auto 
+    mx-auto
     text-center
+    max-w-[1440px]
   `),
 };

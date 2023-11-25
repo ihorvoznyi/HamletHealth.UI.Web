@@ -2,12 +2,14 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
+      "@app/*": ["src/app/*"],
       "@assets/*": ["public/assets/*"],
       "@components/*": ["src/components/*"],
       "@ui/*": ["src/components/ui/*"],
       "@configs/*": ["src/shared/lib/configs/*"],
       "@utils/*": ["src/shared/lib/utils/*"],
       "@hooks/*": ["src/shared/lib/hooks/*"],
+      "@shared/*": ["src/shared/*"],
       "@styles/*": ["src/shared/styles/*"],
       "@screens/*": ["src/screens/*"],
     }

@@ -7,7 +7,9 @@ export default defineConfig({
   resolve: {
     alias: [
       { find: '@', replacement: path.resolve(__dirname, 'src') },
+      { find: '@app', replacement: path.resolve(__dirname, 'src/app') },
       { find: '@ui', replacement: path.resolve(__dirname, 'src/components/ui') },
+      { find: '@shared', replacement: path.resolve(__dirname, 'src/shared') },
       { find: '@styles', replacement: path.resolve(__dirname, 'src/shared/styles') },
       { find: '@utils', replacement: path.resolve(__dirname, 'src/shared/lib/utils') },
       { find: '@hooks', replacement: path.resolve(__dirname, 'src/shared/lib/hooks') },

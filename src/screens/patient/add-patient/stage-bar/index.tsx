@@ -1,40 +1,30 @@
-import { FC, useState } from "react";
+import { shallowEqual } from 'react-redux';
 
-type StageStatusType = 'finished' | 'active' | 'default';
-type StagesType = [StageStatusType, StageStatusType, StageStatusType];
+import DashedSvg from './icons/DashedSvg';
+import StageCircle from './stage-circle';
 
-interface PropsType {
-  stages: StagesType;
-}
+import { cn } from '@utils/style.util';
+import { classes } from './index.tailwind';
+import { useAppSelector } from '@shared/model';
+import { getDashedSvgAttrs, selectStages } from './lib';
 
-import React from 'react'
+const StageBar = () => {
+  const { patientStatus, treatmentStatus, supporterStatus, current } = useAppSelector(selectStages, shallowEqual);
 
-const DashedSvg = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="166" height="2" viewBox="0 0 166 2" fill="none">
-      <path d="M0 1L166 1" stroke="black" stroke-opacity="0.32" stroke-dasharray="3 3"/>
-    </svg>
-  )
-}
+    <div className={classes.container}>
+      <div className={classes.stageBarContainer}>
+        <StageCircle position="left" status={patientStatus} isActive={current === 'patient'} />
+        <StageCircle position="right" status={supporterStatus} isActive={current === 'supporter'} />
+        <StageCircle position="center" status={treatmentStatus} isActive={current === 'treatment'} />
 
-const StageBar: FC<PropsType> = ({ stages = ['default', 'default', 'default'] }) => {
-  const [stageStatuses, setStageStatuses] = useState<StagesType>(stages);
-  
-  return (
-    <div className="mt-[125px] mb-[40px]">
-      {/* <div className="w-[320px] h-[1px] stroke-1 bg-black shrink-0" /> */}
-      <div className="flex justify-center items-center min-h-[10px] max-w-[320px] mx-auto overflow-hidden mb-[17px] relative">
-        <div className="absolute top-[1/2] left-0 w-[10px] h-[10px] rounded-[50%] bg-han-blue" />
-        <div className="absolute top-[1/2] left-1/2 w-[10px] h-[10px] rounded-[50%] bg-han-blue" />
-        <div className="absolute top-[1/2] right-0 w-[10px] h-[10px] rounded-[50%] bg-han-blue" />
-
-        <DashedSvg />
-        <DashedSvg />
+        <DashedSvg {...getDashedSvgAttrs(patientStatus, treatmentStatus !== 'unchecked')} />
+        <DashedSvg {...getDashedSvgAttrs(treatmentStatus, supporterStatus !== 'unchecked')} />
       </div>
-      <div className="flex justify-center gap-[16px]">
-        <p className="max-w-[160px] text-center fs10SemiBold text-black/[0.32] uppercase">add Patient’s info</p>
-        <p className="max-w-[160px] text-center fs10SemiBold text-black/[0.32] uppercase">add Tasks and activities</p>
-        <p className="max-w-[160px] text-center fs10SemiBold text-black/[0.32] uppercase">add Supporters</p>
+      <div className={classes.contentContainer}>
+        <p className={cn(classes.stage.base, classes.stage[patientStatus])}>add Patient&rsquo;s info</p>
+        <p className={cn(classes.stage.base, classes.stage[treatmentStatus])}>add Tasks and activities</p>
+        <p className={cn(classes.stage.base, classes.stage[supporterStatus])}>add Supporters</p>
       </div>
     </div>
   );

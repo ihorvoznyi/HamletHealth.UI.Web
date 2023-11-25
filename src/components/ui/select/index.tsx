@@ -65,8 +65,9 @@ const Select: FC<PropsType> = ({ label, styles, options }) => {
       
       <div className={cn(classes.dropdownContainer, styles?.dropdownContainer)}>
         <input 
-          value={selectedOption?.label || ''}
           className={classes.input}
+          value={selectedOption?.label || ''}
+          onChange={() => {}}
         />
         {isFocused && (
           <ul className={classes.drowdown}>

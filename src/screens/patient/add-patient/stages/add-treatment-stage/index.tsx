@@ -1,5 +1,5 @@
-import { FC, useState } from 'react';
-
+import { FC, useEffect, useState } from 'react';
+import { shallowEqual } from 'react-redux';
 
 import Diagnosis from './diagnosis';
 import ActivitiesMedicine from './activities';
@@ -10,6 +10,8 @@ import { ArrowLeftSvg } from '@components/ui/icons';
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
 import { treatmentList } from './treatment-plan-list/index.constants';
+import { useAppDispatch, useAppSelector } from '@shared/model';
+import { selectStageStatuses, setCurrentStage, setStageStatus } from '../../stage-bar/lib';
 
 interface PropsType {
   onProcess: () => void;
@@ -17,8 +19,17 @@ interface PropsType {
 }
 
 const AddTreatmentStage: FC<PropsType> = ({ onReturn, onProcess }) => {
+  const dispatch = useAppDispatch();
+  const { treatmentStatus } = useAppSelector(selectStageStatuses, shallowEqual);
   const [isDefined, setIsDefined] = useState(false);
   const [isEmpty, _] = useState(!treatmentList.length);
+  
+  useEffect(() => {
+    if (treatmentStatus !== 'filled') {
+      dispatch(setStageStatus({ stage: 'treatmentStatus', status: 'checked' }));
+    }
+    dispatch(setCurrentStage('treatment'));
+  }, []);
   
   return (
     <>

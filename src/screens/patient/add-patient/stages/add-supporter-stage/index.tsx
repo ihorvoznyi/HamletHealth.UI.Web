@@ -1,4 +1,5 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react';
+import { shallowEqual } from 'react-redux';
 
 import Input from '@components/ui/input';
 import Select from '@components/ui/select';
@@ -6,12 +7,24 @@ import Button from '@components/ui/button';
 import { ArrowLeftSvg, PlusSvg } from '@components/ui/icons';
 
 import { classes } from './index.tailwind';
+import { useAppDispatch, useAppSelector } from '@shared/model';
+import { selectStageStatuses, setCurrentStage, setStageStatus } from '../../stage-bar/lib';
 
 interface PropsType {
   onReturn: () => void;
 }
 
 const AddSupporterStage: FC<PropsType> = ({ onReturn }) => {
+  const dispatch = useAppDispatch();
+  const { supporterStatus } = useAppSelector(selectStageStatuses, shallowEqual);
+  
+  useEffect(() => {
+    if (supporterStatus !== 'filled') {
+      dispatch(setStageStatus({ stage: 'supporterStatus', status: 'checked' }));
+    }
+    dispatch(setCurrentStage('supporter'));
+  }, []);
+  
   return (
     <div className={classes.container}>
       <h2 className={classes.title}>Add a supporter</h2>
@@ -34,7 +47,7 @@ const AddSupporterStage: FC<PropsType> = ({ onReturn }) => {
 
       <Button type="outlined" onClick={() => {}} styles={classes.skipBtn}>Skip this step</Button>
     </div>
-  )
-}
+  );
+};
 
-export default AddSupporterStage
+export default AddSupporterStage;
