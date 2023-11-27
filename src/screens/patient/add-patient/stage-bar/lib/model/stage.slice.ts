@@ -5,8 +5,8 @@ import { IStageState } from './stage.interfaces';
 
 const initialState: IStageState = {
   current: 'patient',
-  patientStatus: 'filled',
-  treatmentStatus: 'filled',
+  patientStatus: 'unchecked',
+  treatmentStatus: 'unchecked',
   supporterStatus: 'unchecked',
 };
 
