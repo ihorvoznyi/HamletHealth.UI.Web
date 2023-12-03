@@ -10,7 +10,7 @@ export const classes = {
     h-[80px]
     justify-between 
     items-center 
-    py-[22px] 
+    py-[22px]
     px-[80px] 
     bg-white
   `),

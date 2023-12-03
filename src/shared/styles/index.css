@@ -133,8 +133,10 @@ body {
 .fs12SemiBold { @apply text-[12px] leading-[16px] font-poppins-600 tracking-[1px] }
 .fs14SemiBold { @apply text-[14px] leading-[20px] font-poppins-600 tracking-[0.1px] }
 .fs16SemiBold { @apply text-[16px] leading-[24px] font-poppins-600 tracking-[0.15px] }
+.fs18SemiBold { @apply text-[18px] leading-[24px] font-poppins-600 }
 .fs22SemiBold { @apply text-[16px] leading-[28px] font-poppins-600 tracking-[0.15px] }
 .fs26SemiBold { @apply text-[26px] leading-[32px] font-poppins-600 }
+.fs26Bold { @apply text-[26px] leading-[32px] font-poppins-700 }
 .fs32SemiBold { @apply text-[32px] leading-[40px] font-poppins-600 tracking-[0.15px] }
 .fs32Bold { @apply text-[32px] leading-[40px] tracking-[0.15px] font-poppins-700 }
 .fs40Bold { @apply text-[40px] leading-[48px] font-poppins-700 }

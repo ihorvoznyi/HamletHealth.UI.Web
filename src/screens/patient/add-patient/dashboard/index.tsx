@@ -3,7 +3,7 @@ import { classes } from './index.tailwind';
 import { useNavigate } from 'react-router-dom';
 import { appRoutes } from '@configs/routes.config';
 
-const PatientDashboard = () => {
+const PatientsStartPage = () => {
   const navigate = useNavigate();
 
   return (
@@ -32,4 +32,4 @@ const PatientDashboard = () => {
   );
 };
 
-export default PatientDashboard;
+export default PatientsStartPage;
