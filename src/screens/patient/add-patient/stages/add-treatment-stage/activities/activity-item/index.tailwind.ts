@@ -26,5 +26,6 @@ export const classes = {
   icon: {
     width: 'w-[18px]',
     color: '#4366C5'
-  }
+  },
+  btnText: 'text-black fs15RobotoMedium'
 };

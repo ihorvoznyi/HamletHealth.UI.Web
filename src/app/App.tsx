@@ -2,7 +2,7 @@ import AppProvider from './providers';
 
 const App = () => {
   return (
-    <div className="">
+    <div className="pb-[40px]">
       <AppProvider />
     </div>
   );

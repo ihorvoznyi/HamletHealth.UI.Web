@@ -28,7 +28,7 @@ const ListItem: FC<PropsType> = ({ name, type }) => {
 
       <Button styles={classes.btn} type="outlined" onClick={() => {}}>
         <PlusSvg className={classes.icon.width} color={classes.icon.color} />
-        <span className="text-black fs15RobotoMedium">Add</span>
+        <span className={classes.btnText}>Add</span>
       </Button>
     </li>
   );
