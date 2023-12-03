@@ -140,6 +140,7 @@ body {
 .fs32SemiBold { @apply text-[32px] leading-[40px] font-poppins-600 tracking-[0.15px] }
 .fs32Bold { @apply text-[32px] leading-[40px] tracking-[0.15px] font-poppins-700 }
 .fs40Bold { @apply text-[40px] leading-[48px] font-poppins-700 }
+.fs48Bold { @apply text-[48px] leading-[32px] font-poppins-700 }
 
 /* Roboto */
 .fs13RobotoRegular { @apply text-[13px] tracking-[0.15px] font-roboto-400 }
