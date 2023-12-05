@@ -21,7 +21,7 @@ export const AppRouter = createBrowserRouter(
       <Route element={<AuthLayout />}>
         <Route path={appRoutes.auth.signUp} element={<SignUp />} />
         <Route path={appRoutes.auth.verify} element={<Verification />} />
-        <Route index element={<GreetingScreen />} />
+        <Route path={appRoutes.greeting} element={<GreetingScreen />} />
       </Route>
     </Route>
   ),

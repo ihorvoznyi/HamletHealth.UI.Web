@@ -1,5 +1,6 @@
 export const appRoutes = {
   index: '/',
+  greeting: '/greeting',
   dashboard: '/dashboard',
   addPatient: '/add-patient',
   myPatients: '/my-patients',

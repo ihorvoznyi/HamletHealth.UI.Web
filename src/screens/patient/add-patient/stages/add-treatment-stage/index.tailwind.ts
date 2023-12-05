@@ -15,8 +15,9 @@ export const classes = {
   btnsContainer: ctl(`
     flex 
     gap-[16px] 
-    mt-[124px] 
+    mt-[100px] 
     justify-center
+    pb-[40px]
   `),
   defineBtn: {
     base: ctl(`  
