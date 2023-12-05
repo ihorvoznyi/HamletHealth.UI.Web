@@ -1,4 +1,6 @@
 import { FC, ReactElement } from 'react';
+
+import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
 
 export type recipeType = {
@@ -12,11 +14,17 @@ interface PropsType {
 
 const RecipesList: FC<PropsType> = ({ recipes }) => (
   <ul className={classes.container}>
-    {recipes.map((recipe, idx) => (
-      <>
-        <li key={recipe.text} className={classes.item}>{recipe.text}</li>
-        {idx !== recipes.length - 1 ? <div className={classes.sep} /> : null}
-      </>
+    {recipes.map(({ Icon, text }, idx) => (
+      <li
+        key={text}
+        className={cn(
+          classes.item,
+          idx !== recipes.length - 1 && classes.sep
+        )}
+      >
+        {Icon}
+        {text}
+      </li>
     ))}
   </ul>
 );

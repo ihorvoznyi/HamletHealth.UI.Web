@@ -2,7 +2,7 @@ import Button from '@components/ui/button';
 import Devider from '@components/ui/devider';
 import MoodVarieties from './mood-varieties';
 import RecipesList from './recipes-list';
-import { ImageSvg } from '@components/ui/icons';
+import { BedSvg, ImageSvg, PizzaSvg, SyropSvg } from '@components/ui/icons';
 
 import { classes } from './index.tailwind';
 
@@ -31,15 +31,15 @@ export default MoodCard;
 
 const recipes = [
   {
-    Icon: <></>,
+    Icon: <BedSvg />,
     text: 'Sleep early'
   },
   {
-    Icon: <></>,
+    Icon: <SyropSvg />,
     text: 'Omindon 8mg'
   },
   {
-    Icon: <></>,
+    Icon: <PizzaSvg />,
     text: 'Fast food'
   },
 ];

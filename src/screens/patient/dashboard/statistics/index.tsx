@@ -1,5 +1,5 @@
 import StatCard from '../stat-card';
-import { ContentIcon, ErrorIcon, PatientIcon, SettingsIcon } from '../icons';
+import { ContentIcon, ErrorIcon, PatientIcon, SettingsIcon } from '../dashboard-icons';
 
 import { classes } from './index.tailwind';
 

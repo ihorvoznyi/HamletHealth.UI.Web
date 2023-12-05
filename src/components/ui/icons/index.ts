@@ -20,4 +20,5 @@ export * from './DateSvg';
 export * from './LogoSvg';
 export * from './EditSvg';
 export * from './EyeSvg';
+export * from './recipes';
 export * from './moods';

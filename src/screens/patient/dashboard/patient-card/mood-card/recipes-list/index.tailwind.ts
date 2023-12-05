@@ -6,11 +6,17 @@ export const classes = {
     flex-wrap 
     items-center
   `),
-  item: 'fs14Regular',
-  sep: ctl(`
-    w-[2px] 
-    h-[14px] 
-    bg-black 
-    mx-[8px]
+  item: ctl(`
+    flex 
+    items-center 
+    gap-[4px] 
+    fs14Regular 
+    relative
+  `),
+  sep: ctl(`  
+    after:w-[2px] 
+    after:h-[14px] 
+    after:bg-black 
+    after:mx-[8px]
   `),
 };
