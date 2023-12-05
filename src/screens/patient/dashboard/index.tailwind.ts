@@ -1,11 +1,6 @@
-import ctl from '@netlify/classnames-template-literals';
-
 export const classes = {
-  container: 'pt-[40px]',
+  container: 'flex flex-col h-[calc(100vh-80px)]',
+  head: 'px-[80px] pt-[40px]',
   title: 'fs26Bold',
-  statContainer: ctl(`
-    flex 
-    gap-[24px] 
-    mt-[40px]
-  `),
+  dataContainer: 'bg-[#F8F8F8] space-y-[32px]',
 };

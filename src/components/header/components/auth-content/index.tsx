@@ -30,9 +30,13 @@ export const AuthHeaderContent: FC = () => {
 
   useEffect(() => {
     const foundLink = navLinks.find(link => link.to === location.pathname);
+    
     if (foundLink) {
       setActiveLink(foundLink.to);
-    }
+      return;
+    } 
+
+    setActiveLink('');
   }, [location.pathname]);
 
   return (

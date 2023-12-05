@@ -1,11 +1,7 @@
 import AppProvider from './providers';
 
 const App = () => {
-  return (
-    <div className="pb-[40px]">
-      <AppProvider />
-    </div>
-  );
+  return <AppProvider />;
 };
 
 export default App;
