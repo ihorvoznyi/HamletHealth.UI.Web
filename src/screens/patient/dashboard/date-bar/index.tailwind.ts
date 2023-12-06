@@ -10,7 +10,6 @@ export const classes = {
     relative 
 
     pt-[52px] 
-    px-[80px]
   `),
   h2: 'fs20Bold text-black/[.24]',
   dateContainer: ctl(`

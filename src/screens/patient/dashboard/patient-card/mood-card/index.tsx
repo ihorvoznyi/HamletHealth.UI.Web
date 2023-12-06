@@ -1,24 +1,35 @@
+import { FC } from 'react';
+
 import Button from '@components/ui/button';
 import Devider from '@components/ui/devider';
 import MoodVarieties from './mood-varieties';
-import RecipesList from './recipes-list';
-import { BedSvg, ImageSvg, PizzaSvg, SyropSvg } from '@components/ui/icons';
+import RecipesList, { RecipeType } from './recipes-list';
+import { ImageSvg } from '@components/ui/icons';
 
 import { classes } from './index.tailwind';
+import { MoodType } from './mood-item';
 
-const MoodCard = () => {
+export interface IMoodCard {
+  id: string;
+  time: string;
+  text: string;
+  moods: MoodType[];
+  recipes: RecipeType[];
+}
+
+const MoodCard: FC<IMoodCard> = ({ time, recipes, moods, text }) => {
   return (
     <div className={classes.container}>
-      <p className={classes.time}>14:14</p>
+      <p className={classes.time}>{time}</p>
       <Devider />
 
-      <MoodVarieties moods={['great', 'normal']} />
+      <MoodVarieties moods={moods} />
       <Devider />
       
       <RecipesList recipes={recipes} />
       <Devider />
 
-      <p className={classes.moodText}>I&rsquo;m having a great day. I feel positive!</p>
+      <p className={classes.moodText}>{text}</p>
       <Button onClick={() => {}} styles={classes.btn}>
         <ImageSvg />
         Image
@@ -28,18 +39,3 @@ const MoodCard = () => {
 };
 
 export default MoodCard;
-
-const recipes = [
-  {
-    Icon: <BedSvg />,
-    text: 'Sleep early'
-  },
-  {
-    Icon: <SyropSvg />,
-    text: 'Omindon 8mg'
-  },
-  {
-    Icon: <PizzaSvg />,
-    text: 'Fast food'
-  },
-];

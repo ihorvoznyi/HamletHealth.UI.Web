@@ -5,7 +5,6 @@ export const classes = {
     flex 
     flex-col 
     gap-[40px]
-    pl-[80px]
   `),
   title: 'fs20Bold mb-[4px]',
   weekday: 'fs12Regular text-black/[.40]',

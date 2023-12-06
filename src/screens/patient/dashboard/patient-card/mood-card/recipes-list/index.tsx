@@ -3,13 +3,13 @@ import { FC, ReactElement } from 'react';
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
 
-export type recipeType = {
+export type RecipeType = {
   Icon: ReactElement;
   text: string;
 }
 
 interface PropsType {
-  recipes: recipeType[];
+  recipes: RecipeType[];
 }
 
 const RecipesList: FC<PropsType> = ({ recipes }) => (

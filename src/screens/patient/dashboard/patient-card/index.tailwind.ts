@@ -6,7 +6,6 @@ export const classes = {
     items-center 
     border-l-[8px] 
     bg-white 
-    pr-[24px]
   `),
   infoContainer: ctl(`
     h-[184px] 
@@ -16,8 +15,8 @@ export const classes = {
     flex-col 
     justify-between 
     
-    px-[24px] 
-    pr-[50px]
+    px-[24px]
+    pr-[54px]
   `),
   btn: { container: 'w-[146px]' },
   diagnosis: 'mt-[8px]'

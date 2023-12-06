@@ -1,8 +1,6 @@
 export * from './MoreHorizontalSvg';
 export * from './ContentPasteSvg';
 export * from './CircleCrossSvg';
-export * from './ArrowRightSvg';
-export * from './ArrowLeftSvg';
 export * from './DropDownSvg';
 export * from './SettingsSvg';
 export * from './SearchSvg';
@@ -22,3 +20,4 @@ export * from './EditSvg';
 export * from './EyeSvg';
 export * from './recipes';
 export * from './moods';
+export * from './arrows';
