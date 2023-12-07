@@ -32,6 +32,7 @@ const ShareModal = () => {
         Assign one more doctor
       </Button>
 
+      {/* TODO: Show modal only when sharing finished successfully */}
       <Button onClick={handleShare} styles={classes.shareBtn}>Share</Button>
     </Modal>
   );
