@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import Button from '@components/ui/button';
-import Devider from '@components/ui/devider';
+import Divider from '@components/ui/divider';
 import MoodVarieties from './mood-varieties';
 import RecipesList, { RecipeType } from './recipes-list';
 import { ImageSvg } from '@components/ui/icons';
@@ -21,13 +21,13 @@ const MoodCard: FC<IMoodCard> = ({ time, recipes, moods, text }) => {
   return (
     <div className={classes.container}>
       <p className={classes.time}>{time}</p>
-      <Devider />
+      <Divider />
 
       <MoodVarieties moods={moods} />
-      <Devider />
+      <Divider />
       
       <RecipesList recipes={recipes} />
-      <Devider />
+      <Divider />
 
       <p className={classes.moodText}>{text}</p>
       <Button onClick={() => {}} styles={classes.btn}>

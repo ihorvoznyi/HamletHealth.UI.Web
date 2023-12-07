@@ -4,8 +4,10 @@ export const classes = {
   container: ctl(`
     flex 
     items-center 
-    gap-[16px] 
-    col-span-3 
-    fs18SemiBold
+    justify-between
   `),
+  backBtn: { container: 'border-none' },
+  connectBtn: {
+    container: 'border-han-blue text-han-blue',
+  }
 };

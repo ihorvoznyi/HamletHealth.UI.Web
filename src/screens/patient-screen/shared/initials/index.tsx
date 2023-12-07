@@ -1,9 +1,9 @@
+import Avatar from '../avatar';
 import { classes } from './index.tailwind';
-import { retrieveInitials } from '../patient.helpers';
 
 const Initials = ({ fullname }: { fullname: string }) => (
   <div className={classes.container}>
-    <p className={classes.initials}>{retrieveInitials(fullname)}</p>
+    <Avatar fullname={fullname} />
     <p>{fullname}</p>
   </div>
 );

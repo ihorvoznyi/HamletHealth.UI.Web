@@ -1,5 +1,6 @@
 export * from './MoreHorizontalSvg';
 export * from './ContentPasteSvg';
+export * from './EditOutlinedSvg';
 export * from './CircleCrossSvg';
 export * from './DropDownSvg';
 export * from './SettingsSvg';

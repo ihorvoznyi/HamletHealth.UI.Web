@@ -4,6 +4,7 @@ export const appRoutes = {
   dashboard: '/dashboard',
   addPatient: '/add-patient',
   myPatients: '/my-patients',
+  patient: '/my-patients/:id',
   patients: '/patients',
   auth: {
     signUp: '/sign-up',

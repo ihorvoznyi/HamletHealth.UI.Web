@@ -4,7 +4,7 @@ import Layout from '../layouts';
 import AuthLayout from '../layouts/AuthLayout';
 import GreetingScreen from '@screens/greeting-screen';
 import { SignUp, Verification } from '@screens/auth-screen';
-import { MyPatients, AddPatient, PatientsStartPage, Dashboard } from '@screens/patient-screen';
+import { MyPatients, AddPatient, PatientsStartPage, Dashboard, Patient } from '@screens/patient-screen';
 
 import { appRoutes } from '@configs/routes.config';
 
@@ -16,6 +16,7 @@ export const AppRouter = createBrowserRouter(
         <Route path={appRoutes.addPatient} element={<AddPatient />} />
         <Route path={appRoutes.dashboard} element={<Dashboard />} />
         <Route path={appRoutes.myPatients} element={<MyPatients />} />
+        <Route path={appRoutes.patient} element={<Patient />} />
       </Route>
 
       <Route element={<AuthLayout />}>
