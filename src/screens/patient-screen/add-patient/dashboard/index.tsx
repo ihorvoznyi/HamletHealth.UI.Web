@@ -8,9 +8,9 @@ const PatientsStartPage = () => {
 
   return (
     <div className={classes.container}>
-      <img className={classes.mainImage} src="./assets/vector.png" alt="vector.png" />
-      <img className={classes.leftFlower} src="./assets/flower-left.png" alt="flower" />
-      <img className={classes.rightFlower} src="./assets/flower-right.png" alt="flower" />
+      <img className={classes.mainImage} src="/assets/vector.png" alt="vector.png" />
+      <img className={classes.leftFlower} src="/assets/flower-left.png" alt="flower" />
+      <img className={classes.rightFlower} src="/assets/flower-right.png" alt="flower" />
 
       <div className={classes.contentContainer}>
         <h1 className={classes.title}>

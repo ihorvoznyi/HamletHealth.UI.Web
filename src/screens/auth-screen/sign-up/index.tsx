@@ -5,7 +5,7 @@ const SignUp = () => {
   return (
     <div className={classes.wrapper}>
       <div className={classes.container}>
-        <img src="assets/auth-girl.png" alt="girl" className={classes.img} />
+        <img src="/assets/auth-girl.png" alt="girl" className={classes.img} />
         
         <div className={classes.contentContainer}>
           <h1 className={classes.title}>
