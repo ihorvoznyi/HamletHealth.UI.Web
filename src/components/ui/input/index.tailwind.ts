@@ -19,7 +19,6 @@ export const labelInactiveStyle = ctl(`
 export const classes = {
   container: ctl(`
     relative
-    min-w-[250px]
     border 
     border-black/[.12]
     rounded-[4px]

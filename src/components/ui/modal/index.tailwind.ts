@@ -1,7 +1,7 @@
 import ctl from '@netlify/classnames-template-literals';
 
 export const classes = {
-  container: ctl(`
+  wrapper: ctl(`
     flex 
     items-center 
     justify-center
@@ -12,7 +12,7 @@ export const classes = {
 
     bg-black/[0.2] 
   `),
-  content: ctl(`
+  container: ctl(`
     bg-white 
     w-[600px] 
     p-[30px] 

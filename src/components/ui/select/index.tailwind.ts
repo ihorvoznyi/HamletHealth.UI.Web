@@ -3,7 +3,6 @@ import ctl from '@netlify/classnames-template-literals';
 export const classes = {
   container: ctl(`
     relative
-    min-w-[250px]
     border
     border-black/[.12]
     rounded-[4px]
