@@ -1,5 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { stageReducer } from '@screens/patient/add-patient/stage-bar/lib';
+import { stageReducer } from '@screens/patient-screen/add-patient/stage-bar/lib';
 
 export const rootReducer = combineReducers({
   stageReducer,

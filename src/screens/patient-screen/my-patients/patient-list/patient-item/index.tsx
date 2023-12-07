@@ -6,7 +6,7 @@ import { IPatientItem } from '../index.interfaces';
 import { classes } from './index.tailwind';
 import { appRoutes } from '@configs/routes.config';
 import { combineRoutes } from '@utils/text.util';
-import { retrieveInitials } from '@screens/patient/shared/patient.helpers';
+import { retrieveInitials } from '@screens/patient-screen/shared/patient.helpers';
 
 interface PropsType {
   patient: IPatientItem;

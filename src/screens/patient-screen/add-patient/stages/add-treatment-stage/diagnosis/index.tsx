@@ -1,8 +1,8 @@
 import Search from '@components/ui/search';
 
-import { classes } from './index.tailwind';
 import { DIAGNOSIS } from '../lib/diagnosis.constants';
-import { classes as commonClasses } from '@screens/patient/add-patient/stages/add-treatment-stage/index.tailwind';
+import { classes } from './index.tailwind';
+import { classes as commonClasses } from '../index.tailwind';
 
 const Diagnosis = () => {
   return (

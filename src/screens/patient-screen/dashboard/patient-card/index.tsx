@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import Button from '@components/ui/button';
 import MoodList from './mood-card-list';
-import Initials from '@screens/patient/shared/initials';
+import Initials from '@screens/patient-screen/shared/initials';
 import { BedSvg, SyropSvg, PizzaSvg } from '@components/ui/icons';
 
 import { IMoodCard } from './mood-card';

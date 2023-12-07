@@ -2,9 +2,9 @@ import { createBrowserRouter, createRoutesFromElements, Route } from 'react-rout
 
 import Layout from '../layouts';
 import AuthLayout from '../layouts/AuthLayout';
-import GreetingScreen from '@screens/greeting';
-import { SignUp, Verification } from '@screens/auth';
-import { MyPatients, AddPatient, PatientsStartPage, Dashboard } from '@screens/patient';
+import GreetingScreen from '@screens/greeting-screen';
+import { SignUp, Verification } from '@screens/auth-screen';
+import { MyPatients, AddPatient, PatientsStartPage, Dashboard } from '@screens/patient-screen';
 
 import { appRoutes } from '@configs/routes.config';
 
