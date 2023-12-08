@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 
 import Input from '@components/ui/input';
 import Modal from '@components/ui/modal';
@@ -8,7 +8,11 @@ import { PlusSvg } from '@components/ui/icons';
 
 import { classes } from './index.tailwind';
 
-const ShareModal = () => {
+interface PropsType {
+  onClose: () => void;
+}
+
+const ShareModal: FC<PropsType> = ({ onClose }) => {
   const [assignFields, setAssignFields] = useState([<AssignDoctorFields key={Date.now()} />]);
 
   const handleAssignDoctor = () => {
@@ -20,7 +24,7 @@ const ShareModal = () => {
   };
   
   return (
-    <Modal styles={classes.modal}>
+    <Modal onClose={onClose} styles={classes.modal}>
       <h1 className={classes.title}>Share with a doctor</h1>
 
       <form className={classes.form}>
