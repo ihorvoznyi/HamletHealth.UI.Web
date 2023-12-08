@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
 import Button from '@components/ui/button';
-import MoodList from './mood-card-list';
+import MoodList from '../../shared/mood-card-list';
 import Initials from '@screens/patient-screen/shared/initials';
 import { BedSvg, SyropSvg, PizzaSvg } from '@components/ui/icons';
 
-import { IMoodCard } from './mood-card';
+import { IMoodCard } from '../../shared/mood-card-list/mood-card';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';

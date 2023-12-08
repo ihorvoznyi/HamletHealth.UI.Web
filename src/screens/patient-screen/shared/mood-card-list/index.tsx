@@ -1,6 +1,6 @@
 import { FC, useEffect, useRef, useState } from 'react';
 
-import MoodCard, { IMoodCard } from '../mood-card';
+import MoodCard, { IMoodCard } from './mood-card';
 import { ArrowRightSvg } from '@components/ui/icons';
 
 import { classes } from './index.tailwind';
