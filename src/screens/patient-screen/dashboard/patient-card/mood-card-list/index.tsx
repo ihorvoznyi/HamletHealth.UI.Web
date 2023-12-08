@@ -19,8 +19,7 @@ const MoodList: FC<PropsType> = ({ items }) => {
 
     const handleScroll = () => {
       // Check if the container is scrolled to the beginning or end
-      console.log(ref.current?.clientWidth);
-      const scrolledToLeft = container.scrollLeft <= 40;
+      const scrolledToLeft = container.scrollLeft === 0;
       const scrolledToRight = container.scrollLeft + container.clientWidth === container.scrollWidth;
 
       setShowLeftArrow(!scrolledToLeft);

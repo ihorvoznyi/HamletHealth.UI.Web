@@ -9,7 +9,7 @@ export const classes = {
     gap-[10px] 
     p-[15px] 
     bg-white 
-    shadow-gray 
+    shadow-gray
   `),
   time: 'text-center fs14SemiBold',
   moodText: ctl(`

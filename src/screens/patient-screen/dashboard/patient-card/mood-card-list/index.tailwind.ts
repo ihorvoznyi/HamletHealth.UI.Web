@@ -18,7 +18,6 @@ const arrowStyle = ctl(`
 
 export const classes = {
   container: ctl(`
-    py-[20px] 
     relative
     w-full
     overflow-hidden
@@ -36,7 +35,8 @@ export const classes = {
   scrollContainer: ctl(`
     flex 
     w-full 
-    overflow-x-hidden 
+    overflow-x-hidden
+    py-[20px]
     px-[24px]
     gap-[24px]
   `),
