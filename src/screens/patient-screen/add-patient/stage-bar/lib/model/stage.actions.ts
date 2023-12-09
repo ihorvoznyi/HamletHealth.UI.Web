@@ -8,4 +8,10 @@ export const actions = {
   setCurrentStage: (stage: IStageState, { payload }: PayloadAction<StageType>) => {
     stage.current = payload;
   },
+  resetStages: (stage: IStageState) => {
+    stage.current = 'patient';
+    stage.patientStatus = 'unchecked';
+    stage.treatmentStatus = 'unchecked';
+    stage.supporterStatus = 'unchecked';
+  }
 };

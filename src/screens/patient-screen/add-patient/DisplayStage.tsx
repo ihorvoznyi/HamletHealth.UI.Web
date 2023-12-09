@@ -9,13 +9,16 @@ import { StageType } from './index.interfaces';
 interface PropsType {
   stage: StageType;
   onStage: (stage: StageType) => void;
+
+  // TODO: provide form data as an arg
+  onSave: () => void;
 }
 
 type StageMapper = {
   [key in StageType]: ReactElement;
 }
 
-const DisplayStage: FC<PropsType> = ({ stage, onStage }) => {
+const DisplayStage: FC<PropsType> = ({ stage, onStage, onSave }) => {
   const mapper: StageMapper = {
     'add-patient': <AddPatientStage onProcess={() => onStage('add-treatment')} />,
     'add-treatment': (
@@ -24,7 +27,7 @@ const DisplayStage: FC<PropsType> = ({ stage, onStage }) => {
         onProcess={() => onStage('add-supporter')} 
       />
     ),
-    'add-supporter': <AddSupporterStage onReturn={() => onStage('add-treatment')} />,
+    'add-supporter': <AddSupporterStage onSave={onSave} onReturn={() => onStage('add-treatment')} />,
   };
 
   return mapper[stage];

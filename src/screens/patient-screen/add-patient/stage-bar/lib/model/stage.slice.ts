@@ -17,4 +17,4 @@ const stageSlice = createSlice({
 });
 
 export const stageReducer = stageSlice.reducer;
-export const { setStageStatus, setCurrentStage } = stageSlice.actions;
+export const { setStageStatus, setCurrentStage, resetStages } = stageSlice.actions;

@@ -12,9 +12,10 @@ import { selectStageStatuses, setCurrentStage, setStageStatus } from '../../stag
 
 interface PropsType {
   onReturn: () => void;
+  onSave: () => void;
 }
 
-const AddSupporterStage: FC<PropsType> = ({ onReturn }) => {
+const AddSupporterStage: FC<PropsType> = ({ onReturn, onSave }) => {
   const dispatch = useAppDispatch();
   const { supporterStatus } = useAppSelector(selectStageStatuses, shallowEqual);
   
@@ -42,10 +43,10 @@ const AddSupporterStage: FC<PropsType> = ({ onReturn }) => {
 
       <div className={classes.btnsContainer}>
         <Button type="outlined" onClick={onReturn}><ArrowLeftSvg /></Button>
-        <Button styles={classes.saveBtn} onClick={() => {}}>Save and finish</Button>
+        <Button styles={classes.saveBtn} onClick={onSave}>Save and finish</Button>
       </div>
 
-      <Button type="outlined" onClick={() => {}} styles={classes.skipBtn}>Skip this step</Button>
+      <Button type="outlined" onClick={onSave} styles={classes.skipBtn}>Skip this step</Button>
     </div>
   );
 };
