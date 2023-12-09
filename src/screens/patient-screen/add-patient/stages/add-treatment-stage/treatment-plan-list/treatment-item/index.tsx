@@ -1,15 +1,14 @@
 import { FC, useState } from 'react';
 
 import Menu from '../item-menu';
+import GoalModal from '../goal-modal';
 import { MoreHorizontalSvg } from '@components/ui/svg';
+
+import useClickOutside from '@hooks/useClickOutside';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
-import useClickOutside from '@hooks/useClickOutside';
 import { getTreatmentIcon } from './index.helper';
-import Modal from '@components/ui/modal';
-import Button from '@components/ui/button';
-import GoalModal from '../goal-modal';
 
 interface PropsType {
   text: string;
@@ -19,10 +18,10 @@ interface PropsType {
 const TreatmentItem: FC<PropsType> = ({ text, type }) => {
   const ref = useClickOutside<HTMLLIElement>(() => setIsMenuOpen(false));
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isModal, setIsModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleDefine = () => {
-    setIsModal(true);
+    setShowModal(true);
   };
   
   return (
@@ -43,7 +42,7 @@ const TreatmentItem: FC<PropsType> = ({ text, type }) => {
         </div>
       </li>
 
-      {isModal ? <GoalModal /> : null}
+      {showModal ? <GoalModal onClose={() => setShowModal(false)} /> : null}
     </>
   );
 };

@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import { FC, PropsWithChildren } from 'react';
+import { FC, PropsWithChildren, useEffect } from 'react';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
@@ -12,6 +12,14 @@ interface PropsType extends PropsWithChildren {
 
 const Modal: FC<PropsType> = ({ children, styles, onClose }) => {
   const ref = useClickOutside<HTMLDivElement>(onClose);
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
 
   return ReactDOM.createPortal((
     <div className={classes.wrapper} onClick={() => {}}>

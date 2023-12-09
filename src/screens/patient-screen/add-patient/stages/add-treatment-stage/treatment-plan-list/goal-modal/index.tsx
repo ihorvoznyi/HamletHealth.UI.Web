@@ -1,3 +1,5 @@
+import { FC } from 'react';
+
 import Head from './head';
 import Counter from './counter';
 import Duration from './duration';
@@ -8,9 +10,13 @@ import Button from '@components/ui/button';
 
 import { classes } from './index.tailwind';
 
-const GoalModal = () => {
+interface PropsType {
+  onClose: () => void;
+}
+
+const GoalModal: FC<PropsType> = ({ onClose }) => {
   return (
-    <Modal>
+    <Modal onClose={onClose}>
       <Head />
       
       <div className={classes.contentContainer}>
@@ -20,7 +26,7 @@ const GoalModal = () => {
         <Description />
 
         <div className={classes.btnsContainer}>
-          <Button type="outlined" styles={classes.cancelBtn} onClick={() => {}}>Cancel</Button>
+          <Button type="outlined" styles={classes.cancelBtn} onClick={() => onClose()}>Cancel</Button>
           <Button styles={classes.saveBtn} onClick={() => {}}>Save Goal</Button>
         </div>
       </div>
