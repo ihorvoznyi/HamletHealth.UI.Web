@@ -10,7 +10,7 @@ const SuccessSharedModal = () => {
   };
 
   return (
-    <Modal styles={classes.modal}>
+    <Modal onClose={handleClose} styles={classes.modal}>
       <div className={classes.container}>
         <h1 className={classes.title}>
           Share email were successfully sent!

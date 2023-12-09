@@ -30,10 +30,12 @@ const MoodCard: FC<IMoodCard> = ({ time, recipes, moods, text }) => {
       <Divider />
 
       <p className={classes.moodText}>{text}</p>
-      <Button onClick={() => {}} styles={classes.btn}>
-        <ImageSvg />
-        Image
-      </Button>
+      <div className={classes.btnContainer}>
+        <Button onClick={() => {}} styles={classes.btn}>
+          <ImageSvg />
+          Image
+        </Button>
+      </div>
     </div>
   );
 };

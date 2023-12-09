@@ -17,11 +17,16 @@ export const classes = {
     tracking-[0.25px] 
     mb-[10px]
   `),
+  btnContainer: ctl(`
+    flex 
+    flex-1
+    items-end 
+  `),
   btn: {
     container: ctl(`
       w-[50%] 
 
-      justify-start 
+      justify-start
       gap-[12px] 
 
       text-[12px]
@@ -31,7 +36,7 @@ export const classes = {
       px-[12px] 
       py-[4px] 
 
-      normal-case 
+      normal-case
     `),
   },
 };
