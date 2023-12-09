@@ -1,5 +1,5 @@
 import Button from '@components/ui/button';
-import { ArrowRightSvg } from '@components/ui/icons';
+import { ArrowRightSvg } from '@components/ui/svg';
 
 export const BackButton = () => {
   return (

@@ -4,7 +4,7 @@ import Button from '@components/ui/button';
 import Divider from '@components/ui/divider';
 import MoodVarieties from './mood-varieties';
 import RecipesList, { RecipeType } from './recipes-list';
-import { ImageSvg } from '@components/ui/icons';
+import { ImageSvg } from '@components/ui/svg';
 
 import { classes } from './index.tailwind';
 import { MoodType } from './mood-item';

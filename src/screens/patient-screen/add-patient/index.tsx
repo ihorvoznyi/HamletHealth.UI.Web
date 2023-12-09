@@ -5,14 +5,20 @@ import DisplayStage from './DisplayStage';
 
 import { classes } from './index.tailwind';
 import { StageType } from './index.interfaces';
+import SuccessNotify from './success-notify';
 
 const AddPatient = () => {
   const [stage, setStage] = useState<StageType>('add-patient');
+  const [showSuccessNotify, setShowSuccessNotify] = useState(true);
 
   return (
     <div className={classes.container}>
-      <StageBar />
-      <DisplayStage stage={stage} onStage={setStage} />
+      {showSuccessNotify ? <SuccessNotify /> : (
+        <>
+          <StageBar />
+          <DisplayStage stage={stage} onStage={setStage} />
+        </>
+      )}
     </div>
   );
 };

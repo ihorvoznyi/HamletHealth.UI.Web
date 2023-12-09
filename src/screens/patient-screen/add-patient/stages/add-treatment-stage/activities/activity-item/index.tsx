@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import Button from '@components/ui/button';
-import { PlusSvg } from '@components/ui/icons';
+import { PlusSvg } from '@components/ui/svg';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';

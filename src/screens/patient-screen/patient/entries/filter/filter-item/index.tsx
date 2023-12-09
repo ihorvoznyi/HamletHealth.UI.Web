@@ -1,6 +1,6 @@
 import { FC, MouseEvent, useState } from 'react';
 
-import CloseSvg from '@components/ui/icons/CloseSvg';
+import CloseSvg from '@components/ui/svg/CloseSvg';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';

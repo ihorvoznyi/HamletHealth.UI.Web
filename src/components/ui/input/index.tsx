@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, useRef, useState } from 'react';
 
 import FieldVariant from './variants';
-import { CheckSvg } from '@ui/icons';
+import { CheckSvg } from '@components/ui/svg';
 import { CustomInputRef, InputProps } from './index.interfaces';
 
 import { 

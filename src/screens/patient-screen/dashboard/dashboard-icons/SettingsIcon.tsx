@@ -1,4 +1,4 @@
-import { SettingsSvg } from '@components/ui/icons';
+import { SettingsSvg } from '@components/ui/svg';
 import { classes } from './index.tailwind';
 
 export const SettingsIcon = () => (

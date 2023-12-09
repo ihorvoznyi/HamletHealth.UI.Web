@@ -1,4 +1,4 @@
-import { LogoSvg } from '@components/ui/icons';
+import { LogoSvg } from '@components/ui/svg';
 import { classes } from './index.tailwind';
 
 export const Logotype = () => {

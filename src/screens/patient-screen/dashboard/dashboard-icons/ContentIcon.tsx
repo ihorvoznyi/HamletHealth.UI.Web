@@ -1,4 +1,4 @@
-import { ContentPasteSvg } from '@components/ui/icons';
+import { ContentPasteSvg } from '@components/ui/svg';
 import { classes } from './index.tailwind';
 
 export const ContentIcon = () => (

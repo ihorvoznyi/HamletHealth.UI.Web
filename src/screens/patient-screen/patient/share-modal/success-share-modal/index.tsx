@@ -1,6 +1,6 @@
 import Modal from '@components/ui/modal';
 import Button from '@components/ui/button';
-import { WideCheckSvg } from '@components/ui/icons/checks';
+import { WideCheckSvg } from '@components/ui/svg/checks';
 
 import { classes } from './index.tailwind';
 

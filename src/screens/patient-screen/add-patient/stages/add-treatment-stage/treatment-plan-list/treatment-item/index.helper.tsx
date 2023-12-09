@@ -1,4 +1,4 @@
-import { MovieSvg, PillsSvg, SleepSvg } from '@components/ui/icons';
+import { MovieSvg, PillsSvg, SleepSvg } from '@components/ui/svg';
 
 export const getTreatmentIcon = (iconType: 'medicine' | 'movie' | 'sleep') => {
   switch (iconType) {

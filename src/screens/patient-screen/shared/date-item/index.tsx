@@ -1,4 +1,4 @@
-import { DateSvg } from '@components/ui/icons';
+import { DateSvg } from '@components/ui/svg';
 
 import { classes } from './index.tailwind';
 

@@ -4,7 +4,7 @@ import Input from '@components/ui/input';
 import Modal from '@components/ui/modal';
 import Select from '@components/ui/select';
 import Button from '@components/ui/button';
-import { PlusSvg } from '@components/ui/icons';
+import { PlusSvg } from '@components/ui/svg';
 
 import { classes } from './index.tailwind';
 

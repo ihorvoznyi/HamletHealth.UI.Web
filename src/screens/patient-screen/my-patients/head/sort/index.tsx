@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { DropDownSvg } from '@components/ui/icons';
+import { DropDownSvg } from '@components/ui/svg';
 import { classes } from './index.tailwind';
 
 const Sort = () => {

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { CircleCrossSvg, SearchSvg } from '@ui/icons';
+import { CircleCrossSvg, SearchSvg } from '@components/ui/svg';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';

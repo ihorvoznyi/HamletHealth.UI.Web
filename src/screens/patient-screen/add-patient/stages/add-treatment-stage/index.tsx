@@ -5,7 +5,7 @@ import Diagnosis from './diagnosis';
 import ActivitiesMedicine from './activities';
 import Treatment from './treatment-plan-list';
 import Button from '@components/ui/button';
-import { ArrowLeftSvg } from '@components/ui/icons';
+import { ArrowLeftSvg } from '@components/ui/svg';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';

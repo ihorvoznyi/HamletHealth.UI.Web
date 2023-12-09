@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-import { PlusSvg } from '@components/ui/icons';
+import { PlusSvg } from '@components/ui/svg';
 import Button from '@components/ui/button';
 
 import { classes } from './index.tailwind';

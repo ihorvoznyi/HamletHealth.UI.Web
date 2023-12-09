@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 
 import Menu from '../item-menu';
-import { MoreHorizontalSvg } from '@components/ui/icons';
+import { MoreHorizontalSvg } from '@components/ui/svg';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
@@ -22,7 +22,7 @@ const TreatmentItem: FC<PropsType> = ({ text, type }) => {
   const [isModal, setIsModal] = useState(false);
 
   const handleDefine = () => {
-    setIsModal(true)
+    setIsModal(true);
   };
   
   return (

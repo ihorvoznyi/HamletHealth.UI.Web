@@ -1,7 +1,7 @@
 import { ChangeEvent, forwardRef, useRef, useState } from 'react';
 
 import { cn } from '@utils/style.util';
-import { EyeSvg } from '@components/ui/icons';
+import { EyeSvg } from '@components/ui/svg';
 
 import { classes } from '../index.tailwind';
 import { CustomInputRef, FieldProps } from '../index.interfaces';

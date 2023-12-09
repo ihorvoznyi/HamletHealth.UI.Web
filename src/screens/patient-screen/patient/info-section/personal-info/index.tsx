@@ -1,6 +1,6 @@
 import Button from '@components/ui/button';
 import Avatar from '@screens/patient-screen/shared/avatar';
-import { EditOutlinedSvg } from '@components/ui/icons';
+import { EditOutlinedSvg } from '@components/ui/svg';
 
 import { classes } from './index.tailwind';
 

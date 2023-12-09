@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { MoodHappySvg, MoodEmptySvg } from '@components/ui/icons';
+import { MoodHappySvg, MoodEmptySvg } from '@components/ui/svg';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';

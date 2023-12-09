@@ -1,4 +1,4 @@
-import { BedSvg, SyropSvg, PizzaSvg } from '@components/ui/icons';
+import { BedSvg, SyropSvg, PizzaSvg } from '@components/ui/svg';
 import { IMoodCard } from '../shared/mood-card-list/mood-card';
 import { IPatientCard } from './patient-card';
 

@@ -1,4 +1,4 @@
-import PeopleSvg from '@components/ui/icons/PeopleSvg';
+import PeopleSvg from '@components/ui/svg/PeopleSvg';
 import { classes } from './index.tailwind';
 
 export const PatientIcon = () => (

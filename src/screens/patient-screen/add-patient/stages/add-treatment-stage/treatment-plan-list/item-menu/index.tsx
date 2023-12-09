@@ -3,7 +3,7 @@ import { FC } from 'react';
 import Button from '@components/ui/button';
 
 import { classes } from './index.tailwind';
-import { DeleteSvg, ClockSvg, EditSvg } from '@components/ui/icons';
+import { DeleteSvg, ClockSvg, EditSvg } from '@components/ui/svg';
 
 interface PropsType {
   onDelete: () => void;

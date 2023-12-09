@@ -1,4 +1,4 @@
-import ErrorSvg from '@components/ui/icons/ErrorSvg';
+import ErrorSvg from '@components/ui/svg/ErrorSvg';
 import { classes } from './index.tailwind';
 
 export const ErrorIcon = () => (

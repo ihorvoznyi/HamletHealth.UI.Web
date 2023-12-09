@@ -4,7 +4,7 @@ import { shallowEqual } from 'react-redux';
 import Input from '@components/ui/input';
 import Select from '@components/ui/select';
 import Button from '@components/ui/button';
-import { ArrowLeftSvg, PlusSvg } from '@components/ui/icons';
+import { ArrowLeftSvg, PlusSvg } from '@components/ui/svg';
 
 import { classes } from './index.tailwind';
 import { useAppDispatch, useAppSelector } from '@shared/model';

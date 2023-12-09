@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import ShareModal from '../share-modal';
 import Button from '@components/ui/button';
-import { ArrowLeftSvg } from '@components/ui/icons';
+import { ArrowLeftSvg } from '@components/ui/svg';
 
 import { appRoutes } from '@configs/routes.config';
 import { classes } from './index.tailwind';
