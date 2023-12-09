@@ -20,7 +20,7 @@ export const classes = {
   container: ctl(`
     relative
     w-full
-    overflow-hidden
+    overflow-x-hidden
   `),
   rightArrowBtn: ctl(`
     ${arrowStyle}

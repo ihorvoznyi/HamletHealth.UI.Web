@@ -1,15 +1,11 @@
-import { DateSvg } from '@components/ui/icons';
+import DateItem from '@screens/patient-screen/shared/date-item';
 import { classes } from './index.tailwind';
 
 const DateBar = () => {
   return (
     <div className={classes.container}>
       <h2 className={classes.h2}>All entries</h2>
-      <div className={classes.dateContainer}>
-        <DateSvg className={classes.icon} />
-        {/* Dynamic value */}
-        <p className={classes.month}>June</p>
-      </div>
+      <DateItem />
     </div>
   );
 };

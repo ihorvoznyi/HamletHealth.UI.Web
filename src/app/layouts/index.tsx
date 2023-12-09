@@ -5,7 +5,7 @@ const Layout = () => {
   return (
     <>
       <Header isAuth />
-      <main className="mt-[80px]">
+      <main className="mt-[80px] h-full">
         <Outlet />
       </main>
     </>

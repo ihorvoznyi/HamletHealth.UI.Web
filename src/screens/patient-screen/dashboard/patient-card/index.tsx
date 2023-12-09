@@ -3,12 +3,10 @@ import { FC } from 'react';
 import Button from '@components/ui/button';
 import MoodList from '../../shared/mood-card-list';
 import Initials from '@screens/patient-screen/shared/initials';
-import { BedSvg, SyropSvg, PizzaSvg } from '@components/ui/icons';
-
-import { IMoodCard } from '../../shared/mood-card-list/mood-card';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
+import { MOOD_CARDS } from '../constants';
 
 export interface IPatientCard {
   id: string;
@@ -47,86 +45,3 @@ const PatientCard: FC<PropsType> = ({ patinet }) => {
 };
 
 export default PatientCard;
-
-const MOOD_CARDS: IMoodCard[] = [
-  {
-    id: '1',
-    text: 'I&rsquo;m having a great day. I feel positive!',
-    time: '14:11',
-    moods: ['great', 'normal'],
-    recipes: [
-      {
-        Icon: <BedSvg />,
-        text: 'Sleep early'
-      },
-      {
-        Icon: <SyropSvg />,
-        text: 'Omindon 8mg'
-      },
-      {
-        Icon: <PizzaSvg />,
-        text: 'Fast food'
-      },
-    ],
-  },
-  {
-    id: '2',
-    text: 'I&rsquo;m having a great day. I feel positive!',
-    time: '13:30',
-    moods: ['normal'],
-    recipes: [
-      {
-        Icon: <PizzaSvg />,
-        text: 'Fast food'
-      },
-    ],
-  },
-  {
-    id: '3',
-    text: 'I&rsquo;m having a great day. I feel positive!',
-    time: '15:45',
-    moods: ['great'],
-    recipes: [
-      {
-        Icon: <BedSvg />,
-        text: 'Sleep early'
-      },
-      {
-        Icon: <SyropSvg />,
-        text: 'Omindon 8mg'
-      },
-    ],
-  },
-  {
-    id: '4',
-    text: 'I&rsquo;m having a great day. I feel positive!',
-    time: '15:45',
-    moods: ['great'],
-    recipes: [
-      {
-        Icon: <BedSvg />,
-        text: 'Sleep early'
-      },
-      {
-        Icon: <SyropSvg />,
-        text: 'Omindon 8mg'
-      },
-    ],
-  },
-  {
-    id: '5',
-    text: 'I&rsquo;m having a great day. I feel positive!',
-    time: '15:45',
-    moods: ['great'],
-    recipes: [
-      {
-        Icon: <BedSvg />,
-        text: 'Sleep early'
-      },
-      {
-        Icon: <SyropSvg />,
-        text: 'Omindon 8mg'
-      },
-    ],
-  },
-];

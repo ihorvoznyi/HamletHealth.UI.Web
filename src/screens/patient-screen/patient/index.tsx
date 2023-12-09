@@ -1,9 +1,24 @@
+import { useState } from 'react';
+
+import Entries from './entries';
+import Tabs, { TabEnum } from './tabs';
 import InfoSection from './info-section';
 
+import { classes } from './index.tailwind';
+
 const Patient = () => {
+  const [activeTab, setActiveTab] = useState(TabEnum.STATS);
+
+  const handleSwitch = (tab: TabEnum) => setActiveTab(tab);
+
   return (
-    <div>
+    <div className={classes.container}>
       <InfoSection />
+
+      <div className={classes.tabsContainer}>
+        <Tabs value={activeTab} onSwitch={handleSwitch} />
+        {activeTab === TabEnum.ENTRIES ? <Entries /> : <div></div>}
+      </div>
     </div>
   );
 };

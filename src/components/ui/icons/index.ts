@@ -9,6 +9,7 @@ export * from './DeleteSvg';
 export * from './PeopleSvg';
 export * from './SleepSvg';
 export * from './ClockSvg';
+export * from './CloseSvg';
 export * from './PillsSvg';
 export * from './MovieSvg';
 export * from './ErrorSvg';
@@ -18,6 +19,7 @@ export * from './DateSvg';
 export * from './LogoSvg';
 export * from './EditSvg';
 export * from './EyeSvg';
+
 export * from './recipes';
 export * from './moods';
 export * from './arrows';
