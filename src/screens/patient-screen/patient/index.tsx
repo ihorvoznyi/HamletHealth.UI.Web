@@ -17,7 +17,7 @@ const Patient = () => {
 
       <div className={classes.tabsContainer}>
         <Tabs value={activeTab} onSwitch={handleSwitch} />
-        {activeTab === TabEnum.ENTRIES ? <Entries /> : <div></div>}
+        {activeTab === TabEnum.ENTRIES ? <Entries /> : <div>test</div>}
       </div>
     </div>
   );
