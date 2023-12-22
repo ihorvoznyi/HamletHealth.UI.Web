@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { MoodHappySvg, MoodEmptySvg } from '@components/ui/svg';
+import { MoodGreatSvg, MoodEmptySvg } from '@components/ui/svg';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
@@ -16,7 +16,7 @@ const MoodItem: FC<PropsType> = ({ mood }) => {
     case 'great':
       return (
         <div className={cn(classes.container, 'text-[#12C28D]')}>
-          <MoodHappySvg />
+          <MoodGreatSvg />
           <p className={classes.p}>Great</p>
           <span className={classes.span}>(Mood)</span>
         </div>
