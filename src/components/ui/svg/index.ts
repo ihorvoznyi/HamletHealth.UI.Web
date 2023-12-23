@@ -24,3 +24,4 @@ export * from './recipes';
 export * from './moods';
 export * from './arrows';
 export * from './checks';
+export * from './activities';

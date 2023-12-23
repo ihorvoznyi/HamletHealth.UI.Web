@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { MoodGreatSvg, MoodEmptySvg } from '@components/ui/svg';
+import { MoodGreatSvg, MoodMehSvg } from '@components/ui/svg';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
@@ -25,7 +25,7 @@ const MoodItem: FC<PropsType> = ({ mood }) => {
     default:
       return (
         <div className={classes.container}>
-          <MoodEmptySvg />
+          <MoodMehSvg />
           <p className={classes.p}>Normal</p>
           <span className={classes.span}>(Anxiety)</span>
         </div>
