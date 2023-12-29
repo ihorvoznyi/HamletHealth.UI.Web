@@ -3,7 +3,7 @@ import { createBrowserRouter, createRoutesFromElements, Route } from 'react-rout
 import Layout from '../layouts';
 import AuthLayout from '../layouts/AuthLayout';
 import GreetingScreen from '@screens/greeting-screen';
-import { SignUp, Verification } from '@screens/auth-screen';
+import { ForgotPassword, SignIn, SignUp, Verification } from '@screens/auth-screen';
 import { MyPatients, AddPatient, PatientsStartPage, Dashboard, Patient } from '@screens/patient-screen';
 
 import { appRoutes } from '@configs/routes.config';
@@ -21,6 +21,8 @@ export const AppRouter = createBrowserRouter(
 
       <Route element={<AuthLayout />}>
         <Route path={appRoutes.auth.signUp} element={<SignUp />} />
+        <Route path={appRoutes.auth.signIn} element={<SignIn />} />
+        <Route path={appRoutes.auth.forgotPass} element={<ForgotPassword />} />
         <Route path={appRoutes.auth.verify} element={<Verification />} />
         <Route path={appRoutes.greeting} element={<GreetingScreen />} />
       </Route>

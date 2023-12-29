@@ -1,13 +1,19 @@
-import Button from '@components/ui/button';
+import { useNavigate } from 'react-router-dom';
+
 import Input from '@components/ui/input';
+import Button from '@components/ui/button';
+import Select from '@components/ui/select';
+
+import { appRoutes } from '@configs/routes.config';
 
 import { classes } from './index.tailwind';
-import { useNavigate } from 'react-router-dom';
-import Select from '@components/ui/select';
-import { appRoutes } from '@configs/routes.config';
 
 const CreateAccountForm = () => {
   const navigate = useNavigate();
+
+  const handleSignIn = () => {
+    navigate(appRoutes.auth.signIn);
+  };
 
   return (
     <div className={classes.container}>
@@ -44,7 +50,7 @@ const CreateAccountForm = () => {
         <Button 
           type="inherit" 
           styles={classes.signInBtn} 
-          onClick={() => {}}>SIGN IN</Button>
+          onClick={handleSignIn}>SIGN IN</Button>
       </div>
     </div>
   );

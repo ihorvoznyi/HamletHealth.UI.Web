@@ -10,5 +10,6 @@ export const appRoutes = {
     signUp: '/sign-up',
     signIn: '/sign-in',
     verify: '/verify',
+    forgotPass: '/forgot-password'
   },
 };
