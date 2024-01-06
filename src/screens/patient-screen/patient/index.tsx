@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import Stats from './stats';
 import Entries from './entries';
 import Tabs, { TabEnum } from './tabs';
 import InfoSection from './info-section';
@@ -17,7 +18,7 @@ const Patient = () => {
 
       <div className={classes.tabsContainer}>
         <Tabs value={activeTab} onSwitch={handleSwitch} />
-        {activeTab === TabEnum.ENTRIES ? <Entries /> : <div>test</div>}
+        {activeTab === TabEnum.ENTRIES ? <Entries /> : <Stats />}
       </div>
     </div>
   );
