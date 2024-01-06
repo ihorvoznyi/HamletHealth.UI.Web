@@ -10,7 +10,8 @@ export const classes = {
     rounded-[4px]
     border
     border-black/[.16]
-    cursor-default
+    cursor-pointer
+    select-none
   `),
   active: 'bg-[#E7E7E7] border-black',
   text: 'fs12Regular',

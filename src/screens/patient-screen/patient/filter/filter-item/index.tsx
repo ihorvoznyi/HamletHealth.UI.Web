@@ -1,4 +1,4 @@
-import { FC, MouseEvent, useState } from 'react';
+import { FC, useState } from 'react';
 
 import CloseSvg from '@components/ui/svg/CloseSvg';
 
@@ -15,23 +15,14 @@ const FilterItem: FC<FilterItemProps> = ({ text, isSelected: value, onSelect }) 
   const [isSelected, setIsSelected] = useState(value);
 
   const handleSelect = () => {
-    setIsSelected(true);
+    setIsSelected(prev => !prev);
     onSelect();
-  };
-
-  const handleUnselect = (event: MouseEvent) => {
-    event.stopPropagation();
-    setIsSelected(false);
   };
 
   return (
     <div className={cn(classes.container, isSelected && classes.active)} onClick={handleSelect}>
       <p className={classes.text}>{text}</p>
-      {isSelected ? (
-        <button onClick={handleUnselect}>
-          <CloseSvg className={classes.closeIcon} />
-        </button>
-      ) : null}
+      {isSelected ? <CloseSvg className={classes.closeIcon} /> : null}
     </div>
   );
 };
