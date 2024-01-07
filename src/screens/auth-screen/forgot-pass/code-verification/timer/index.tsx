@@ -7,7 +7,7 @@ interface PropsType {
 }
 
 export const Timer: FC<PropsType> = ({ callback }) => {
-  const [secondsLeft, setSecondsLeft] = useState(5);
+  const [secondsLeft, setSecondsLeft] = useState(59);
 
   useEffect(() => {
     const interval = setInterval(() => {

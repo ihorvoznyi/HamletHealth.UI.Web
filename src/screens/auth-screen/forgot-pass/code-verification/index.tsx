@@ -52,7 +52,10 @@ export const CodeVerificationForm: FC<PropsType> = ({ onVerify }) => {
     setShowTimer(true);
   };
 
-  const handleResend = () => {};
+  const handleResend = () => {
+    // some logic
+    setShowTimer(true);
+  };
   const handleTimer = () => setShowTimer(false);
 
   return (
