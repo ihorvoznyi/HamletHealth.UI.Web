@@ -11,7 +11,9 @@ import { classes } from './index.tailwind';
 const SignIn = () => {
   const navigate = useNavigate();
   
-  const handleLogin = () => {};
+  const handleLogin = () => {
+    navigate(appRoutes.dashboard);
+  };
   const handleResetPass = () => {
     navigate(appRoutes.auth.forgotPass);
   };
