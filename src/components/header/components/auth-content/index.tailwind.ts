@@ -37,5 +37,6 @@ export const classes = {
   img: ctl(`
     w-[40px]
     h-[40px]
+    cursor-pointer
   `),
 };

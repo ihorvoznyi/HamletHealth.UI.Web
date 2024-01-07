@@ -61,7 +61,7 @@ export const AuthHeaderContent: FC = () => {
 
       <div className={classes.line} />
 
-      <img src="/assets/avatar.png" alt="" className={classes.img} />
+      <img src="/assets/avatar.png" alt="" className={classes.img} onClick={() => navigate(appRoutes.auth.signUp)} />
     </div>
   );
 };
