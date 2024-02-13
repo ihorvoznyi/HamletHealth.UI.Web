@@ -1,14 +1,18 @@
-import { forwardRef, useRef } from 'react';
-import { CustomInputRef, FieldProps } from '../index.interfaces';
-import { useHandleImperative } from './lib/useHandleImperative';
+import { FC } from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
 
-const TextField = forwardRef<CustomInputRef, FieldProps>((props, ref) => {
-  const inputRef = useRef<HTMLInputElement>(null);
+import { FieldProps } from '../index.interfaces';
 
-  useHandleImperative(ref, inputRef);  
+interface PropsType extends Omit<FieldProps, 'register'> {
+  register: Omit<UseFormRegisterReturn, 'onChange' | 'onBlur'>;
+}
 
-  return <input ref={inputRef} {...props} />;
-});
+const TextField: FC<PropsType> = ({ register, ...props }) => {
+  // const inputRef = useRef<HTMLInputElement>(null);
+  // useHandleImperative(ref, inputRef);
+
+  return <input {...register} {...props} />;
+};
 
 TextField.displayName = 'TextField';
 

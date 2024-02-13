@@ -12,41 +12,6 @@ export const classes = {
     mt-[56px]
   `),
   title: 'fs26Bold mb-[40px]',
-  loginBtn: {
-    container: ctl(`
-      w-full
-      py-[16px] 
-      fs12SemiBold 
-      bg-han-blue 
-      normal-case
-    `),
-  },
-  changePassBtn: {
-    container: ctl(`
-      normal-case 
-      fs14Regular 
-      text-black/[0.5] 
-      p-0 
-      self-end
-    `),
-  },
-  form: ctl(`
-    w-[288px] 
-
-    flex 
-    flex-col 
-    items-center 
-    gap-[20px] 
-
-    self-center
-  `),
-  btnsContainer: ctl(`
-    w-full
-    flex 
-    flex-col 
-    space-y-[15px] 
-  `),
-  input: { container: 'w-full' },
   signUpContainer: ctl(`
     flex 
     items-center 

@@ -1,4 +1,5 @@
 import { ChangeEvent } from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
 
 export type InputTypes = 'text' | 'password' | 'phone' | 'textarea';
 
@@ -7,13 +8,13 @@ export type CustomInputRef = {
 }
 
 export type InputClasses = {
+  container: string;
   input: string;
   label: string;
-  container: string;
   icon: string;
 };
 
-export interface InputProps {
+export interface InputWrapperProps extends Pick<FieldProps, 'error'> {
   type?: 'text' | 'password';
   label: string;
   styles?: Partial<InputClasses>;
@@ -23,9 +24,10 @@ export interface InputProps {
 export interface FieldProps {
   type: InputTypes;
   value: string;
-  onBlur: () => void;
+  error?: string;
+  className?: string;
+
+  onBlur: (e: ChangeEvent<HTMLInputElement>) => void;
   onFocus: () => void;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-
-  className?: string;
 }

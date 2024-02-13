@@ -17,8 +17,8 @@ export const CreatePasswordForm = () => {
       <p className={classes.subtitle}>Enter new password</p>
 
       <form className={classes.form}>
-        <Input label="New Password" />
-        <Input label="Confrm New Password" />
+        <Input register={null!} label="New Password" />
+        <Input register={null!} label="Confrm New Password" />
       </form>
 
       <Button onClick={handleSubmit} styles={classes.submitBtn}>Submit</Button>

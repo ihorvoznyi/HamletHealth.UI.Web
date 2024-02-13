@@ -1,6 +1,6 @@
 import { ReactElement, useState } from 'react';
 
-import { AuthLayout } from '../layout';
+import { AuthScreenLayout } from '../layout';
 import { SendEmailForm } from './email-form';
 import { CreatePasswordForm } from './create-password';
 import { CodeVerificationForm } from './code-verification';
@@ -26,10 +26,10 @@ export const ForgotPassword = () => {
   };
   
   return (
-    <AuthLayout>
+    <AuthScreenLayout>
       <div className={classes.container}>
         {stageMapper[stage]}
       </div>
-    </AuthLayout>
+    </AuthScreenLayout>
   );
 };

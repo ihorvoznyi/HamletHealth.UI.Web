@@ -2,7 +2,7 @@ import { FC, PropsWithChildren } from 'react';
 
 import { classes } from './index.tailwind';
 
-export const AuthLayout: FC<PropsWithChildren> = ({ children }) => {
+export const AuthScreenLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className={classes.wrapper}>
       <div className={classes.container}>

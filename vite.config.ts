@@ -17,6 +17,7 @@ export default defineConfig({
       { find: '@screens', replacement:  path.resolve(__dirname, 'src/screens')},
       { find: '@components', replacement:  path.resolve(__dirname, 'src/components')},
       { find: '@configs', replacement: path.resolve(__dirname, 'src/shared/lib/configs') },
+      { find: '@entities', replacement: path.resolve(__dirname, 'src/entities') },
     ]
   }
 });

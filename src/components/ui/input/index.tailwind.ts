@@ -43,7 +43,6 @@ export const classes = {
     w-full
     px-4
     py-3
-    fs14Regular
     placeholder:fs14SemiBold
     placeholder:text-black/[.12]
     text-black/[.88]

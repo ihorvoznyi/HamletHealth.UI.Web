@@ -1,52 +1,48 @@
-import { ChangeEvent, FC, useRef, useState } from 'react';
+import { ChangeEvent, FC, useState } from 'react';
+import { UseFormRegisterReturn } from 'react-hook-form';
 
 import FieldVariant from './variants';
-import { CheckSvg } from '@components/ui/svg';
-import { CustomInputRef, InputProps } from './index.interfaces';
+import InputWrapper, { WrapperClasses } from './wrapper';
 
-import { 
-  classes, 
-  labelActiveStyle, 
-  labelInactiveStyle, 
-  labelUnfocusedStyle 
-} from './index.tailwind';
-import { cn } from '@utils/style.util';
+import { InputTypes } from './index.interfaces';
 
-const Input: FC<InputProps> = ({ type = 'text', label, styles }) => {
+import { classes } from './index.tailwind';
+
+interface PropsType {
+  type?: InputTypes;
+  label?: string;
+  styles?: Partial<WrapperClasses>;
+  register: UseFormRegisterReturn;
+}
+
+const Input: FC<PropsType> = ({ type = 'text', label, styles, register }) => {
   const [value, setValue] = useState('');
-  const inputRef = useRef<CustomInputRef>(null);
   const [isFocused, setIsFocused] = useState(false);
 
-  const isLabelActive = isFocused || !!value.length;
-  const isInputValid = false && !isFocused;
+  const handleFocus = () => setIsFocused(true);
+  
+  const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
+    register.onBlur(e);
+    setIsFocused(false);
+  };
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    register.onChange(event);
+    setValue(event.target.value);
+  };
 
   return (
-    <div className={cn(
-      classes.container, 
-      isFocused && 'border-han-blue', 
-      styles?.container)}
-    >
-      {label && (
-        <label
-          className={cn(
-            classes.label, 
-            isLabelActive 
-              ? labelActiveStyle 
-              : labelInactiveStyle, 
-            !isFocused && labelUnfocusedStyle)}
-          onClick={() => inputRef.current?.focus()}>{label}</label>
-      )}
+    <InputWrapper onFocus={handleFocus} label={label} isInputValid={false} isFocused={isFocused} styles={styles}>
       <FieldVariant
-        ref={inputRef}
+        register={register}
+        className={classes.input}
         type={type}
         value={value}
-        onChange={(event: ChangeEvent<HTMLInputElement>) => setValue(event.target.value)}
-        className={classes.input}
-        onBlur={() => setIsFocused(false)}
-        onFocus={() => setIsFocused(true)}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
+        onChange={handleChange}
       />
-      {isInputValid && <CheckSvg className={classes.icon} />}
-    </div>
+    </InputWrapper>
   );
 };
 

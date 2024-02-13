@@ -18,12 +18,21 @@ interface PropsType {
     container?: string;
   };
 
+  value: string;
+  onChange: (value: string) => void;
+
   isValid?: boolean;
   options: Option[];
 }
 
-const Select: FC<PropsType> = ({ label, styles, options }) => {
-  const [selectedOption, setSelectedOption] = useState<Option | null>(null);
+const Select: FC<PropsType> = ({ label, styles, options, onChange, value }) => {
+  const getValue = (value: string) => {
+    const option = options.find(o => o.value === value || o.label === value);
+  
+    return option;
+  };
+
+  const selectedOption = getValue(value);
   const [isFocused, setIsFocused] = useState(false);
   const ref = useClickOutside<HTMLDivElement>(() => setIsFocused(false));
 
@@ -31,7 +40,8 @@ const Select: FC<PropsType> = ({ label, styles, options }) => {
   const isValid = false && !isFocused;
 
   const handleSelect = (option: Option) => {
-    setSelectedOption(option);
+    console.log(option);
+    onChange(option.value);
   };
 
   useEffect(() => {
@@ -67,7 +77,7 @@ const Select: FC<PropsType> = ({ label, styles, options }) => {
         <input 
           className={classes.input}
           value={selectedOption?.label || ''}
-          onChange={() => {}}
+          onChange={(event) => console.log('hello --> ', event.target.value)}
         />
         {isFocused && (
           <ul className={classes.drowdown}>

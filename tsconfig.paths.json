@@ -8,6 +8,7 @@
       "@ui/*": ["src/components/ui/*"],
       "@configs/*": ["src/shared/lib/configs/*"],
       "@utils/*": ["src/shared/lib/utils/*"],
+      "@entities/*": ["src/entities/*"],
       "@hooks/*": ["src/shared/lib/hooks/*"],
       "@shared/*": ["src/shared/*"],
       "@styles/*": ["src/shared/styles/*"],
