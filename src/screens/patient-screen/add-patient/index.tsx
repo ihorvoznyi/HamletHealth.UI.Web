@@ -4,15 +4,16 @@ import StageBar from './stage-bar';
 import DisplayStage from './DisplayStage';
 import SuccessNotify from './success-notify';
 
-import { StageType } from './index.interfaces';
+import { useActions } from '@hooks/useActions';
 
 import { resetStages } from './stage-bar/lib';
-import { useAppDispatch } from '@shared/model';
+
+import { StageType } from './index.interfaces';
 
 import { classes } from './index.tailwind';
 
 const AddPatient = () => {
-  const dispatch = useAppDispatch();
+  const [boundResetStages] = useActions([resetStages]);
   const [stage, setStage] = useState<StageType>('add-patient');
   const [showSuccessNotify, setShowSuccessNotify] = useState(false);
 
@@ -20,7 +21,7 @@ const AddPatient = () => {
     // TODO: implement adding logic
 
     setShowSuccessNotify(true);
-    dispatch(resetStages());
+    boundResetStages();
   };
 
   return (

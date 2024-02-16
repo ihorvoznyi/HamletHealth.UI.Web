@@ -6,7 +6,7 @@ import { options } from '@screens/auth-screen/sign-up/create-account-form/index.
 
 import { appRoutes } from '@configs/routes.config';
 
-import { useAppDispatch } from '@shared/model';
+import { useActions } from '@hooks/index';
 import { setCredentials, useRegisterMutation } from '@entities/user';
 
 import { RegistrationMapper } from '@screens/auth-screen/sign-up/create-account-form/lib/helpers';
@@ -15,7 +15,8 @@ import { RegistrationFormType } from '@screens/auth-screen/sign-up/create-accoun
 
 export const useRegister = () => {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
+  const [boundSetCredentials] = useActions([setCredentials]);
+
   const { 
     register,
     handleSubmit,
@@ -30,7 +31,7 @@ export const useRegister = () => {
       .unwrap()
       .then((data) => {
         if (data) {
-          dispatch(setCredentials(data));
+          boundSetCredentials(data);
           navigate(appRoutes.dashboard);
         }
       });

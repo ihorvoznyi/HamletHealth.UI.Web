@@ -4,9 +4,13 @@ import { shallowEqual } from 'react-redux';
 import Input from '@components/ui/input';
 import Select from '@components/ui/select';
 import Button from '@components/ui/button';
-import { classes } from './index.tailwind';
-import { useAppDispatch, useAppSelector } from '@shared/model';
+
+import { useActions } from '@hooks/useActions';
+import { useAppSelector } from '@shared/model';
+
 import { selectStageStatuses, setCurrentStage, setStageStatus } from '../../stage-bar/lib';
+
+import { classes } from './index.tailwind';
 
 interface PropsType {
   onProcess: () => void;
@@ -16,7 +20,7 @@ interface PropsType {
  * [ ] Add form validation (integrate with react-hook-form)
  */
 const AddPatientStage: FC<PropsType> = ({ onProcess }) => {
-  const dispatch = useAppDispatch();
+  const [boundSetStageStatus, boundSetCurrentPage] = useActions([setStageStatus, setCurrentStage]);
   const { patientStatus } = useAppSelector(selectStageStatuses, shallowEqual);
 
   const handleProcceed = () => {
@@ -25,10 +29,10 @@ const AddPatientStage: FC<PropsType> = ({ onProcess }) => {
 
   useEffect(() => {
     if (patientStatus !== 'filled') {
-      dispatch(setStageStatus({ stage: 'patientStatus', status: 'checked' }));
+      boundSetStageStatus({ stage: 'patientStatus', status: 'checked' });
     }
     
-    dispatch(setCurrentStage('patient'));
+    boundSetCurrentPage('patient');
   }, []);
 
   return (

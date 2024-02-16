@@ -3,7 +3,7 @@ import { FC, PropsWithChildren, useEffect } from 'react';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
-import useClickOutside from '@hooks/useClickOutside';
+import { useClickOutside } from '@hooks/useClickOutside';
 
 interface PropsType extends PropsWithChildren {
   styles?: Partial<{ container: string; }>

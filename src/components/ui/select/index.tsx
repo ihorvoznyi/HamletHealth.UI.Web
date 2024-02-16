@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from 'react';
 import OptionEl from './OptionEl';
 import { CheckSvg, DropDownSvg } from '@components/ui/svg';
 
-import useClickOutside from '@hooks/useClickOutside';
+import { useClickOutside } from '@hooks/useClickOutside';
 
 import { cn } from '@utils/style.util';
 

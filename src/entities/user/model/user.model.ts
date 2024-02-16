@@ -34,6 +34,7 @@ const userSlice = createSlice({
           ...user,
           role: 0,
         };
+
         state.accessToken = token;
         AuthHelper.setToken(token);
 

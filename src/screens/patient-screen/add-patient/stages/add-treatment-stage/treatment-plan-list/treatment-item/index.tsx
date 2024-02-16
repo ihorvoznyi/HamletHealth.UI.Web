@@ -4,7 +4,7 @@ import Menu from '../item-menu';
 import GoalModal from '../goal-modal';
 import { MoreHorizontalSvg } from '@components/ui/svg';
 
-import useClickOutside from '@hooks/useClickOutside';
+import { useClickOutside } from '@hooks/useClickOutside';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';

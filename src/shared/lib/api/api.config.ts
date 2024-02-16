@@ -1,6 +1,6 @@
 export const API_CONFIG = {
   baseUrl: 'https://hamlet-health-api-dev.azurewebsites.net/api'
-};
+} as const;
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query';
 
