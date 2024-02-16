@@ -2,8 +2,10 @@ import { API_CONFIG, ServerResponse } from '@shared/lib/api';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { setCredentials } from '../model';
-import { CreateUserDto, LoginDto, UserDto } from './user-api.interfaces';
+
 import { USER_API_ENDPOINTS } from './user-api.constants';
+
+import { CreateUserDto, LoginDto, UserDto } from './user-api.interfaces';
 
 export const userApi = createApi({
   reducerPath: 'userApi',

@@ -2,11 +2,11 @@ import * as yup from 'yup';
 import { UseFormProps } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { RegistrationFormData } from './registration-form.interfaces';
+import { RegistrationFormType } from './index.types';
 
 import { REQUIRED_EMAIL_FIELD, REQUIRED_PASSWORD_FIELD } from '@shared/lib/constants';
 
-const schema = yup
+export const RegistrationFormSchema = yup
   .object()
   .shape({
     email: yup
@@ -40,7 +40,7 @@ const schema = yup
   })
   .required();
 
-const defaultValues: RegistrationFormData = {
+const defaultValues: RegistrationFormType = {
   email: '',
   password: '',
   repeatedPassword: '',
@@ -50,7 +50,7 @@ const defaultValues: RegistrationFormData = {
   nationalProviderIdentifier: ''
 };
 
-export const options: UseFormProps<RegistrationFormData> = {
+export const options: UseFormProps<RegistrationFormType> = {
   defaultValues,
-  resolver: yupResolver<RegistrationFormData>(schema),
+  resolver: yupResolver<RegistrationFormType>(RegistrationFormSchema),
 };

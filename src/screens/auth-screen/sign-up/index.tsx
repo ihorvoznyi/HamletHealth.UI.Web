@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 
+import { Policy } from '@screens/auth-screen/shared/ui';
+import { AuthScreenLayout } from '@screens/auth-screen/shared/layout';
 import Button from '@components/ui/button';
-import { Policy } from '../shared/ui';
-import { AuthScreenLayout } from '../layout';
-import { CreateAccountForm } from './components';
+import CreateAccountForm from './create-account-form';
 
 import { appRoutes } from '@configs/routes.config';
 

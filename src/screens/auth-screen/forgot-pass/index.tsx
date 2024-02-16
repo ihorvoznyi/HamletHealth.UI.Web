@@ -1,6 +1,6 @@
 import { ReactElement, useState } from 'react';
 
-import { AuthScreenLayout } from '../layout';
+import { AuthScreenLayout } from '../shared/layout';
 import { SendEmailForm } from './email-form';
 import { CreatePasswordForm } from './create-password';
 import { CodeVerificationForm } from './code-verification';

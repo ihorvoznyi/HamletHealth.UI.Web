@@ -5,7 +5,7 @@ import Button from '@components/ui/button';
 
 import { appRoutes } from '@configs/routes.config';
 
-import { useLogin } from '../lib/hooks';
+import { useLogin } from './lib/hooks';
 
 import { classes } from './index.tailwind';
 

@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { useLoginMutation } from '@entities/user';
 import { appRoutes } from '@configs/routes.config';
-import { options } from '../login-form.config';
-import { LoginFormDataType } from '../login-form.interfaces';
+import { options } from '@screens/auth-screen/sign-in/login-form/index.schema';
+import { LoginFormDataType } from '@screens/auth-screen/sign-in/login-form/index.types';
 
 export const useLogin = () => {
   const navigate = useNavigate();

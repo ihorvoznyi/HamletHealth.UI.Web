@@ -12,4 +12,4 @@ export const appRoutes = {
     verify: '/verify',
     forgotPass: '/forgot-password'
   },
-};
+} as const;

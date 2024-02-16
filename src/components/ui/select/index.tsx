@@ -1,12 +1,14 @@
 import { FC, useEffect, useState } from 'react';
 
 import OptionEl from './OptionEl';
-import { CheckSvg, DropDownSvg } from '../svg';
+import { CheckSvg, DropDownSvg } from '@components/ui/svg';
 
-import { cn } from '@utils/style.util';
 import useClickOutside from '@hooks/useClickOutside';
 
+import { cn } from '@utils/style.util';
+
 import { Option } from './index.interfaces';
+
 import { classes } from './index.tailwind';
 
 interface PropsType {

@@ -29,6 +29,17 @@ If you are developing a production application, we recommend updating the config
 # Introduction 
 TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
 
+# Imports structure
+/**
+ * 1. Libraries
+ * 2. Components
+ * 3. Hooks
+ * 4. Configs
+ * 5. Helpers
+ * 6. Types
+ * 7. Styles
+ */
+
 # Getting Started
 TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
 1.	Installation process
