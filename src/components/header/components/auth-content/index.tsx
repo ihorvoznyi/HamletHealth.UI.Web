@@ -7,6 +7,8 @@ import Button from '@components/ui/button';
 import { classes } from './index.tailwind';
 import { appRoutes } from '@configs/routes.config';
 import { useEffect, useState } from 'react';
+import { useActions } from '@hooks/useActions';
+import { logout } from '@entities/user';
 
 const navLinks = [
   {
@@ -22,6 +24,7 @@ const navLinks = [
 export const AuthHeaderContent: FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [boundLogout] = useActions([logout]);
   const [activeLink, setActiveLink] = useState('');
 
   const handleNavigate = (to: string) => {
@@ -38,6 +41,11 @@ export const AuthHeaderContent: FC = () => {
 
     setActiveLink('');
   }, [location.pathname]);
+
+  const handleLogout = () => {
+    // do some logic
+    boundLogout();
+  };
 
   return (
     <div className={classes.container}>
@@ -61,7 +69,7 @@ export const AuthHeaderContent: FC = () => {
 
       <div className={classes.line} />
 
-      <img src="/assets/avatar.png" alt="" className={classes.img} onClick={() => navigate(appRoutes.auth.signUp)} />
+      <img src="/assets/avatar.png" alt="" className={classes.img} onClick={handleLogout} />
     </div>
   );
 };

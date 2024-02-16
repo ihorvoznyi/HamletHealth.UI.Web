@@ -18,7 +18,7 @@ const hideValue = (value: string) => '-'.repeat(value.length);
 
 const PasswordField: FC<PropsType> = ({ value, onChange, className, register, ...props }) => {
   const [hidden, setHidden] = useState(hideValue(value));
-  const [isHidden, setIsHidden] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const combinedRefs = mergeRefs([register.ref, inputRef]);

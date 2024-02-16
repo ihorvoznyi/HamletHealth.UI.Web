@@ -1,6 +1,6 @@
 import { UserRole } from '../api';
 
-export interface IUserInitialState {
+export interface IUserState {
   user:        IUser;
   isAuth:      boolean;
   accessToken: string;

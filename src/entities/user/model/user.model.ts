@@ -4,7 +4,7 @@ import { UserDto } from '../api';
 
 import { AuthHelper } from '@shared/lib/helpers';
 
-import { IUserInitialState as IUserState } from './interfaces';
+import { IUser, IUserState } from './interfaces';
 
 const initialState: IUserState = {
   user: {
@@ -15,7 +15,7 @@ const initialState: IUserState = {
     role: 0
   },
   error: null,
-  isAuth: false,
+  isAuth: !!localStorage.getItem('ACCESS_TOKEN_KEY'),
   accessToken: localStorage.getItem('ACCESS_TOKEN_KEY') ?? ''
 };
 
@@ -40,6 +40,11 @@ const userSlice = createSlice({
 
         state.error = null;
     },
+    logout: (state) => {
+      state.isAuth = false;
+      state.user = {} as IUser;
+      AuthHelper.clearStorage();
+    },
     setUserError: (state, { payload }: PayloadAction<string>) => {
       state.error = payload;
     }
@@ -47,4 +52,4 @@ const userSlice = createSlice({
 });
 
 export const userReducer = userSlice.reducer;
-export const { setCredentials, setAuth } = userSlice.actions;
+export const { setCredentials, setAuth, logout } = userSlice.actions;
