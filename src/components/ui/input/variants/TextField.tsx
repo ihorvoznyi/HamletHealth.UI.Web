@@ -8,9 +8,6 @@ interface PropsType extends Omit<FieldProps, 'register'> {
 }
 
 const TextField: FC<PropsType> = ({ register, ...props }) => {
-  // const inputRef = useRef<HTMLInputElement>(null);
-  // useHandleImperative(ref, inputRef);
-
   return <input {...register} {...props} />;
 };
 

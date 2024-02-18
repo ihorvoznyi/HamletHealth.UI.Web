@@ -28,11 +28,12 @@ const Input: FC<PropsType> = ({ type = 'text', label, styles, register }) => {
   const [value, setValue] = useState('');
   const [isFocused, setIsFocused] = useState(false);
   
-  const ref = useClickOutside<HTMLDivElement>(() => setIsFocused(false));
-  const isLabelActive = !!value || isFocused;
-  const showCheckIcon = false && !isFocused;
+  const disableFocus = () => setIsFocused(false);
+  const enableFocus = () => setIsFocused(true);
 
-  const handleFocus = () => setIsFocused(false);
+  const ref = useClickOutside<HTMLDivElement>(disableFocus);
+  const isLabelActive = !!value || isFocused;
+  const showCheckIcon = !!value && !isFocused && type !== 'password';
   
   const handleBlur = (e: ChangeEvent<HTMLInputElement>) => {
     register.onBlur(e);
@@ -46,12 +47,11 @@ const Input: FC<PropsType> = ({ type = 'text', label, styles, register }) => {
 
   return (
     <div 
-      ref={ref} 
-      onClick={() => setIsFocused(true)} 
+      ref={ref}
+      onClick={enableFocus}
       className={cn(
-          classes.container,
-          'relative',
-          isFocused && 'border-han-blue',
+          classes.container.base,
+          isFocused && classes.container.focus,
           styles?.container
         )}
     >
@@ -59,7 +59,9 @@ const Input: FC<PropsType> = ({ type = 'text', label, styles, register }) => {
       <label
         className={cn(
           classes.label.base,
-          isLabelActive ? classes.label.active : classes.label.inactive,
+          isLabelActive 
+            ? classes.label.active 
+            : classes.label.inactive,
           !isFocused && classes.label.unfocused,
           styles?.label)}
       >
@@ -72,7 +74,7 @@ const Input: FC<PropsType> = ({ type = 'text', label, styles, register }) => {
         type={type}
         value={value}
         onBlur={handleBlur}
-        onFocus={handleFocus}
+        onFocus={disableFocus}
         onChange={handleChange}
       />
       {showCheckIcon ? <CheckSvg className={classes.icon} /> : null}

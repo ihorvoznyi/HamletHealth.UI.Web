@@ -1,10 +1,10 @@
-import { ServerResponse } from '@shared/lib/api';
+import { IServerResponse } from '@shared/lib/api';
 import { UserDto } from '../api/user-api.interfaces';
 import { IUser } from '../model';
 
 export class UserResponseMapper {
-  static mapLoginResponse(response: ServerResponse<UserDto>): IUser {
-    const { id, userName, firstName, lastName, roles } = response.data;
+  static mapLoginResponse(response: IServerResponse<UserDto>): IUser {
+    const { id, userName, firstName, lastName, roles } = response.Data;
   
     return {
       id,

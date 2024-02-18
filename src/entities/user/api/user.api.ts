@@ -1,17 +1,19 @@
-import { API_CONFIG, ServerResponse } from '@shared/lib/api';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
+import { Environment } from '@shared/lib/environment';
 
 import { setCredentials } from '../model';
 
 import { USER_API_ENDPOINTS } from './user-api.constants';
 
+import { IServerResponse } from '@shared/lib/api';
 import { CreateUserDto, LoginDto, UserDto } from './user-api.interfaces';
 
 export const userApi = createApi({
   reducerPath: 'userApi',
-  baseQuery: fetchBaseQuery({ baseUrl: API_CONFIG.baseUrl }),
+  baseQuery: fetchBaseQuery({ baseUrl: Environment.VITE_API_URL }),
   endpoints: build => ({
-    login: build.mutation<ServerResponse<UserDto>, LoginDto>({
+    login: build.mutation<IServerResponse<UserDto>, LoginDto>({
       query: body => ({
         url: USER_API_ENDPOINTS.login,
         method: 'POST',
@@ -36,7 +38,7 @@ export const userApi = createApi({
         method: 'POST',
         body,
       }),
-      transformResponse: (response: ServerResponse<UserDto>) => response.Data,
+      transformResponse: (response: IServerResponse<UserDto>) => response.Data,
     }),
   }),
 });

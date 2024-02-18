@@ -10,14 +10,17 @@ import { LoginFormDataType } from '@screens/auth-screen/sign-in/login-form/index
 export const useLogin = () => {
   const navigate = useNavigate();
   const { 
+    control,
     register,
     handleSubmit,
-    formState: { errors } 
+    formState: { errors }
   } = useForm<LoginFormDataType>(options);
   const [loginAsync, { isSuccess }] = useLoginMutation();
   
   const submit = (data: LoginFormDataType) => {
-    loginAsync(data).unwrap();
+    const password = control._fields['password']?._f.value;
+    
+    loginAsync({ ...data, password }).unwrap();
 
     if (isSuccess) {
       navigate(appRoutes.dashboard);
@@ -25,8 +28,9 @@ export const useLogin = () => {
   };
   
   return { 
-    handleSubmit: useCallback(handleSubmit(submit), []),
+    control,
     errors,
     register,
+    handleSubmit: useCallback(handleSubmit(submit), []),
   };
 };

@@ -22,15 +22,37 @@ const CreateAccountForm = () => {
           <Select 
             value={value}
             onChange={onChange}
-            label="Your speciality" 
+            label="Your speciality"
             options={options} 
           />
         )}      
       />
 
       <Input register={register('email')} styles={classes.gridWideInput} label="Email" />
-      <Input register={register('password')} type="password" label="Create password" />
-      <Input register={register('repeatedPassword')} type="password" label="Confirm password" />
+
+      <Controller 
+        name="password"
+        control={control}
+        render={() => (
+          <Input 
+            type="password" 
+            label="Create password"
+            register={register('password')} 
+          />
+        )}
+      />
+
+      <Controller 
+        name="repeatedPassword"
+        control={control}
+        render={() => (
+          <Input 
+            type="password" 
+            label="Confirm password"
+            register={register('repeatedPassword')} 
+          />
+        )}
+      />
 
       <button type="submit" className={classes.createBtn}>Create Account</button>
     </form>

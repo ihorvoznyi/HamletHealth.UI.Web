@@ -26,7 +26,18 @@ export const useRegister = () => {
   const [registerAsync] = useRegisterMutation();
   
   const submit = (data: RegistrationFormType) => {
+    const password = control._fields['password']?._f.value;
+    const repeatedPassword = control._fields['repeatedPassword']?._f.value;
+
+    if (password !== repeatedPassword) {
+      return;
+    }
+
+    data.password = password;
+    data.repeatedPassword = repeatedPassword;
+
     const registerDto = RegistrationMapper.mapToCreateUserDto(data);
+
     registerAsync(registerDto)
       .unwrap()
       .then((data) => {

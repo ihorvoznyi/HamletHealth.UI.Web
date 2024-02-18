@@ -42,7 +42,6 @@ const Select: FC<PropsType> = ({ label, styles, options, onChange, value }) => {
   const isValid = false && !isFocused;
 
   const handleSelect = (option: Option) => {
-    console.log(option);
     onChange(option.value);
   };
 
@@ -58,7 +57,6 @@ const Select: FC<PropsType> = ({ label, styles, options, onChange, value }) => {
       onClick={() => setIsFocused(true)} 
       className={cn(
           classes.container,
-          'relative',
           isFocused && 'border-han-blue',
           styles?.container
         )}
@@ -79,7 +77,6 @@ const Select: FC<PropsType> = ({ label, styles, options, onChange, value }) => {
         <input 
           className={classes.input}
           value={selectedOption?.label || ''}
-          onChange={(event) => console.log('hello --> ', event.target.value)}
         />
         {isFocused && (
           <ul className={classes.drowdown}>

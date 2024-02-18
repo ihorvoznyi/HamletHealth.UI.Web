@@ -1,4 +1,4 @@
-export interface ServerResponse<TData> {
+export interface IServerResponse<TData> {
   Data:     TData;
   Messages: string[];
 }

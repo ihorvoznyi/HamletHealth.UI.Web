@@ -17,16 +17,19 @@ export const labelInactiveStyle = ctl(`
 `);
 
 export const classes = {
-  container: ctl(`
-    relative
-    border 
-    border-black/[.12]
-    rounded-[4px]
-    duration-200
-    flex 
-    items-center 
-    justify-between
-  `),
+  container: {
+    base: ctl(`
+      relative
+      border 
+      border-black/[.12]
+      rounded-[4px]
+      duration-200
+      flex 
+      items-center 
+      justify-between
+    `),
+    focus: 'border-han-blue'
+  },
   label: {
     base: ctl(`
       absolute 
@@ -64,7 +67,18 @@ export const classes = {
   `),
   icon: ctl(`
     absolute 
+    top-1/4
     right-[17px]
     cursor-pointer
+  `),
+  mask: ctl(`
+    absolute 
+    tracking-[5px] 
+    left-0 
+    top-1/2 
+    -z-20
+    -translate-y-1/2
+    bg-white
+    whitespace-nowrap
   `),
 };

@@ -17,14 +17,14 @@ interface PropsType {
 const hideValue = (value: string) => '-'.repeat(value.length);
 
 const PasswordField: FC<PropsType> = ({ value, onChange, className, register, ...props }) => {
-  const [hidden, setHidden] = useState(hideValue(value));
+  const [hiddenValue, setHiddenValue] = useState(hideValue(value));
   const [isHidden, setIsHidden] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const combinedRefs = mergeRefs([register.ref, inputRef]);
 
   useEffect(() => {
-    setHidden(hideValue(value));
+    setHiddenValue(hideValue(value));
   }, [value]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -55,9 +55,10 @@ const PasswordField: FC<PropsType> = ({ value, onChange, className, register, ..
         {...register}
         type="text"
         ref={combinedRefs}
-        value={isHidden ? hidden : value}
-        onChange={handleChange}
         className={cn(className, isHidden && 'tracking-[5px]')}
+        value={isHidden ? hiddenValue : value}
+        onChange={handleChange}
+        spellCheck={false}
       />
       <EyeSvg isShowLine={!isHidden} className={classes.icon} onClick={toggleVisibility} />
     </>
