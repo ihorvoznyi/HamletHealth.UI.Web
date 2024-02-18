@@ -13,9 +13,11 @@ export const onAuthQueryStartedHandler = async (
   dispatch: thunkDispatch
 ) => {
   try {
-    Logger.info('Trying to authorize');
+    if (Environment.VITE_ENV_MODE === 'dev') {
+      Logger.info('Trying to authorize..');
+    }
+
     const response = await queryFulfilled;
-    Logger.info(JSON.stringify(response));
 
     if (response.data) {
       dispatch(setCredentials(response.data.Data));

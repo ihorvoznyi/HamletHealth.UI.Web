@@ -22,6 +22,7 @@ export const useLogin = () => {
   const submit = (data: LoginFormDataType) => {
     const password = control._fields['password']?._f.value;
     
+    return;
     loginAsync({ ...data, password })
       .unwrap()
       .then(() => navigate(APP_ROUTES.DASHBOARD));
