@@ -6,7 +6,7 @@ import { onAuthQueryStartedHandler } from '../helpers';
 
 import { USER_API_ENDPOINTS } from './user-api.constants';
 
-import { IServerResponse } from '@shared/lib/api';
+import { IServerResponse } from '@shared/lib/types';
 import { CreateUserDto, LoginDto, UserDto } from './user-api.interfaces';
 
 export const userApi = createApi({

@@ -5,7 +5,7 @@ import { setCredentials } from '../model';
 import { Logger } from '@shared/lib/helpers';
 
 import { UserDto } from '../api';
-import { IServerResponse } from '@shared/lib/api';
+import { IServerResponse } from '@shared/lib/types';
 import { queryFulfilledType, thunkDispatch } from '@shared/lib/types';
 
 export const onAuthQueryStartedHandler = async (

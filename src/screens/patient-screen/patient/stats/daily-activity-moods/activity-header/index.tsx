@@ -1,4 +1,4 @@
-import { FC, Fragment, useMemo } from 'react';
+import { FC, Fragment } from 'react';
 
 import { MoodType } from '@shared/lib/types';
 

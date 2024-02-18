@@ -1,18 +1,7 @@
-import { SVGProps } from 'react';
 import { PromiseWithKnownReason } from '@reduxjs/toolkit/dist/query/core/buildMiddleware/types';
 import { QueryFulfilledRejectionReason } from '@reduxjs/toolkit/dist/query/endpointDefinitions';
 import { BaseQueryFn, FetchArgs, FetchBaseQueryError, FetchBaseQueryMeta } from '@reduxjs/toolkit/query';
 import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
-
-export interface ISvgProps extends SVGProps<SVGSVGElement> {
-  fill?: string;
-}
-
-export type MoodType = 'great' | 'good' | 'meh' | 'bad' | 'awful';
-
-export type RecordOf<T extends string | number | symbol, V> = {
-  [key in T]: V
-}
 
 type queryRejectionReasonType = QueryFulfilledRejectionReason<
   BaseQueryFn<

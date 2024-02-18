@@ -1,4 +1,4 @@
-import { IServerResponse } from '@shared/lib/api';
+import { IServerResponse } from '@shared/lib/types';
 import { UserDto } from '../api/user-api.interfaces';
 import { IUser } from '../model';
 
