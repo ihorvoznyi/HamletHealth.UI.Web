@@ -5,6 +5,7 @@ import AddTreatmentStage from './stages/add-treatment-stage';
 import AddSupporterStage from './stages/add-supporter-stage';
 
 import { StageType } from './index.interfaces';
+import { RecordOf } from '@shared/lib/interfaces';
 
 interface PropsType {
   stage: StageType;
@@ -14,12 +15,8 @@ interface PropsType {
   onSave: () => void;
 }
 
-type StageMapper = {
-  [key in StageType]: ReactElement;
-}
-
 const DisplayStage: FC<PropsType> = ({ stage, onStage, onSave }) => {
-  const mapper: StageMapper = {
+  const mapper: RecordOf<StageType, ReactElement> = {
     'add-patient': <AddPatientStage onProcess={() => onStage('add-treatment')} />,
     'add-treatment': (
       <AddTreatmentStage 

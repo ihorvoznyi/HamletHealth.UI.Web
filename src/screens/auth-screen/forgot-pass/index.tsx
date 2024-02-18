@@ -6,12 +6,9 @@ import { CreatePasswordForm } from './create-password';
 import { CodeVerificationForm } from './code-verification';
 
 import { classes } from './index.tailwind';
+import { RecordOf } from '@shared/lib/interfaces';
 
 type StageType = 0 | 1 | 2;
-
-type IStageMapper = {
-  [key in 0 | 1 | 2]: ReactElement;
-}
 
 export const ForgotPassword = () => {
   const [stage, setStage] = useState<StageType>(0);
@@ -19,7 +16,7 @@ export const ForgotPassword = () => {
   const handleVerifyCode = () => setStage(2);
   const handleEmailSubmit = () => setStage(1);
 
-  const stageMapper: IStageMapper = {
+  const stageMapper: RecordOf<StageType, ReactElement> = {
     0: <SendEmailForm onSubmit={handleEmailSubmit} />,
     1: <CodeVerificationForm onVerify={handleVerifyCode} />,
     2: <CreatePasswordForm />,

@@ -1,30 +1,30 @@
-import { mergeRefs } from 'react-merge-refs';
-import { UseFormRegisterReturn } from 'react-hook-form';
 import { ChangeEvent, FC, useEffect, useRef, useState } from 'react';
+import { mergeRefs } from 'react-merge-refs';
 
 import { EyeSvg } from '@components/ui/svg';
 
-import { cn } from '@utils/style.util';
-import { classes } from '../index.tailwind';
+import { TextHelper } from '@shared/lib/helpers';
 
-interface PropsType {
+import { FieldProps } from '@components/ui/input/index.interfaces';
+
+import { cn } from '@utils/style.util';
+import { classes } from './index.tailwind';
+
+interface PropsType extends Pick<FieldProps, 'register'> {
   value: string;
   className?: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  register: Omit<UseFormRegisterReturn, 'onChange' | 'onBlur'>;
 }
 
-const hideValue = (value: string) => '-'.repeat(value.length);
-
 const PasswordField: FC<PropsType> = ({ value, onChange, className, register, ...props }) => {
-  const [hiddenValue, setHiddenValue] = useState(hideValue(value));
+  const [hiddenValue, setHiddenValue] = useState(TextHelper.replaceWithDashes(value));
   const [isHidden, setIsHidden] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const combinedRefs = mergeRefs([register.ref, inputRef]);
 
   useEffect(() => {
-    setHiddenValue(hideValue(value));
+    setHiddenValue(TextHelper.replaceWithDashes(value));
   }, [value]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {

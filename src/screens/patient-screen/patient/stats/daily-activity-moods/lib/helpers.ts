@@ -1,12 +1,8 @@
-import { MoodType } from '@shared/lib/interfaces';
+import { MoodType, RecordOf } from '@shared/lib/interfaces';
 import { IDayHit } from './interfaces';
 
-export type ReturnType = {
-  [key in MoodType]: number;
-};
-
 export const groupByMood = (days: IDayHit[]) => {
-  const group: ReturnType = {
+  const group: RecordOf<MoodType, number> = {
     great: 0,
     good: 0,
     meh: 0,
@@ -26,7 +22,7 @@ export const groupByMood = (days: IDayHit[]) => {
 };
 
 export const getMoodColor = (mood: MoodType): string => {
-  const colors: { [key in MoodType]: string; } = {
+  const colors: RecordOf<MoodType, string> = {
     great: '#12C28D',
     good: '#34BAE4',
     meh: '#595959',
@@ -35,14 +31,4 @@ export const getMoodColor = (mood: MoodType): string => {
   };
 
   return colors[mood];
-};
-
-interface IStreaks {
-  isStreak: boolean;
-  streak: number;
-  days: [],
-}
-
-export const getStreaks = (days: IDayHit[]) => {
-  const sortedByStreaks = [];
 };

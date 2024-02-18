@@ -27,7 +27,6 @@ export interface FieldProps {
   error?: string;
   className?: string;
 
-  onBlur: (e: ChangeEvent<HTMLInputElement>) => void;
-  onFocus: () => void;
+  register: UseFormRegisterReturn;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }

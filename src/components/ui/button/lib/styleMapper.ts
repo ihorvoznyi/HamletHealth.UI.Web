@@ -1,12 +1,10 @@
 import { ButtonTypes } from '../index.interfaces';
+import { RecordOf } from '@shared/lib/interfaces';
+
 import { classes } from '../index.tailwind';
 
-type ButtonVariantMapper = {
-  [key in ButtonTypes]: string;
-}
-
 export function styleMapper(type: ButtonTypes) {
-  const mapper: ButtonVariantMapper = {
+  const mapper: RecordOf<ButtonTypes, string> = {
     primary: classes.primary,
     outlined: classes.outlined,
     inherit: classes.inherit,

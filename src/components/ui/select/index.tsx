@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 
 import OptionEl from './OptionEl';
-import { CheckSvg, DropDownSvg } from '@components/ui/svg';
+import { DropDownSvg } from '@components/ui/svg';
 
 import { useClickOutside } from '@hooks/useClickOutside';
 
@@ -39,7 +39,6 @@ const Select: FC<PropsType> = ({ label, styles, options, onChange, value }) => {
   const ref = useClickOutside<HTMLDivElement>(() => setIsFocused(false));
 
   const isLabelActive = isFocused || !!selectedOption;
-  const isValid = false && !isFocused;
 
   const handleSelect = (option: Option) => {
     onChange(option.value);
@@ -90,9 +89,8 @@ const Select: FC<PropsType> = ({ label, styles, options, onChange, value }) => {
           </ul>
         )}
       </div>
-
       
-      {isValid ? <CheckSvg className={classes.icon} /> : <DropDownSvg className={classes.icon} />}
+      <DropDownSvg className={classes.icon} />
     </div>
   );
 };
