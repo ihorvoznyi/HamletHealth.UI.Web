@@ -1,15 +1,15 @@
-export const appRoutes = {
-  index: '/',
-  greeting: '/greeting',
-  dashboard: '/dashboard',
-  addPatient: '/add-patient',
-  myPatients: '/my-patients',
-  patient: '/my-patients/:id',
-  patients: '/patients',
-  auth: {
-    signUp: '/sign-up',
-    signIn: '/sign-in',
-    verify: '/verify',
-    forgotPass: '/forgot-password'
-  },
+export const APP_ROUTES = {
+  BASE: '/',
+  GREETING: '/greeting',
+  DASHBOARD: '/dashboard',
+  APP_PATIENT: '/add-patient',
+  MY_PATIENTS: '/my-patients',
+  PATIENT: '/my-patients/:id',
+  PATIENTS: '/patients',
+
+  // Authorization
+  SIGN_UP: '/sign-up',
+  SIGN_IN: '/sign-in',
+  VERIFY: '/verify',
+  FORGOT_PASS: '/forgot-password'
 } as const;

@@ -4,10 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 import { options } from '@screens/auth-screen/sign-up/create-account-form/index.schema';
 
-import { appRoutes } from '@configs/routes.config';
+import { APP_ROUTES } from '@configs/routes.config';
 
-import { useActions } from '@hooks/index';
-import { setCredentials, useRegisterMutation } from '@entities/user';
+import { useRegisterMutation } from '@entities/user';
 
 import { RegistrationMapper } from '@screens/auth-screen/sign-up/create-account-form/lib/helpers';
 
@@ -15,7 +14,6 @@ import { RegistrationFormType } from '@screens/auth-screen/sign-up/create-accoun
 
 export const useRegister = () => {
   const navigate = useNavigate();
-  const [boundSetCredentials] = useActions([setCredentials]);
 
   const { 
     register,
@@ -40,12 +38,7 @@ export const useRegister = () => {
 
     registerAsync(registerDto)
       .unwrap()
-      .then((data) => {
-        if (data) {
-          boundSetCredentials(data);
-          navigate(appRoutes.dashboard);
-        }
-      });
+      .then(() => navigate(APP_ROUTES.DASHBOARD));
   };
   
   return { 

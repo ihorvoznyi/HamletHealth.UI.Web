@@ -1,4 +1,4 @@
-import { MoodType } from '@shared/lib/interfaces';
+import { MoodType } from '@shared/lib/types';
 
 export interface IDailyHits {
   activity: string;

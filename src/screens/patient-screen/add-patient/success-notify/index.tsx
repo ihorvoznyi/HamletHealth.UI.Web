@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import Button from '@components/ui/button';
 import { SuccessCircleCheckIcon } from '@components/ui/icons';
 
-import { appRoutes } from '@configs/routes.config';
+import { APP_ROUTES } from '@configs/routes.config';
 
 import { classes } from './index.tailwind';
 
 const SuccessNotify = () => {
   const navigate = useNavigate();
-  const handleNavigate = () => navigate(appRoutes.myPatients);
+  const handleNavigate = () => navigate(APP_ROUTES.MY_PATIENTS);
 
   return (
     <div className={classes.container}>

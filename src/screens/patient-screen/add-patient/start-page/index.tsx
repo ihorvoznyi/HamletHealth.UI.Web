@@ -1,7 +1,7 @@
 import Button from '@components/ui/button';
 import { classes } from './index.tailwind';
 import { useNavigate } from 'react-router-dom';
-import { appRoutes } from '@configs/routes.config';
+import { APP_ROUTES } from '@configs/routes.config';
 
 const PatientsStartPage = () => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const PatientsStartPage = () => {
 
         <Button 
           styles={classes.button} 
-          onClick={() => navigate(appRoutes.addPatient)}
+          onClick={() => navigate(APP_ROUTES.APP_PATIENT)}
         >
           Add new patient
         </Button>

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { ISvgProps } from '@shared/lib/interfaces';
+import { ISvgProps } from '@shared/lib/types';
 
 export const MoodMehSvg: FC<ISvgProps> = ({ color = 'black', ...props }) => {
   return (

@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import { FC } from 'react';
-import { ISvgProps } from '@shared/lib/interfaces';
+import { ISvgProps } from '@shared/lib/types';
 
 export const MoodAwfulSvg: FC<ISvgProps> = ({ color = '#323232', ...props }) => {
   return (

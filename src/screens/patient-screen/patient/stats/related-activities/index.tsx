@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react';
 
-import { MoodType } from '@shared/lib/interfaces';
+import { MoodType } from '@shared/lib/types';
 
 import MoodSvg from './mood-svg';
 import Activity, { IActivity } from './activity';

@@ -1,5 +1,5 @@
 import { ElementType } from 'react';
-import { ISvgProps, MoodType } from '../interfaces';
+import { ISvgProps, MoodType } from '../types';
 import { MoodGreatSvg, MoodGoodSvg, MoodMehSvg, MoodBadSvg, MoodAwfulSvg } from '@components/ui/svg';
 
 export const getMoodComponent = (mood: MoodType): ElementType<ISvgProps> | null => {

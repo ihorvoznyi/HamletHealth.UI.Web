@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { ISvgProps } from '@shared/lib/interfaces';
+import { ISvgProps } from '@shared/lib/types';
 import { FC } from 'react';
 
 export const ShoppingSvg: FC<ISvgProps> = (props) => (

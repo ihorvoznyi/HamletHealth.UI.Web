@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { IPatientItem } from '../index.interfaces';
 
 import { classes } from './index.tailwind';
-import { appRoutes } from '@configs/routes.config';
+import { APP_ROUTES } from '@configs/routes.config';
 import { combineRoutes } from '@utils/text.util';
 import { retrieveInitials } from '@screens/patient-screen/shared/patient.helpers';
 
@@ -16,7 +16,7 @@ const PatientItem: FC<PropsType> = ({ patient }) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate(combineRoutes(appRoutes.myPatients, patient.id));
+    navigate(combineRoutes(APP_ROUTES.MY_PATIENTS, patient.id));
   };
 
   return (

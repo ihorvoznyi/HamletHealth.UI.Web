@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import { FC } from 'react';
-import { ISvgProps } from '@shared/lib/interfaces';
+import { ISvgProps } from '@shared/lib/types';
 
 export const CoffeeSvg: FC<ISvgProps> = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none" {...props}>

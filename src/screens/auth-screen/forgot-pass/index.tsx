@@ -6,7 +6,7 @@ import { CreatePasswordForm } from './create-password';
 import { CodeVerificationForm } from './code-verification';
 
 import { classes } from './index.tailwind';
-import { RecordOf } from '@shared/lib/interfaces';
+import { RecordOf } from '@shared/lib/types';
 
 type StageType = 0 | 1 | 2;
 

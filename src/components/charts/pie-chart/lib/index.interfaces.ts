@@ -1,4 +1,4 @@
-import { ISvgProps } from '@shared/lib/interfaces';
+import { ISvgProps } from '@shared/lib/types';
 import { ElementType } from 'react';
 
 export type DescribeArcType = {

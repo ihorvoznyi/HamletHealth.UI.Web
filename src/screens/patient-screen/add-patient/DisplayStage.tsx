@@ -5,7 +5,7 @@ import AddTreatmentStage from './stages/add-treatment-stage';
 import AddSupporterStage from './stages/add-supporter-stage';
 
 import { StageType } from './index.interfaces';
-import { RecordOf } from '@shared/lib/interfaces';
+import { RecordOf } from '@shared/lib/types';
 
 interface PropsType {
   stage: StageType;

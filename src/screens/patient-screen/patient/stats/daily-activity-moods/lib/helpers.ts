@@ -1,4 +1,4 @@
-import { MoodType, RecordOf } from '@shared/lib/interfaces';
+import { MoodType, RecordOf } from '@shared/lib/types';
 import { IDayHit } from './interfaces';
 
 export const groupByMood = (days: IDayHit[]) => {

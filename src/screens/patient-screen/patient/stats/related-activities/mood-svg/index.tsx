@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { MoodType } from '@shared/lib/interfaces';
+import { MoodType } from '@shared/lib/types';
 
 import { toNormalCase } from '@utils/text.util';
 import { getMoodComponent } from '@utils/mood.util';

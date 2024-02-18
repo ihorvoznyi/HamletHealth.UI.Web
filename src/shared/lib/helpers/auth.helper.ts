@@ -1,3 +1,12 @@
+import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
+
+import { UserDto, setCredentials } from '@entities/user';
+
+import { APP_ROUTES } from '@configs/routes.config';
+
+import { IServerResponse } from '../api';
+import { queryFulfilledType, thunkDispatch } from '../types';
+
 export class AuthHelper {
   private static readonly ACCESS_TOKEN_KEY = 'ACCESS_TOKEN_KEY';
 

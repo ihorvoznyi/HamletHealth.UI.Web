@@ -4,7 +4,7 @@ import FlowerIcon from '@components/ui/svg/FlowerSvg';
 import { classes } from './index.tailwind';
 import { classes as commonClasses } from '../index.tailwind';
 import { useNavigate } from 'react-router-dom';
-import { appRoutes } from '@configs/routes.config';
+import { APP_ROUTES } from '@configs/routes.config';
 
 export const VerifiedEmail = () => {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ export const VerifiedEmail = () => {
           You have successfully verified your account.
         </p>
         
-        <Button styles={classes.btn} onClick={() => navigate(appRoutes.dashboard)}>Go to dashboard</Button>
+        <Button styles={classes.btn} onClick={() => navigate(APP_ROUTES.DASHBOARD)}>Go to dashboard</Button>
       </div>
     </div>
   );

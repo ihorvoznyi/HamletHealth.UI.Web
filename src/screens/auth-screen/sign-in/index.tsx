@@ -5,14 +5,14 @@ import { Policy } from '../shared/ui';
 import LoginForm from './login-form';
 import Button from '@components/ui/button';
 
-import { appRoutes } from '@configs/routes.config';
+import { APP_ROUTES } from '@configs/routes.config';
 
 import { classes } from './index.tailwind';
 
 const SignIn = () => {
   const navigate = useNavigate();
 
-  const redirectToSignUp = () => navigate(appRoutes.auth.signUp);
+  const redirectToSignUp = () => navigate(APP_ROUTES.SIGN_UP);
   
   return (
     <AuthScreenLayout>

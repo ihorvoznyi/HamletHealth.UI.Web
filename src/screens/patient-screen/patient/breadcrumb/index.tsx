@@ -4,13 +4,13 @@ import ShareModal from '../share-modal';
 import Button from '@components/ui/button';
 import { ArrowLeftSvg } from '@components/ui/svg';
 
-import { appRoutes } from '@configs/routes.config';
+import { APP_ROUTES } from '@configs/routes.config';
 import { classes } from './index.tailwind';
 import { useState } from 'react';
 
 const Breadcrumb = () => {
   const navigate = useNavigate();
-  const handleNavigate = () => navigate(appRoutes.myPatients);
+  const handleNavigate = () => navigate(APP_ROUTES.MY_PATIENTS);
   const [showModal, setShowModal] = useState(false);
 
   return (

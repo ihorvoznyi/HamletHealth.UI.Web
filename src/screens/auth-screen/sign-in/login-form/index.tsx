@@ -4,7 +4,7 @@ import { Controller } from 'react-hook-form';
 import Input from '@components/ui/input';
 import Button from '@components/ui/button';
 
-import { appRoutes } from '@configs/routes.config';
+import { APP_ROUTES } from '@configs/routes.config';
 
 import { useLogin } from './lib/hooks';
 
@@ -15,7 +15,7 @@ const LoginForm = () => {
   const { handleSubmit, register, errors, control } = useLogin();
   
   const handleResetPass = () => {
-    navigate(appRoutes.auth.forgotPass);
+    navigate(APP_ROUTES.FORGOT_PASS);
   };
 
   return (

@@ -1,4 +1,4 @@
-import { ISvgProps } from '@shared/lib/interfaces';
+import { ISvgProps } from '@shared/lib/types';
 import { FC } from 'react';
 
 /* eslint-disable max-len */

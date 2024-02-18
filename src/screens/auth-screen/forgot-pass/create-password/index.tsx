@@ -3,12 +3,12 @@ import Button from '@components/ui/button';
 
 import { classes } from './index.tailwind';
 import { useNavigate } from 'react-router-dom';
-import { appRoutes } from '@configs/routes.config';
+import { APP_ROUTES } from '@configs/routes.config';
 
 export const CreatePasswordForm = () => {
   const navigate = useNavigate();
   const handleSubmit = () => {
-    navigate(appRoutes.dashboard);
+    navigate(APP_ROUTES.DASHBOARD);
   };
 
   return (

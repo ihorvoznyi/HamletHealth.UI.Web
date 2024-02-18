@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Input from '@components/ui/input';
 import Button from '@components/ui/button';
 
-import { appRoutes } from '@configs/routes.config';
+import { APP_ROUTES } from '@configs/routes.config';
 
 import { classes } from './index.tailwind';
 
@@ -16,7 +16,7 @@ export const SendEmailForm: FC<PropsType> = ({ onSubmit }) => {
   const navigate = useNavigate();
   
   const handleSignUp = () => {
-    navigate(appRoutes.auth.signUp);
+    navigate(APP_ROUTES.SIGN_UP);
   };
 
   const handleSendCode = () => {

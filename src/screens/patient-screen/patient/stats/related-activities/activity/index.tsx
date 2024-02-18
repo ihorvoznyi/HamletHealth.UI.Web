@@ -1,6 +1,6 @@
 import { FC, ElementType } from 'react';
 
-import { ISvgProps } from '@shared/lib/interfaces';
+import { ISvgProps } from '@shared/lib/types';
 
 import { classes } from './index.tailwind';
 

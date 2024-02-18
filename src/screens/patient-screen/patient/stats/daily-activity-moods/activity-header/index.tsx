@@ -1,6 +1,6 @@
 import { FC, Fragment, useMemo } from 'react';
 
-import { MoodType } from '@shared/lib/interfaces';
+import { MoodType } from '@shared/lib/types';
 
 import { getMoodColor, groupByMood } from '../lib/helpers';
 import { getMoodComponent } from '@utils/mood.util';

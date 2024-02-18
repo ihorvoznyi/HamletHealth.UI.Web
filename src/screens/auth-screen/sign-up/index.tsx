@@ -5,14 +5,14 @@ import { AuthScreenLayout } from '@screens/auth-screen/shared/layout';
 import Button from '@components/ui/button';
 import CreateAccountForm from './create-account-form';
 
-import { appRoutes } from '@configs/routes.config';
+import { APP_ROUTES } from '@configs/routes.config';
 
 import { classes } from './index.tailwind';
 
 const SignUp = () => {
   const navigate = useNavigate();
 
-  const redirectToSignIn = () => navigate(appRoutes.auth.signIn);
+  const redirectToSignIn = () => navigate(APP_ROUTES.SIGN_IN);
 
   return (
     <AuthScreenLayout>

@@ -5,7 +5,7 @@ import { PlusSvg } from '@components/ui/svg';
 import Button from '@components/ui/button';
 
 import { classes } from './index.tailwind';
-import { appRoutes } from '@configs/routes.config';
+import { APP_ROUTES } from '@configs/routes.config';
 import { useEffect, useState } from 'react';
 import { useActions } from '@hooks/useActions';
 import { logout } from '@entities/user';
@@ -13,11 +13,11 @@ import { logout } from '@entities/user';
 const navLinks = [
   {
     text: 'Dashboard',
-    to: appRoutes.dashboard,
+    to: APP_ROUTES.DASHBOARD,
   },
   {
     text: 'My patients',
-    to: appRoutes.myPatients,
+    to: APP_ROUTES.MY_PATIENTS,
   },
 ];
 
@@ -62,7 +62,7 @@ export const AuthHeaderContent: FC = () => {
           ))}
       </nav>
 
-      <Button styles={classes.btn} onClick={() => navigate(appRoutes.addPatient)}>
+      <Button styles={classes.btn} onClick={() => navigate(APP_ROUTES.APP_PATIENT)}>
         <PlusSvg />
         <span>Add new patient</span>
       </Button>

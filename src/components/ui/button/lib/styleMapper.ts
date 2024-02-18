@@ -1,5 +1,5 @@
 import { ButtonTypes } from '../index.interfaces';
-import { RecordOf } from '@shared/lib/interfaces';
+import { RecordOf } from '@shared/lib/types';
 
 import { classes } from '../index.tailwind';
 
