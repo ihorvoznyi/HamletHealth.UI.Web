@@ -168,3 +168,17 @@ body {
   background-repeat: repeat-x;
   height: 20px; /* Adjust the height as needed */
 }
+
+.password-mask::after {
+  content: attr('data-mask');
+
+  display: block;
+
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  
+  background-color: white;
+  color: black;
+  letter-spacing: 5px;
+}

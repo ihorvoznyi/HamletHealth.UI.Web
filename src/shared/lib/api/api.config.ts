@@ -1,12 +1,9 @@
-export const API_CONFIG = {
-  baseUrl: 'https://hamlet-health-api-dev.azurewebsites.net/api'
-} as const;
-
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query';
+import { Environment } from '@shared/lib/environment';
 
 export const api = createApi({
   reducerPath: 'hamlettApi',
   // TODO: implement in baseQuery token based requests
-  baseQuery: fetchBaseQuery({ baseUrl: API_CONFIG.baseUrl }),
+  baseQuery: fetchBaseQuery({ baseUrl: Environment.VITE_API_URL }),
   endpoints: () => ({}),
 });
