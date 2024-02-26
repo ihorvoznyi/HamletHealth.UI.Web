@@ -19,7 +19,7 @@ const initialState: IUserState = {
   accessToken: localStorage.getItem('ACCESS_TOKEN_KEY') ?? ''
 };
 
-const userSlice = createSlice({
+export const userSlice = createSlice({
   name: 'userSlice',
   initialState,
   reducers: {

@@ -45,4 +45,10 @@ export const classes = {
     right-[10px]
     cursor-pointer
   `),
+  errorMessage: ctl(`
+    absolute 
+    text-red 
+    bottom-[-20px] 
+    text-[12px]
+  `),
 };

@@ -13,6 +13,7 @@ export interface WrapperProps extends PropsWithChildren {
   showIcon: boolean;
   isValid: boolean;
   isFilled: boolean;
+  error?: string;
 
   styles?: Partial<{
     label: string;
@@ -26,6 +27,7 @@ const Wrapper: FC<WrapperProps> = ({
   isValid,
   styles,
   children,
+  error = '',
   showIcon = true,
 }) => {
   const [isInnerFocus, setIsInnerFocus] = useState(false);
@@ -46,6 +48,7 @@ const Wrapper: FC<WrapperProps> = ({
         classes.container.base,
         isInnerFocus && classes.container.focus,
         styles?.container,
+        error && 'border-red'
       )}
     >
       {label ? (
@@ -53,7 +56,7 @@ const Wrapper: FC<WrapperProps> = ({
           className={cn(
             classes.label.base,
             isLabelActive
-              ? classes.label.active
+              ? cn(classes.label.active, error && 'text-red')
               : classes.label.inactive,
             !isInnerFocus && classes.label.unfocused,
             styles?.label,
@@ -64,6 +67,7 @@ const Wrapper: FC<WrapperProps> = ({
       ) : null}
       {children}
       {showCheckIcon ? <CheckSvg className={classes.icon} /> : null}
+      {error ? <span className={classes.errorMessage}>{error}</span> : null}
     </div>
   );
 };

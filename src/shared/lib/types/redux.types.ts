@@ -1,21 +1,12 @@
-import { PromiseWithKnownReason } from '@reduxjs/toolkit/dist/query/core/buildMiddleware/types';
-import { QueryFulfilledRejectionReason } from '@reduxjs/toolkit/dist/query/endpointDefinitions';
-import { BaseQueryFn, FetchArgs, FetchBaseQueryError, FetchBaseQueryMeta } from '@reduxjs/toolkit/query';
-import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
+import type { QueryFulfilledRejectionReason } from '@reduxjs/toolkit/dist/query/endpointDefinitions';
+import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import type { AnyAction, ThunkDispatch } from '@reduxjs/toolkit';
+import type { PromiseWithKnownReason } from '@reduxjs/toolkit/dist/query/core/buildMiddleware/types';
+import type { IServerResponse } from '@shared/lib/types';
 
-type queryRejectionReasonType = QueryFulfilledRejectionReason<
-  BaseQueryFn<
-    string | FetchArgs, 
-    unknown, 
-    FetchBaseQueryError, 
-    object, 
-    FetchBaseQueryMeta
-  >
->
-
-export type queryFulfilledType<TData> = PromiseWithKnownReason<{
-  data: TData;
-  meta: FetchBaseQueryMeta | undefined;
-}, queryRejectionReasonType>
+export type QueryFulfilledType<T> = PromiseWithKnownReason<{
+  data: IServerResponse<T>;
+  meta: object | undefined;
+}, QueryFulfilledRejectionReason<BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError>>>
 
 export type thunkDispatch = ThunkDispatch<unknown, unknown, AnyAction>;

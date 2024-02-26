@@ -5,11 +5,11 @@ import { setCredentials } from '../model';
 import { Logger } from '@shared/lib/helpers';
 
 import { UserDto } from '../api';
-import { IServerResponse } from '@shared/lib/types';
-import { queryFulfilledType, thunkDispatch } from '@shared/lib/types';
+
+import { QueryFulfilledType, thunkDispatch } from '@shared/lib/types';
 
 export const onAuthQueryStartedHandler = async (
-  queryFulfilled: queryFulfilledType<IServerResponse<UserDto>>, 
+  queryFulfilled: QueryFulfilledType<UserDto>, 
   dispatch: thunkDispatch
 ) => {
   try {

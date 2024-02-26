@@ -13,6 +13,7 @@ import { classes } from './index.tailwind';
 
 interface PropsType {
   label: string;
+  error?: string;
 
   styles?: {
     dropdownContainer?: string;
@@ -27,7 +28,7 @@ interface PropsType {
   options: Option[];
 }
 
-const Select: FC<PropsType> = ({ label, styles, options, onChange, value }) => {
+const Select: FC<PropsType> = ({ label, styles, options, onChange, value, error }) => {
   const getValue = (value: string) => {
     const option = options.find(o => o.value === value || o.label === value);
   
@@ -76,6 +77,7 @@ const Select: FC<PropsType> = ({ label, styles, options, onChange, value }) => {
         <input 
           className={classes.input}
           value={selectedOption?.label || ''}
+          onChange={() => {}}
         />
         {isFocused && (
           <ul className={classes.drowdown}>
@@ -91,6 +93,7 @@ const Select: FC<PropsType> = ({ label, styles, options, onChange, value }) => {
       </div>
       
       <DropDownSvg className={classes.icon} />
+      {error ? <span className={classes.errorMessage}>{error}</span> : null}
     </div>
   );
 };

@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { userApi } from '@entities/user';
+import { patientApi } from '@entities/patient';
+
 import { rootReducer } from './rootReducer';
 
-const middlewares = [userApi.middleware];
+const middlewares = [patientApi.middleware, userApi.middleware];
 
 export const store = configureStore({
   reducer: rootReducer,

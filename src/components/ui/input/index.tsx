@@ -15,7 +15,7 @@ interface PropsType extends Pick<WrapperProps, 'label' | 'styles'> {
   register: UseFormRegisterReturn;
 }
 
-const Input: FC<PropsType> = ({ type = 'text', label, styles, register }) => {
+const Input: FC<PropsType> = ({ type = 'text', label, styles, register, error }) => {
   const [value, setValue] = useState('');
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -29,6 +29,7 @@ const Input: FC<PropsType> = ({ type = 'text', label, styles, register }) => {
       showIcon={type !== 'password'}
       isFilled={!!value}
       isValid={!!value}
+      error={error}
       styles={styles}
     >
       <FieldVariant

@@ -62,4 +62,10 @@ export const classes = {
   `),
   input: 'cursor-pointer w-full px-4 py-3',
   icon: 'absolute right-[17px]',
+  errorMessage: ctl(`
+    absolute 
+    text-red 
+    bottom-[-20px] 
+    text-[12px]
+  `),
 };

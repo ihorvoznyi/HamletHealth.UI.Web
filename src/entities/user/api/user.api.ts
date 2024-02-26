@@ -1,6 +1,6 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi } from '@reduxjs/toolkit/query/react';
 
-import { Environment } from '@shared/lib/environment';
+import { baseQueryWithAuth } from '@shared/lib/api';
 
 import { onAuthQueryStartedHandler } from '../helpers';
 
@@ -11,7 +11,7 @@ import { CreateUserDto, LoginDto, UserDto } from './user-api.interfaces';
 
 export const userApi = createApi({
   reducerPath: 'userApi',
-  baseQuery: fetchBaseQuery({ baseUrl: Environment.VITE_API_URL }),
+  baseQuery: baseQueryWithAuth,
   endpoints: build => ({
     login: build.mutation<IServerResponse<UserDto>, LoginDto>({
       query: body => ({
