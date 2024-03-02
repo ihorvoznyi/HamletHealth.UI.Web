@@ -12,6 +12,7 @@ import { classes } from './index.tailwind';
 import { treatmentList } from './treatment-plan-list/index.constants';
 import { useAppDispatch, useAppSelector } from '@shared/model';
 import { selectStageStatuses, setCurrentStage, setStageStatus } from '../../stage-bar/lib';
+import { useGetDiagnosisQuery } from '@entities/patient/api';
 
 interface PropsType {
   onProcess: () => void;
@@ -21,9 +22,12 @@ interface PropsType {
 const AddTreatmentStage: FC<PropsType> = ({ onReturn, onProcess }) => {
   const dispatch = useAppDispatch();
   const { treatmentStatus } = useAppSelector(selectStageStatuses, shallowEqual);
+  const { data, isLoading, isError } = useGetDiagnosisQuery();
   const [isDefined, setIsDefined] = useState(false);
   const [isEmpty, _] = useState(!treatmentList.length);
-  
+
+  // const { diagnosis, activities, medications } = usePrepareTreatmentStage();
+
   useEffect(() => {
     if (treatmentStatus !== 'filled') {
       dispatch(setStageStatus({ stage: 'treatmentStatus', status: 'checked' }));

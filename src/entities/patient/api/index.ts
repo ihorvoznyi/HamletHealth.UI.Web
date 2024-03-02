@@ -1,2 +1,2 @@
 export * from './patient.api';
-export * from './patient-api.types';
+export * from './patient-api.interfaces';

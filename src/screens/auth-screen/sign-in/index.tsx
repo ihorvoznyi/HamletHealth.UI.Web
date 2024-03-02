@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
 import { AuthScreenLayout } from '../shared/layout';
-import { Policy } from '../shared/ui';
 import LoginForm from './login-form';
 import Button from '@components/ui/button';
 

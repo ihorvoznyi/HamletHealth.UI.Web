@@ -11,9 +11,11 @@ import { useRegisterMutation } from '@entities/user';
 import { RegistrationMapper } from '@screens/auth-screen/sign-up/create-account-form/lib/helpers';
 
 import { RegistrationFormType } from '@screens/auth-screen/sign-up/create-account-form/index.types';
+import { useLoading } from '@hooks/useLoading';
 
 export const useRegister = () => {
   const navigate = useNavigate();
+  const { setGlobalLoading } = useLoading();
 
   const { 
     register,
@@ -36,9 +38,11 @@ export const useRegister = () => {
 
     const registerDto = RegistrationMapper.mapToCreateUserDto(data);
 
+    setGlobalLoading(true);
     registerAsync(registerDto)
       .unwrap()
-      .then(() => navigate(APP_ROUTES.DASHBOARD));
+      .then(() => navigate(APP_ROUTES.DASHBOARD))
+      .finally(() => setGlobalLoading(false));
   };
   
   return { 

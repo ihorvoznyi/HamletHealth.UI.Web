@@ -3,7 +3,7 @@ import { createApi } from '@reduxjs/toolkit/dist/query/react';
 import { baseQueryWithAuth } from '@shared/lib/api';
 
 import { ApiMethod, IServerResponse } from '@shared/lib/types';
-import { AddPatientDto, FindPatientDto } from './patient-api.types';
+import { AddPatientDto, FindPatientDto, IDiagnosisItem } from './patient-api.interfaces';
 
 export const patientApi = createApi({
   reducerPath: 'patientApi',
@@ -22,8 +22,13 @@ export const patientApi = createApi({
         method: ApiMethod.POST,
         body,
       })
+    }),
+    getDiagnosis: builder.query<IServerResponse<IDiagnosisItem[]>, void>({
+      query: () => ({
+        url: '/diagnosis',
+      })
     })
   })
 });
 
-export const { useFindPatientMutation, useAddPatientMutation } = patientApi;
+export const { useFindPatientMutation, useAddPatientMutation, useGetDiagnosisQuery } = patientApi;

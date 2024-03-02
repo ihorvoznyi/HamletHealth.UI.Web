@@ -8,6 +8,7 @@ export default defineConfig({
     alias: [
       { find: '@', replacement: path.resolve(__dirname, 'src') },
       { find: '@app', replacement: path.resolve(__dirname, 'src/app') },
+      { find: '@app-store', replacement: path.resolve(__dirname, 'src/app/store/app') },
       { find: '@ui', replacement: path.resolve(__dirname, 'src/components/ui') },
       { find: '@shared', replacement: path.resolve(__dirname, 'src/shared') },
       { find: '@styles', replacement: path.resolve(__dirname, 'src/shared/styles') },
