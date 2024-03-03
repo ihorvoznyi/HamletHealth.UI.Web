@@ -1,5 +1,5 @@
 import Modal from '@components/ui/modal';
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 import { WideCheckSvg } from '@components/ui/svg/checks';
 
 import { classes } from './index.tailwind';
@@ -24,7 +24,7 @@ const SuccessSharedModal = () => {
           <WideCheckSvg width={48} height={48} />
         </div>
 
-        <Button onClick={handleClose} styles={classes.backBtn}>Back to profile</Button>
+        <PrimaryButton onClick={handleClose} styles={classes.backBtn}>Back to profile</PrimaryButton>
       </div>
     </Modal>
   );

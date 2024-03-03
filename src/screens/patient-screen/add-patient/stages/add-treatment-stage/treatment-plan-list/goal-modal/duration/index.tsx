@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
@@ -20,10 +20,10 @@ const Duration = () => {
       
       {/* Durations Component */}
       <div className={classes.btnsContainer}>
-        <Button styles={getBtnStyles(selected === 'day')} onClick={() => setSelected('day')}>Day</Button>
-        <Button styles={getBtnStyles(selected === 'week')} onClick={() => setSelected('week')}>Week</Button>
-        <Button styles={getBtnStyles(selected === 'month')} onClick={() => setSelected('month')}>Month</Button>
-        <Button styles={getBtnStyles(selected === 'year')} onClick={() => setSelected('year')}>Year</Button>
+        <PrimaryButton styles={getBtnStyles(selected === 'day')} onClick={() => setSelected('day')}>Day</PrimaryButton>
+        <PrimaryButton styles={getBtnStyles(selected === 'week')} onClick={() => setSelected('week')}>Week</PrimaryButton>
+        <PrimaryButton styles={getBtnStyles(selected === 'month')} onClick={() => setSelected('month')}>Month</PrimaryButton>
+        <PrimaryButton styles={getBtnStyles(selected === 'year')} onClick={() => setSelected('year')}>Year</PrimaryButton>
       </div>
     </div>
   );  

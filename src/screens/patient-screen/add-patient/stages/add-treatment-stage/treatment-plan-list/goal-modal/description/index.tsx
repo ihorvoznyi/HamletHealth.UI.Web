@@ -1,9 +1,9 @@
-import { useRef, useState } from "react";
+import { useRef, useState } from 'react';
 
-import Button from "@components/ui/button";
+import { Button } from '@components/ui';
 
-import { cn } from "@utils/style.util"; 
-import { classes } from "./index.tailwind";
+import { cn } from '@utils/style.util'; 
+import { classes } from './index.tailwind';
 
 const Description = () => {
   const [value, setValue] = useState('');

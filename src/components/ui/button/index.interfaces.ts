@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-export type ButtonTypes = 'primary' | 'outlined' | 'inherit';
+export type ButtonTypes = 'primary' | 'outlined' | 'inherit' | 'submit';
 
 type ClassesType = {
   container: string;

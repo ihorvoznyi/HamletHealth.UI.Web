@@ -23,5 +23,10 @@ export const classes = {
     bg-green
     text-white
     rounded-[4px]
-  `)
+  `),
+  disabled: ctl(`
+    text-eerie-black/[.38]
+    bg-light-silver
+    border-eerie-black/[.12]
+  `),
 };

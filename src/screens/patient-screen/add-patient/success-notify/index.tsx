@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 import { SuccessCircleCheckIcon } from '@components/ui/icons';
 
 import { APP_ROUTES } from '@configs/routes.config';
@@ -20,13 +20,13 @@ const SuccessNotify = () => {
         with the link to download the app.
       </p>
       <SuccessCircleCheckIcon styles={classes.icon} />
-      <Button 
+      <PrimaryButton 
         type="outlined" 
         onClick={handleNavigate} 
         styles={classes.btn}
       >
         Go to patient’s page
-      </Button>
+      </PrimaryButton>
     </div>
   );
 };

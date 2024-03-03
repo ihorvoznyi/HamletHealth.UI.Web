@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
@@ -19,13 +19,13 @@ const WeekDays = () => {
       <p className={classes.paragraph}>Days of the week (optional)</p>
       
       <div className={classes.btnsContainer}>
-        <Button styles={getBtnStyles(weekDay === 'mon')} onClick={() => setWeekDay('mon')}>Mon</Button>
-        <Button styles={getBtnStyles(weekDay === 'tue')} onClick={() => setWeekDay('tue')}>Tue</Button>
-        <Button styles={getBtnStyles(weekDay === 'wed')} onClick={() => setWeekDay('wed')}>Wed</Button>
-        <Button styles={getBtnStyles(weekDay === 'thu')} onClick={() => setWeekDay('thu')}>Thu</Button>
-        <Button styles={getBtnStyles(weekDay === 'fri')} onClick={() => setWeekDay('fri')}>Fri</Button>
-        <Button styles={getBtnStyles(weekDay === 'sat')} onClick={() => setWeekDay('sat')}>Sat</Button>
-        <Button styles={getBtnStyles(weekDay === 'sun')} onClick={() => setWeekDay('sun')}>Sun</Button>
+        <PrimaryButton styles={getBtnStyles(weekDay === 'mon')} onClick={() => setWeekDay('mon')}>Mon</PrimaryButton>
+        <PrimaryButton styles={getBtnStyles(weekDay === 'tue')} onClick={() => setWeekDay('tue')}>Tue</PrimaryButton>
+        <PrimaryButton styles={getBtnStyles(weekDay === 'wed')} onClick={() => setWeekDay('wed')}>Wed</PrimaryButton>
+        <PrimaryButton styles={getBtnStyles(weekDay === 'thu')} onClick={() => setWeekDay('thu')}>Thu</PrimaryButton>
+        <PrimaryButton styles={getBtnStyles(weekDay === 'fri')} onClick={() => setWeekDay('fri')}>Fri</PrimaryButton>
+        <PrimaryButton styles={getBtnStyles(weekDay === 'sat')} onClick={() => setWeekDay('sat')}>Sat</PrimaryButton>
+        <PrimaryButton styles={getBtnStyles(weekDay === 'sun')} onClick={() => setWeekDay('sun')}>Sun</PrimaryButton>
       </div>
     </div>
   );

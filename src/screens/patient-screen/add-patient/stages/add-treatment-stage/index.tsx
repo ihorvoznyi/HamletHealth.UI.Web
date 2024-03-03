@@ -4,7 +4,7 @@ import { shallowEqual } from 'react-redux';
 import Diagnosis from './diagnosis';
 import ActivitiesMedicine from './activities';
 import Treatment from './treatment-plan-list';
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 import { ArrowLeftSvg } from '@components/ui/svg';
 
 import { cn } from '@utils/style.util';
@@ -46,7 +46,7 @@ const AddTreatmentStage: FC<PropsType> = ({ onReturn, onProcess }) => {
           <Treatment />
         </div>
 
-        <Button 
+        <PrimaryButton 
           styles={{ container: cn(
             classes.defineBtn.base,
             isEmpty 
@@ -57,12 +57,12 @@ const AddTreatmentStage: FC<PropsType> = ({ onReturn, onProcess }) => {
           onClick={() => setIsDefined(prev => !prev)}
         >
           Define all as a plan
-        </Button>
+        </PrimaryButton>
       </div>
 
       <div className={classes.btnsContainer}>
-        <Button type="outlined" onClick={onReturn}><ArrowLeftSvg /></Button>
-        <Button 
+        <PrimaryButton type="outlined" onClick={onReturn}><ArrowLeftSvg /></PrimaryButton>
+        <PrimaryButton 
           styles={{
             container: cn(
               classes.processBtn.base, 
@@ -70,7 +70,7 @@ const AddTreatmentStage: FC<PropsType> = ({ onReturn, onProcess }) => {
             ),
           }}
           disabled={!isDefined}
-          onClick={onProcess}>PROCEED</Button>
+          onClick={onProcess}>PROCEED</PrimaryButton>
       </div>
     </>
   );

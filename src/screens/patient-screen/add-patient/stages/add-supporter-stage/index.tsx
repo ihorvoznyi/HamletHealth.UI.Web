@@ -3,7 +3,7 @@ import { shallowEqual } from 'react-redux';
 
 import Input from '@components/ui/input';
 import Select from '@components/ui/select';
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 import { ArrowLeftSvg, PlusSvg } from '@components/ui/svg';
 
 import { classes } from './index.tailwind';
@@ -35,18 +35,18 @@ const AddSupporterStage: FC<PropsType> = ({ onReturn, onSave }) => {
         <Select label="First and last name" options={[]} />
         <Select label="Relationship" options={[]} />
         <Input label="Email or phone number" />
-        <Button type="outlined" styles={classes.formBtn} onClick={() => {}}>
+        <PrimaryButton type="outlined" styles={classes.formBtn} onClick={() => {}}>
           <PlusSvg color="#4366C5" /> 
           Add one more supporter
-        </Button>
+        </PrimaryButton>
       </form>
 
       <div className={classes.btnsContainer}>
-        <Button type="outlined" onClick={onReturn}><ArrowLeftSvg /></Button>
-        <Button styles={classes.saveBtn} onClick={onSave}>Save and finish</Button>
+        <PrimaryButton type="outlined" onClick={onReturn}><ArrowLeftSvg /></PrimaryButton>
+        <PrimaryButton styles={classes.saveBtn} onClick={onSave}>Save and finish</PrimaryButton>
       </div>
 
-      <Button type="outlined" onClick={onSave} styles={classes.skipBtn}>Skip this step</Button>
+      <PrimaryButton type="outlined" onClick={onSave} styles={classes.skipBtn}>Skip this step</PrimaryButton>
     </div>
   );
 };

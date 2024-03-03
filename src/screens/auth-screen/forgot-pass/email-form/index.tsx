@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Input from '@components/ui/input';
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 
 import { APP_ROUTES } from '@configs/routes.config';
 
@@ -29,12 +29,12 @@ export const SendEmailForm: FC<PropsType> = ({ onSubmit }) => {
     
       <form className={classes.form}>
         <Input label='Email' />
-        <Button onClick={handleSendCode} styles={classes.codeBtn}>Send Code</Button>
+        <PrimaryButton onClick={handleSendCode} styles={classes.codeBtn}>Send Code</PrimaryButton>
       </form>
     
       <div className={classes.signUpContainer}>
         <p className={classes.signUpParagraph}>Don&rsquo;t have an Account? </p>
-        <Button type="inherit" styles={classes.signUpBtn} onClick={handleSignUp}>SIGN UP</Button>
+        <PrimaryButton type="inherit" styles={classes.signUpBtn} onClick={handleSignUp}>SIGN UP</PrimaryButton>
       </div>
     </div>
   );

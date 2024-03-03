@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 import { PlusSvg } from '@components/ui/svg';
 
 import { cn } from '@utils/style.util';
@@ -26,10 +26,10 @@ const ListItem: FC<PropsType> = ({ name, type }) => {
         >{type}</span>
       </div>
 
-      <Button styles={classes.btn} type="outlined" onClick={() => {}}>
+      <PrimaryButton styles={classes.btn} type="outlined" onClick={() => {}}>
         <PlusSvg className={classes.icon.width} color={classes.icon.color} />
         <span className={classes.btnText}>Add</span>
-      </Button>
+      </PrimaryButton>
     </li>
   );
 };

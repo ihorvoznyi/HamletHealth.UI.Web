@@ -13,6 +13,7 @@ import { selectStageStatuses, setCurrentStage, setStageStatus } from '../../stag
 
 import { GENDER_OPTIONS } from './lib/constants';
 
+import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
 
 interface PropsType {
@@ -20,16 +21,15 @@ interface PropsType {
 }
 
 const AddPatientStage: FC<PropsType> = ({ onProcess }) => {
-  const { register, errors, control, submit } = useAddPatient({ processStage: onProcess });
+  const { register, errors, control, submit, isValid } = useAddPatient({ processStage: onProcess });
   const [boundSetStageStatus, boundSetCurrentPage] = useActions([setStageStatus, setCurrentStage]);
   const { patientStatus } = useAppSelector(selectStageStatuses, shallowEqual);
-
 
   useEffect(() => {
     if (patientStatus !== 'filled') {
       boundSetStageStatus({ stage: 'patientStatus', status: 'checked' });
     }
-    
+
     boundSetCurrentPage('patient');
   }, []);
 
@@ -64,7 +64,13 @@ const AddPatientStage: FC<PropsType> = ({ onProcess }) => {
         />
 
         <div className={classes.btnContainer}>
-          <button type="submit" className={classes.btn}>Submit</button>
+          <button 
+            type="submit" 
+            className={cn(classes.btn, !isValid && classes.disabled)} 
+            disabled={!isValid}
+          >
+            Submit
+          </button>
         </div>
       </form>
     </div>

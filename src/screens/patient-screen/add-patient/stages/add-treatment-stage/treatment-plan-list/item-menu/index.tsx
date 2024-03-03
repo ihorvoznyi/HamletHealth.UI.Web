@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 
 import { classes } from './index.tailwind';
 import { DeleteSvg, ClockSvg, EditSvg } from '@components/ui/svg';
@@ -13,7 +13,7 @@ interface PropsType {
 
 const Menu: FC<PropsType> = ({ onDefine, onDelete, onEdit }) => (
   <div className={classes.container}>
-    <Button 
+    <PrimaryButton 
       type="outlined"
       styles={classes.btn}
       onClick={onDelete}
@@ -22,9 +22,9 @@ const Menu: FC<PropsType> = ({ onDefine, onDelete, onEdit }) => (
         <DeleteSvg />
         Delete
       </p>
-    </Button>
+    </PrimaryButton>
 
-    <Button 
+    <PrimaryButton 
       type="outlined"
       styles={classes.btn}
       onClick={onDefine}
@@ -33,9 +33,9 @@ const Menu: FC<PropsType> = ({ onDefine, onDelete, onEdit }) => (
         <ClockSvg />
         Define as a goal
       </p>
-    </Button>
+    </PrimaryButton>
 
-    <Button 
+    <PrimaryButton 
       type="outlined"
       styles={classes.btn}
       onClick={onEdit}
@@ -44,7 +44,7 @@ const Menu: FC<PropsType> = ({ onDefine, onDelete, onEdit }) => (
         <EditSvg />
         Rename
       </p>
-    </Button>
+    </PrimaryButton>
   </div>
 );
 

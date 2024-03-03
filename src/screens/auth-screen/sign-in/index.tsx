@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { AuthScreenLayout } from '../shared/layout';
 import LoginForm from './login-form';
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 
 import { APP_ROUTES } from '@configs/routes.config';
 
@@ -22,10 +22,10 @@ const SignIn = () => {
 
         <div className={classes.signUpContainer}>
           <p className={classes.signUpParagraph}>Don&rsquo;t have an Account? </p>
-          <Button
+          <PrimaryButton
             type="inherit"
             styles={classes.signUpBtn}
-            onClick={redirectToSignUp}>SIGN UP</Button>
+            onClick={redirectToSignUp}>SIGN UP</PrimaryButton>
         </div>
       </div>
     </AuthScreenLayout>

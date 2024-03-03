@@ -1,4 +1,4 @@
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 import FlowerIcon from '@components/ui/svg/FlowerSvg';
 
 import { classes } from './index.tailwind';
@@ -19,7 +19,7 @@ export const VerifiedEmail = () => {
           You have successfully verified your account.
         </p>
         
-        <Button styles={classes.btn} onClick={() => navigate(APP_ROUTES.DASHBOARD)}>Go to dashboard</Button>
+        <PrimaryButton styles={classes.btn} onClick={() => navigate(APP_ROUTES.DASHBOARD)}>Go to dashboard</PrimaryButton>
       </div>
     </div>
   );

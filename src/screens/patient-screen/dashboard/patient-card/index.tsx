@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 import MoodList from '../../shared/mood-card-list';
 import Initials from '@screens/patient-screen/shared/initials';
 
@@ -34,9 +34,9 @@ const PatientCard: FC<PropsType> = ({ patinet }) => {
           <p>{patinet.gender}</p>
           <p className={classes.diagnosis}>{patinet.diagnosis}</p>
         </div>
-        <Button type="outlined" styles={classes.btn} onClick={handleOpenProfile}>
+        <PrimaryButton type="outlined" styles={classes.btn} onClick={handleOpenProfile}>
           Go to profile
-        </Button>
+        </PrimaryButton>
       </div>
 
       <MoodList items={MOOD_CARDS} />

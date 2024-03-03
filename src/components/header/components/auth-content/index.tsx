@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { PlusSvg } from '@components/ui/svg';
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 
 import { classes } from './index.tailwind';
 import { APP_ROUTES } from '@configs/routes.config';
@@ -62,10 +62,10 @@ export const AuthHeaderContent: FC = () => {
           ))}
       </nav>
 
-      <Button styles={classes.btn} onClick={() => navigate(APP_ROUTES.APP_PATIENT)}>
+      <PrimaryButton styles={classes.btn} onClick={() => navigate(APP_ROUTES.APP_PATIENT)}>
         <PlusSvg />
         <span>Add new patient</span>
-      </Button>
+      </PrimaryButton>
 
       <div className={classes.line} />
 

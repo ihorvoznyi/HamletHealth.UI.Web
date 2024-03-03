@@ -1,4 +1,4 @@
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 import Avatar from '@screens/patient-screen/shared/avatar';
 import { EditOutlinedSvg } from '@components/ui/svg';
 
@@ -19,8 +19,8 @@ const PersonalInfo = () => {
         
         <p className={classes.paragraph}>{'Dec 20, 1985 (36 y.o.)'},</p>
         <p className={classes.paragraph}>{'female'}</p>
-        <Button type="outlined" onClick={() => {}} styles={classes.assignBtn}>Assign doctor</Button>
-        <Button type="outlined" onClick={() => {}} styles={classes.addBtn}>Add treatment plan</Button>
+        <PrimaryButton type="outlined" onClick={() => {}} styles={classes.assignBtn}>Assign doctor</PrimaryButton>
+        <PrimaryButton type="outlined" onClick={() => {}} styles={classes.addBtn}>Add treatment plan</PrimaryButton>
       </div>
     </div>
   );

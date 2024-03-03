@@ -3,7 +3,7 @@ import { FC, useState } from 'react';
 import Input from '@components/ui/input';
 import Modal from '@components/ui/modal';
 import Select from '@components/ui/select';
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 import { PlusSvg } from '@components/ui/svg';
 
 import { classes } from './index.tailwind';
@@ -31,13 +31,13 @@ const ShareModal: FC<PropsType> = ({ onClose }) => {
         {assignFields}
       </form>
 
-      <Button type="outlined" onClick={handleAssignDoctor} styles={classes.assignBtn}>
+      <PrimaryButton type="outlined" onClick={handleAssignDoctor} styles={classes.assignBtn}>
         <PlusSvg color={classes.plusIconColor} />
         Assign one more doctor
-      </Button>
+      </PrimaryButton>
 
       {/* TODO: Show modal only when sharing finished successfully */}
-      <Button onClick={handleShare} styles={classes.shareBtn}>Share</Button>
+      <PrimaryButton onClick={handleShare} styles={classes.shareBtn}>Share</PrimaryButton>
     </Modal>
   );
 };

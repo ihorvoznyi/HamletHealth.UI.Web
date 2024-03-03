@@ -1,11 +1,11 @@
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 import { ArrowRightSvg } from '@components/ui/svg';
 
 export const BackButton = () => {
   return (
-    <Button type="inherit" onClick={() => {}}>
+    <PrimaryButton type="inherit" onClick={() => {}}>
       back to website
       <ArrowRightSvg />
-    </Button>
+    </PrimaryButton>
   );
 };

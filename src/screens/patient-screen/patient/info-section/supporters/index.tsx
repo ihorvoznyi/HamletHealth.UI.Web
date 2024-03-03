@@ -1,4 +1,4 @@
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 import SupporterItem from './supporter-item';
 
 import { classes } from './index.tailwind';
@@ -15,9 +15,9 @@ const Supporters = () => {
         </div>
       </div>
 
-      <Button type="outlined" onClick={() => {}}>
+      <PrimaryButton type="outlined" onClick={() => {}}>
         See supporter&rsquo;s entries
-      </Button>
+      </PrimaryButton>
     </div>
   );
 };

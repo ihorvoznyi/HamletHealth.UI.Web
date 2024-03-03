@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Policy } from '@screens/auth-screen/shared/ui';
 import { AuthScreenLayout } from '@screens/auth-screen/shared/layout';
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 import CreateAccountForm from './create-account-form';
 
 import { APP_ROUTES } from '@configs/routes.config';
@@ -25,10 +25,10 @@ const SignUp = () => {
 
         <div className={classes.signInContainer}>
           <p className={classes.signInParagraph}>Already have an account?</p>
-          <Button 
+          <PrimaryButton 
             type="inherit" 
             styles={classes.signInBtn} 
-            onClick={redirectToSignIn}>SIGN IN</Button>
+            onClick={redirectToSignIn}>SIGN IN</PrimaryButton>
         </div>
       </div>
     </AuthScreenLayout>

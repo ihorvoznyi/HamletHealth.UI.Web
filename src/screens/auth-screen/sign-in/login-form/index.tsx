@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { Controller } from 'react-hook-form';
 
 import Input from '@components/ui/input';
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 
 import { APP_ROUTES } from '@configs/routes.config';
 
@@ -41,9 +41,9 @@ const LoginForm = () => {
       <div className={classes.btnsContainer}>
         {errors['password']?.message ?? ''}
         <button type="submit" className={classes.loginBtn}>Login</button>
-        <Button type="inherit" onClick={handleResetPass} styles={classes.changePassBtn}>
+        <PrimaryButton type="inherit" onClick={handleResetPass} styles={classes.changePassBtn}>
           Forgot Password ?
-        </Button>
+        </PrimaryButton>
       </div>
     </form>
   );

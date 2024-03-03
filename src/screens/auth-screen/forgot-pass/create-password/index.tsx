@@ -1,5 +1,5 @@
 import Input from '@components/ui/input';
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 
 import { classes } from './index.tailwind';
 import { useNavigate } from 'react-router-dom';
@@ -21,7 +21,7 @@ export const CreatePasswordForm = () => {
         <Input register={null!} label="Confrm New Password" />
       </form>
 
-      <Button onClick={handleSubmit} styles={classes.submitBtn}>Submit</Button>
+      <PrimaryButton onClick={handleSubmit} styles={classes.submitBtn}>Submit</PrimaryButton>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import Button from '@ui/button';
+import PrimaryButton from '@ui/button';
 
 import { APP_ROUTES } from '@configs/routes.config';
 
@@ -35,7 +35,7 @@ const GreetingScreen = () => {
           To fill in inputs and dropdowns, click on it.
         </div>
 
-        <Button styles={classes.btn} onClick={handleClick}>Start Testing</Button>
+        <PrimaryButton styles={classes.btn} onClick={handleClick}>Start Testing</PrimaryButton>
       </main>
     </div>
   );

@@ -1,6 +1,6 @@
 import { FC, useCallback, useRef, useState } from 'react';
 
-import Button from '@components/ui/button';
+import PrimaryButton from '@components/ui/button';
 import { Timer } from './timer';
 import { ArrowDirectionType, InputCode, InputCodeRef } from './input-code';
 
@@ -79,16 +79,16 @@ export const CodeVerificationForm: FC<PropsType> = ({ onVerify }) => {
       {showTimer && !isError ? <Timer callback={handleTimer} /> : null}
       {isError ? <p className={classes.error}>Invalid code entered</p> : null}
 
-      <Button onClick={handleSubmit} styles={classes.verifyBtn}>Verify</Button>
+      <PrimaryButton onClick={handleSubmit} styles={classes.verifyBtn}>Verify</PrimaryButton>
 
       {!showTimer ? (
-        <Button 
+        <PrimaryButton 
           type="outlined" 
           onClick={handleResend} 
           styles={classes.resendBtn}
         >
           Resend code
-        </Button>
+        </PrimaryButton>
       ) : null}
     </div>
   );
