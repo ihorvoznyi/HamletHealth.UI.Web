@@ -8,23 +8,22 @@ import { ArrowLeftSvg, PlusSvg } from '@components/ui/svg';
 
 import { classes } from './index.tailwind';
 import { useAppDispatch, useAppSelector } from '@shared/model';
-import { selectStageStatuses, setCurrentStage, setStageStatus } from '../../stage-bar/lib';
 
-interface PropsType {
-  onReturn: () => void;
-  onSave: () => void;
-}
-
-const AddSupporterStage: FC<PropsType> = ({ onReturn, onSave }) => {
+const AddSupporterStage = () => {
   const dispatch = useAppDispatch();
-  const { supporterStatus } = useAppSelector(selectStageStatuses, shallowEqual);
+  // const supporterStatus = useAppSelector(selectSupporterStageStatus);
+  const supporterStatus = 'unchecked';
+  // const { supporterStatus } = useAppSelector(selectStageStatuses, shallowEqual);
   
-  useEffect(() => {
-    if (supporterStatus !== 'filled') {
-      dispatch(setStageStatus({ stage: 'supporterStatus', status: 'checked' }));
-    }
-    dispatch(setCurrentStage('supporter'));
-  }, []);
+  // useEffect(() => {
+  //   if (supporterStatus !== 'filled') {
+  //     dispatch(setStageStatus({ stage: 'supporterStatus', status: 'checked' }));
+  //   }
+  //   dispatch(setCurrentStage('supporter'));
+  // }, []);
+
+  const handleNext = () => {};
+  const handlePrev = () => {};
   
   return (
     <div className={classes.container}>
@@ -42,11 +41,11 @@ const AddSupporterStage: FC<PropsType> = ({ onReturn, onSave }) => {
       </form>
 
       <div className={classes.btnsContainer}>
-        <PrimaryButton type="outlined" onClick={onReturn}><ArrowLeftSvg /></PrimaryButton>
-        <PrimaryButton styles={classes.saveBtn} onClick={onSave}>Save and finish</PrimaryButton>
+        <PrimaryButton onClick={handleNext} type="outlined"><ArrowLeftSvg /></PrimaryButton>
+        <PrimaryButton onClick={handleNext} styles={classes.saveBtn}>Save and finish</PrimaryButton>
       </div>
 
-      <PrimaryButton type="outlined" onClick={onSave} styles={classes.skipBtn}>Skip this step</PrimaryButton>
+      <PrimaryButton onClick={handleNext} type="outlined" styles={classes.skipBtn}>Skip this step</PrimaryButton>
     </div>
   );
 };

@@ -1,68 +1,65 @@
-import { FC, useEffect, useState } from 'react';
 import { shallowEqual } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { bindActionCreators } from '@reduxjs/toolkit';
 
-import Diagnosis from './diagnosis';
-import ActivitiesMedicine from './activities';
-import Treatment from './treatment-plan-list';
-import PrimaryButton from '@components/ui/button';
+import TreatmentPlan from './treatment-plan-sections';
+import { Button } from '@components/ui';
 import { ArrowLeftSvg } from '@components/ui/svg';
+
+import { useAppDispatch, useAppSelector } from '@shared/model';
+
+import { treatmentPlanSlice, selectTreatmentPlanStage } from '@entities/treatment-plan';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
-import { treatmentList } from './treatment-plan-list/index.constants';
-import { useAppDispatch, useAppSelector } from '@shared/model';
-import { selectStageStatuses, setCurrentStage, setStageStatus } from '../../stage-bar/lib';
-import { useGetDiagnosisQuery } from '@entities/patient/api';
 
-interface PropsType {
-  onProcess: () => void;
-  onReturn: () => void;
-}
-
-const AddTreatmentStage: FC<PropsType> = ({ onReturn, onProcess }) => {
+const AddTreatmentStage = () => {
   const dispatch = useAppDispatch();
-  const { treatmentStatus } = useAppSelector(selectStageStatuses, shallowEqual);
-  const { data, isLoading, isError } = useGetDiagnosisQuery();
-  const [isDefined, setIsDefined] = useState(false);
-  const [isEmpty, _] = useState(!treatmentList.length);
+  const { stageStatus, diagnosis } = useAppSelector(selectTreatmentPlanStage, shallowEqual);
+  const { setStageStatus, setCurrentStage } = bindActionCreators(treatmentPlanSlice.actions, dispatch);
 
-  // const { diagnosis, activities, medications } = usePrepareTreatmentStage();
+  const [isDefined, setIsDefined] = useState(false);
 
   useEffect(() => {
-    if (treatmentStatus !== 'filled') {
-      dispatch(setStageStatus({ stage: 'treatmentStatus', status: 'checked' }));
+    if (stageStatus !== 'filled') {
+      setStageStatus('checked');
     }
-    dispatch(setCurrentStage('treatment'));
   }, []);
+
+  const handlePreviousStage = () => {
+    setCurrentStage('addPatient');
+  };
+
+  const handleNextStage = () => {
+    //
+  };
   
   return (
     <>
       <div>
         <h2 className="fs26SemiBold">Add treatment plan</h2>
-
-        <div className={classes.sections}>
-          <Diagnosis />
-          <ActivitiesMedicine />
-          <Treatment />
-        </div>
-
-        <PrimaryButton 
+        <TreatmentPlan>
+          <TreatmentPlan.Diagnosis diagnosis={diagnosis} />
+          <TreatmentPlan.ActivitiesMedicine />
+          <TreatmentPlan.Treatments />
+        </TreatmentPlan>
+        <Button 
           styles={{ container: cn(
             classes.defineBtn.base,
-            isEmpty 
+            !diagnosis.length
               ? classes.defineBtn.disabled 
               : classes.defineBtn.active
           )}}
-          disabled={isEmpty}
+          disabled={!diagnosis.length}
           onClick={() => setIsDefined(prev => !prev)}
         >
           Define all as a plan
-        </PrimaryButton>
+        </Button>
       </div>
 
       <div className={classes.btnsContainer}>
-        <PrimaryButton type="outlined" onClick={onReturn}><ArrowLeftSvg /></PrimaryButton>
-        <PrimaryButton 
+        <Button type="outlined" onClick={handlePreviousStage}><ArrowLeftSvg /></Button>
+        <Button 
           styles={{
             container: cn(
               classes.processBtn.base, 
@@ -70,7 +67,7 @@ const AddTreatmentStage: FC<PropsType> = ({ onReturn, onProcess }) => {
             ),
           }}
           disabled={!isDefined}
-          onClick={onProcess}>PROCEED</PrimaryButton>
+          onClick={handleNextStage}>PROCEED</Button>
       </div>
     </>
   );

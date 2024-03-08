@@ -1,12 +1,11 @@
-import { useState } from 'react';
-
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
 import { FILTER_ITEMS } from './index.constants';
 import { classes as commonClasses } from '../../index.tailwind';
+import { useActivitiesContext } from '../lib/hooks';
 
-const Head = () => {
-  const [activeId, setActiveId] = useState(FILTER_ITEMS[0].id);
+const ActivitiesHeader = () => {
+  const { filterBy, setFilterBy } = useActivitiesContext();
   
   return (
     <div className={classes.container}>
@@ -16,23 +15,24 @@ const Head = () => {
       </div>
 
       <div className={classes.filter.container}>
-        {FILTER_ITEMS.map(item => (
-          <span 
-            key={item.id} 
-            className={cn(
-              classes.filter.item,
-              activeId === item.id 
-                ? classes.filter.active
-                : classes.filter.inactive
-            )}
-            onClick={() => setActiveId(item.id)}
-          >
-            {item.text}
-          </span>
-        ))}
+        {FILTER_ITEMS.map(item => {
+          const isActive = filterBy === item.type;
+
+          return (
+            <span 
+              key={item.type} 
+              className={cn(
+                classes.filter.item,
+                isActive
+                  ? classes.filter.active
+                  : classes.filter.inactive
+              )}
+              onClick={() => setFilterBy(item.type)}>{item.text}</span>
+          );
+        })}
       </div>
     </div>
   );
 };
 
-export default Head;
+export default ActivitiesHeader;

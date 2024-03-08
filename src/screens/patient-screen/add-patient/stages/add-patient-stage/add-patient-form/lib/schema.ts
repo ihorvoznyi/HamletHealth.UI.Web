@@ -5,9 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { 
   FIRST_NAME_REQUIRED, 
   LAST_NAME_REQUIRED, 
-  EMAIL_OR_PHONE_REQUIRED, 
-  INVALID_BIRTH_DATE, 
-  INVALID_EMAIL_OR_PHONE 
+  EMAIL_OR_PHONE_REQUIRED,
 } from './constants';
 
 import { AddPatientFormType } from './types';

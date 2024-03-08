@@ -1,4 +1,4 @@
-import { AddPatientDto } from '@entities/patient/api';
+import { AddPatientDto } from '@entities/treatment-plan/api';
 import { AddPatientFormType } from '..';
 
 type PhoneOrEmailType = Pick<AddPatientDto, 'email'> | Pick<AddPatientDto, 'phone'>;

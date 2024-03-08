@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import { userApi } from '@entities/user';
-import { patientApi } from '@entities/patient';
+import { patientApi } from '@entities/treatment-plan';
 
 import { rootReducer } from './rootReducer';
 

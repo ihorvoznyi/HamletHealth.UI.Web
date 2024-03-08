@@ -28,7 +28,7 @@ export interface IHealthIndicator {
   name: string;
 }
 
-export interface IDiagnosisItem {
+export interface IDiagnosisItemDto {
   id: string;
   name: string;
   code: string;

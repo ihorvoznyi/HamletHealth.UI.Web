@@ -1,29 +1,28 @@
 import { useForm } from 'react-hook-form';
+import { bindActionCreators } from '@reduxjs/toolkit';
 
 import { options } from '../schema';
 
+import { useLoading } from '@hooks/useLoading';
+import { useAppDispatch } from '@shared/model';
+
 import { AddPatientFormType } from '../types';
-import { FindPatientDto, useFindPatientMutation } from '@entities/patient/api';
-import { setStageStatus } from '@screens/patient-screen/add-patient/stage-bar/lib';
-import { setGlobalLoader } from '@app/store';
-import { useActions } from '@hooks/useActions';
 
-interface PropsType {
-  processStage: () => void;
-}
+import { FindPatientDto, treatmentPlanActions, useFindPatientMutation } from '@entities/treatment-plan';
 
-export const useAddPatient = ({ processStage }: PropsType) => {
-  const [setGlobalLoaderBounded] = useActions([setGlobalLoader]);
+export const useAddPatient = () => {
+  const { setGlobalLoader } = useLoading();
   const [findPatientAsync] = useFindPatientMutation();
   const { 
-    register, 
-    control, 
+    register,
+    control,
     handleSubmit, 
     formState: { errors, isValid } 
   } = useForm<AddPatientFormType>(options);
+  const dispatch = useAppDispatch();
+  const { setCurrentStage, setAddPatientStageData } = bindActionCreators(treatmentPlanActions, dispatch);
 
   const submit = async (data: AddPatientFormType) => {
-
     const existingPatient = await findPatient({ 
       firstName: data.firstName,
       lastName: data.lastName,
@@ -31,28 +30,24 @@ export const useAddPatient = ({ processStage }: PropsType) => {
     });
 
     if (existingPatient) {
-      // TODO: handle data replacing in the store based on the response
-      handleProcess(processStage);
-      return;
+      // TODO: update store using setAddPatientData with response
+      // TODO: Update with existing patient
+      // setAddPatientStageData(existingPatient);
+      // setCurrentStage('treatmentPlan');
+      // return;
     }
 
-    handleProcess(processStage);
-  };
-
-  const handleProcess = (process: () => void) => {
-    process();
-    setStageStatus({ stage: 'patientStatus', status: 'filled' });
+    setAddPatientStageData(data);
+    setCurrentStage('treatmentPlan');
   };
 
   const findPatient = async (findPatientDto: FindPatientDto): Promise<unknown> => {
     try {
-      setGlobalLoaderBounded(true);
+      setGlobalLoader(true);
       const { data } = await findPatientAsync(findPatientDto) as { data: unknown };
       return data;
-    } catch {
-      return null;
     } finally {
-      setGlobalLoaderBounded(false);
+      setGlobalLoader(false);
     }
   };
 

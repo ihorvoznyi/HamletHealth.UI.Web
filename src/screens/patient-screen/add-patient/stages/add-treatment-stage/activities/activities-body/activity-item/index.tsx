@@ -1,29 +1,23 @@
-import { FC } from 'react';
+import React from 'react';
 
-import PrimaryButton from '@components/ui/button';
 import { PlusSvg } from '@components/ui/svg';
+import PrimaryButton from '@components/ui/button';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
 
-interface PropsType {
-  name: string;
-  type: string;
-}
+const ActivityItem: React.FC<{ id: string; name: string; category: number; }> = ({ id, name, category }) => {
+  const isActivity = category === 0;
 
-const ListItem: FC<PropsType> = ({ name, type }) => {
   return (
-    <li 
-      key={name}
-      className={classes.container}
-    >
+    <li className={classes.container}>
       <div className={classes.contentContainer}>
         <p className={classes.name}>{name}</p>
         <span className={cn(
             classes.type, 
-            type === 'Activity' ? 'text-vivid-cerulean' : 'text-orange'
+            isActivity ? 'text-vivid-cerulean' : 'text-orange'
           )}
-        >{type}</span>
+        >{isActivity ? 'Activity' : 'Medicine'}</span>
       </div>
 
       <PrimaryButton styles={classes.btn} type="outlined" onClick={() => {}}>
@@ -34,4 +28,4 @@ const ListItem: FC<PropsType> = ({ name, type }) => {
   );
 };
 
-export default ListItem;
+export default ActivityItem;

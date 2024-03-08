@@ -1,3 +1,2 @@
-export * from './hooks';
-export * from './schema';
-export * from './types';
+export * from '../add-patient-form/lib/schema';
+export * from '../add-patient-form/lib/types';

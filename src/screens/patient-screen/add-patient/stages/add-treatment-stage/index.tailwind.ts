@@ -11,7 +11,6 @@ export const classes = {
     max-h-[330px]
     overflow-auto
   `),
-  sections: 'flex gap-[24px] mt-[50px]',
   btnsContainer: ctl(`
     flex 
     gap-[16px] 

@@ -6,12 +6,5 @@ export const classes = {
     text-left 
     font-roboto-400
   `),
-  head: 'mb-[20px]',
-  item: ctl(`
-    p-[20px] 
-    fs16RobotoMedium 
-    roudned-[4px]
-    hover:bg-han-blue/[.10]
-    hover:cursor-pointer
-  `),
+  head: 'mb-[20px]'
 };

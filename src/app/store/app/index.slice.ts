@@ -21,4 +21,4 @@ const appSlice = createSlice({
 });
 
 export const appReducer = appSlice.reducer;
-export const { setGlobalLoader } = appSlice.actions;
+export const appActions = appSlice.actions;

@@ -1,11 +1,14 @@
-import { setGlobalLoader } from '@app/store';
-
 import { useState } from 'react';
-import { useActions } from '../useActions';
+import { bindActionCreators } from '@reduxjs/toolkit';
+
+import { appActions } from '@app/store';
+
+import { useAppDispatch } from '@shared/model';
 
 export const useLoading = () => {
+  const dispatch = useAppDispatch();
   const [isLoading, setLoading] = useState(false);
-  const [setGlobalLoaderBounded] = useActions([setGlobalLoader]);
+  const { setGlobalLoader } = bindActionCreators(appActions, dispatch);
 
-  return { isLoading, setLoading, setGlobalLoading: setGlobalLoaderBounded };
+  return { isLoading, setLoading, setGlobalLoader };
 };

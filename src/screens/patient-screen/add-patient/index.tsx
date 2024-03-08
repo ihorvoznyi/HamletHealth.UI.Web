@@ -1,37 +1,25 @@
-import { useState } from 'react';
+import { redirect } from 'react-router-dom';
 
 import StageBar from './stage-bar';
 import DisplayStage from './DisplayStage';
-import SuccessNotify from './success-notify';
 
-import { useActions } from '@hooks/useActions';
+import { useGetDiagnosisQuery } from '@entities/treatment-plan';
 
-import { resetStages } from './stage-bar/lib';
-
-import { StageType } from './index.interfaces';
+import { APP_ROUTES } from '@configs/routes.config';
 
 import { classes } from './index.tailwind';
 
 const AddPatient = () => {
-  const [boundResetStages] = useActions([resetStages]);
-  const [stage, setStage] = useState<StageType>('add-patient');
-  const [showSuccessNotify, setShowSuccessNotify] = useState(false);
+  const { isError } = useGetDiagnosisQuery();
 
-  const handleAdd = () => {
-    // TODO: implement adding logic
-
-    setShowSuccessNotify(true);
-    boundResetStages();
-  };
+  if (isError) {
+    redirect(APP_ROUTES.DASHBOARD);
+  }
 
   return (
     <div className={classes.container}>
-      {showSuccessNotify ? <SuccessNotify /> : (
-        <>
-          <StageBar />
-          <DisplayStage onSave={handleAdd} stage={stage} onStage={setStage} />
-        </>
-      )}
+      <StageBar />
+      <DisplayStage />
     </div>
   );
 };

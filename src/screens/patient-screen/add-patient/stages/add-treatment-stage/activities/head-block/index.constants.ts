@@ -1,19 +1,19 @@
 interface IFilterItem {
-  id: string,
+  type: 'all' | 'activity' | 'medicine',
   text: string,
 }
 
 export const FILTER_ITEMS: IFilterItem[] = [
   {
-    id: 'id-all',
+    type: 'all',
     text: 'All'
   },
   {
-    id: 'id-medicine',
+    type: 'medicine',
     text: 'Medicine'
   },
   {
-    id: 'id-activity',
+    type: 'activity',
     text: 'Activity'
   },
 ];

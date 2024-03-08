@@ -1,10 +1,18 @@
-import Search from '@components/ui/search';
+import React from 'react';
 
-import { DIAGNOSIS } from '../lib/diagnosis.constants';
+import Search from '@components/ui/search';
+import DiagnosisItem from './diagnosis-item';
+
+import { useAppSelector } from '@shared/model';
+
+import { IDiagnosisStateType, selectActiveDiagnosisId } from '@entities/treatment-plan';
+
 import { classes } from './index.tailwind';
 import { classes as commonClasses } from '../index.tailwind';
 
-const Diagnosis = () => {
+const Diagnosis: React.FC<{ diagnosis: Pick<IDiagnosisStateType, 'id'| 'name'>[] }> = ({ diagnosis }) => {
+  const activeDiagnosisId = useAppSelector(selectActiveDiagnosisId);
+
   return (
     <div className={classes.container}>
       <div className={classes.head}>
@@ -15,11 +23,14 @@ const Diagnosis = () => {
       <div>
         <Search />
         <ul className={commonClasses.list}>
-          {DIAGNOSIS.map(diagnos => (
-              <li 
-                key={diagnos.name}
-                className={classes.item}>{diagnos.name}</li>
-            ))}
+          {diagnosis.map(item => (
+            <DiagnosisItem 
+              key={item.name} 
+              id={item.id} 
+              name={item.name} 
+              isActive={item.id === activeDiagnosisId}
+            />
+          ))}
         </ul>
       </div>
     </div>

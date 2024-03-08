@@ -18,17 +18,17 @@ export const useLogin = () => {
     handleSubmit,
     formState: { errors }
   } = useForm<LoginFormDataType>(options);
-  const { setGlobalLoading } = useLoading();
+  const { setGlobalLoader } = useLoading();
   const [loginAsync] = useLoginMutation();
   
   const submit = (data: LoginFormDataType) => {
     const password = control._fields['password']?._f.value;
 
-    setGlobalLoading(true);
+    setGlobalLoader(true);
     loginAsync({ ...data, password })
       .unwrap()
       .then(() => navigate(APP_ROUTES.DASHBOARD))
-      .finally(() => setGlobalLoading(false));
+      .finally(() => setGlobalLoader(false));
   };
   
   return { 
