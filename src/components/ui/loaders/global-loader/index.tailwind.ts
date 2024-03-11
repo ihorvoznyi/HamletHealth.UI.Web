@@ -4,7 +4,8 @@ export const classes = {
   container: ctl(`
     absolute 
     inset-0
-    z-[100]
+    overflow-hidden
+    z-[99999999]
     bg-black/[.30] 
   `),
   loader: {

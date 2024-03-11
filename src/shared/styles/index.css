@@ -53,6 +53,8 @@ textarea {
 }
 
 body {
+  width: 100%;
+  height: 100vh;
   font-family: 'Poppins Regular', sans-serif;
 }
 
@@ -66,18 +68,8 @@ body {
 }
 
 body {
-  height: calc(100vh - 80px);
+  height: calc(100vh - 160px);
 }
-
-#root {
-  height: 100%;
-}
-
-/* Setup fonts */
-
-/* Scrollbar */
-
-/* Colors */
 
 @layer base {
   :root {

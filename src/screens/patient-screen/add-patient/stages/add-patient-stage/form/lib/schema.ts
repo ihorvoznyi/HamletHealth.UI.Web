@@ -33,7 +33,7 @@ export const addPatientFormSchema = yup.object().shape({
     .optional()
 }).required();
 
-const defaultValues = {
+const defaultValues: AddPatientFormType = {
   firstName: '',
   lastName: '',
   emailOrPhoneNumber: '',

@@ -8,6 +8,18 @@ interface Stage<T = object> {
   status: StageStatusType;
 }
 
+export interface TreatmentPlanState {
+  currentStage: StageType,
+  stages: {
+    addPatient: Stage<IPatientStageData>,
+    treatmentPlan: Stage<ITreatmentPlanStateData>
+  },
+  preparedData: {
+    activeDiagnosis: IDiagnosisStateType | null;
+    diagnosis: IDiagnosisStateType[];
+  },
+}
+
 export interface IPatientStageData {
   firstName: string;
   lastName: string;
@@ -17,22 +29,33 @@ export interface IPatientStageData {
 }
 
 export type ActivitiesFilterType = 'all' | 'activity' | 'medicine';
-export type ActivityStateType = Pick<IActivity, 'id' | 'name' | 'category' | 'icon'>;
+export type TreatmentStateType = Pick<IActivity, 'id' | 'name' | 'category' | 'icon'>;
 
 export interface IDiagnosisStateType {
   id: string;
+  code: string;
   name: string;
-  recommendedActivities: ActivityStateType[],
+  recommendedActivities: TreatmentStateType[],
 }
 
-export interface TreatmentPlanState {
-  currentStage: StageType,
-  stages: {
-    addPatient: Stage<IPatientStageData>,
-    treatmentPlan: Stage<object>
-  },
-  preparedData: {
-    activeDiagnosis: IDiagnosisStateType | null;
-    diagnosis: IDiagnosisStateType[];
-  },
+type SelectedTreatmentType = {
+  diagnosisId: string;
+  treatment: TreatmentStateType;
+};
+
+export interface ITreatmentPlanStateData {
+  name: string;
+  description: string;
+  selectedTreatments: SelectedTreatmentType[];
 }
+
+export type TreatmentPlanItemType = {
+  diagnosis: IDiagnosisStateType; 
+  treatment: TreatmentStateType; 
+}
+
+export type TreatmentPlanDataType = {
+  name: string;
+  description: string;
+  treatmentPlanItems: TreatmentPlanItemType[];
+};

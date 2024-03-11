@@ -1,5 +1,5 @@
 import { RootState } from '@shared/model';
-import { ActivitiesFilterType } from './types';
+import { ActivitiesFilterType, TreatmentPlanDataType } from './types';
 
 export const selectCurrentStage = (state: RootState) => {
   const currentStageType = state.treatmentPlanReducer.currentStage;
@@ -38,11 +38,17 @@ export const selectDiagnosisRecommendations = (
   return diagnosis?.recommendedActivities;
 };
 
-export const selectTreatmentPlanStage = ({ treatmentPlanReducer }: RootState) => ({
-  stageStatus: treatmentPlanReducer.stages.treatmentPlan.status,
-  diagnosis: treatmentPlanReducer.preparedData.diagnosis,
-  selectedDiagnosis: treatmentPlanReducer.preparedData.activeDiagnosis,
-});
+export const selectTreatmentPlanStage = ({ treatmentPlanReducer }: RootState) => {
+  const { status, data } = treatmentPlanReducer.stages.treatmentPlan;
+  const { diagnosis, activeDiagnosis } = treatmentPlanReducer.preparedData;
+
+  return {
+    stageStatus: status,
+    diagnosis: diagnosis,
+    selectedDiagnosis: activeDiagnosis,
+    selectedActivities: data.selectedTreatments
+  };
+};
 
 export const selectActivitiesByType = (filterBy: ActivitiesFilterType, { treatmentPlanReducer }: RootState) => {
   const recommendedActivities = treatmentPlanReducer.preparedData.activeDiagnosis?.recommendedActivities ?? [];
@@ -52,6 +58,27 @@ export const selectActivitiesByType = (filterBy: ActivitiesFilterType, { treatme
 
   const category = filterBy === 'activity' ? 0 : 1;
   return recommendedActivities.filter(item => item.category === category); 
+};
+
+export const selectSelectedActivities = ({ treatmentPlanReducer }: RootState) => {
+  return treatmentPlanReducer.stages.treatmentPlan.data.selectedTreatments;
+};
+
+export const selectTreatmentPlanData = ({ treatmentPlanReducer }: RootState): TreatmentPlanDataType => {
+  const { data: treatmentPlanStageData } = treatmentPlanReducer.stages.treatmentPlan;
+  const { diagnosis: diagnosisList } = treatmentPlanReducer.preparedData;
+
+  return {
+    name: treatmentPlanStageData.name,
+    description: treatmentPlanStageData.description,
+    treatmentPlanItems: treatmentPlanStageData.selectedTreatments.map(item => {
+      const activityDiagnosis = diagnosisList.find(d => d.id === item.diagnosisId);
+      return {
+        diagnosis: activityDiagnosis!,
+        treatment: item.treatment,
+      };
+    }),
+  };
 };
 
 export const selectActiveDiagnosisId = ({ 

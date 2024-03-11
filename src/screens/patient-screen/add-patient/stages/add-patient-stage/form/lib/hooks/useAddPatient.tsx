@@ -8,11 +8,16 @@ import { useAppDispatch } from '@shared/model';
 
 import { AddPatientFormType } from '../types';
 
-import { FindPatientDto, treatmentPlanActions, useFindPatientMutation } from '@entities/treatment-plan';
+import { 
+  FindPatientDto, 
+  treatmentPlanActions, 
+  useFindPatientMutation 
+} from '@entities/treatment-plan';
 
 export const useAddPatient = () => {
   const { setGlobalLoader } = useLoading();
   const [findPatientAsync] = useFindPatientMutation();
+
   const { 
     register,
     control,

@@ -13,4 +13,12 @@ export class RegistrationMapper {
       userName: '',
     };
   }
+
+  public static mapToCreateUserWithDoctorRoleDto(formData: RegistrationFormType): CreateUserDto {
+    const createUserDto = this.mapToCreateUserDto(formData);
+    return {
+      ...createUserDto,
+      role: 1,
+    };
+  }
 }

@@ -1,8 +1,9 @@
 import TreatmentItem from './treatment-item';
 
 import { classes } from './index.tailwind';
-import { treatmentList } from './index.constants';
-import { classes as commonClasses } from '../index.tailwind';
+import { classes as commonClasses } from '../../index.tailwind';
+import { useAppSelector } from '@shared/model';
+import { selectSelectedActivities } from '@entities/treatment-plan';
 
 const Treatment = () => {
   return (
@@ -18,9 +19,18 @@ const Treatment = () => {
 };
 
 const TreatmentList = () => {
-  return treatmentList.length ? (
+  const selectedActivities = useAppSelector(selectSelectedActivities);
+  return selectedActivities.length ? (
     <ul className={classes.list}>
-      {treatmentList.map(item => <TreatmentItem key={item.text} type={item.type} text={item.text} />)}
+      {selectedActivities.map(({ treatment }) => (
+        <TreatmentItem 
+          key={treatment.id}
+          id={treatment.id}
+          category={treatment.category} 
+          text={treatment.name} 
+          icon={treatment.icon} 
+        />
+      ))}
     </ul>
   ) : (
     <div className={classes.emptyMessage.container}>

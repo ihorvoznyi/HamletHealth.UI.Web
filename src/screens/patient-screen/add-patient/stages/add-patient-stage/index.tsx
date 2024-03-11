@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { bindActionCreators } from '@reduxjs/toolkit';
 
-import FillPatientForm from './add-patient-form';
+import FillPatientForm from './form';
 
 import { useAppDispatch, useAppSelector } from '@shared/model';
 

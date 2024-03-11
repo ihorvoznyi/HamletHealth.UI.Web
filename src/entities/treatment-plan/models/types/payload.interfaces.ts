@@ -1,6 +1,12 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 
-import { IDiagnosisStateType, IPatientStageData, StageStatusType, StageType } from './model.interfaces';
+import { 
+  IDiagnosisStateType, 
+  IPatientStageData, 
+  ITreatmentPlanStateData, 
+  StageStatusType, 
+  StageType
+} from './model.interfaces';
 
 export type StageDataPayload<TData> = PayloadAction<{
   stage: StageType;
@@ -13,3 +19,6 @@ export type UpdateAddPatientStagePayload = PayloadAction<IPatientStageData>;
 
 export type SetDiagnosisPayload = PayloadAction<IDiagnosisStateType[]>;
 export type DiagnosisIdPayload = PayloadAction<string>;
+export type ActivityOrMedicationIdPayload = PayloadAction<string>;
+
+export type TreatmentPlanMeta = PayloadAction<Pick<ITreatmentPlanStateData, 'name' | 'description'>>;

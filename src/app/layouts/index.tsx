@@ -8,7 +8,7 @@ interface PropsType {
 }
 
 const Layout: FC<PropsType> = ({ isAuth }) => {
-  const classes = isAuth ? 'mt-[80px] h-full' : '';
+  const classes = isAuth ? 'h-[]' : '';
 
   return (
     <>

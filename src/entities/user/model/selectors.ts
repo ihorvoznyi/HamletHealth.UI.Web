@@ -1,3 +1,4 @@
 import { RootState } from '@shared/model/interfaces';
 
-export const selectIsAuth = (state: RootState) => state.userReducer.isAuth;
+export const selectIsAuth = ({ userReducer }: RootState) => userReducer.isAuth;
+export const selectUserId = ({ userReducer }: RootState) => userReducer.user.id;

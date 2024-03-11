@@ -9,13 +9,23 @@ import { useClickOutside } from '@hooks/useClickOutside';
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
 import { getTreatmentIcon } from './index.helper';
+import { bindActionCreators } from '@reduxjs/toolkit';
+import { treatmentPlanActions } from '@entities/treatment-plan';
+import { useAppDispatch } from '@shared/model';
 
 interface PropsType {
+  id: string;
   text: string;
-  type: 'sleep' | 'movie' | 'medicine';
+  icon: string;
+  category: number;
 }
 
-const TreatmentItem: FC<PropsType> = ({ text, type }) => {
+const TreatmentItem: FC<PropsType> = ({ id, text, category }) => {
+  const dispatch = useAppDispatch();
+  const { 
+    deleteSelectedActivityOrMedication: deleteTreatmentItem 
+  } = bindActionCreators(treatmentPlanActions, dispatch);
+
   const ref = useClickOutside<HTMLLIElement>(() => setIsMenuOpen(false));
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -28,7 +38,7 @@ const TreatmentItem: FC<PropsType> = ({ text, type }) => {
     <>
       <li ref={ref} className={classes.item}>
         <div className={classes.content}>
-          {getTreatmentIcon(type)}
+          {getTreatmentIcon('medicine')}
           <p className={classes.text}>{text}</p>
         </div>
 
@@ -38,7 +48,13 @@ const TreatmentItem: FC<PropsType> = ({ text, type }) => {
             onClick={() => setIsMenuOpen(prev => !prev)} 
           />
 
-          {isMenuOpen && <Menu onDelete={() => {}} onDefine={handleDefine} onEdit={() => {}} />}
+          {isMenuOpen ? (
+            <Menu 
+              onEdit={() => {}} 
+              onDefine={handleDefine} 
+              onDelete={() => deleteTreatmentItem(id)}
+            />
+          ) : null}
         </div>
       </li>
 

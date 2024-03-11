@@ -37,8 +37,26 @@ export interface IDiagnosisItemDto {
 }
 
 export interface MedicationItem {
-  id: string;
+  userId: string;
   name: string;
   code: string;
-  dosage: string[];
+  dosage: string;
+  comment: string;
+}
+
+export interface TreatmentPlanItem {
+  diagnosisId: string;
+  startDate: Date;
+  endDate?: Date;
+  medications: MedicationItem[],
+  activityIds: string[],
+}
+
+export interface CreateTreatmentPlanDto {
+  userId: string;
+  name: string;
+  descritpion: string;
+  startDate: Date;
+  endDate?: Date;
+  treatmentPlanItems: TreatmentPlanItem[],
 }

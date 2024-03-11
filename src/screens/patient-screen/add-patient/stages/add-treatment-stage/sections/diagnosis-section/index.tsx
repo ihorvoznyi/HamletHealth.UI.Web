@@ -8,10 +8,11 @@ import { useAppSelector } from '@shared/model';
 import { IDiagnosisStateType, selectActiveDiagnosisId } from '@entities/treatment-plan';
 
 import { classes } from './index.tailwind';
-import { classes as commonClasses } from '../index.tailwind';
+import { classes as commonClasses } from '../../index.tailwind';
 
-const Diagnosis: React.FC<{ diagnosis: Pick<IDiagnosisStateType, 'id'| 'name'>[] }> = ({ diagnosis }) => {
+const Diagnosis: React.FC<{ diagnosis?: Pick<IDiagnosisStateType, 'id'| 'name'>[] }> = () => {
   const activeDiagnosisId = useAppSelector(selectActiveDiagnosisId);
+  const { diagnosis } = useAppSelector(state => state.treatmentPlanReducer.preparedData);
 
   return (
     <div className={classes.container}>

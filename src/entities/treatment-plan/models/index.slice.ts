@@ -5,7 +5,9 @@ import {
   StageStatusPayload, 
   StageTypePayload, 
   SetDiagnosisPayload,
-  DiagnosisIdPayload
+  DiagnosisIdPayload,
+  ActivityOrMedicationIdPayload,
+  TreatmentPlanMeta
 } from './types';
 
 const initialState: TreatmentPlanState = {
@@ -23,7 +25,11 @@ const initialState: TreatmentPlanState = {
     },
     treatmentPlan: {
       status: 'checked',
-      data: {}
+      data: {
+        name: '',
+        description: '',
+        selectedTreatments: [],
+      }
     },
   },
   preparedData: {
@@ -61,6 +67,41 @@ export const treatmentPlanSlice = createSlice({
       if (diagnosis) {
         state.preparedData.activeDiagnosis = diagnosis;
       }
+    },
+    setTreatmentPlanMetadata: (state: TreatmentPlanState, { payload }: TreatmentPlanMeta) => {
+      const { treatmentPlan } = state.stages;
+      
+      treatmentPlan.data.name = payload.name;
+      treatmentPlan.data.description = payload.description;
+    },
+    addSelectedActivityOrMedication: (state: TreatmentPlanState, { payload }: ActivityOrMedicationIdPayload) => {
+      const activeDiagnosis = state.preparedData.activeDiagnosis;
+      if (!activeDiagnosis) {
+        return;
+      }
+
+      const { selectedTreatments } = state.stages.treatmentPlan.data;
+      const activity = activeDiagnosis.recommendedActivities.find(item => item.id === payload);
+
+      if (activity) {
+        const isAdded = selectedTreatments.find(item => item.treatment.id === activity.id);
+
+        if (isAdded) {
+          return;
+        }
+
+        const selectedTreatment = {
+          diagnosisId: activeDiagnosis.id,
+          treatment: activity,
+        };
+
+        selectedTreatments.push(selectedTreatment);
+      }
+    },
+    deleteSelectedActivityOrMedication: (state: TreatmentPlanState, { payload }: ActivityOrMedicationIdPayload) => {
+      const { selectedTreatments: selectedActivities } = state.stages.treatmentPlan.data;
+      state.stages.treatmentPlan.data.selectedTreatments = 
+        selectedActivities.filter(item => item.treatment.id !== payload);
     }
   },
 });

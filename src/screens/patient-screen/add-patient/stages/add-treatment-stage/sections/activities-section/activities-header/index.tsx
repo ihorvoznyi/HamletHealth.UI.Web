@@ -1,7 +1,7 @@
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
 import { FILTER_ITEMS } from './index.constants';
-import { classes as commonClasses } from '../../index.tailwind';
+import { classes as commonClasses } from '../../../index.tailwind';
 import { useActivitiesContext } from '../lib/hooks';
 
 const ActivitiesHeader = () => {

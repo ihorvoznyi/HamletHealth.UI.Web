@@ -1,2 +1,2 @@
-export * from '../add-patient-form/lib/schema';
-export * from '../add-patient-form/lib/types';
+export * from '../form/lib/schema';
+export * from '../form/lib/types';

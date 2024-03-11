@@ -8,7 +8,7 @@ import { treatmentPlanActions } from '../models';
 import { appActions } from '@app/store';
 
 import { ApiMethod, IServerResponse } from '@shared/lib/types';
-import { AddPatientDto, FindPatientDto, IDiagnosisItemDto } from './patient-api.interfaces';
+import { AddPatientDto, CreateTreatmentPlanDto, FindPatientDto, IDiagnosisItemDto } from './patient-api.interfaces';
 
 export const patientApi = createApi({
   reducerPath: 'patientApi',
@@ -21,12 +21,13 @@ export const patientApi = createApi({
         body,
       }),
     }),
-    addPatient: builder.mutation<IServerResponse<unknown>, AddPatientDto>({
+    addPatient: builder.mutation<string, AddPatientDto>({
       query: body => ({
         url: '/users/addPatient',
         method: ApiMethod.POST,
         body,
-      })
+      }),
+      transformResponse: (response: IServerResponse<{ invitedUserId: string }>) => response.Data.invitedUserId,
     }),
     getDiagnosis: builder.query<IDiagnosisItemDto[], void>({
       query: () => ({
@@ -48,8 +49,20 @@ export const patientApi = createApi({
           dispatch(appActions.setGlobalLoader(false));
         }
       },
-    })
+    }),
+    createTreatmentPlan: builder.mutation<IServerResponse<unknown>, CreateTreatmentPlanDto>({
+      query: body => ({
+        url: '/treatmentPlan',
+        method: 'POST',
+        body,
+      })
+    }),
   })
 });
 
-export const { useFindPatientMutation, useAddPatientMutation, useGetDiagnosisQuery } = patientApi;
+export const { 
+  useFindPatientMutation, 
+  useAddPatientMutation, 
+  useGetDiagnosisQuery, 
+  useCreateTreatmentPlanMutation 
+} = patientApi;

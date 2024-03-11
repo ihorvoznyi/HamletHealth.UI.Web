@@ -3,19 +3,18 @@ import { bindActionCreators } from '@reduxjs/toolkit';
 
 import { useAppDispatch } from '@shared/model';
 
-import { diagnosisMockResponse } from '@shared/mock/diagnosis-response.mock';
-
 import { IDiagnosisStateType } from '@entities/treatment-plan/models/types';
 import { IDiagnosisItemDto, treatmentPlanSlice, useGetDiagnosisQuery } from '@entities/treatment-plan';
 
 const mapToDiagnosis = (diagnosis: IDiagnosisItemDto[]): IDiagnosisStateType[] => {
-  return diagnosis.map(({ id, name, recommendedActivities }) => ({
-    id: id,
-    name: name,
+  return diagnosis.map(({ id, name, code, recommendedActivities }) => ({
+    id,
+    name,
+    code,
     recommendedActivities: recommendedActivities.map(activity => ({
       id: activity.id,
+      icon: activity.icon,
       name: activity.name,
-      icon: '',
       category: activity.category,
     })),
   }));

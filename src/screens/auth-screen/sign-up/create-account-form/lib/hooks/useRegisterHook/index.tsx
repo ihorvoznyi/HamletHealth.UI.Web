@@ -15,7 +15,7 @@ import { useLoading } from '@hooks/useLoading';
 
 export const useRegister = () => {
   const navigate = useNavigate();
-  const { setGlobalLoading } = useLoading();
+  const { setGlobalLoader } = useLoading();
 
   const { 
     register,
@@ -36,13 +36,14 @@ export const useRegister = () => {
     data.password = password;
     data.repeatedPassword = repeatedPassword;
 
-    const registerDto = RegistrationMapper.mapToCreateUserDto(data);
+    // const registerDto = RegistrationMapper.mapToCreateUserDto(data);
+    const registerDto = RegistrationMapper.mapToCreateUserWithDoctorRoleDto(data);
 
-    setGlobalLoading(true);
+    setGlobalLoader(true);
     registerAsync(registerDto)
       .unwrap()
       .then(() => navigate(APP_ROUTES.DASHBOARD))
-      .finally(() => setGlobalLoading(false));
+      .finally(() => setGlobalLoader(false));
   };
   
   return { 

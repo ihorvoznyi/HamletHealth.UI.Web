@@ -1,4 +1,4 @@
-import ActivitiesHeader from './head-block';
+import ActivitiesHeader from './activities-header';
 import { ActivitiesBody } from './activities-body';
 
 import { ActivitiesProvider } from './lib/context';

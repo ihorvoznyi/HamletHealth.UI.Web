@@ -15,6 +15,6 @@ export const GlobalLoader = () => {
       <div className={classes.container}>
         <Loader styles={classes.loader} />
       </div>
-    ) : null, 
+    ) : null,
     document.getElementById('global-loader')!);
 };
