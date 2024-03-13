@@ -5,7 +5,7 @@ import GuestOnly from './guards/GuestOnly';
 import RequireAuth from './guards/RequireAuth';
 import GreetingScreen from '@screens/greeting-screen';
 import { ForgotPassword, SignIn, SignUp, Verification } from '@screens/auth-screen';
-import { MyPatients, AddPatient, PatientsStartPage, Dashboard, Patient } from '@screens/patient-screen';
+import { MyPatients, CreateTreatmentPlan, PatientsStartPage, Dashboard, Patient } from '@screens/patient-screen';
 
 import { APP_ROUTES } from '@configs/routes.config';
 
@@ -15,7 +15,7 @@ export const AppRouter = createBrowserRouter(
       <Route element={<RequireAuth />}>
         <Route element={<Layout isAuth />}>
           <Route index element={<PatientsStartPage />} />
-          <Route path={APP_ROUTES.APP_PATIENT} element={<AddPatient />} />
+          <Route path={APP_ROUTES.APP_PATIENT} element={<CreateTreatmentPlan />} />
           <Route path={APP_ROUTES.DASHBOARD} element={<Dashboard />} />
           <Route path={APP_ROUTES.MY_PATIENTS} element={<MyPatients />} />
           <Route path={APP_ROUTES.PATIENT} element={<Patient />} />
