@@ -1,18 +1,10 @@
-export interface FindPatientDto {
-  lastName: string;
+export interface Patient {
+  id: string;
   firstName: string;
-  phoneOrEmail: string;
-}
-
-export interface AddPatientDto {
-  phone?: string;
-  email?: string;
   lastName: string;
-  firstName: string;
-  password: string;
   birthDate?: string;
-  gender?: number | null;
-  role: 0 | 1;
+  email?: string;
+  phone?: string;
 }
 
 export interface IActivity {
@@ -37,7 +29,7 @@ export interface IDiagnosisItemDto {
 }
 
 export interface MedicationItem {
-  userId: string;
+  userId?: string;
   name: string;
   code: string;
   dosage: string;
@@ -53,7 +45,7 @@ export interface TreatmentPlanItem {
 }
 
 export interface CreateTreatmentPlanDto {
-  userId: string;
+  userId?: string;
   name: string;
   descritpion: string;
   startDate: Date;

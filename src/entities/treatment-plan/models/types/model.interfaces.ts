@@ -46,6 +46,7 @@ type SelectedTreatmentType = {
 export interface ITreatmentPlanStateData {
   name: string;
   description: string;
+  invitedPatientId: string,
   selectedTreatments: SelectedTreatmentType[];
 }
 
@@ -57,5 +58,6 @@ export type TreatmentPlanItemType = {
 export type TreatmentPlanDataType = {
   name: string;
   description: string;
+  invitedPatientId: string;
   treatmentPlanItems: TreatmentPlanItemType[];
 };

@@ -11,3 +11,9 @@ export enum ApiMethod {
   DELETE  = 'DELETE',
   OPTIONS = 'OPTIONS'
 }
+
+export interface AppError {
+  error: {
+    data: IServerResponse<null>
+  }
+}

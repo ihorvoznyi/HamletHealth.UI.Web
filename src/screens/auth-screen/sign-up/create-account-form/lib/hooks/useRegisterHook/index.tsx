@@ -6,7 +6,7 @@ import { options } from '@screens/auth-screen/sign-up/create-account-form/index.
 
 import { APP_ROUTES } from '@configs/routes.config';
 
-import { useRegisterMutation } from '@entities/user';
+import { useCreateDoctorMutation } from '@entities/user';
 
 import { RegistrationMapper } from '@screens/auth-screen/sign-up/create-account-form/lib/helpers';
 
@@ -21,9 +21,9 @@ export const useRegister = () => {
     register,
     handleSubmit,
     control,
-    formState: { errors } 
+    formState: { errors }
   } = useForm<RegistrationFormType>(options);
-  const [registerAsync] = useRegisterMutation();
+  const [createDoctorAsync] = useCreateDoctorMutation();
   
   const submit = (data: RegistrationFormType) => {
     const password = control._fields['password']?._f.value;
@@ -36,11 +36,10 @@ export const useRegister = () => {
     data.password = password;
     data.repeatedPassword = repeatedPassword;
 
-    // const registerDto = RegistrationMapper.mapToCreateUserDto(data);
-    const registerDto = RegistrationMapper.mapToCreateUserWithDoctorRoleDto(data);
+    const createDoctorDto = RegistrationMapper.mapToCreateUserWithDoctorRoleDto(data);
 
     setGlobalLoader(true);
-    registerAsync(registerDto)
+    createDoctorAsync(createDoctorDto)
       .unwrap()
       .then(() => navigate(APP_ROUTES.DASHBOARD))
       .finally(() => setGlobalLoader(false));

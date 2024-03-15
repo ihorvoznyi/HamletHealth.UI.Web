@@ -2,73 +2,62 @@ import { useForm } from 'react-hook-form';
 
 import { Input } from '@components/ui';
 
-import { useAppDispatch, useAppSelector } from '@shared/model';
-import { useTreatmentPlanStageContext } from '../../lib/context';
+import { useAppSelector } from '@shared/model';
 
 import { DefinePlanFormType, formSchemaOptions } from './schema';
 
-import { 
-  selectAddPatientStageData, 
-  selectTreatmentPlanData, 
-  useAddPatientMutation, 
-  useCreateTreatmentPlanMutation 
-} from '@entities/treatment-plan';
-
-import { PatientMapper, TreatmentPlanMapper } from '../lib/helpers';
-
-import { appActions } from '@app/store';
+import { selectTreatmentPlanData, useCreateTreatmentPlanMutation } from '@entities/treatment-plan';
 
 import { classes } from './index.tailwind';
-import { selectUserId } from '@entities/user';
+import { TreatmentPlanMapper } from '../lib/helpers';
+import { useLoading } from '@hooks/useLoading';
+import { Logger } from '@shared/lib/helpers';
+import { useTreatmentPlanStageContext } from '../../lib/context';
 
 const DefineTreatmentPlanForm = () => {
-  const dispatch = useAppDispatch();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors } 
-  } = useForm<DefinePlanFormType>(formSchemaOptions);
-  const treatmentPlan = useAppSelector(selectTreatmentPlanData);
-  const userId = useAppSelector(selectUserId);
-  const patient = useAppSelector(selectAddPatientStageData);
-  const { setIsPlanDefined, setIsOpen } = useTreatmentPlanStageContext();
+	const { setGlobalLoader } = useLoading();
+  const { setIsOpen, setIsPlanDefined } = useTreatmentPlanStageContext();
+	const [createTreatmentPlanAsync] = useCreateTreatmentPlanMutation();
 
-  const [addPatientAsync] = useAddPatientMutation();
-  const [createPlanAsync] = useCreateTreatmentPlanMutation();
-  
-  const createPlan = async (data: DefinePlanFormType) => {
-    treatmentPlan.name = data.name;
-    treatmentPlan.description = data.description;
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<DefinePlanFormType>(formSchemaOptions);
+	const treatmentPlan = useAppSelector(selectTreatmentPlanData);
+  const userId = useAppSelector(state => state.userReducer.user.id);
 
-    dispatch(appActions.setGlobalLoader(true));
-    try {
-      const addPatientDto = PatientMapper.mapToAddPatientDto(patient);
-      const { data: invitedUserId } = await addPatientAsync(addPatientDto) as unknown as { data: string };
+	const createPlan = async (data: DefinePlanFormType) => {
+		treatmentPlan.name = data.name;
+		treatmentPlan.description = data.description;
 
-      if (invitedUserId) {
-        const createTreatmentPlanDto = 
-          TreatmentPlanMapper.mapToCreateTreatmentPlanDto('00000000-0000-0000-0000-000000000000', treatmentPlan);
-          // TreatmentPlanMapper.mapToCreateTreatmentPlanDto('06fd7b7e-b095-4c51-6b7a-08dc4148b980', treatmentPlan);
-        const response = await createPlanAsync(createTreatmentPlanDto);
-        console.log(response);
-      }
-    } catch {
-      //
-    } finally {
-      dispatch(appActions.setGlobalLoader(false));
-    }
-    //
-  };
+		setGlobalLoader(true);
 
-  return (
-    <form className={classes.form} onSubmit={handleSubmit(createPlan)}>
-      <Input register={register('name')} label={'Plan Name'} error={errors.name?.message} />
-      <Input register={register('description')} label={'Description'} error={errors.description?.message} />
-      <button type="submit" className={classes.btn}>
-        Create Plan
-      </button>
-    </form>
-  );
+		const createTreatmentPlanDto = TreatmentPlanMapper.mapToCreateTreatmentPlanDto(treatmentPlan);
+
+		createTreatmentPlanAsync(createTreatmentPlanDto)
+			.then(() => {
+        Logger.info('Success');
+        setIsPlanDefined(true);
+        setIsOpen(false);
+      })
+      .catch(console.log)
+			.finally(() => setGlobalLoader(false));
+	};
+
+	return (
+		<form className={classes.form} onSubmit={handleSubmit(createPlan)}>
+			<Input register={register('name')} label={'Plan Name'} error={errors.name?.message} />
+			<Input
+				register={register('description')}
+				label={'Description'}
+				error={errors.description?.message}
+			/>
+			<button type="submit" className={classes.btn}>
+				Create Plan
+			</button>
+		</form>
+	);
 };
 
 export default DefineTreatmentPlanForm;

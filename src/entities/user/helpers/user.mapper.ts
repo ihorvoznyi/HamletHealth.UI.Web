@@ -4,14 +4,14 @@ import { IUser } from '../model';
 
 export class UserResponseMapper {
   static mapLoginResponse(response: IServerResponse<UserDto>): IUser {
-    const { id, userName, firstName, lastName, roles } = response.Data;
+    const { id, userName, firstName, lastName } = response.Data;
   
     return {
       id,
       userName,
       firstName,
       lastName,
-      role: 0,
+      role: 1,
     };
   }
 }

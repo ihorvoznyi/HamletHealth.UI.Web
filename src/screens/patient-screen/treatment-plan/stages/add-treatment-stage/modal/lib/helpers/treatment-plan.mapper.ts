@@ -6,12 +6,12 @@ import {
 } from '@entities/treatment-plan';
 
 export class TreatmentPlanMapper {
-  public static mapToCreateTreatmentPlanDto(userId: string, model: TreatmentPlanDataType): CreateTreatmentPlanDto {
-    const groupedDiagnosis = this.groupTreatmentPlanItemsByDiagnosis(userId, model);
+  public static mapToCreateTreatmentPlanDto(model: TreatmentPlanDataType): CreateTreatmentPlanDto {
+    const groupedDiagnosis = this.groupTreatmentPlanItemsByDiagnosis(model);
     const startDate = new Date();
   
     return {
-      userId,
+      userId: model.invitedPatientId,
       name: model.name,
       descritpion: model.description,
       startDate,
@@ -24,7 +24,7 @@ export class TreatmentPlanMapper {
     };
   }
 
-  private static groupTreatmentPlanItemsByDiagnosis(userId: string, treatmentPlanData: TreatmentPlanDataType) {
+  private static groupTreatmentPlanItemsByDiagnosis(treatmentPlanData: TreatmentPlanDataType) {
     const groupedByDiagnosis: Record<string, { 
       diagnosis: IDiagnosisStateType; 
       activityIds: string[]; 
@@ -47,7 +47,7 @@ export class TreatmentPlanMapper {
       if (item.treatment.category === 1) {
         const { code } = diagnosis.diagnosis;
         diagnosis.medications.push({
-          userId,
+          userId: treatmentPlanData.invitedPatientId,
           code,
           name: item.treatment.name,
           dosage: '',

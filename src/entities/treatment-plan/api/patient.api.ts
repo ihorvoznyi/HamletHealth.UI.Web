@@ -7,31 +7,17 @@ import { DiagnosisMapper } from '../helpers';
 import { treatmentPlanActions } from '../models';
 import { appActions } from '@app/store';
 
-import { ApiMethod, IServerResponse } from '@shared/lib/types';
-import { AddPatientDto, CreateTreatmentPlanDto, FindPatientDto, IDiagnosisItemDto } from './patient-api.interfaces';
+import { IServerResponse } from '@shared/lib/types';
+import { CreateTreatmentPlanDto, IDiagnosisItemDto } from './patient-api.interfaces';
+import { TREATMENT_PLAN_API_ENDPOINTS } from './patient-api.constants';
 
 export const patientApi = createApi({
   reducerPath: 'patientApi',
   baseQuery: baseQueryWithAuth,
   endpoints: builder => ({
-    findPatient: builder.mutation<IServerResponse<unknown>, FindPatientDto>({
-      query: body => ({
-        url: '/users/search',
-        method: ApiMethod.POST,
-        body,
-      }),
-    }),
-    addPatient: builder.mutation<string, AddPatientDto>({
-      query: body => ({
-        url: '/users/addPatient',
-        method: ApiMethod.POST,
-        body,
-      }),
-      transformResponse: (response: IServerResponse<{ invitedUserId: string }>) => response.Data.invitedUserId,
-    }),
     getDiagnosis: builder.query<IDiagnosisItemDto[], void>({
       query: () => ({
-        url: '/diagnosis',
+        url: TREATMENT_PLAN_API_ENDPOINTS.diagnosis,
       }),
       onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
         try {
@@ -52,17 +38,15 @@ export const patientApi = createApi({
     }),
     createTreatmentPlan: builder.mutation<IServerResponse<unknown>, CreateTreatmentPlanDto>({
       query: body => ({
-        url: '/treatmentPlan',
+        url: TREATMENT_PLAN_API_ENDPOINTS.treatmentPlan,
         method: 'POST',
         body,
-      })
+      }),
     }),
   })
 });
 
 export const { 
-  useFindPatientMutation, 
-  useAddPatientMutation, 
   useGetDiagnosisQuery, 
-  useCreateTreatmentPlanMutation 
+  useCreateTreatmentPlanMutation,
 } = patientApi;

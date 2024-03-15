@@ -71,6 +71,7 @@ export const selectTreatmentPlanData = ({ treatmentPlanReducer }: RootState): Tr
   return {
     name: treatmentPlanStageData.name,
     description: treatmentPlanStageData.description,
+    invitedPatientId: treatmentPlanStageData.invitedPatientId,
     treatmentPlanItems: treatmentPlanStageData.selectedTreatments.map(item => {
       const activityDiagnosis = diagnosisList.find(d => d.id === item.diagnosisId);
       return {
