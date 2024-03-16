@@ -12,8 +12,19 @@ export enum ApiMethod {
   OPTIONS = 'OPTIONS'
 }
 
-export interface AppError {
-  error: {
-    data: IServerResponse<null>
+export class AppError extends Error {
+  private readonly _status: number;
+
+  constructor(message: string, status: number) {
+    super(message);
+
+    this._status = status;
+  }
+
+  get error() {
+    return {
+      status: this._status,
+      message: this.message,
+    };
   }
 }

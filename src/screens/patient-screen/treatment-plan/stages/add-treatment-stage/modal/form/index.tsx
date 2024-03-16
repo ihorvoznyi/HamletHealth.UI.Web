@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 import { Input } from '@components/ui';
 
@@ -13,10 +14,11 @@ import { TreatmentPlanMapper } from '../lib/helpers';
 import { useLoading } from '@hooks/useLoading';
 import { Logger } from '@shared/lib/helpers';
 import { useTreatmentPlanStageContext } from '../../lib/context';
+import { APP_ROUTES } from '@configs/routes.config';
 
 const DefineTreatmentPlanForm = () => {
 	const { setGlobalLoader } = useLoading();
-  const { setIsOpen, setIsPlanDefined } = useTreatmentPlanStageContext();
+  const { setIsOpen } = useTreatmentPlanStageContext();
 	const [createTreatmentPlanAsync] = useCreateTreatmentPlanMutation();
 
 	const {
@@ -24,8 +26,8 @@ const DefineTreatmentPlanForm = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<DefinePlanFormType>(formSchemaOptions);
+	const navigate = useNavigate();
 	const treatmentPlan = useAppSelector(selectTreatmentPlanData);
-  const userId = useAppSelector(state => state.userReducer.user.id);
 
 	const createPlan = async (data: DefinePlanFormType) => {
 		treatmentPlan.name = data.name;
@@ -37,8 +39,8 @@ const DefineTreatmentPlanForm = () => {
 
 		createTreatmentPlanAsync(createTreatmentPlanDto)
 			.then(() => {
-        Logger.info('Success');
-        setIsPlanDefined(true);
+        Logger.info('Treatment plan was successfully created.');
+				navigate(APP_ROUTES.MY_PATIENTS);
         setIsOpen(false);
       })
       .catch(console.log)

@@ -8,7 +8,7 @@ import {
   DiagnosisIdPayload,
   ActivityOrMedicationIdPayload,
   TreatmentPlanMeta,
-  InvitedPatientIdPayload
+  SetPatientIdPayload
 } from './types';
 
 const initialState: TreatmentPlanState = {
@@ -29,7 +29,7 @@ const initialState: TreatmentPlanState = {
       data: {
         name: '',
         description: '',
-        invitedPatientId: '',
+        patientId: '',
         selectedTreatments: [],
       }
     },
@@ -105,8 +105,8 @@ export const treatmentPlanSlice = createSlice({
       state.stages.treatmentPlan.data.selectedTreatments = 
         selectedActivities.filter(item => item.treatment.id !== payload);
     },
-    setInvitedPatientId: (state: TreatmentPlanState, { payload }: InvitedPatientIdPayload) => {
-      state.stages.treatmentPlan.data.invitedPatientId = payload;
+    setPatientId: (state: TreatmentPlanState, { payload }: SetPatientIdPayload) => {
+      state.stages.treatmentPlan.data.patientId = payload;
     }
   },
 });

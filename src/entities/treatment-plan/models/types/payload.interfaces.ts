@@ -20,6 +20,6 @@ export type UpdateAddPatientStagePayload = PayloadAction<IPatientStageData>;
 export type SetDiagnosisPayload = PayloadAction<IDiagnosisStateType[]>;
 export type DiagnosisIdPayload = PayloadAction<string>;
 export type ActivityOrMedicationIdPayload = PayloadAction<string>;
-export type InvitedPatientIdPayload = PayloadAction<string>;
+export type SetPatientIdPayload = PayloadAction<string>;
 
 export type TreatmentPlanMeta = PayloadAction<Pick<ITreatmentPlanStateData, 'name' | 'description'>>;

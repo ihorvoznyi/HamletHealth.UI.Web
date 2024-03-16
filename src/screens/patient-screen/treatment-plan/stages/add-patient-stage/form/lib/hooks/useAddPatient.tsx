@@ -5,15 +5,17 @@ import { options } from '../schema';
 
 import { useLoading } from '@hooks/useLoading';
 import { useAppDispatch } from '@shared/model';
-import { useFindAndAddPatientMutation } from '@entities/user';
+import { useFindPatientMutation, useAddPatientMutation } from '@entities/user';
 
 import { treatmentPlanActions } from '@entities/treatment-plan';
 
 import { AddPatientFormType } from '../types';
+import { ToastHelper } from '@shared/lib/helpers';
 
 export const useAddPatient = () => {
 	const { setGlobalLoader } = useLoading();
-	const [findAndAddAsync] = useFindAndAddPatientMutation();
+	const [findPatientAsync] = useFindPatientMutation();
+	const [addPatientAsync] = useAddPatientMutation();
 
 	const {
 		register,
@@ -22,7 +24,7 @@ export const useAddPatient = () => {
 		formState: { errors, isValid },
 	} = useForm<AddPatientFormType>(options);
 	const dispatch = useAppDispatch();
-	const { setCurrentStage, setAddPatientStageData } = bindActionCreators(
+	const { setCurrentStage, setAddPatientStageData, setPatientId } = bindActionCreators(
 		treatmentPlanActions,
 		dispatch
 	);
@@ -30,16 +32,37 @@ export const useAddPatient = () => {
 	const submit = async (data: AddPatientFormType) => {
 		setGlobalLoader(true);
 
-		findAndAddAsync({
-			firstName: data.firstName,
-			lastName: data.lastName,
-			phoneOrEmail: data.emailOrPhoneNumber,
-		})
-			.then(() => {
-				setAddPatientStageData(data);
-				setCurrentStage('treatmentPlan');
-			})
-			.finally(() => setGlobalLoader(false));
+		try {
+			const { data: patientId } = (await findPatientAsync({
+				firstName: data.firstName,
+				lastName: data.lastName,
+				phoneOrEmail: data.emailOrPhoneNumber,
+			})) as unknown as { data: string };
+
+			if (!patientId) {
+				ToastHelper.error(`Patient ${data.firstName} ${data.lastName} was not found.`);
+				return;
+			}
+
+			const { data: invitationId } = (await addPatientAsync({ id: patientId })) as unknown as {
+				data: string;
+			};
+
+			if (!invitationId) {
+				const message = `
+					Unable to assign ${data.firstName} ${data.lastName} as a doctor's patient. 
+					Check details and retry.
+				`;
+				ToastHelper.error(message);
+				return;
+			}
+
+			setPatientId(patientId);
+			setAddPatientStageData(data);
+			setCurrentStage('treatmentPlan');
+		} finally {
+			setGlobalLoader(false);
+		}
 	};
 
 	return {

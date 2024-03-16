@@ -11,7 +11,7 @@ export class TreatmentPlanMapper {
     const startDate = new Date();
   
     return {
-      userId: model.invitedPatientId,
+      userId: model.patientId,
       name: model.name,
       descritpion: model.description,
       startDate,
@@ -47,7 +47,7 @@ export class TreatmentPlanMapper {
       if (item.treatment.category === 1) {
         const { code } = diagnosis.diagnosis;
         diagnosis.medications.push({
-          userId: treatmentPlanData.invitedPatientId,
+          userId: treatmentPlanData.patientId,
           code,
           name: item.treatment.name,
           dosage: '',
