@@ -29,6 +29,12 @@ export const selectStageStatusesAndCurrentStage = ({ treatmentPlanReducer }: Roo
   treatmentStageStatus: treatmentPlanReducer.stages.treatmentPlan.status,
 });
 
+export const selectAddedPatientId = ({ treatmentPlanReducer }: RootState) => {
+  const { patientId } = treatmentPlanReducer.stages.treatmentPlan.data;
+
+  return patientId;
+};
+
 export const selectDiagnosisRecommendations = (
   id: string, 
   { 

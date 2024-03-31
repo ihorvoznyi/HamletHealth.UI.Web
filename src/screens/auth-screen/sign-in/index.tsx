@@ -23,7 +23,7 @@ const SignIn = () => {
         <div className={classes.signUpContainer}>
           <p className={classes.signUpParagraph}>Don&rsquo;t have an Account? </p>
           <PrimaryButton
-            type="inherit"
+            variant="inherit"
             styles={classes.signUpBtn}
             onClick={redirectToSignUp}>SIGN UP</PrimaryButton>
         </div>

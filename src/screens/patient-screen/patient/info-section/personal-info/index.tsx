@@ -19,8 +19,8 @@ const PersonalInfo = () => {
         
         <p className={classes.paragraph}>{'Dec 20, 1985 (36 y.o.)'},</p>
         <p className={classes.paragraph}>{'female'}</p>
-        <PrimaryButton type="outlined" onClick={() => {}} styles={classes.assignBtn}>Assign doctor</PrimaryButton>
-        <PrimaryButton type="outlined" onClick={() => {}} styles={classes.addBtn}>Add treatment plan</PrimaryButton>
+        <PrimaryButton variant="outlined" onClick={() => {}} styles={classes.assignBtn}>Assign doctor</PrimaryButton>
+        <PrimaryButton variant="outlined" onClick={() => {}} styles={classes.addBtn}>Add treatment plan</PrimaryButton>
       </div>
     </div>
   );

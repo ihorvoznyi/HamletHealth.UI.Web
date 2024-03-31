@@ -83,7 +83,7 @@ export const CodeVerificationForm: FC<PropsType> = ({ onVerify }) => {
 
       {!showTimer ? (
         <PrimaryButton 
-          type="outlined" 
+          variant="outlined" 
           onClick={handleResend} 
           styles={classes.resendBtn}
         >

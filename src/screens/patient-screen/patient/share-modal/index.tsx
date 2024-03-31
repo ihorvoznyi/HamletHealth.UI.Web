@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 
-import Input from '@components/ui/input';
+import { Input } from '@components/ui';
 import Modal from '@components/ui/modal';
 import Select from '@components/ui/select';
 import PrimaryButton from '@components/ui/button';
@@ -31,7 +31,7 @@ const ShareModal: FC<PropsType> = ({ onClose }) => {
         {assignFields}
       </form>
 
-      <PrimaryButton type="outlined" onClick={handleAssignDoctor} styles={classes.assignBtn}>
+      <PrimaryButton variant="outlined" onClick={handleAssignDoctor} styles={classes.assignBtn}>
         <PlusSvg color={classes.plusIconColor} />
         Assign one more doctor
       </PrimaryButton>

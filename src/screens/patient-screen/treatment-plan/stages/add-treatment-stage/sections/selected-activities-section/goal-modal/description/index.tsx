@@ -34,8 +34,8 @@ const Description = () => {
         />
 
         <div className={classes.btnsContainer}>
-          <Button type="outlined" onClick={() => {}} styles={classes.btn}>Save to template</Button>
-          <Button type="outlined" onClick={() => {}} styles={classes.btn}>Use template</Button>
+          <Button variant="outlined" onClick={() => {}} styles={classes.btn}>Save to template</Button>
+          <Button variant="outlined" onClick={() => {}} styles={classes.btn}>Use template</Button>
         </div>
       </div>
     </div>

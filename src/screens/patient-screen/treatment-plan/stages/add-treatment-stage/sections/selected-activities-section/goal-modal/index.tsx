@@ -26,7 +26,7 @@ const GoalModal: FC<PropsType> = ({ onClose }) => {
         <Description />
 
         <div className={classes.btnsContainer}>
-          <Button type="outlined" styles={classes.cancelBtn} onClick={() => onClose()}>Cancel</Button>
+          <Button variant="outlined" styles={classes.cancelBtn} onClick={() => onClose()}>Cancel</Button>
           <Button styles={classes.saveBtn} onClick={() => {}}>Save Goal</Button>
         </div>
       </div>

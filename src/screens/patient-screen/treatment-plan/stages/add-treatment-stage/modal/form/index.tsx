@@ -43,13 +43,16 @@ const DefineTreatmentPlanForm = () => {
 				navigate(APP_ROUTES.MY_PATIENTS);
         setIsOpen(false);
       })
-      .catch(console.log)
 			.finally(() => setGlobalLoader(false));
 	};
 
 	return (
 		<form className={classes.form} onSubmit={handleSubmit(createPlan)}>
-			<Input register={register('name')} label={'Plan Name'} error={errors.name?.message} />
+			<Input 
+				register={register('name')} 
+				label={'Plan Name'} 
+				error={errors.name?.message}
+			/>
 			<Input
 				register={register('description')}
 				label={'Description'}

@@ -29,8 +29,6 @@ export const userSlice = createSlice({
     setCredentials: (state, { payload }: PayloadAction<UserDto>) => {
       const { token, ...user } = payload;
 
-      console.log(user);
-
       state.isAuth = true;
       state.accessToken = token;
 

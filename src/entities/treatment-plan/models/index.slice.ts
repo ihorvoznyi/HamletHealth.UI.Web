@@ -57,9 +57,9 @@ export const treatmentPlanSlice = createSlice({
       state.currentStage = payload;
     },
     resetStages: (state: TreatmentPlanState) => {
-      state.currentStage = 'addPatient';
-      state.stages.addPatient.status = 'unchecked';
-      state.stages.treatmentPlan.status = 'unchecked';
+      state.currentStage = initialState.currentStage;
+      state.stages = {...initialState.stages};
+      state.preparedData = {...initialState.preparedData};
     },
     setDiagnosis: (state: TreatmentPlanState, { payload }: SetDiagnosisPayload) => {
       state.preparedData.diagnosis = payload;

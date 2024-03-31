@@ -28,7 +28,7 @@ const TreatmentPlanStageNavigation = () => {
 
   return (
     <div className={classes.btnsContainer}>
-      <Button type="outlined" onClick={handlePreviousStage}>
+      <Button variant="outlined" onClick={handlePreviousStage}>
         <ArrowLeftSvg />
       </Button>
       <Button 

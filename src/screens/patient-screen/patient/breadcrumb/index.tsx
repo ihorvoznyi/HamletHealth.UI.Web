@@ -15,12 +15,12 @@ const Breadcrumb = () => {
 
   return (
     <div className={classes.container}>
-      <PrimaryButton type="outlined" onClick={handleNavigate} styles={classes.backBtn}>
+      <PrimaryButton variant="outlined" onClick={handleNavigate} styles={classes.backBtn}>
         <ArrowLeftSvg />
         Your patients
       </PrimaryButton>
 
-      <PrimaryButton type="outlined" onClick={() => setShowModal(true)} styles={classes.connectBtn}>
+      <PrimaryButton variant="outlined" onClick={() => setShowModal(true)} styles={classes.connectBtn}>
         Connect to hamlet health
       </PrimaryButton>
 

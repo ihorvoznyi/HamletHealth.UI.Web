@@ -14,7 +14,7 @@ interface PropsType {
 const Menu: FC<PropsType> = ({ onDefine, onDelete, onEdit }) => (
   <div className={classes.container}>
     <PrimaryButton 
-      type="outlined"
+      variant="outlined"
       styles={classes.btn}
       onClick={onDelete}
     >
@@ -25,7 +25,7 @@ const Menu: FC<PropsType> = ({ onDefine, onDelete, onEdit }) => (
     </PrimaryButton>
 
     <PrimaryButton 
-      type="outlined"
+      variant="outlined"
       styles={classes.btn}
       onClick={onDefine}
     >
@@ -36,7 +36,7 @@ const Menu: FC<PropsType> = ({ onDefine, onDelete, onEdit }) => (
     </PrimaryButton>
 
     <PrimaryButton 
-      type="outlined"
+      variant="outlined"
       styles={classes.btn}
       onClick={onEdit}
     >

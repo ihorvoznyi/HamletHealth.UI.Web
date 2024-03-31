@@ -1,10 +1,13 @@
 import { FC } from 'react';
+import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-import Input from '@components/ui/input';
+import { Input } from '@components/ui';
 import PrimaryButton from '@components/ui/button';
 
 import { APP_ROUTES } from '@configs/routes.config';
+
+import { SendEmailFormType, options } from './schema';
 
 import { classes } from './index.tailwind';
 
@@ -13,8 +16,10 @@ interface PropsType {
 }
 
 export const SendEmailForm: FC<PropsType> = ({ onSubmit }) => {
+  const { register, handleSubmit, formState: { errors } } = useForm<SendEmailFormType>(options);
+
   const navigate = useNavigate();
-  
+
   const handleSignUp = () => {
     navigate(APP_ROUTES.SIGN_UP);
   };
@@ -27,14 +32,24 @@ export const SendEmailForm: FC<PropsType> = ({ onSubmit }) => {
     <div className={classes.container}>
       <h1 className={classes.title}>Forgot Your Password?</h1>
     
-      <form className={classes.form}>
-        <Input label='Email' />
-        <PrimaryButton onClick={handleSendCode} styles={classes.codeBtn}>Send Code</PrimaryButton>
+      <form className={classes.form} onSubmit={handleSubmit(handleSendCode)}>
+        <Input 
+          label='Email' 
+          register={register('email')} 
+          error={errors.email?.message} 
+        />
+        <button type="submit" className={classes.codeBtn}>Send Code</button>
       </form>
     
       <div className={classes.signUpContainer}>
         <p className={classes.signUpParagraph}>Don&rsquo;t have an Account? </p>
-        <PrimaryButton type="inherit" styles={classes.signUpBtn} onClick={handleSignUp}>SIGN UP</PrimaryButton>
+        <PrimaryButton 
+          variant="inherit" 
+          styles={classes.signUpBtn} 
+          onClick={handleSignUp}
+        >
+          SIGN UP
+        </PrimaryButton>
       </div>
     </div>
   );

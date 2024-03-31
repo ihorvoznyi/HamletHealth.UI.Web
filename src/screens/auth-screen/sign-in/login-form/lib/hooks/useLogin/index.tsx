@@ -25,7 +25,7 @@ export const useLogin = () => {
     const password = control._fields['password']?._f.value;
 
     setGlobalLoader(true);
-    loginAsync({ ...data, password })
+    loginAsync({ ...data, password, role: 1 })
       .unwrap()
       .then(() => navigate(APP_ROUTES.DASHBOARD))
       .finally(() => setGlobalLoader(false));

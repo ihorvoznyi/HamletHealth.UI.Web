@@ -22,13 +22,14 @@ export const classes = {
       duration-200
       px-[3px] 
       left-3
+      z-[-1]
       bg-white
       fs14Regular
       whitespace-nowrap
     `),
     active: ctl(`
       -top-[10px] 
-      z-[100] 
+      z-[1] 
       text-han-blue 
       cursor-text
     `),
@@ -47,7 +48,8 @@ export const classes = {
   `),
   errorMessage: ctl(`
     absolute 
-    text-red 
+    text-red
+    z-[2]
     bottom-[-20px] 
     text-[12px]
   `),

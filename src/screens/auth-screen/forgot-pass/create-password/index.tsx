@@ -1,4 +1,4 @@
-import Input from '@components/ui/input';
+import { Input } from '@components/ui';
 import PrimaryButton from '@components/ui/button';
 
 import { classes } from './index.tailwind';

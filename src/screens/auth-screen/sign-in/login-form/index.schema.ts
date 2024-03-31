@@ -4,13 +4,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { LoginFormDataType } from './index.types';
 
-import { REQUIRED_EMAIL_FIELD, REQUIRED_PASSWORD_FIELD } from '@shared/lib/constants';
+import { INVALID_EMAIL, REQUIRED_EMAIL_FIELD, REQUIRED_PASSWORD_FIELD } from '@shared/lib/constants';
 
 export const loginFormSchema = yup
   .object()
   .shape({
     email: yup
       .string()
+      .email(INVALID_EMAIL)
       .default('')
       .required(REQUIRED_EMAIL_FIELD),
     password: yup
@@ -26,6 +27,7 @@ const defaultValues: LoginFormDataType = {
 };
 
 export const options: UseFormProps<LoginFormDataType> = {
+  mode: 'onTouched',
   defaultValues,
   resolver: yupResolver<LoginFormDataType>(loginFormSchema),
 };

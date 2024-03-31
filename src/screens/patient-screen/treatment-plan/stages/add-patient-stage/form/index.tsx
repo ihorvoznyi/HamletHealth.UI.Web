@@ -8,9 +8,17 @@ import { GENDER_OPTIONS } from './lib/constants';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
+import { useAppDispatch, useAppSelector } from '@shared/model';
+import { selectAddedPatientId, treatmentPlanActions } from '@entities/treatment-plan';
 
 const FillPatientForm = () => {
+  const dispatch = useAppDispatch();
   const { register, errors, control, submit, isValid } = useAddPatient();
+  const addedPatientId = useAppSelector(selectAddedPatientId);
+
+  const handleChangeStage = () => {
+    dispatch(treatmentPlanActions.setCurrentStage('treatmentPlan'));
+  };
   
   return (
     <form className={classes.container} onSubmit={submit} autoComplete='off'>
@@ -39,13 +47,17 @@ const FillPatientForm = () => {
       />
 
       <div className={classes.btnContainer}>
-        <button 
-          type="submit" 
-          className={cn(classes.btn, !isValid && classes.disabled)} 
-          disabled={!isValid}
-        >
-          Submit
-        </button>
+        {addedPatientId?.length 
+          ? <button className={classes.btn} onClick={handleChangeStage}>Move back</button>
+          : (
+            <button         
+              type="submit" 
+              className={cn(classes.btn, !isValid && classes.disabled)} 
+              disabled={!isValid}
+            >
+              Submit
+            </button>
+          )}
       </div>
     </form>
   );

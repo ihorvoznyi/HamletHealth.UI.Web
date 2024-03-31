@@ -3,29 +3,31 @@ import { mergeRefs } from 'react-merge-refs';
 
 import { EyeSvg } from '@components/ui/svg';
 
-import { Logger, TextHelper } from '@shared/lib/helpers';
+import { useInput } from '../../lib/hooks';
+
+import { TextHelper } from '@shared/lib/helpers';
 
 import { FieldProps } from '@components/ui/input/index.interfaces';
 
-import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
 
 interface PropsType extends Pick<FieldProps, 'register'> {
-  value: string;
   className?: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const PasswordField: FC<PropsType> = ({ value, onChange, className, register, ...props }) => {
-  const [hiddenValue, setHiddenValue] = useState(TextHelper.replaceWithDashes(value));
+const PasswordField: FC<PropsType> = ({ className, register, ...props }) => {
+  const { value, isFocus, handleChangeEvent } = useInput();
+
   const [isHidden, setIsHidden] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const combinedRefs = mergeRefs([register.ref, inputRef]);
 
   useEffect(() => {
-    setHiddenValue(TextHelper.replaceWithDashes(value));
-  }, [value]);
+    if (isFocus) {
+      inputRef.current?.focus();
+    }
+  }, [isFocus]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newValue = event.currentTarget.value;
@@ -46,52 +48,29 @@ const PasswordField: FC<PropsType> = ({ value, onChange, className, register, ..
       event.target.value = modified.join('');
     }
     
-    onChange(event);
+    handleChangeEvent(event);
   };
 
   const toggleVisibility = () => setIsHidden(prev => !prev);
+  
+  const displayValue = isHidden ? TextHelper.replaceWithDashes(value) : value;
+  const inputClassName = `${className} ${isHidden ? 'tracking-[5px]' : ''}`;
 
   return (
     <>
       <input
         {...props}
         {...register}
-        type="text"
         ref={combinedRefs}
+        type="text"
+        className={inputClassName}
+        value={displayValue}
         onChange={handleChange}
-        className={cn(className, isHidden && 'tracking-[5px]')}
-        value={isHidden ? hiddenValue : value}
         spellCheck={false}
       />
       <EyeSvg isShowLine={!isHidden} className={classes.icon} onClick={toggleVisibility} />
     </>
   );
 };
-
-function findFirstAndLastNonDashPositions(str: string) {
-  let first = -1;
-  let last = -1;
-
-  // Find the first non-dash character
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] !== '-') {
-      first = i;
-      break; // Stop the loop once the first non-dash character is found
-    }
-  }
-
-  // Find the last non-dash character
-  // Start from the end of the string
-  for (let i = str.length - 1; i >= 0; i--) {
-    if (str[i] !== '-') {
-      last = i;
-      break; // Stop the loop once the last non-dash character is found
-    }
-  }
-
-  // Return the positions
-  // If no non-dash characters are found, both first and last will be -1
-  return { first, last };
-}
 
 export default PasswordField;

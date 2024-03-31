@@ -15,7 +15,7 @@ const Supporters = () => {
         </div>
       </div>
 
-      <PrimaryButton type="outlined" onClick={() => {}}>
+      <PrimaryButton variant="outlined" onClick={() => {}}>
         See supporter&rsquo;s entries
       </PrimaryButton>
     </div>

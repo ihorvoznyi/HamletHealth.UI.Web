@@ -34,7 +34,7 @@ const PatientCard: FC<PropsType> = ({ patinet }) => {
           <p>{patinet.gender}</p>
           <p className={classes.diagnosis}>{patinet.diagnosis}</p>
         </div>
-        <PrimaryButton type="outlined" styles={classes.btn} onClick={handleOpenProfile}>
+        <PrimaryButton variant="outlined" styles={classes.btn} onClick={handleOpenProfile}>
           Go to profile
         </PrimaryButton>
       </div>

@@ -31,6 +31,7 @@ export interface CreatePatientDto extends CreateUserBase {
 export interface LoginDto {
 	email: string;
 	password: string;
+	role: 1;
 }
 
 export interface AddPatientDto {

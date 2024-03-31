@@ -22,11 +22,8 @@ export interface InputWrapperProps extends Pick<FieldProps, 'error'> {
 }
 
 export interface FieldProps {
-  type: InputTypes;
-  value: string;
   error?: string;
   className?: string;
 
   register: UseFormRegisterReturn;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }

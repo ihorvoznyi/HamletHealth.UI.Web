@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Controller } from 'react-hook-form';
 
-import Input from '@components/ui/input';
+import { Input } from '@components/ui';
 import PrimaryButton from '@components/ui/button';
 
 import { APP_ROUTES } from '@configs/routes.config';
@@ -25,6 +25,7 @@ const LoginForm = () => {
         label="Email"
         styles={classes.input}
         register={register('email')}
+        error={errors.email?.message}
       />
       <Controller 
         name="password"
@@ -35,13 +36,13 @@ const LoginForm = () => {
             label="Password"
             styles={classes.input}
             register={register('password')}
+            error={errors.password?.message}
           />
         )}
       />
       <div className={classes.btnsContainer}>
-        {errors['password']?.message ?? ''}
         <button type="submit" className={classes.loginBtn}>Login</button>
-        <PrimaryButton type="inherit" onClick={handleResetPass} styles={classes.changePassBtn}>
+        <PrimaryButton variant="inherit" onClick={handleResetPass} styles={classes.changePassBtn}>
           Forgot Password ?
         </PrimaryButton>
       </div>

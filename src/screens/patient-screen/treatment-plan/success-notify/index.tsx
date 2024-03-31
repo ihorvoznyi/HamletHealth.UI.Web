@@ -21,7 +21,7 @@ const SuccessNotify = () => {
       </p>
       <SuccessCircleCheckIcon styles={classes.icon} />
       <PrimaryButton 
-        type="outlined" 
+        variant="outlined" 
         onClick={handleNavigate} 
         styles={classes.btn}
       >

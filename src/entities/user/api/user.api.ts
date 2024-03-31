@@ -53,7 +53,7 @@ export const userApi = createApi({
 			}),
 			transformResponse: (response: IServerResponse<{ id: string }>) => response.Data.id,
 		}),
-		addPatient: builder.mutation<string, { id: string; }>({
+		addPatient: builder.mutation<string, { id: string; role: 0 }>({
 			query: body => ({
 				url: USER_API_ENDPOINTS.addPatient,
 				method: ApiMethod.POST,

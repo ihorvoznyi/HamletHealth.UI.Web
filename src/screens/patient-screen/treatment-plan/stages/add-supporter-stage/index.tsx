@@ -1,7 +1,4 @@
-import { FC, useEffect } from 'react';
-import { shallowEqual } from 'react-redux';
-
-import Input from '@components/ui/input';
+import { Input } from '@components/ui';
 import Select from '@components/ui/select';
 import PrimaryButton from '@components/ui/button';
 import { ArrowLeftSvg, PlusSvg } from '@components/ui/svg';
@@ -34,18 +31,18 @@ const AddSupporterStage = () => {
         <Select label="First and last name" options={[]} />
         <Select label="Relationship" options={[]} />
         <Input label="Email or phone number" />
-        <PrimaryButton type="outlined" styles={classes.formBtn} onClick={() => {}}>
+        <PrimaryButton variant="outlined" styles={classes.formBtn} onClick={() => {}}>
           <PlusSvg color="#4366C5" /> 
           Add one more supporter
         </PrimaryButton>
       </form>
 
       <div className={classes.btnsContainer}>
-        <PrimaryButton onClick={handleNext} type="outlined"><ArrowLeftSvg /></PrimaryButton>
+        <PrimaryButton onClick={handleNext} variant="outlined"><ArrowLeftSvg /></PrimaryButton>
         <PrimaryButton onClick={handleNext} styles={classes.saveBtn}>Save and finish</PrimaryButton>
       </div>
 
-      <PrimaryButton onClick={handleNext} type="outlined" styles={classes.skipBtn}>Skip this step</PrimaryButton>
+      <PrimaryButton onClick={handleNext} variant="outlined" styles={classes.skipBtn}>Skip this step</PrimaryButton>
     </div>
   );
 };

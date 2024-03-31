@@ -12,7 +12,7 @@ export const classes = {
     w-full 
     self-center 
     mt-[40px] 
-    space-y-[20px]
+    space-y-[24px]
   `),
   signUpContainer: ctl(`
     flex 
@@ -26,15 +26,15 @@ export const classes = {
     text-black 
     opacity-[.8]
   `),
-  codeBtn: {
-    container: ctl(`
-      w-full
-      py-[16px] 
-      fs12SemiBold 
-      bg-han-blue 
-      normal-case
-    `),
-  },
+  codeBtn: ctl(`
+    w-full
+    py-[16px] 
+    fs12SemiBold 
+    bg-han-blue 
+    normal-case
+    rounded-[4px]
+    text-white
+  `),
   signUpBtn: { 
     container: ctl(`
       text-han-blue

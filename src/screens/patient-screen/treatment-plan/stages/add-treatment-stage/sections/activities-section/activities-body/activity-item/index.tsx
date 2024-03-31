@@ -25,7 +25,7 @@ const ActivityItem: React.FC<{ id: string; name: string; category: number; }> = 
         >{isActivity ? 'Activity' : 'Medicine'}</span>
       </div>
 
-      <PrimaryButton styles={classes.btn} type="outlined" onClick={() => addSelectedActivityOrMedication(id)}>
+      <PrimaryButton styles={classes.btn} variant="outlined" onClick={() => addSelectedActivityOrMedication(id)}>
         <PlusSvg className={classes.icon.width} color={classes.icon.color} />
         <span className={classes.btnText}>Add</span>
       </PrimaryButton>

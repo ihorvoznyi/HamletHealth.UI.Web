@@ -8,12 +8,11 @@ type ClassesType = {
   bgColor: string;
 };
 
-export interface ButtonProps {
-  type?: ButtonTypes;
+export interface ButtonProps extends Partial<Pick<HTMLButtonElement, 'type' | 'disabled'>> {
+  variant?: ButtonTypes;
   children: ReactNode;
   className?: string;
-  disabled?: boolean;
   styles?: Partial<ClassesType>;
 
-  onClick: () => void;
+  onClick?: () => void;
 }

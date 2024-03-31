@@ -33,20 +33,18 @@ export const useAddPatient = () => {
 		setGlobalLoader(true);
 
 		try {
-			const { data: patientId } = (await findPatientAsync({
+			const patientId = await findPatientAsync({
 				firstName: data.firstName,
 				lastName: data.lastName,
 				phoneOrEmail: data.emailOrPhoneNumber,
-			})) as unknown as { data: string };
+			}).unwrap();
 
 			if (!patientId) {
 				ToastHelper.error(`Patient ${data.firstName} ${data.lastName} was not found.`);
 				return;
 			}
 
-			const { data: invitationId } = (await addPatientAsync({ id: patientId })) as unknown as {
-				data: string;
-			};
+			const invitationId = await addPatientAsync({ id: patientId, role: 0 }).unwrap();
 
 			if (!invitationId) {
 				const message = `
