@@ -14,6 +14,7 @@ import { TREATMENT_PLAN_API_ENDPOINTS } from './patient-api.constants';
 export const patientApi = createApi({
   reducerPath: 'patientApi',
   baseQuery: baseQueryWithAuth,
+  keepUnusedDataFor: 120,
   endpoints: builder => ({
     getDiagnosis: builder.query<IDiagnosisItemDto[], void>({
       query: () => ({
