@@ -30,7 +30,12 @@ const FillPatientForm = () => {
       />
       <Input register={register('firstName')} label="First name" error={errors.firstName?.message} />
       <Input register={register('lastName')} label="Last name" error={errors.lastName?.message} />
-      <Input register={register('birthDate')}  label="Date of birth" error={errors.birthDate?.message} />
+      <Input 
+        register={register('birthDate')} 
+        type="date"
+        label="Date of birth" 
+        error={errors.birthDate?.message} 
+      />
       
       <Controller
         name="gender"

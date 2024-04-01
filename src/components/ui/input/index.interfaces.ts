@@ -1,7 +1,6 @@
-import { ChangeEvent } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 
-export type InputTypes = 'text' | 'password' | 'phone' | 'textarea';
+export type InputTypes = 'text' | 'password' | 'phone' | 'textarea' | 'date';
 
 export type CustomInputRef = {
   focus: () => void;

@@ -1,6 +1,7 @@
 import React, { ReactElement} from 'react';
 
 import TextField from './text';
+import DateField from './date';
 import PasswordField from './password';
 
 import { useInput } from '../lib/hooks';
@@ -14,6 +15,7 @@ const FieldVariant: React.FC<FieldProps> = ({ ...props }) => {
   const mapper: RecordOf<InputTypes, ReactElement> = {
     password: <PasswordField {...props} />,
     text: <TextField {...props} />,
+    date: <DateField {...props} />,
     phone: <></>,
     textarea: <></>
   };
