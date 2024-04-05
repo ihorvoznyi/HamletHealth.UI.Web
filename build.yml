@@ -1,0 +1,28 @@
+pool:
+  name: Azure Pipelines
+  demands: npm
+
+trigger:
+  branches:
+    include:
+    - '*'
+    
+steps:
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    verbose: false
+
+- task: Npm@1
+  displayName: 'npm build'
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: 'run build'
+    publishRegistry: useFeed
+    publishFeed: 'cd3d449b-5cfc-42a6-80b4-bbd8b3225a3f'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: '$(Build.SourcesDirectory)/dist'
