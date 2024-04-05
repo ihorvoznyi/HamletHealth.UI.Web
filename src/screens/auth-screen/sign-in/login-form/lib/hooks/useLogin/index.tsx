@@ -9,6 +9,7 @@ import { options } from '@screens/auth-screen/sign-in/login-form/index.schema';
 import { APP_ROUTES } from '@configs/routes.config';
 
 import { LoginFormDataType } from '@screens/auth-screen/sign-in/login-form/index.types';
+import { toast } from 'react-toastify';
 
 export const useLogin = () => {
   const navigate = useNavigate();
@@ -28,6 +29,9 @@ export const useLogin = () => {
     loginAsync({ ...data, password, role: 1 })
       .unwrap()
       .then(() => navigate(APP_ROUTES.DASHBOARD))
+      .catch(() => {
+        toast.error('Invalid email or password.', { position: 'top-center' });
+      })
       .finally(() => setGlobalLoader(false));
   };
   

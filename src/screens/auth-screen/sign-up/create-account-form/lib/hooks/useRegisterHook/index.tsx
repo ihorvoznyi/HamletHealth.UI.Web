@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import { options } from '@screens/auth-screen/sign-up/create-account-form/index.schema';
 
@@ -42,6 +43,10 @@ export const useRegister = () => {
     createDoctorAsync(createDoctorDto)
       .unwrap()
       .then(() => navigate(APP_ROUTES.DASHBOARD))
+      .catch(({ data }) => {
+        const defaultMessage = 'Failed to register doctor\'s profile';
+        toast.error(data.Messages[0] ?? defaultMessage, { position: 'top-center' });
+      })
       .finally(() => setGlobalLoader(false));
   };
   
