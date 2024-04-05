@@ -22,7 +22,6 @@ export const classes = {
       duration-200
       px-[3px] 
       left-3
-      z-[-1]
       bg-white
       fs14Regular
       whitespace-nowrap
