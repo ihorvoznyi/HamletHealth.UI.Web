@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { bindActionCreators } from '@reduxjs/toolkit';
 import { useForm } from 'react-hook-form';
 
@@ -28,16 +27,19 @@ export const useAddPatient = () => {
 	const [addPatientAsync] = useAddPatientMutation();
 	const [createPatientAsync] = useCreatePatientMutation();
 
+	const dispatch = useAppDispatch();
+	const { data: patientDefaultValues } = useAppSelector(selectAddPatientStateData);
+	const actions = bindActionCreators(treatmentPlanActions, dispatch);
+
+	options.defaultValues = {...patientDefaultValues};
+
 	const {
 		register,
 		control,
+		watch,
 		handleSubmit,
 		formState: { errors, isValid },
 	} = useForm<AddPatientFormType>(options);
-
-	const dispatch = useAppDispatch();
-	const { status: patientStageStatus, data } = useAppSelector(selectAddPatientStateData);
-	const actions = bindActionCreators(treatmentPlanActions, dispatch);
 
 	const submit = async (data: AddPatientFormType) => {
 		const { firstName, lastName } = data;
@@ -109,16 +111,11 @@ export const useAddPatient = () => {
 		}
 	};
 
-	useEffect(() => {
-		if (patientStageStatus === 'filled') {
-			options.defaultValues = { ...data };
-		}
-	}, []);
-
 	return {
 		register,
 		control,
 		errors,
+		watch,
 		isValid,
 		submit: handleSubmit(submit),
 	};

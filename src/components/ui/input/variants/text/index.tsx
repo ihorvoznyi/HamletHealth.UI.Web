@@ -5,9 +5,9 @@ import { useInput } from '@components/ui/input/lib/hooks';
 import { FieldProps } from '@components/ui/input/index.interfaces';
 
 const TextField: FC<FieldProps> = ({ register, ...props }) => {
-  const { value, handleChangeEvent } = useInput();
+  const { handleChangeEvent } = useInput();
 
-  return <input {...register} {...props} value={value} onChange={handleChangeEvent} />;
+  return <input {...register} {...props} onChange={handleChangeEvent} />;
 };
 
 export default TextField;

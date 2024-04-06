@@ -10,7 +10,7 @@ import { InputTypes } from './index.interfaces';
 
 import { classes } from './index.tailwind';
 
-interface PropsType extends Pick<WrapperProps, 'label' | 'styles'> {
+interface PropsType extends Pick<WrapperProps, 'label' | 'styles' | 'watchValue'> {
 	type?: InputTypes;
 	error?: string;
 	register: UseFormRegisterReturn;

@@ -11,6 +11,7 @@ import { classes } from './index.tailwind';
 export interface WrapperProps extends PropsWithChildren {
   label: string | undefined;
 
+  watchValue?: string;
   error?: string;
 
   styles?: Partial<{
@@ -24,6 +25,7 @@ const Wrapper: FC<WrapperProps> = ({
   styles,
   children,
   error = '',
+  watchValue,
 }) => {
   const { type, value, isFocus, setIsFocus } = useInput();
 
@@ -32,7 +34,7 @@ const Wrapper: FC<WrapperProps> = ({
 
   const ref = useClickOutside<HTMLDivElement>(disableFocus);
   
-  const isFilled = !!value;
+  const isFilled = !!value || !!watchValue;
   const showIcon = type !== 'password';
   const isLabelActive = isFocus || isFilled;
   const showCheckIcon = !isFocus && !error && isFilled && showIcon;

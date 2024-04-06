@@ -11,23 +11,20 @@ interface PropsType extends Pick<FieldProps, 'register'> {
 }
 
 const DateField: React.FC<PropsType> = ({ register, ...props }) => {
-  const inputState = useInput();
+  const { isFocus } = useInput();
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     event.target.value = normalizeDate(value);
-    inputState.handleChangeEvent(event);
   };
 
-  const displayPlaceholder = inputState.isFocus ? 'MM/DD/YYYY'  : '';
+  const displayPlaceholder = isFocus ? 'MM/DD/YYYY'  : '';
 
   return (
     <input 
       {...props}
       {...register}
-      type="text" 
-      value={inputState.value} 
-      onChange={onChange} 
+      onChange={onChange}
       placeholder={displayPlaceholder}
     />
   );
