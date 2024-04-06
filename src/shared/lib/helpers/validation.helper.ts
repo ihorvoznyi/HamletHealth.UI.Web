@@ -14,6 +14,6 @@ export const validateWithYup = async <T>(schema: Schema<T>, data: unknown): Prom
       console.error(chalk.red('An unexpected error occurred during validation'));
     }
 
-    process.exit(1);
+    throw new Error('Invalid configs');
   }
 };
