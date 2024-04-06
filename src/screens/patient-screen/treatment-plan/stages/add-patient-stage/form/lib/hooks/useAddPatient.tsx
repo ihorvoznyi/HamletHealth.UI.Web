@@ -11,10 +11,12 @@ import { useFindPatientMutation, useAddPatientMutation, useCreatePatientMutation
 
 import { selectAddPatientStateData, treatmentPlanActions } from '@entities/treatment-plan';
 
+import { isPhoneNumber } from '@utils/text.util';
+import { convertToISOString } from '@utils/date.util';
+
 import { AddPatientFormType } from '../types';
 import { ToastHelper } from '@shared/lib/helpers';
 import { Role } from '@shared/lib/enums';
-import { convertToISOString } from '@utils/date.util';
 
 export const useAddPatient = () => {
 	const { setGlobalLoader } = useLoading();
@@ -51,7 +53,7 @@ export const useAddPatient = () => {
 				const newPatientId = await createPatientAsync({
 					role: Role.PATIENT,
 					email: emailOrPhoneNumber.includes('@') ? emailOrPhoneNumber : undefined,
-					phone: !emailOrPhoneNumber.includes('@') ? emailOrPhoneNumber : undefined,
+					phone: isPhoneNumber(emailOrPhoneNumber) ? emailOrPhoneNumber : undefined,
 					firstName,
 					lastName,
 					birthDate: birthDate ? convertToISOString(birthDate) : undefined,

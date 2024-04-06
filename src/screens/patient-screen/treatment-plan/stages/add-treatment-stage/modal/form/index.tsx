@@ -1,23 +1,28 @@
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 
 import { Input } from '@components/ui';
 
 import { useLoading } from '@hooks/useLoading';
-import { useAppSelector } from '@shared/model';
+import { useAppDispatch, useAppSelector } from '@shared/model';
+import { useTreatmentPlanStageContext } from '../../lib/context';
 
 import { DefinePlanFormType, formSchemaOptions } from './schema';
 
-import { selectTreatmentPlanData, useCreateTreatmentPlanMutation } from '@entities/treatment-plan';
+import { 
+	selectTreatmentPlanData, 
+	treatmentPlanActions, 
+	useCreateTreatmentPlanMutation 
+} from '@entities/treatment-plan';
+
+import { Logger } from '@shared/lib/helpers';
+import { TreatmentPlanMapper } from '../lib/helpers';
 
 import { classes } from './index.tailwind';
-import { TreatmentPlanMapper } from '../lib/helpers';
-import { Logger } from '@shared/lib/helpers';
-import { useTreatmentPlanStageContext } from '../../lib/context';
-import { APP_ROUTES } from '@configs/routes.config';
 
 const DefineTreatmentPlanForm = () => {
+	const dispatch = useAppDispatch();
+
 	const { setGlobalLoader } = useLoading();
   const { setIsOpen } = useTreatmentPlanStageContext();
 	const [createTreatmentPlanAsync] = useCreateTreatmentPlanMutation();
@@ -27,7 +32,6 @@ const DefineTreatmentPlanForm = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<DefinePlanFormType>(formSchemaOptions);
-	const navigate = useNavigate();
 	const treatmentPlan = useAppSelector(selectTreatmentPlanData);
 
 	const createPlan = async (data: DefinePlanFormType) => {
@@ -41,7 +45,7 @@ const DefineTreatmentPlanForm = () => {
 		createTreatmentPlanAsync(createTreatmentPlanDto)
 			.then(() => {
         Logger.info('Treatment plan was successfully created.');
-				navigate(APP_ROUTES.MY_PATIENTS);
+				dispatch(treatmentPlanActions.setStageStatus('filled'));
         setIsOpen(false);
       })
 			.catch(({ data }) => {

@@ -1,5 +1,6 @@
 import { RootState } from '@shared/model';
 import { ActivitiesFilterType, TreatmentPlanDataType } from './types';
+import { toNormalCase } from '@utils/text.util';
 
 export const selectCurrentStage = (state: RootState) => {
   const currentStageType = state.treatmentPlanReducer.currentStage;
@@ -10,6 +11,12 @@ export const selectCurrentStageType = ({ treatmentPlanReducer }: RootState) => t
 export const selectAddPatientStageData = ({ 
   treatmentPlanReducer 
 }: RootState) => treatmentPlanReducer.stages.addPatient.data;
+
+export const selectNormalizedPatientFullname = ({ treatmentPlanReducer }: RootState) => {
+  const { firstName, lastName } = treatmentPlanReducer.stages.addPatient.data;
+
+  return `${toNormalCase(firstName)} ${toNormalCase(lastName)}`;
+};
 
 export const selectTreatmentPlanStageData = ({ 
   treatmentPlanReducer 

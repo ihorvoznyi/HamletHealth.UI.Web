@@ -20,6 +20,7 @@ export const classes = {
   searchIcon: ctl(`
     mr-[16px] 
     min-w-[24px]
+    fill-black
   `),
   crossIcon: 'cursor-pointer',
 };
