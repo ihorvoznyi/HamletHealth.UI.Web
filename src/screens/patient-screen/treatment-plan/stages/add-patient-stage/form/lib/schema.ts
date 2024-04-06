@@ -13,7 +13,7 @@ export const addPatientFormSchema = yup
 	.shape({
 		firstName: yup.string().default('').required(FIRST_NAME_REQUIRED),
 		lastName: yup.string().default('').required(LAST_NAME_REQUIRED),
-		emailOrPhoneNumber: yup
+		phoneOrEmail: yup
 			.string()
 			.test('is-phone-or-email', 'Must be a valid phone number or email address', value => {
 				return yup.string().email().isValidSync(value) || isPhoneNumber(value);
@@ -28,7 +28,7 @@ export const addPatientFormSchema = yup
 const defaultValues: AddPatientFormType = {
 	firstName: '',
 	lastName: '',
-	emailOrPhoneNumber: '',
+	phoneOrEmail: '',
 	birthDate: undefined,
 	gender: undefined,
 };

@@ -24,7 +24,7 @@ export interface TreatmentPlanState {
 export interface IPatientStageData {
   firstName: string;
   lastName: string;
-  emailOrPhoneNumber: string;
+  phoneOrEmail: string;
   birthDate?: string | undefined;
   gender?: Gender | undefined;
 }
