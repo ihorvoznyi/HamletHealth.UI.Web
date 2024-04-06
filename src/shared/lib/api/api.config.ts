@@ -5,9 +5,8 @@ import type {
   FetchBaseQueryError,
 } from '@reduxjs/toolkit/query';
 
-import { Environment } from '@shared/lib/environment';
-
 import { AuthHelper } from '../helpers';
+import { Environment } from '../environment';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: Environment.VITE_API_URL,

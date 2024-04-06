@@ -1,5 +1,3 @@
-import { Environment } from '@shared/lib/environment';
-
 import { setCredentials } from '../model';
 
 import { Logger } from '@shared/lib/helpers';
@@ -7,6 +5,7 @@ import { Logger } from '@shared/lib/helpers';
 import { UserDto } from '../api';
 
 import { QueryFulfilledType, thunkDispatch } from '@shared/lib/types';
+import { Environment } from '@shared/lib/environment';
 
 export const onAuthQueryStartedHandler = async (
   queryFulfilled: QueryFulfilledType<UserDto>, 
