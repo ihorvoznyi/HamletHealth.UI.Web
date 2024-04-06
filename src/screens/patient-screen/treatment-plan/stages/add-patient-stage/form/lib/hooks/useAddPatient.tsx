@@ -1,21 +1,27 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import { bindActionCreators } from '@reduxjs/toolkit';
 
 import { options } from '../schema';
 
 import { useLoading } from '@hooks/useLoading';
-import { useAppDispatch } from '@shared/model';
-import { useFindPatientMutation, useAddPatientMutation } from '@entities/user';
+import { useAppDispatch, useAppSelector } from '@shared/model';
+import { useFindPatientMutation, useAddPatientMutation, useCreatePatientMutation } from '@entities/user';
 
-import { treatmentPlanActions } from '@entities/treatment-plan';
+import { selectAddPatientStateData, treatmentPlanActions } from '@entities/treatment-plan';
 
 import { AddPatientFormType } from '../types';
 import { ToastHelper } from '@shared/lib/helpers';
+import { Role } from '@shared/lib/enums';
+import { convertToISOString } from '@utils/date.util';
 
 export const useAddPatient = () => {
 	const { setGlobalLoader } = useLoading();
 	const [findPatientAsync] = useFindPatientMutation();
+	const [createPatientAsync, { isError }] = useCreatePatientMutation();
 	const [addPatientAsync] = useAddPatientMutation();
+	const { status, data } = useAppSelector(selectAddPatientStateData);
 
 	const {
 		register,
@@ -30,18 +36,39 @@ export const useAddPatient = () => {
 	);
 
 	const submit = async (data: AddPatientFormType) => {
-		setGlobalLoader(true);
+		const { firstName, lastName, emailOrPhoneNumber, birthDate, gender } = data;
 
 		try {
-			const patientId = await findPatientAsync({
-				firstName: data.firstName,
-				lastName: data.lastName,
-				phoneOrEmail: data.emailOrPhoneNumber,
+			setGlobalLoader(true);
+
+			let patientId = await findPatientAsync({
+				firstName,
+				lastName,
+				phoneOrEmail: emailOrPhoneNumber,
 			}).unwrap();
 
 			if (!patientId) {
-				ToastHelper.error(`Patient ${data.firstName} ${data.lastName} was not found.`);
-				return;
+				const newPatientId = await createPatientAsync({
+					role: Role.PATIENT,
+					email: emailOrPhoneNumber.includes('@') ? emailOrPhoneNumber : undefined,
+					phone: !emailOrPhoneNumber.includes('@') ? emailOrPhoneNumber : undefined,
+					firstName,
+					lastName,
+					birthDate: birthDate ? convertToISOString(birthDate) : undefined,
+					gender,
+					password: 'patient'
+				}).unwrap();
+
+				if (isError) {
+					const message = `
+						Unable to assign ${data.firstName} ${data.lastName} as a doctor's patient. 
+						Check details and retry.
+					`;
+					toast.error(message, { position: 'top-center' });
+					return;
+				}
+
+				patientId = newPatientId;
 			}
 
 			const invitationId = await addPatientAsync({ id: patientId, role: 0 }).unwrap();
@@ -53,15 +80,23 @@ export const useAddPatient = () => {
 				`;
 				ToastHelper.error(message);
 				return;
-			}
+			}	
 
 			setPatientId(patientId);
 			setAddPatientStageData(data);
 			setCurrentStage('treatmentPlan');
+		} catch (err) {
+			toast.error('Something went wrong. Please try again later.');
 		} finally {
 			setGlobalLoader(false);
 		}
 	};
+
+	useEffect(() => {
+		if (status === 'filled') {
+			options.defaultValues = {...data};
+		}
+	}, []);
 
 	return {
 		register,

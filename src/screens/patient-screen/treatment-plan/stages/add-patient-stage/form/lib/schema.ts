@@ -9,6 +9,7 @@ import {
 } from './constants';
 
 import { AddPatientFormType } from './types';
+import { Gender } from '@shared/lib/enums';
 
 export const addPatientFormSchema = yup.object().shape({
   firstName: yup
@@ -28,9 +29,10 @@ export const addPatientFormSchema = yup.object().shape({
     .default(undefined)
     .optional(),
   gender: yup
-    .string()
+    .mixed<Gender>()
+    .oneOf([Gender.FEMALE, Gender.MALE])
     .default(undefined)
-    .optional()
+    .optional(),
 }).required();
 
 const defaultValues: AddPatientFormType = {

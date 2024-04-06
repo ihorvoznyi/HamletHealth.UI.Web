@@ -49,4 +49,3 @@ export const InputProvider: React.FC<PropsType> = ({ children, type, register })
 
 	return <InputContext.Provider value={defaultValue}>{children}</InputContext.Provider>;
 };
-

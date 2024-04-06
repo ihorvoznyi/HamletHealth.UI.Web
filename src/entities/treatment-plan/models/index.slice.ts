@@ -21,7 +21,7 @@ const initialState: TreatmentPlanState = {
         lastName: '',
         emailOrPhoneNumber: '',
         birthDate: '',
-        gender: ''
+        gender: undefined
       }
     },
     treatmentPlan: {

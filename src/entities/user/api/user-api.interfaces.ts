@@ -1,3 +1,5 @@
+import { Role } from '@shared/lib/enums';
+
 export type Gender = 0 | 1;
 export type UserRole = 0 | 1 | 2;
 
@@ -25,7 +27,9 @@ export interface CreateDoctorDto extends CreateUserBase {
 }
 
 export interface CreatePatientDto extends CreateUserBase {
-	role: 0;
+	role: Role;
+	gender?: Gender;
+	birthDate?: string;
 }
 
 export interface LoginDto {

@@ -10,7 +10,7 @@ interface PropsType extends Pick<FieldProps, 'register'> {
   className?: string;
 }
 
-const DateField: React.FC<PropsType> = props => {
+const DateField: React.FC<PropsType> = ({ register, ...props }) => {
   const inputState = useInput();
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +23,8 @@ const DateField: React.FC<PropsType> = props => {
 
   return (
     <input 
-      {...props} 
+      {...props}
+      {...register}
       type="text" 
       value={inputState.value} 
       onChange={onChange} 

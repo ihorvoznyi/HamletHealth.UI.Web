@@ -22,7 +22,7 @@ interface PropsType {
   };
 
   value: string;
-  onChange: (value: string) => void;
+  onChange: (value: string | number) => void;
 
   isValid?: boolean;
   options: Option[];

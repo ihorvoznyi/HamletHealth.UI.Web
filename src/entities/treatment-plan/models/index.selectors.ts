@@ -44,6 +44,10 @@ export const selectDiagnosisRecommendations = (
   return diagnosis?.recommendedActivities;
 };
 
+export const selectAddPatientStateData = ({ treatmentPlanReducer }: RootState) => {
+  return treatmentPlanReducer.stages.addPatient;
+};
+
 export const selectTreatmentPlanStage = ({ treatmentPlanReducer }: RootState) => {
   const { status, data } = treatmentPlanReducer.stages.treatmentPlan;
   const { diagnosis, activeDiagnosis } = treatmentPlanReducer.preparedData;

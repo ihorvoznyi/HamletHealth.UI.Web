@@ -1,8 +1,8 @@
-import { GenderEnum } from '@shared/lib/types';
+import { Gender } from '@shared/lib/enums';
 
 export const GENDER_OPTIONS = [
-  { label: 'Male', value: GenderEnum.MALE }, 
-  { label: 'Female', value: GenderEnum.FEMALE }
+  { label: 'Male', value: Gender.MALE }, 
+  { label: 'Female', value: Gender.FEMALE }
 ];
 
 export const FIRST_NAME_REQUIRED = 'First name is required';

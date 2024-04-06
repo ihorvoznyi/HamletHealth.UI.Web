@@ -1,4 +1,5 @@
 import { IActivity } from '@entities/treatment-plan/api';
+import { Gender } from '@shared/lib/enums';
 
 export type StageType = 'addPatient' | 'treatmentPlan';
 export type StageStatusType = 'checked' | 'unchecked' | 'filled';
@@ -25,7 +26,7 @@ export interface IPatientStageData {
   lastName: string;
   emailOrPhoneNumber: string;
   birthDate?: string | undefined;
-  gender?: string | undefined;
+  gender?: Gender | undefined;
 }
 
 export type ActivitiesFilterType = 'all' | 'activity' | 'medicine';

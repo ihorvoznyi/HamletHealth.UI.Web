@@ -1,5 +1,5 @@
+import { StageStatusType } from '@entities/treatment-plan';
 import { SvgAttrsType } from '../../index.interfaces';
-import { StageStatusType } from '../../lib';
 
 export const statusColors: Record<StageStatusType, string> = {
   checked: '#4366C5',

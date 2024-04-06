@@ -8,6 +8,7 @@ export function styleMapper(type: ButtonTypes) {
     primary: classes.primary,
     outlined: classes.outlined,
     inherit: classes.inherit,
+    submit: ''
   };
 
   return mapper[type];
