@@ -1,9 +1,9 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState } from 'react';
 
-import { MoodType } from "@shared/lib/types";
+import { MoodType } from '@shared/lib/types';
 
-import MoodSvg from "./mood-svg";
-import Activity, { IActivity } from "./activity";
+import MoodSvg from './mood-svg';
+import Activity, { IActivity } from './activity';
 import {
   CoffeeSvg,
   FootballSvg,
@@ -11,17 +11,16 @@ import {
   GiftSvg,
   MovieSvg,
   ShoppingSvg,
-} from "@components/ui/svg";
+} from '@components/ui/svg';
 
-import { classes } from "./index.tailwind";
+import { classes } from './index.tailwind';
 
 const RelatedActivities = () => {
-  const [activeMood, setActiveMood] = useState<MoodType>("great");
+  const [activeMood, setActiveMood] = useState<MoodType>('great');
 
   const renderMoodSvg = (mood: MoodType) => {
     const isActive = activeMood === mood;
-    const color = isActive ? "#12C28D" : "black";
-    console.log(color);
+    const color = isActive ? '#12C28D' : 'black';
     return (
       <MoodSvg
         mood={mood}
@@ -57,41 +56,41 @@ const RelatedActivities = () => {
   );
 };
 
-const moods: MoodType[] = ["great", "good", "meh", "bad", "awful"];
+const moods: MoodType[] = ['great', 'good', 'meh', 'bad', 'awful'];
 const activities: IActivity[] = [
   {
     Icon: CoffeeSvg,
-    text: "Date",
+    text: 'Date',
     times: 12,
     percentage: 24,
   },
   {
     Icon: FriendsSvg,
-    text: "Friends",
+    text: 'Friends',
     times: 44,
     percentage: 55,
   },
   {
     Icon: MovieSvg,
-    text: "Movie",
+    text: 'Movie',
     times: 8,
     percentage: 15,
   },
   {
     Icon: ShoppingSvg,
-    text: "Shopping",
+    text: 'Shopping',
     times: 28,
     percentage: 45,
   },
   {
     Icon: GiftSvg,
-    text: "Volunteer",
+    text: 'Volunteer',
     times: 20,
     percentage: 18,
   },
   {
     Icon: FootballSvg,
-    text: "Football",
+    text: 'Football',
     times: 33,
     percentage: 44,
   },
