@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { ChangeEvent, FC, useState } from 'react';
 
 import { CircleCrossSvg, SearchSvg } from '@components/ui/svg';
 
@@ -10,13 +10,29 @@ interface PropsType {
   styles?: Partial<SearchClasses>;
   placeholder?: string;
   isCloseIcon?: boolean;
+
+  onChange: (statement: string) => void;
 }
 
-const Search: FC<PropsType> = ({ styles, placeholder, isCloseIcon = true }) => {
+const Search: FC<PropsType> = ({ styles, onChange, placeholder = 'Search', isCloseIcon = true }) => {
+  const [value, setValue] = useState('');
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const statement = event?.target.value;
+
+    setValue(statement);
+    onChange(statement);
+  };
+
   return (
     <div className={cn(classes.container, styles?.container)}>
       <SearchSvg className={cn(classes.searchIcon, styles?.searchIcon)} />
-      <input placeholder={placeholder} className={cn(classes.input, styles?.input)} />
+      <input 
+        placeholder={placeholder} 
+        className={cn(classes.input, styles?.input)} 
+        value={value}
+        onChange={handleChange}
+      />
       {isCloseIcon ? <CircleCrossSvg className={classes.crossIcon} /> : null}
     </div>
   );

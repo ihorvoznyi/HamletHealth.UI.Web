@@ -21,3 +21,7 @@ export const isPhoneNumber = (input: string) => {
   const phoneNumberRegex = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{3,6}$/;
   return phoneNumberRegex.test(input);
 };
+
+export const includesCaseInsensitive = (value: string, searchTerm?: string) => {
+  return value.toLowerCase().includes(searchTerm?.toLowerCase().trim() ?? '');
+};

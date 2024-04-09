@@ -5,15 +5,24 @@ import { classes } from './index.tailwind';
 
 interface IActivitiesContext {
   filterBy: ActivitiesFilterType;
+  searchStatement: string;
+
   setFilterBy: (filterBy: ActivitiesFilterType) => void;
+  setSearchStatement: (statement: string) => void;
 }
 
 export const ActivitiesContext = createContext<IActivitiesContext | undefined>(undefined);
 
 export const ActivitiesProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [filterBy, setFilterBy] = useState<ActivitiesFilterType>('all');
+  const [searchStatement, setSearchStatement] = useState('');
 
-  const value = { filterBy, setFilterBy };
+  const value = { 
+    searchStatement, 
+    filterBy, 
+    setFilterBy, 
+    setSearchStatement 
+  };
 
   return (
     <ActivitiesContext.Provider value={value}>

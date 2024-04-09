@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Search from '@components/ui/search';
 import DiagnosisItem from './diagnosis-item';
 
 import { useAppSelector } from '@shared/model';
 
-import { IDiagnosisStateType, selectActiveDiagnosisId } from '@entities/treatment-plan';
+import { IDiagnosisStateType, selectActiveDiagnosisId, selectDiagnosis } from '@entities/treatment-plan';
 
 import { classes } from './index.tailwind';
 import { classes as commonClasses } from '../../index.tailwind';
 
 const Diagnosis: React.FC<{ diagnosis?: Pick<IDiagnosisStateType, 'id'| 'name'>[] }> = () => {
+  const [ searchTerm, setSearchTerm ] = useState('');
+
   const activeDiagnosisId = useAppSelector(selectActiveDiagnosisId);
-  const { diagnosis } = useAppSelector(state => state.treatmentPlanReducer.preparedData);
+  const diagnosis = useAppSelector(state => selectDiagnosis(state, { searchTerm }));
 
   return (
     <div className={classes.container}>
@@ -22,7 +24,7 @@ const Diagnosis: React.FC<{ diagnosis?: Pick<IDiagnosisStateType, 'id'| 'name'>[
       </div>
 
       <div>
-        <Search />
+        <Search onChange={setSearchTerm} />
         <ul className={commonClasses.list}>
           {diagnosis.map(item => (
             <DiagnosisItem 
