@@ -32,3 +32,5 @@ export class Operation {
     return { isSuccess: true, data };
   }
 }
+
+export type SortType = 'ASC' | 'DESC';
