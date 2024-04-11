@@ -8,7 +8,7 @@ import TreatmentPlanStageNavigation from './navigation';
 import { useAppDispatch, useAppSelector } from '@shared/model';
 
 import { TreatmentPlanStageContextProvider } from './lib/context';
-import { selectTreatmentPlanStage, treatmentPlanActions } from '@entities/treatment-plan';
+import { selectTreatmentPlanStage, treatmentPlanActions } from '@entities/patient';
 
 const AddTreatmentStage = () => {
   const dispatch = useAppDispatch();

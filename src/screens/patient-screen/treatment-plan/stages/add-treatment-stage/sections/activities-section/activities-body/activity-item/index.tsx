@@ -6,7 +6,7 @@ import PrimaryButton from '@components/ui/button';
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
 import { bindActionCreators } from '@reduxjs/toolkit';
-import { treatmentPlanActions } from '@entities/treatment-plan';
+import { treatmentPlanActions } from '@entities/patient';
 import { useAppDispatch } from '@shared/model';
 
 const ActivityItem: React.FC<{ id: string; name: string; category: number; }> = ({ id, name, category }) => {

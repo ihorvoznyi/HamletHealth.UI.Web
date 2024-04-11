@@ -5,7 +5,7 @@ import FillPatientForm from './form';
 
 import { useAppDispatch, useAppSelector } from '@shared/model';
 
-import { treatmentPlanSlice, selectPatientStageStatus } from '@entities/treatment-plan';
+import { treatmentPlanSlice, selectPatientStageStatus } from '@entities/patient';
 
 import { classes } from './index.tailwind';
 

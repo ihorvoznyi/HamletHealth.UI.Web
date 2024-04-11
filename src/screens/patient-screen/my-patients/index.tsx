@@ -6,7 +6,7 @@ import PatientList from './patient-list';
 import { MyPatientsProvider } from './lib';
 
 import { useLoading } from '@hooks/useLoading';
-import { useGetPatientsQuery } from '@entities/treatment-plan';
+import { useGetPatientsQuery } from '@entities/patient';
 
 import { ToastHelper } from '@shared/lib/helpers';
 import { APP_ROUTES } from '@configs/routes.config';

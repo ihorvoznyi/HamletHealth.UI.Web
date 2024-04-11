@@ -7,7 +7,7 @@ import { combineRoutes, toNormalCase } from '@utils/text.util';
 
 import { APP_ROUTES } from '@configs/routes.config';
 
-import { IPatient } from '@entities/treatment-plan';
+import { IPatient } from '@entities/patient';
 import { IPatientItem } from '../index.interfaces';
 
 import { classes } from './index.tailwind';

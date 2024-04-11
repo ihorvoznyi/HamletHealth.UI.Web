@@ -7,7 +7,7 @@ import DisplayStage from './DisplayStage';
 import SuccessNotify from './success-notify';
 
 import { useAppDispatch, useAppSelector } from '@shared/model';
-import { selectTreatmentPlanStage, treatmentPlanActions, useGetDiagnosisQuery } from '@entities/treatment-plan';
+import { selectTreatmentPlanStage, treatmentPlanActions, useGetDiagnosisQuery } from '@entities/patient';
 
 import { APP_ROUTES } from '@configs/routes.config';
 

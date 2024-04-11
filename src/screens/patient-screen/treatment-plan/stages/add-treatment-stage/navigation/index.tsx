@@ -4,7 +4,7 @@ import { ArrowLeftSvg } from '@components/ui/svg';
 import { useAppDispatch } from '@shared/model';
 import { useTreatmentPlanStageContext } from '../lib/context';
 
-import { treatmentPlanActions } from '@entities/treatment-plan';
+import { treatmentPlanActions } from '@entities/patient';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';

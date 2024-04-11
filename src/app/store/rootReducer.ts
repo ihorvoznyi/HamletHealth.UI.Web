@@ -1,6 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import { patientApi, treatmentPlanReducer } from '@entities/treatment-plan';
+import { patientApi, treatmentPlanReducer } from '@entities/patient';
 import { appReducer } from './app/index.slice';
 import { userReducer, userApi } from '@entities/user';
 

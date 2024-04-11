@@ -10,7 +10,7 @@ import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
 import { getTreatmentIcon } from './index.helper';
 import { bindActionCreators } from '@reduxjs/toolkit';
-import { treatmentPlanActions } from '@entities/treatment-plan';
+import { treatmentPlanActions } from '@entities/patient';
 import { useAppDispatch } from '@shared/model';
 
 interface PropsType {

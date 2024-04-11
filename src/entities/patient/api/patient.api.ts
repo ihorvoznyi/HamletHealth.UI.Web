@@ -9,7 +9,7 @@ import { appActions } from '@app/store';
 
 import { IServerResponse } from '@shared/lib/types';
 import { CreateTreatmentPlanDto, IDiagnosisItemDto, IPatient } from './patient-api.interfaces';
-import { TREATMENT_PLAN_API_ENDPOINTS } from './patient-api.constants';
+import { PATIENT_API_ENDPOINTS } from './patient-api.constants';
 
 export const patientApi = createApi({
   reducerPath: 'patientApi',
@@ -18,7 +18,7 @@ export const patientApi = createApi({
   endpoints: builder => ({
     getDiagnosis: builder.query<IDiagnosisItemDto[], void>({
       query: () => ({
-        url: TREATMENT_PLAN_API_ENDPOINTS.diagnosis,
+        url: PATIENT_API_ENDPOINTS.diagnosis,
       }),
       onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
         try {
@@ -39,7 +39,7 @@ export const patientApi = createApi({
     }),
     createTreatmentPlan: builder.mutation<IServerResponse<unknown>, CreateTreatmentPlanDto>({
       query: body => ({
-        url: TREATMENT_PLAN_API_ENDPOINTS.treatmentPlan,
+        url: PATIENT_API_ENDPOINTS.treatmentPlan,
         method: 'POST',
         body,
       }),
@@ -49,6 +49,11 @@ export const patientApi = createApi({
         url: '/users/patients'
       }),
       transformResponse: (response: IServerResponse<IPatient[]>) => response.Data, 
+    }),
+    getDashboardStats: builder.query<IServerResponse<unknown>, void>({
+      query: () => ({
+        url: '/users/doctorDashboard'
+      })
     }),
   })
 });

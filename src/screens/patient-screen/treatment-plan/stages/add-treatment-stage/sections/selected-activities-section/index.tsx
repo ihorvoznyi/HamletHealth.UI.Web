@@ -3,7 +3,7 @@ import TreatmentItem from './treatment-item';
 import { classes } from './index.tailwind';
 import { classes as commonClasses } from '../../index.tailwind';
 import { useAppSelector } from '@shared/model';
-import { selectSelectedActivities } from '@entities/treatment-plan';
+import { selectSelectedActivities } from '@entities/patient';
 
 const Treatment = () => {
   return (

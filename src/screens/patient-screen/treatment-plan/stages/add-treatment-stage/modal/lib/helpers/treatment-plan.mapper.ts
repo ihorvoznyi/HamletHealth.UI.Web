@@ -3,7 +3,7 @@ import {
   IDiagnosisStateType, 
   MedicationItem, 
   TreatmentPlanDataType, 
-} from '@entities/treatment-plan';
+} from '@entities/patient';
 
 export class TreatmentPlanMapper {
   public static mapToCreateTreatmentPlanDto(model: TreatmentPlanDataType): CreateTreatmentPlanDto {

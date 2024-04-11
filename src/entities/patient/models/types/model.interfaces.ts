@@ -1,4 +1,4 @@
-import { IActivity } from '@entities/treatment-plan/api';
+import { IActivity } from '@entities/patient/api';
 import { Gender } from '@shared/lib/enums';
 
 export type StageType = 'addPatient' | 'treatmentPlan';

@@ -12,7 +12,7 @@ import {
 	useAddPatientMutation,
 	useCreatePatientMutation,
 } from '@entities/user';
-import { selectAddPatientStateData, treatmentPlanActions } from '@entities/treatment-plan';
+import { selectAddPatientStateData, treatmentPlanActions } from '@entities/patient';
 
 import { options } from '../../schema';
 import { AddPatientFormType } from '../../types';

@@ -1,4 +1,4 @@
-import { useGetDiagnosisQuery } from '@entities/treatment-plan';
+import { useGetDiagnosisQuery } from '@entities/patient';
 
 export const usePrepareTreatmentPlanData = () => {
   const { isLoading: isDiagnosisLoading, isError: isDiagnosisError } = useGetDiagnosisQuery();  

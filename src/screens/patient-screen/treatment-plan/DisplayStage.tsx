@@ -3,7 +3,7 @@ import { ReactElement } from 'react';
 import AddPatientStage from './stages/add-patient-stage';
 import AddTreatmentStage from './stages/add-treatment-stage';
 
-import { StageType, selectCurrentStageType } from '@entities/treatment-plan';
+import { StageType, selectCurrentStageType } from '@entities/patient';
 
 import { RecordOf } from '@shared/lib/types';
 import { useAppSelector } from '@shared/model';

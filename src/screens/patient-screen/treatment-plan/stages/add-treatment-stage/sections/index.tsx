@@ -8,7 +8,7 @@ import ActivitiesMedicine from './activities-section';
 import { useAppSelector } from '@shared/model';
 import { useTreatmentPlanStageContext } from '../lib/context';
 
-import { selectTreatmentPlanStage } from '@entities/treatment-plan';
+import { selectTreatmentPlanStage } from '@entities/patient';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';

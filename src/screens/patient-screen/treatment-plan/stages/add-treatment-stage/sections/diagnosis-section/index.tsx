@@ -5,7 +5,7 @@ import DiagnosisItem from './diagnosis-item';
 
 import { useAppSelector } from '@shared/model';
 
-import { IDiagnosisStateType, selectActiveDiagnosisId, selectDiagnosis } from '@entities/treatment-plan';
+import { IDiagnosisStateType, selectActiveDiagnosisId, selectDiagnosis } from '@entities/patient';
 
 import { classes } from './index.tailwind';
 import { classes as commonClasses } from '../../index.tailwind';
