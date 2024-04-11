@@ -10,6 +10,13 @@ export interface IPatient {
   gender?: Gender;
 }
 
+export interface IDashboardStats {
+  patientId: string[];
+  patientsCount: number;
+  accountsSetup: number;
+  entriesTpReview: number;
+}
+
 export interface IActivity {
   id: string;
   icon: string;

@@ -3,7 +3,7 @@ import { classes } from './index.tailwind';
 
 interface PropsType {
   label: string;
-  value: string;
+  value?: number;
   Icon: ReactElement;
 }
 
@@ -13,7 +13,7 @@ const StatCard: FC<PropsType> = ({ label, value, Icon }) => {
       <p className={classes.label}>{label}</p>
       <div className={classes.valueContainer}>
         {Icon}
-        <p className={classes.value}>{value}</p>
+        <p className={classes.value}>{value ?? 0}</p>
       </div>
     </div>
   );

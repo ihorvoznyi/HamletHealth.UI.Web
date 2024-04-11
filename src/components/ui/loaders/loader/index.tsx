@@ -6,14 +6,16 @@ import './index.css';
 import { classes } from './index.tailwind';
 
 interface PropsType {
-  styles?: Partial<{ loader: string; }>
+	styles?: Partial<{ loader: string; container: string; }>;
 }
 
 export const Loader: React.FC<PropsType> = ({ styles }) => (
-  <div className={cn(classes.loader, styles?.loader)}>
-    <div />
-    <div />
-    <div />
-    <div />
-  </div>
+	<div className={cn(styles?.container)}>
+		<div className={cn(classes.loader, styles?.loader)}>
+			<div />
+			<div />
+			<div />
+			<div />
+		</div>
+	</div>
 );
