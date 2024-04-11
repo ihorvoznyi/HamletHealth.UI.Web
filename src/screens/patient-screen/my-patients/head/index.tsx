@@ -6,8 +6,8 @@ import Search from '@components/ui/search';
 import { classes } from './index.tailwind';
 import { useMyPatientContext } from '../lib';
 
-const Head: React.FC<{ total: number }> = ({ total = 0 }) => {
-  const { setSearchTerm } = useMyPatientContext();
+const Head: React.FC<{ total: number }> = () => {
+  const { total, setSearchTerm } = useMyPatientContext();
 
   return (
     <div className={classes.container}>

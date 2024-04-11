@@ -1,6 +1,8 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 
 import PatientItem from './patient-item';
+
+import { useMyPatientContext } from '../lib';
 
 import { includesCaseInsensitive, toNormalCase } from '@utils/text.util';
 
@@ -8,14 +10,13 @@ import { IPatient } from '@entities/treatment-plan';
 import { IPatientItem } from './index.interfaces';
 
 import { classes } from './index.tailwind';
-import { useMyPatientContext } from '../lib';
 
 interface PropsType {
   patients: IPatient[];
 }
 
 const PatientList: React.FC<PropsType> = ({ patients }) => {
-  const { sortBy, searchTerm } = useMyPatientContext();
+  const { sortBy, searchTerm, total, setTotal } = useMyPatientContext();
 
 	const patientsRecord = useMemo(() => {
     const filterBySearchTerm = patients.filter(({ firstName, lastName }) => {
@@ -28,6 +29,12 @@ const PatientList: React.FC<PropsType> = ({ patients }) => {
 
     return sortedRecord;
   }, [patients, sortBy, searchTerm]);
+
+  useEffect(() => {
+    if (total !== patientsRecord.length) {
+      setTotal(patientsRecord.reduce((acc, item) => acc + item.items.length, 0));
+    }
+  }, [patientsRecord]);
 
 	return (
 		<div className={classes.container}>
