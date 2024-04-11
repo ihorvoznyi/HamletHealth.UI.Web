@@ -8,7 +8,7 @@ import { treatmentPlanActions } from '../models';
 import { appActions } from '@app/store';
 
 import { IServerResponse } from '@shared/lib/types';
-import { CreateTreatmentPlanDto, IDiagnosisItemDto } from './patient-api.interfaces';
+import { CreateTreatmentPlanDto, IDiagnosisItemDto, IPatient } from './patient-api.interfaces';
 import { TREATMENT_PLAN_API_ENDPOINTS } from './patient-api.constants';
 
 export const patientApi = createApi({
@@ -44,10 +44,17 @@ export const patientApi = createApi({
         body,
       }),
     }),
+    getPatients: builder.query<IPatient[], void>({
+      query: () => ({
+        url: '/users/patients'
+      }),
+      transformResponse: (response: IServerResponse<IPatient[]>) => response.Data, 
+    }),
   })
 });
 
 export const { 
+  useGetPatientsQuery,
   useGetDiagnosisQuery, 
   useCreateTreatmentPlanMutation,
 } = patientApi;

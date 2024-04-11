@@ -1,13 +1,19 @@
-import Search from '@components/ui/search';
-import Sort from './sort';
-import { classes } from './index.tailwind';
+import React from 'react';
 
-const Head = () => {
+import Sort from './sort';
+import Search from '@components/ui/search';
+
+import { classes } from './index.tailwind';
+import { useMyPatientContext } from '../lib';
+
+const Head: React.FC<{ total: number }> = ({ total = 0 }) => {
+  const { setSearchTerm } = useMyPatientContext();
+
   return (
     <div className={classes.container}>
       <div className={classes.head}>
         <h2 className={classes.title}>My patients</h2>
-        <span className={classes.count}>(167)</span>
+        <span className={classes.count}>({total})</span>
       </div>
 
       <div className={classes.filterContainer}>
@@ -16,6 +22,7 @@ const Head = () => {
           placeholder="Search patients, diagnosis, more"
           styles={classes.search}
           isCloseIcon={false}
+          onChange={setSearchTerm}
         />
       </div>
     </div>

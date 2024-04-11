@@ -1,14 +1,25 @@
-import { useState } from 'react';
 import { DropDownSvg } from '@components/ui/svg';
+
+import { useMyPatientContext } from '../../lib';
+
 import { classes } from './index.tailwind';
 
 const Sort = () => {
-  const [isAsc, setIsAsc] = useState<boolean>(true);
+  const { sortBy, setSortBy } = useMyPatientContext();
+
+  const handleSort = () => {
+    if (sortBy === 'ASC') {
+      setSortBy('DESC');
+      return;
+    } 
+
+    setSortBy('ASC');
+  };
 
   return (
-    <div className={classes.container} onClick={() => setIsAsc(prev => !prev)}>
-      <p className={classes.paragraph}>Show names {isAsc ? 'A-Z' : 'Z-A'}</p>
-      <DropDownSvg className={!isAsc ? 'rotate-180': ''} />
+    <div className={classes.container} onClick={handleSort}>
+      <p className={classes.paragraph}>Show names {sortBy === 'ASC' ? 'A-Z' : 'Z-A'}</p>
+      <DropDownSvg className={sortBy === 'DESC' ? 'rotate-180': ''} />
     </div>
   );
 };

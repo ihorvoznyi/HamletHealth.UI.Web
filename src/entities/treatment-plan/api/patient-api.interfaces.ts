@@ -1,10 +1,13 @@
-export interface Patient {
+import { Gender } from '@shared/lib/enums';
+
+export interface IPatient {
   id: string;
   firstName: string;
   lastName: string;
   birthDate?: string;
   email?: string;
   phone?: string;
+  gender?: Gender;
 }
 
 export interface IActivity {
