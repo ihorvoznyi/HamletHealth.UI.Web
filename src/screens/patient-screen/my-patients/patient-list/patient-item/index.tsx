@@ -38,18 +38,21 @@ const PatientItem: React.FC<PropsType> = ({ patient }) => {
 
 export const renderPatientItem = (patient: IPatient) => {
   let gender = '-';
+  let birthDate = '-';
 
-  if (patient.gender) {
-    gender = patient.gender === 1 ? 'male' : 'female';
+  if (typeof patient.gender === 'number') {
+    gender = patient.gender === 1 ? 'female' : 'male';
   }
 
-  // TODO: sync with backend
-  const dateMock = new Date(2010, 5, 3, 10);
+  if (typeof patient.birthDate === 'string') {
+    const patientBirthDate = new Date(patient.birthDate);
+    birthDate = formatDateAndAge(patientBirthDate);
+  }
 
 	const patientItem: IPatientItem = {
 		id: patient.id,
 		fullname: `${toNormalCase(patient.firstName)} ${toNormalCase(patient.lastName)}`,
-		birthDate: formatDateAndAge(dateMock),
+		birthDate: birthDate,
 		gender,
 		healthProblem: '-',
 	};
