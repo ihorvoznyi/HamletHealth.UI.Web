@@ -5,7 +5,7 @@ import {
   StageStatusPayload, 
   StageTypePayload, 
   SetDiagnosisPayload,
-  DiagnosisIdPayload,
+  DiagnosIdPayload as DiagnosIdPayload,
   ActivityOrMedicationIdPayload,
   TreatmentPlanMeta,
   SetPatientIdPayload
@@ -64,7 +64,7 @@ export const treatmentPlanSlice = createSlice({
     setDiagnosis: (state: TreatmentPlanState, { payload }: SetDiagnosisPayload) => {
       state.preparedData.diagnosis = payload;
     },
-    setActiveDiagnosis: (state: TreatmentPlanState, { payload }: DiagnosisIdPayload) => {
+    setActiveDiagnosis: (state: TreatmentPlanState, { payload }: DiagnosIdPayload) => {
       const diagnosis = state.preparedData.diagnosis.find(item => item.id === payload);
       if (diagnosis) {
         state.preparedData.activeDiagnosis = diagnosis;
@@ -93,7 +93,7 @@ export const treatmentPlanSlice = createSlice({
         }
 
         const selectedTreatment = {
-          diagnosisId: activeDiagnosis.id,
+          diagnosId: activeDiagnosis.id,
           treatment: activity,
         };
 

@@ -15,11 +15,11 @@ export class TreatmentPlanMapper {
       name: model.name,
       descritpion: model.description,
       startDate,
-      treatmentPlanItems: Object.keys(groupedDiagnosis).map(diagnosisId => ({
-        diagnosisId,
+      treatmentPlanItems: Object.keys(groupedDiagnosis).map(diagnosId => ({
+        diagnosId,
         startDate,
-        medications: groupedDiagnosis[diagnosisId].medications,
-        activityIds: groupedDiagnosis[diagnosisId].activityIds,
+        medications: groupedDiagnosis[diagnosId].medications,
+        activityIds: groupedDiagnosis[diagnosId].activityIds,
       })),
     };
   }
@@ -32,17 +32,17 @@ export class TreatmentPlanMapper {
     }> = {};
     
     treatmentPlanData.treatmentPlanItems.forEach(item => {
-      const diagnosisId = item.diagnosis.id;
+      const diagnosId = item.diagnosis.id;
   
-      if (!groupedByDiagnosis[diagnosisId]) {
-        groupedByDiagnosis[diagnosisId] = {
+      if (!groupedByDiagnosis[diagnosId]) {
+        groupedByDiagnosis[diagnosId] = {
           diagnosis: item.diagnosis,
           activityIds: [],
           medications: [],
         };
       }
   
-      const diagnosis = groupedByDiagnosis[diagnosisId];
+      const diagnosis = groupedByDiagnosis[diagnosId];
   
       if (item.treatment.category === 1) {
         const { code } = diagnosis.diagnosis;

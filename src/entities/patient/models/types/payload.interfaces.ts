@@ -18,7 +18,7 @@ export type StageTypePayload = PayloadAction<StageType>;
 export type UpdateAddPatientStagePayload = PayloadAction<IPatientStageData>;
 
 export type SetDiagnosisPayload = PayloadAction<IDiagnosisStateType[]>;
-export type DiagnosisIdPayload = PayloadAction<string>;
+export type DiagnosIdPayload = PayloadAction<string>;
 export type ActivityOrMedicationIdPayload = PayloadAction<string>;
 export type SetPatientIdPayload = PayloadAction<string>;
 

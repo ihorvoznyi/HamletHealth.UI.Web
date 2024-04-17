@@ -40,7 +40,7 @@ export interface IDiagnosisStateType {
 }
 
 type SelectedTreatmentType = {
-  diagnosisId: string;
+  diagnosId: string;
   treatment: TreatmentStateType;
 };
 

@@ -47,7 +47,7 @@ export interface MedicationItem {
 }
 
 export interface TreatmentPlanItem {
-  diagnosisId: string;
+  diagnosId: string;
   startDate: Date;
   endDate?: Date;
   medications: MedicationItem[],

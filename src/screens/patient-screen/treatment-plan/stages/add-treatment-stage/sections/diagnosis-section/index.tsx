@@ -5,7 +5,7 @@ import DiagnosisItem from './diagnosis-item';
 
 import { useAppSelector } from '@shared/model';
 
-import { IDiagnosisStateType, selectActiveDiagnosisId, selectDiagnosis } from '@entities/patient';
+import { IDiagnosisStateType, selectActiveDiagnosId, selectDiagnosis } from '@entities/patient';
 
 import { classes } from './index.tailwind';
 import { classes as commonClasses } from '../../index.tailwind';
@@ -13,7 +13,7 @@ import { classes as commonClasses } from '../../index.tailwind';
 const Diagnosis: React.FC<{ diagnosis?: Pick<IDiagnosisStateType, 'id'| 'name'>[] }> = () => {
   const [ searchTerm, setSearchTerm ] = useState('');
 
-  const activeDiagnosisId = useAppSelector(selectActiveDiagnosisId);
+  const activeDiagnosId = useAppSelector(selectActiveDiagnosId);
   const diagnosis = useAppSelector(state => selectDiagnosis(state, { searchTerm }));
 
   return (
@@ -31,7 +31,7 @@ const Diagnosis: React.FC<{ diagnosis?: Pick<IDiagnosisStateType, 'id'| 'name'>[
               key={item.name} 
               id={item.id} 
               name={item.name} 
-              isActive={item.id === activeDiagnosisId}
+              isActive={item.id === activeDiagnosId}
             />
           ))}
         </ul>

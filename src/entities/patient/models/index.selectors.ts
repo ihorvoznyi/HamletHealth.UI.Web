@@ -105,7 +105,7 @@ export const selectTreatmentPlanData = ({
 		description: treatmentPlanStageData.description,
 		patientId: treatmentPlanStageData.patientId,
 		treatmentPlanItems: treatmentPlanStageData.selectedTreatments.map(item => {
-			const activityDiagnosis = diagnosisList.find(d => d.id === item.diagnosisId);
+			const activityDiagnosis = diagnosisList.find(d => d.id === item.diagnosId);
 			return {
 				diagnosis: activityDiagnosis!,
 				treatment: item.treatment,
@@ -114,5 +114,5 @@ export const selectTreatmentPlanData = ({
 	};
 };
 
-export const selectActiveDiagnosisId = ({ treatmentPlanReducer }: RootState) =>
+export const selectActiveDiagnosId = ({ treatmentPlanReducer }: RootState) =>
 	treatmentPlanReducer.preparedData.activeDiagnosis?.id;
