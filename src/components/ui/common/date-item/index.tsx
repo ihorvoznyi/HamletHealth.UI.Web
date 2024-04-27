@@ -1,13 +1,18 @@
+import React from 'react';
+
 import { DateSvg } from '@components/ui/svg';
 
 import { classes } from './index.tailwind';
 
-const DateItem = () => {
+interface PropsType {
+  date: string
+}
+
+const DateItem: React.FC<PropsType> = ({ date }) => {
   return (
     <div className={classes.container}>
       <DateSvg className={classes.icon} />
-      {/* Dynamic value */}
-      <p className={classes.month}>June</p>
+      <p className={classes.month}>{date}</p>
     </div>
   );
 };

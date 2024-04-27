@@ -1,9 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { retrieveInitials } from '@screens/patient-screen/shared/patient.helpers';
 import { formatDateAndAge } from '../index.helper';
-import { combineRoutes, toNormalCase } from '@utils/text.util';
+import { combineRoutes, retrieveInitials, toNormalCase } from '@utils/text.util';
 
 import { APP_ROUTES } from '@configs/routes.config';
 

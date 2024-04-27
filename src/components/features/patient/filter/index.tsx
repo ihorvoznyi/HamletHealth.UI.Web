@@ -1,4 +1,4 @@
-import DateItem from '@screens/patient-screen/shared/date-item';
+import { DateItem } from '@components/ui/common';
 import FilterItem from './filter-item';
 
 import { classes } from './index.tailwind';
@@ -15,7 +15,7 @@ const Filter = () => {
           <FilterItem onSelect={() => {}} isSelected={false} text="Have a sleep" />
         </ul>
       </div>
-      <DateItem />
+      <DateItem date="June" />
     </div>
   );
 };

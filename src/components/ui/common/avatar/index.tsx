@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
 import { cn } from '@utils/style.util';
+import { retrieveInitials } from '@utils/text.util';
 import { classes } from './index.tailwind';
-import { retrieveInitials } from '../../../../screens/patient-screen/shared/patient.helpers';
 
 interface PropsType {
   fullname: string;
