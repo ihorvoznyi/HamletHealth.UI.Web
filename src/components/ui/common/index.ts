@@ -4,5 +4,6 @@ export { default as Divider } from './divider';
 export { default as Initials } from './initials';
 export { default as Modal } from './modal';
 export { default as MoodCardList } from './mood-card-list';
+export { default as Policy } from './policy';
 
 export * from './loaders';

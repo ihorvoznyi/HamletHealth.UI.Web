@@ -7,6 +7,7 @@ export * from './SettingsSvg';
 export * from './SearchSvg';
 export * from './DeleteSvg';
 export * from './PeopleSvg';
+export * from './FlowerSvg';
 export * from './SleepSvg';
 export * from './ClockSvg';
 export * from './CloseSvg';
