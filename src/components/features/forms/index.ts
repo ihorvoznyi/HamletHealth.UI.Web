@@ -1,3 +1,4 @@
+export { default as AddPatientForm } from './add-patient-form';
 export { default as CreateAccountForm } from './create-account-form';
 export { default as CreatePasswordForm } from './create-password-form';
 export { default as CodeVerificationForm } from './code-verification-form';

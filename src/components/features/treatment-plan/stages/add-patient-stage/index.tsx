@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { bindActionCreators } from '@reduxjs/toolkit';
 
-import FillPatientForm from './form';
+import { AddPatientForm } from '@components/features/forms';
 
 import { useAppDispatch, useAppSelector } from '@shared/model';
 
@@ -25,7 +25,7 @@ const AddPatientStage = () => {
       <h2 className={classes.title}>Add patient</h2>
       <p className={classes.subtitle}>Fill in the info to create an account for the patient.</p>
 
-      <FillPatientForm />
+      <AddPatientForm />
     </div>
   );
 };

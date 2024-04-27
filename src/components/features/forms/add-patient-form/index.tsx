@@ -9,7 +9,7 @@ import { GENDER_OPTIONS } from './lib/constants';
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
 
-const FillPatientForm = () => {
+const AddPatientForm = () => {
 	const { register, errors, control, submit, watch, isValid } = useAddPatient();
 
 	return (
@@ -72,4 +72,4 @@ const FillPatientForm = () => {
 	);
 };
 
-export default FillPatientForm;
+export default AddPatientForm;
