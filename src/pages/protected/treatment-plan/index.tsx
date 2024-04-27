@@ -2,9 +2,7 @@ import { useEffect } from 'react';
 import { redirect } from 'react-router-dom';
 import { shallowEqual } from 'react-redux';
 
-import StageBar from './stage-bar';
-import DisplayStage from './DisplayStage';
-import SuccessNotify from './success-notify';
+import { StageBar, PlanCreationStage, SuccessNotify } from '@components/features/treatment-plan';
 
 import { useAppDispatch, useAppSelector } from '@shared/model';
 import { selectTreatmentPlanStage, treatmentPlanActions, useGetDiagnosisQuery } from '@entities/patient';
@@ -31,7 +29,7 @@ const CreateTreatmentPlan = () => {
   return (
     <div className={classes.container}>
       <StageBar />
-      {stageStatus !== 'filled' ? <DisplayStage /> : <SuccessNotify />}
+      {stageStatus !== 'filled' ? <PlanCreationStage /> : <SuccessNotify />}
     </div>
   );
 };

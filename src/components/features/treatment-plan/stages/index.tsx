@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 
-import AddPatientStage from './stages/add-patient-stage';
-import AddTreatmentStage from './stages/add-treatment-stage';
+import PatientStage from './add-patient-stage';
+import TreatmentStage from './add-treatment-stage';
 
 import { StageType, selectCurrentStageType } from '@entities/patient';
 
@@ -11,8 +11,8 @@ import { useAppSelector } from '@shared/model';
 const DisplayStage = () => {
   const stage = useAppSelector(selectCurrentStageType);
   const mapper: RecordOf<StageType, ReactElement> = {
-    'addPatient': <AddPatientStage />,
-    'treatmentPlan': <AddTreatmentStage />,
+    'addPatient': <PatientStage />,
+    'treatmentPlan': <TreatmentStage />,
   };
 
   return mapper[stage];

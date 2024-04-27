@@ -1,9 +1,11 @@
-import PrimaryButton from '@components/ui/controls/button';
-import { classes } from './index.tailwind';
 import { useNavigate } from 'react-router-dom';
-import { APP_ROUTES } from '@configs/routes.config';
 
-const PatientsStartPage = () => {
+import { Button } from '@components/ui/controls';
+
+import { APP_ROUTES } from '@configs/routes.config';
+import { classes } from './index.tailwind';
+
+const AddNewPatientPage = () => {
   const navigate = useNavigate();
 
   return (
@@ -21,15 +23,15 @@ const PatientsStartPage = () => {
           Add patients to assign tasks and activities to them and track their progress.
         </p>
 
-        <PrimaryButton 
+        <Button 
           styles={classes.button} 
           onClick={() => navigate(APP_ROUTES.APP_PATIENT)}
         >
           Add new patient
-        </PrimaryButton>
+        </Button>
       </div>
     </div>
   );
 };
 
-export default PatientsStartPage;
+export default AddNewPatientPage;
