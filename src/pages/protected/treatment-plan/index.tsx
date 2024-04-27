@@ -11,7 +11,7 @@ import { APP_ROUTES } from '@configs/routes.config';
 
 import { classes } from './index.tailwind';
 
-const CreateTreatmentPlan = () => {
+const CreateTreatmentPlanPage = () => {
   const dispatch = useAppDispatch();
   const { isError } = useGetDiagnosisQuery();
   const { stageStatus } = useAppSelector(selectTreatmentPlanStage, shallowEqual);
@@ -34,4 +34,4 @@ const CreateTreatmentPlan = () => {
   );
 };
 
-export default CreateTreatmentPlan;
+export default CreateTreatmentPlanPage;

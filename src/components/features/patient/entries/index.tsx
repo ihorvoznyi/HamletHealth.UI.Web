@@ -1,9 +1,9 @@
 import Filter from '../filter';
-
-import { classes } from './index.tailwind';
 import EntryCards from './entry-cards';
 
-const Entries = () => {
+import { classes } from './index.tailwind';
+
+const PatientEntries = () => {
   return (
     <div className={classes.container}>
       <Filter />
@@ -12,4 +12,4 @@ const Entries = () => {
   );
 };
 
-export default Entries;
+export default PatientEntries;

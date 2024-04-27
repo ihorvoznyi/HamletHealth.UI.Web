@@ -1,12 +1,12 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import ShareModal from '../share-modal';
-import PrimaryButton from '@components/ui/controls/button';
+import ShareModal from './share-modal';
+import { Button } from '@components/ui/controls';
 import { ArrowLeftSvg } from '@components/ui/svg';
 
 import { APP_ROUTES } from '@configs/routes.config';
 import { classes } from './index.tailwind';
-import { useState } from 'react';
 
 const Breadcrumb = () => {
   const navigate = useNavigate();
@@ -15,14 +15,14 @@ const Breadcrumb = () => {
 
   return (
     <div className={classes.container}>
-      <PrimaryButton variant="outlined" onClick={handleNavigate} styles={classes.backBtn}>
+      <Button variant="outlined" onClick={handleNavigate} styles={classes.backBtn}>
         <ArrowLeftSvg />
         Your patients
-      </PrimaryButton>
+      </Button>
 
-      <PrimaryButton variant="outlined" onClick={() => setShowModal(true)} styles={classes.connectBtn}>
+      <Button variant="outlined" onClick={() => setShowModal(true)} styles={classes.connectBtn}>
         Connect to hamlet health
-      </PrimaryButton>
+      </Button>
 
       {showModal ? <ShareModal onClose={() => setShowModal(false)} /> : null}
     </div>

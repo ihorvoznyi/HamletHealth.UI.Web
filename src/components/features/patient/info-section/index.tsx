@@ -1,7 +1,7 @@
-import Divider from '@components/ui/common/divider';
-import Breadcrumb from '../breadcrumb';
+import Breadcrumb from './breadcrumb';
 import PersonalInfo from './personal-info';
 import TreatmentInfo from './treatment-info';
+import { Divider } from '@components/ui/common';
 
 import { classes } from './index.tailwind';
 

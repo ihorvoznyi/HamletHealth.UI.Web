@@ -1,13 +1,11 @@
 import { useState } from 'react';
 
-import Stats from './stats';
-import Entries from './entries';
-import Tabs, { TabEnum } from './tabs';
-import InfoSection from './info-section';
+import Tabs, { TabEnum } from '@components/features/patient/tabs';
+import { PatientStats, PatientEntries, InfoSection } from '@components/features/patient';
 
 import { classes } from './index.tailwind';
 
-const Patient = () => {
+const PatientPage = () => {
   const [activeTab, setActiveTab] = useState(TabEnum.STATS);
 
   const handleSwitch = (tab: TabEnum) => setActiveTab(tab);
@@ -18,10 +16,10 @@ const Patient = () => {
 
       <div className={classes.tabsContainer}>
         <Tabs value={activeTab} onSwitch={handleSwitch} />
-        {activeTab === TabEnum.ENTRIES ? <Entries /> : <Stats />}
+        {activeTab === TabEnum.ENTRIES ? <PatientEntries /> : <PatientStats />}
       </div>
     </div>
   );
 };
 
-export default Patient;
+export default PatientPage;
