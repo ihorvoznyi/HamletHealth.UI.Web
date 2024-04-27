@@ -16,6 +16,7 @@ export default defineConfig({
       { find: '@hooks', replacement: path.resolve(__dirname, 'src/shared/lib/hooks') },
       { find: '@assets', replacement: path.resolve(__dirname, 'public/assets') },
       { find: '@screens', replacement:  path.resolve(__dirname, 'src/screens')},
+      { find: '@pages', replacement:  path.resolve(__dirname, 'src/pages')},
       { find: '@components', replacement:  path.resolve(__dirname, 'src/components')},
       { find: '@configs', replacement: path.resolve(__dirname, 'src/shared/lib/configs') },
       { find: '@entities', replacement: path.resolve(__dirname, 'src/entities') },

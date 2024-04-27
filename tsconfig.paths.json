@@ -6,6 +6,7 @@
       "@app-store/*": ["src/app/store/app"],
       "@assets/*": ["public/assets/*"],
       "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
       "@ui/*": ["src/components/ui/*"],
       "@configs/*": ["src/shared/lib/configs/*"],
       "@utils/*": ["src/shared/lib/utils/*"],
