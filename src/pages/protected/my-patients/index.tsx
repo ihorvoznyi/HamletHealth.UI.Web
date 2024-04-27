@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 
-import Head from './head';
-import PatientList from './patient-list';
-import { MyPatientsProvider } from './lib';
+import { Head, PatientList } from '@components/features/my-patients';
+import { MyPatientsProvider } from '@components/features/my-patients/context';
 
 import { useLoading } from '@hooks/useLoading';
 import { useGetPatientsQuery } from '@entities/patient';
@@ -13,7 +12,7 @@ import { APP_ROUTES } from '@configs/routes.config';
 
 import { classes } from './index.tailwind';
 
-const MyPatients = () => {
+const MyPatientsPage = () => {
   const { setGlobalLoader } = useLoading();
   const { data: patients = [], isLoading, isError } = useGetPatientsQuery();
 
@@ -42,4 +41,4 @@ const MyPatients = () => {
 
 
 
-export default MyPatients;
+export default MyPatientsPage;

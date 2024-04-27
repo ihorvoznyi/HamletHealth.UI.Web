@@ -2,9 +2,9 @@ import React from 'react';
 
 import Sort from './sort';
 import Search from '@components/ui/controls/search';
+import { useMyPatientContext } from '../context';
 
 import { classes } from './index.tailwind';
-import { useMyPatientContext } from '../lib';
 
 const Head: React.FC<{ total: number }> = () => {
   const { total, setSearchTerm } = useMyPatientContext();

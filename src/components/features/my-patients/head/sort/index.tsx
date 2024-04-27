@@ -1,6 +1,5 @@
 import { DropDownSvg } from '@components/ui/svg';
-
-import { useMyPatientContext } from '../../lib';
+import { useMyPatientContext } from '@components/features/my-patients/context';
 
 import { classes } from './index.tailwind';
 

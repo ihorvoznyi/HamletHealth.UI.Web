@@ -1,6 +1,6 @@
 import React, { useMemo, useEffect } from 'react';
 
-import { useMyPatientContext } from '../lib';
+import { useMyPatientContext } from '../context';
 
 import { renderPatientItem } from './patient-item';
 import { sortRecordBy } from '@utils/sort.util';
