@@ -1,4 +1,4 @@
-import PrimaryButton from '@components/ui/button';
+import PrimaryButton from '@components/ui/controls/button';
 import SupporterItem from './supporter-item';
 
 import { classes } from './index.tailwind';

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { PlusSvg } from '@components/ui/svg';
-import PrimaryButton from '@components/ui/button';
+import PrimaryButton from '@components/ui/controls/button';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';

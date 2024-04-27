@@ -2,7 +2,7 @@ import React, { ChangeEvent, PropsWithChildren, createContext, useState } from '
 
 import { UseFormRegisterReturn } from 'react-hook-form';
 
-import { InputTypes } from '@components/ui/input/index.interfaces';
+import { InputTypes } from '@components/ui/controls/input/index.interfaces';
 
 interface IInputContext {
 	value: string;

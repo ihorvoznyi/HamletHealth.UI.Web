@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 
-import { Button } from '@components/ui';
+import { Button } from '@components/ui/controls';
 
 import { cn } from '@utils/style.util'; 
 import { classes } from './index.tailwind';

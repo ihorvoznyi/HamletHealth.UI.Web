@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Policy } from '@screens/auth-screen/shared/ui';
 import { AuthScreenLayout } from '@screens/auth-screen/shared/layout';
-import PrimaryButton from '@components/ui/button';
+import PrimaryButton from '@components/ui/controls/button';
 import CreateAccountForm from './create-account-form';
 
 import { APP_ROUTES } from '@configs/routes.config';

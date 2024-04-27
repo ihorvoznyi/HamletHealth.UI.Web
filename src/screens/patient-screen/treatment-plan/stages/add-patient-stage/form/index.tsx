@@ -1,6 +1,6 @@
 import { Controller } from 'react-hook-form';
 
-import { Input, Select } from '@components/ui';
+import { Input, Select } from '@components/ui/controls';
 
 import { useAddPatient } from './lib/hooks';
 

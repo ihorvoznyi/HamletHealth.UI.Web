@@ -1,4 +1,4 @@
-import { Modal } from '@components/ui';
+import { Modal } from '@components/ui/common';
 
 import DefineTreatmentPlanForm from './form';
 

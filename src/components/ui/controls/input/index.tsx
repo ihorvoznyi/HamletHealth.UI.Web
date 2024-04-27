@@ -16,7 +16,7 @@ interface PropsType extends Pick<WrapperProps, 'label' | 'styles' | 'watchValue'
 	register: UseFormRegisterReturn;
 }
 
-export const Input: FC<PropsType> = ({ type = 'text', register, ...wrapperProps }) => {
+const Input: FC<PropsType> = ({ type = 'text', register, ...wrapperProps }) => {
 	return (
 		<InputProvider type={type} register={register}>
 			<Wrapper {...wrapperProps}>
@@ -25,3 +25,5 @@ export const Input: FC<PropsType> = ({ type = 'text', register, ...wrapperProps 
 		</InputProvider>
 	);
 };
+
+export default Input;

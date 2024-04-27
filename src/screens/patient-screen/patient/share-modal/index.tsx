@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { Control, Controller, FieldValues, UseFormRegisterReturn, useForm } from 'react-hook-form';
 
-import { Input } from '@components/ui';
-import Modal from '@components/ui/modal';
-import Select from '@components/ui/select';
-import PrimaryButton from '@components/ui/button';
+import { Modal } from '@components/ui/common';
 import { PlusSvg } from '@components/ui/svg';
+import { Input, Select, Button } from '@components/ui/controls';
 
 import { classes } from './index.tailwind';
 
@@ -38,15 +36,15 @@ const ShareModal: React.FC<PropsType> = ({ onClose }) => {
 
 			<form className={classes.form}>{assignFields}</form>
 
-			<PrimaryButton variant="outlined" onClick={handleAssignDoctor} styles={classes.assignBtn}>
+			<Button variant="outlined" onClick={handleAssignDoctor} styles={classes.assignBtn}>
 				<PlusSvg color={classes.plusIconColor} />
 				Assign one more doctor
-			</PrimaryButton>
+			</Button>
 
 			{/* TODO: Show modal only when sharing finished successfully */}
-			<PrimaryButton onClick={handleShare} styles={classes.shareBtn}>
+			<Button onClick={handleShare} styles={classes.shareBtn}>
 				Share
-			</PrimaryButton>
+			</Button>
 		</Modal>
 	);
 };

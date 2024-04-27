@@ -1,4 +1,4 @@
-import PrimaryButton from '@components/ui/button';
+import PrimaryButton from '@components/ui/controls/button';
 import { classes } from './index.tailwind';
 import { useNavigate } from 'react-router-dom';
 import { APP_ROUTES } from '@configs/routes.config';

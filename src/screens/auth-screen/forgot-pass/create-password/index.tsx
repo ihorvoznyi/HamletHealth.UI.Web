@@ -1,10 +1,10 @@
-import { Input } from '@components/ui';
-import PrimaryButton from '@components/ui/button';
-
-import { classes } from './index.tailwind';
 import { useNavigate } from 'react-router-dom';
-import { APP_ROUTES } from '@configs/routes.config';
 import { useForm } from 'react-hook-form';
+
+import { Input, Button } from '@components/ui/controls';
+
+import { APP_ROUTES } from '@configs/routes.config';
+import { classes } from './index.tailwind';
 
 export const CreatePasswordForm = () => {
   const { register } = useForm();
@@ -23,7 +23,7 @@ export const CreatePasswordForm = () => {
         <Input register={register('')} label="Confrm New Password" />
       </form>
 
-      <PrimaryButton onClick={handleSubmit} styles={classes.submitBtn}>Submit</PrimaryButton>
+      <Button onClick={handleSubmit} styles={classes.submitBtn}>Submit</Button>
     </div>
   );
 };

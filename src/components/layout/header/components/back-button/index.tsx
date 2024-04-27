@@ -1,4 +1,4 @@
-import PrimaryButton from '@components/ui/button';
+import PrimaryButton from '@components/ui/controls/button';
 import { ArrowRightSvg } from '@components/ui/svg';
 import { APP_ROUTES } from '@configs/routes.config';
 import { useNavigate } from 'react-router-dom';

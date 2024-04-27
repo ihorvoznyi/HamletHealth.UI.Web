@@ -1,6 +1,6 @@
-import { PieChart } from '@components/charts';
+import { PieChart } from '@components/ui/charts';
 
-import { chartData } from '@components/charts/pie-chart/lib/index.constants';
+import { chartData } from '@components/ui/charts/pie-chart/lib/index.constants';
 
 import { classes } from './index.tailwind';
 

@@ -2,8 +2,7 @@ import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-import { Input } from '@components/ui';
-import PrimaryButton from '@components/ui/button';
+import { Input, Button } from '@components/ui/controls';
 
 import { APP_ROUTES } from '@configs/routes.config';
 
@@ -43,13 +42,13 @@ export const SendEmailForm: FC<PropsType> = ({ onSubmit }) => {
     
       <div className={classes.signUpContainer}>
         <p className={classes.signUpParagraph}>Don&rsquo;t have an Account? </p>
-        <PrimaryButton 
+        <Button 
           variant="inherit" 
           styles={classes.signUpBtn} 
           onClick={handleSignUp}
         >
           SIGN UP
-        </PrimaryButton>
+        </Button>
       </div>
     </div>
   );

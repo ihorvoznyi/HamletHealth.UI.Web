@@ -1,5 +1,5 @@
-import Modal from '@components/ui/modal';
-import PrimaryButton from '@components/ui/button';
+import Modal from '@components/ui/common/modal';
+import PrimaryButton from '@components/ui/controls/button';
 import { WideCheckSvg } from '@components/ui/svg/checks';
 
 import { classes } from './index.tailwind';

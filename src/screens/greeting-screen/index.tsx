@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import PrimaryButton from '@ui/button';
+import PrimaryButton from '@components/ui/controls/button';
 
 import { APP_ROUTES } from '@configs/routes.config';
 

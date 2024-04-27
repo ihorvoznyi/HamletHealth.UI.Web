@@ -5,7 +5,7 @@ import { EyeSvg } from '@components/ui/svg';
 
 import { useInput } from '../../lib/hooks';
 
-import { FieldProps } from '@components/ui/input/index.interfaces';
+import { FieldProps } from '@components/ui/controls/input/index.interfaces';
 
 import { classes } from './index.tailwind';
 

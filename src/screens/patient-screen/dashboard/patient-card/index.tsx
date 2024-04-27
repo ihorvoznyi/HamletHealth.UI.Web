@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import PrimaryButton from '@components/ui/button';
+import PrimaryButton from '@components/ui/controls/button';
 import MoodList from '../../shared/mood-card-list';
 import Initials from '@screens/patient-screen/shared/initials';
 

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import PrimaryButton from '@components/ui/button';
+import PrimaryButton from '@components/ui/controls/button';
 import { SuccessCircleCheckIcon } from '@components/ui/icons';
 
 import { useAppSelector } from '@shared/model';

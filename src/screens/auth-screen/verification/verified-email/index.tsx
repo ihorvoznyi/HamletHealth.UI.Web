@@ -1,4 +1,4 @@
-import PrimaryButton from '@components/ui/button';
+import PrimaryButton from '@components/ui/controls/button';
 import FlowerIcon from '@components/ui/svg/FlowerSvg';
 
 import { classes } from './index.tailwind';

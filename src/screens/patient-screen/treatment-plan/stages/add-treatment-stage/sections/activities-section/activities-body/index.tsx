@@ -1,4 +1,4 @@
-import { Search } from '@components/ui';
+import { Search } from '@components/ui/controls';
 import ActivityItem from './activity-item';
 
 import { useAppSelector } from '@shared/model';

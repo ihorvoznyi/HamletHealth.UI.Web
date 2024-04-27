@@ -1,4 +1,4 @@
-import Divider from '@components/ui/divider';
+import Divider from '@components/ui/common/divider';
 import Supporters from '../supporters';
 
 import { classes } from './index.tailwind';

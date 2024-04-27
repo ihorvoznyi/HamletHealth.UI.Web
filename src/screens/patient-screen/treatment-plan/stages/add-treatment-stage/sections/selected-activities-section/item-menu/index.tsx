@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import PrimaryButton from '@components/ui/button';
+import PrimaryButton from '@components/ui/controls/button';
 
 import { classes } from './index.tailwind';
 import { DeleteSvg, ClockSvg, EditSvg } from '@components/ui/svg';

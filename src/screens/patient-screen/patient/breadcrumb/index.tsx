@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import ShareModal from '../share-modal';
-import PrimaryButton from '@components/ui/button';
+import PrimaryButton from '@components/ui/controls/button';
 import { ArrowLeftSvg } from '@components/ui/svg';
 
 import { APP_ROUTES } from '@configs/routes.config';

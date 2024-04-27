@@ -1,4 +1,4 @@
-import { Button } from '@components/ui';
+import { Button } from '@components/ui/controls';
 import { ArrowLeftSvg } from '@components/ui/svg';
 
 import { useAppDispatch } from '@shared/model';

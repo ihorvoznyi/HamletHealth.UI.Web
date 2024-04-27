@@ -1,4 +1,4 @@
-import { Loader } from '@components/ui';
+import { Loader } from '@components/ui/common';
 import StatCard from '../stat-card';
 import { ContentIcon, ErrorIcon, PatientIcon, SettingsIcon } from '../dashboard-icons';
 

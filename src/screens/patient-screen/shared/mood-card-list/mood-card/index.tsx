@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import PrimaryButton from '@components/ui/button';
-import Divider from '@components/ui/divider';
+import PrimaryButton from '@components/ui/controls/button';
+import Divider from '@components/ui/common/divider';
 import MoodVarieties from './mood-varieties';
 import RecipesList, { RecipeType } from './recipes-list';
 import { ImageSvg } from '@components/ui/svg';

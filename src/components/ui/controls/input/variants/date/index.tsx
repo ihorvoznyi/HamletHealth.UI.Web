@@ -1,8 +1,8 @@
 import React, { ChangeEvent } from 'react';
 
-import { FieldProps } from '@components/ui/input/index.interfaces';
+import { FieldProps } from '@components/ui/controls/input/index.interfaces';
 
-import { useInput } from '@components/ui/input/lib/hooks';
+import { useInput } from '@components/ui/controls/input/lib/hooks';
 
 import { normalizeDate } from '@utils/normalization.util';
 

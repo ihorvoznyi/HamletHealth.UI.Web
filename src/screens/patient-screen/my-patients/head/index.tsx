@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Sort from './sort';
-import Search from '@components/ui/search';
+import Search from '@components/ui/controls/search';
 
 import { classes } from './index.tailwind';
 import { useMyPatientContext } from '../lib';

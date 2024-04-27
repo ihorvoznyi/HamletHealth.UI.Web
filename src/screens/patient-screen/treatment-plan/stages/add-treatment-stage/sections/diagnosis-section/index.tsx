@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Search from '@components/ui/search';
+import Search from '@components/ui/controls/search';
 import DiagnosisItem from './diagnosis-item';
 
 import { useAppSelector } from '@shared/model';

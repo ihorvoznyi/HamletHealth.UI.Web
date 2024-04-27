@@ -1,12 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { Controller } from 'react-hook-form';
 
-import { Input } from '@components/ui';
-import PrimaryButton from '@components/ui/button';
+import { Input, Button } from '@components/ui/controls';
+import { useLogin } from './lib/hooks';
 
 import { APP_ROUTES } from '@configs/routes.config';
-
-import { useLogin } from './lib/hooks';
 
 import { classes } from './index.tailwind';
 
@@ -42,9 +40,9 @@ const LoginForm = () => {
       />
       <div className={classes.btnsContainer}>
         <button type="submit" className={classes.loginBtn}>Login</button>
-        <PrimaryButton variant="inherit" onClick={handleResetPass} styles={classes.changePassBtn}>
+        <Button variant="inherit" onClick={handleResetPass} styles={classes.changePassBtn}>
           Forgot Password ?
-        </PrimaryButton>
+        </Button>
       </div>
     </form>
   );

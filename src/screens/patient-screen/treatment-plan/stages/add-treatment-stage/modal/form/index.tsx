@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 
-import { Input } from '@components/ui';
+import { Input } from '@components/ui/controls';
 
 import { useLoading } from '@hooks/useLoading';
 import { useAppDispatch, useAppSelector } from '@shared/model';

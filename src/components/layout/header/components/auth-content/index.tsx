@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { PlusSvg } from '@components/ui/svg';
-import PrimaryButton from '@components/ui/button';
+import PrimaryButton from '@components/ui/controls/button';
 
 import { classes } from './index.tailwind';
 import { APP_ROUTES } from '@configs/routes.config';

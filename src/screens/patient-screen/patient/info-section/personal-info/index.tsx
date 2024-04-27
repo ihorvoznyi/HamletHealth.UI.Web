@@ -1,4 +1,4 @@
-import PrimaryButton from '@components/ui/button';
+import PrimaryButton from '@components/ui/controls/button';
 import Avatar from '@screens/patient-screen/shared/avatar';
 import { EditOutlinedSvg } from '@components/ui/svg';
 

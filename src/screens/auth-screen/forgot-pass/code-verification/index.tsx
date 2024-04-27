@@ -1,6 +1,6 @@
 import { FC, useCallback, useRef, useState } from 'react';
 
-import PrimaryButton from '@components/ui/button';
+import PrimaryButton from '@components/ui/controls/button';
 import { Timer } from './timer';
 import { ArrowDirectionType, InputCode, InputCodeRef } from './input-code';
 

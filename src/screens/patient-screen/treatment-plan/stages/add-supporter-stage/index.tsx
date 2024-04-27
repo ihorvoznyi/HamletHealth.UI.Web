@@ -1,6 +1,4 @@
-import { Input } from '@components/ui';
-import Select from '@components/ui/select';
-import PrimaryButton from '@components/ui/button';
+import { Input, Select, Button } from '@components/ui/controls';
 import { ArrowLeftSvg, PlusSvg } from '@components/ui/svg';
 
 import { classes } from './index.tailwind';
@@ -46,24 +44,24 @@ const AddSupporterStage = () => {
 				/>
 
 				<Input register={register('')} label="Email or phone number" />
-				<PrimaryButton variant="outlined" styles={classes.formBtn} onClick={() => {}}>
+				<Button variant="outlined" styles={classes.formBtn} onClick={() => {}}>
 					<PlusSvg color="#4366C5" />
 					Add one more supporter
-				</PrimaryButton>
+				</Button>
 			</form>
 
 			<div className={classes.btnsContainer}>
-				<PrimaryButton onClick={handleNext} variant="outlined">
+				<Button onClick={handleNext} variant="outlined">
 					<ArrowLeftSvg />
-				</PrimaryButton>
-				<PrimaryButton onClick={handleNext} styles={classes.saveBtn}>
+				</Button>
+				<Button onClick={handleNext} styles={classes.saveBtn}>
 					Save and finish
-				</PrimaryButton>
+				</Button>
 			</div>
 
-			<PrimaryButton onClick={handleNext} variant="outlined" styles={classes.skipBtn}>
+			<Button onClick={handleNext} variant="outlined" styles={classes.skipBtn}>
 				Skip this step
-			</PrimaryButton>
+			</Button>
 		</div>
 	);
 };

@@ -1,4 +1,4 @@
-import { Button } from '@components/ui';
+import { Button } from '@components/ui/controls';
 import { classes } from './index.tailwind';
 
 const Counter = () => {

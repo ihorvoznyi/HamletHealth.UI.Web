@@ -1,6 +1,6 @@
 import { shallowEqual } from 'react-redux';
 
-import { Button } from '@components/ui';
+import { Button } from '@components/ui/controls';
 import Diagnosis from './diagnosis-section';
 import Treatments from './selected-activities-section';
 import ActivitiesMedicine from './activities-section';
