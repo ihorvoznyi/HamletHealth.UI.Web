@@ -1,7 +1,8 @@
-import PatientCard from '../patient-card';
+import PatientCard from './patient-card';
+
+import { PATIENTS_DETAILS } from './mock';
 
 import { classes } from './index.tailwind';
-import { PATIENTS_DETAILS } from '../constants';
 
 const PatientCardList = () => {
   return (

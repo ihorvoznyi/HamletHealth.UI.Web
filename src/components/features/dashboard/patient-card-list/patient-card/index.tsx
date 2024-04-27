@@ -1,12 +1,12 @@
 import { FC } from 'react';
 
-import PrimaryButton from '@components/ui/controls/button';
-import MoodList from '../../shared/mood-card-list';
-import Initials from '@screens/patient-screen/shared/initials';
+import { Button } from '@components/ui/controls';
+import { Initials, MoodCardList } from '@components/ui/common';
+
+import { MOOD_CARDS } from '../mock';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
-import { MOOD_CARDS } from '../constants';
 
 export interface IPatientCard {
   id: string;
@@ -34,12 +34,12 @@ const PatientCard: FC<PropsType> = ({ patinet }) => {
           <p>{patinet.gender}</p>
           <p className={classes.diagnosis}>{patinet.diagnosis}</p>
         </div>
-        <PrimaryButton variant="outlined" styles={classes.btn} onClick={handleOpenProfile}>
+        <Button variant="outlined" styles={classes.btn} onClick={handleOpenProfile}>
           Go to profile
-        </PrimaryButton>
+        </Button>
       </div>
 
-      <MoodList items={MOOD_CARDS} />
+      <MoodCardList items={MOOD_CARDS} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import PrimaryButton from '@components/ui/controls/button';
-import Avatar from '@screens/patient-screen/shared/avatar';
+import Avatar from '@components/ui/common/avatar';
 import { EditOutlinedSvg } from '@components/ui/svg';
 
 import { classes } from './index.tailwind';

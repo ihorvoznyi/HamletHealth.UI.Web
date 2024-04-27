@@ -1,8 +1,8 @@
+import StatCard from './stat-card';
 import { Loader } from '@components/ui/common';
-import StatCard from '../stat-card';
-import { ContentIcon, ErrorIcon, PatientIcon, SettingsIcon } from '../dashboard-icons';
-
+import { ContentIcon, ErrorIcon, PatientIcon, SettingsIcon } from '@components/ui/icons/dashboard';
 import { useGetDashboardStatsQuery } from '@entities/patient';
+
 
 import { ToastHelper } from '@shared/lib/helpers';
 

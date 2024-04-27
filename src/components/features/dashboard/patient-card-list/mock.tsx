@@ -1,6 +1,7 @@
 import { BedSvg, SyropSvg, PizzaSvg } from '@components/ui/svg';
-import { IMoodCard } from '../shared/mood-card-list/mood-card';
+
 import { IPatientCard } from './patient-card';
+import { IMoodCard } from '@components/ui/common/mood-card-list/mood-card';
 
 interface Types {
   day: string;

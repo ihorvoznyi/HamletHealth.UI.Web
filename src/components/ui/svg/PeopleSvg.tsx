@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-const PeopleSvg = () => {
+export const PeopleSvg = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
       <g clipPath="url(#clip0_1443_17352)">
@@ -13,5 +13,3 @@ const PeopleSvg = () => {
     </svg>
   );
 };
-
-export default PeopleSvg;

@@ -1,8 +1,10 @@
 import { SettingsSvg } from '@components/ui/svg';
 import { classes } from './index.tailwind';
 
-export const SettingsIcon = () => (
-  <div className={classes.settingsIcon}>
+const SettingsIcon = () => (
+  <div className={classes.container}>
     <SettingsSvg />
   </div>
 );
+
+export default SettingsIcon;

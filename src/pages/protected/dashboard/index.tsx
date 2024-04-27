@@ -1,10 +1,8 @@
-import DateBar from './date-bar';
-import Statistics from './statistics';
-import PatientCardList from './patient-card-list';
+import { DateBar, Statistics, PatientCardList } from '@components/features/dashboard';
 
 import { classes } from './index.tailwind';
 
-const Dashboard = () => {
+const DashboardPage = () => {
   return (
     <div className={classes.container}>
       <div className={classes.head}>
@@ -20,4 +18,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardPage;

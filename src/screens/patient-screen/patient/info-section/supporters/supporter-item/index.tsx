@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import Avatar from '@screens/patient-screen/shared/avatar';
+import Avatar from '@components/ui/common/avatar';
 
 import { classes } from './index.tailwind';
 
