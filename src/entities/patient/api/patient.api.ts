@@ -81,16 +81,18 @@ export const {
 
 // API Responses & Request Args
 export type GetPatientsPlansArg = void;
-export type GetPatientsPlansResponse = {
-	userDto: UserDto;
-	plan: TreatmentPlanDto;
-	entries: EntryDto[];
-}[];
+export type GetPatientsPlansResponse = PatientPlanDto[];
 
 export type GetActivitiesArg = void;
 export type GetActivitiesResponse = ActivityDto[]
 
 // API DTOs
+export type PatientPlanDto = {
+	userDto: UserDto;
+	entries: EntryDto[];
+	plan: TreatmentPlanDto;
+}
+
 export type UserDto = {
 	id: string;
 	diagnos: string;
