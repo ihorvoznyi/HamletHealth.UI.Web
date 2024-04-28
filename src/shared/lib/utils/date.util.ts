@@ -48,8 +48,8 @@ export const formatDateAndAge = (dateOfBirth: Date) => {
 	return `${formattedDate} (${age} y.o.)`;
 };
 
-export const formatISOString = (date: string) => {
-	return formatDateAndAge(new Date(date));
+export const formatISOString = (date?: string) => {
+	return date ? formatDateAndAge(new Date(date)) : '-';
 };
 
 export const formatTimeISOString = (isoString: string) => {

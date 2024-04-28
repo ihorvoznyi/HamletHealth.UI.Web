@@ -1,13 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { formatDateAndAge } from '../index.helper';
+import { formatISOString } from '@utils/date.util';
+import { getGenderName } from '@utils/gender.util';
 import { combineRoutes, retrieveInitials, toNormalCase } from '@utils/text.util';
 
 import { APP_ROUTES } from '@configs/routes.config';
 
-import { IPatient } from '@entities/patient';
-import { IPatientItem } from '../index.interfaces';
+import type { IPatient } from '@entities/patient';
+import type { IPatientItem } from '../index.interfaces';
 
 import { classes } from './index.tailwind';
 
@@ -30,30 +31,18 @@ const PatientItem: React.FC<PropsType> = ({ patient }) => {
       </div>
       <p className={classes.birthDate}>{patient.birthDate}</p>
       <p className={classes.gender}>{patient.gender}</p>
-      <p className={classes.description}>{patient.healthProblem}</p>
+      <p className={classes.description}>{patient.diagnos}</p>
     </div>
   );
 };
 
 export const renderPatientItem = (patient: IPatient) => {
-  let gender = '-';
-  let birthDate = '-';
-
-  if (typeof patient.gender === 'number') {
-    gender = patient.gender === 1 ? 'female' : 'male';
-  }
-
-  if (typeof patient.birthDate === 'string') {
-    const patientBirthDate = new Date(patient.birthDate);
-    birthDate = formatDateAndAge(patientBirthDate);
-  }
-
 	const patientItem: IPatientItem = {
 		id: patient.id,
 		fullname: `${toNormalCase(patient.firstName)} ${toNormalCase(patient.lastName)}`,
-		birthDate: birthDate,
-		gender,
-		healthProblem: '-',
+		birthDate: formatISOString(patient.birthDate),
+		gender: getGenderName(patient.gender),
+		diagnos: patient.diagnos.length ? patient.diagnos : '-',
 	};
 
 	return <PatientItem key={patient.id} patient={patientItem} />;

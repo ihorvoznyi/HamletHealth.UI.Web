@@ -4,7 +4,7 @@ export interface IPatientItem {
   fullname: string;
   birthDate: string;
   gender: string;
-  healthProblem: string;
+  diagnos: string;
 }
 
 export interface IPatientSection {

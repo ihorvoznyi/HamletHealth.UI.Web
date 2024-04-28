@@ -8,6 +8,7 @@ export interface IPatient {
   email?: string;
   phone?: string;
   gender?: Gender;
+  diagnos: string;
 }
 
 export interface IDashboardStats {
