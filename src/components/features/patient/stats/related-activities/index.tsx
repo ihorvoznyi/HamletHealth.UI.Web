@@ -18,7 +18,7 @@ import { classes } from './index.tailwind';
 const RelatedActivities = () => {
   const [activeMood, setActiveMood] = useState<MoodType>('great');
 
-  const renderMoodSvg = (mood: MoodType) => {
+  const renderKeyHealthIndicatorSvg = (mood: MoodType) => {
     const isActive = activeMood === mood;
     const color = isActive ? '#12C28D' : 'black';
     return (
@@ -43,7 +43,7 @@ const RelatedActivities = () => {
 
       <div className={classes.moods}>
         {moods.map((mood) => (
-          <Fragment key={mood}>{renderMoodSvg(mood)}</Fragment>
+          <Fragment key={mood}>{renderKeyHealthIndicatorSvg(mood)}</Fragment>
         ))}
       </div>
 

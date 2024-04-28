@@ -1,24 +1,54 @@
-import PatientCard from './patient-card';
+import { Fragment } from 'react/jsx-runtime';
 
-import { PATIENTS_DETAILS } from './mock';
+import PatientCard from './patient-card';
+import { useConnect } from './connect';
 
 import { classes } from './index.tailwind';
+import { Loader } from '@components/ui/common';
+import { useEffect } from 'react';
+import { ToastHelper } from '@shared/lib/helpers';
 
 const PatientCardList = () => {
-  return (
-    <div className={classes.container}>
-      {PATIENTS_DETAILS.map(item => (
-        <div key={item.month + item.weekday}>
-          <h2 className={classes.title}>{item.month} {item.day}</h2>
-          <p className={classes.weekday}>{item.weekday}</p>
+	const { patients, isLoading, isError } = useConnect();
 
-          <div className={classes.list}>
-            {item.patients.map(patient => <PatientCard key={patient.id} patinet={patient} />)}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
+	useEffect(() => {
+		if (isError) {
+			ToastHelper.error('Failed to load patients. Please, try again later.');
+		}
+	}, [isError]);
+
+	return (
+		<div className={classes.container}>
+			{/* {!isLoading
+				? patients.map(item => (
+						<div key={item.id}>
+							<h2 className={classes.title}>
+								{item.month} {item.day}
+							</h2>
+							<p className={classes.weekday}>{item.weekday}</p>
+
+							<div className={classes.list}>
+								{item.patients.map(patient => (
+									<PatientCard key={patient.id} patinet={patient} />
+								))}
+							</div>
+						</div>
+				  ))
+				: null} */}
+
+			<div>
+				<h2 className={classes.title}>Jun 5</h2>
+				<p className={classes.weekday}>SUN</p>
+				<ul className={classes.list}>
+          {!isLoading ? patients.map(item => (
+            <Fragment key={item.id}>
+              <PatientCard patinet={item} />
+            </Fragment>
+          )) : <Loader styles={{ container: 'text-center' }} />}
+        </ul>
+			</div>
+		</div>
+	);
 };
 
 export default PatientCardList;

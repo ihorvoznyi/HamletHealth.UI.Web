@@ -3,5 +3,7 @@ export const PATIENT_API_ENDPOINTS = {
   diagnosis: '/diagnosis',
   treatmentPlan: '/treatmentPlan',
   patientsList: '/users/patients',
-  dashboardStats: '/users/doctorDashboard'
+  dashboardStats: '/users/doctorDashboard',
+  patientsPlans: '/users/patientsPlans',
+  activities: '/activities'
 };

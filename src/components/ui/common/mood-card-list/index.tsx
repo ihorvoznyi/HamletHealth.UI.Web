@@ -1,15 +1,15 @@
 import { FC, useEffect, useRef, useState } from 'react';
 
-import MoodCard, { IMoodCard } from './mood-card';
+import JournalEntry, { JournalEntryProps } from './mood-card';
 import { ArrowRightSvg } from '@components/ui/svg';
 
 import { classes } from './index.tailwind';
 
 interface PropsType {
-  items: IMoodCard[];
+  entries: JournalEntryProps[];
 }
 
-const MoodList: FC<PropsType> = ({ items }) => {
+const JorunalEntriesCarousel: FC<PropsType> = ({ entries }) => {
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -54,7 +54,7 @@ const MoodList: FC<PropsType> = ({ items }) => {
   return (
     <div className={classes.container}>
       <div ref={ref} className={classes.scrollContainer}>
-        {items.map(item => <MoodCard key={item.id} {...item} />)}
+        {entries.map(item => <JournalEntry key={item.id} {...item} />)}
       </div>
 
       {showRightArrow ? (
@@ -72,4 +72,4 @@ const MoodList: FC<PropsType> = ({ items }) => {
   );
 };
 
-export default MoodList;
+export default JorunalEntriesCarousel;

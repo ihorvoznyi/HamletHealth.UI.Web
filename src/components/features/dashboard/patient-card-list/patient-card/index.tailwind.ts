@@ -5,7 +5,8 @@ export const classes = {
     flex 
     items-center 
     border-l-[8px] 
-    bg-white 
+    bg-white
+    min-h-[312px]
   `),
   infoContainer: ctl(`
     h-[184px] 

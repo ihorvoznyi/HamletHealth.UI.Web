@@ -1,9 +1,9 @@
 import { FC } from 'react';
 
 import { Button } from '@components/ui/controls';
-import { Initials, MoodCardList } from '@components/ui/common';
+import { Initials, JournalEntriesCarousel } from '@components/ui/common';
 
-import { MOOD_CARDS } from '../mock';
+import type { JournalEntryProps } from '@components/ui/common/mood-card-list/mood-card';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
@@ -12,8 +12,9 @@ export interface IPatientCard {
   id: string;
   fullname: string;
   gender: string;
+  diagnos: string;
   birthDate: string;
-  diagnosis: string;
+  entries: JournalEntryProps[]
 }
 
 interface PropsType {
@@ -32,14 +33,14 @@ const PatientCard: FC<PropsType> = ({ patinet }) => {
         <div>
           <p>{patinet.birthDate},</p>
           <p>{patinet.gender}</p>
-          <p className={classes.diagnosis}>{patinet.diagnosis}</p>
+          <p className={classes.diagnosis}>{patinet.diagnos}</p>
         </div>
         <Button variant="outlined" styles={classes.btn} onClick={handleOpenProfile}>
           Go to profile
         </Button>
       </div>
 
-      <MoodCardList items={MOOD_CARDS} />
+      <JournalEntriesCarousel entries={patinet.entries} />
     </div>
   );
 };

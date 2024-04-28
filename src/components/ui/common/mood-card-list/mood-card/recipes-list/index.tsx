@@ -1,20 +1,21 @@
-import { FC, ReactElement } from 'react';
+import { FC } from 'react';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
 
-export type RecipeType = {
-  Icon: ReactElement;
+export type RecommendedActivity = {
+  id: string;
+  icon: string;
   text: string;
 }
 
 interface PropsType {
-  recipes: RecipeType[];
+  recipes: RecommendedActivity[];
 }
 
 const RecipesList: FC<PropsType> = ({ recipes }) => (
   <ul className={classes.container}>
-    {recipes.map(({ Icon, text }, idx) => (
+    {recipes.map(({ icon, text }, idx) => (
       <li
         key={text}
         className={cn(
@@ -22,7 +23,7 @@ const RecipesList: FC<PropsType> = ({ recipes }) => (
           idx !== recipes.length - 1 && classes.sep
         )}
       >
-        {Icon}
+        <img src={icon} alt={text} className="w-5 h-5" />
         {text}
       </li>
     ))}

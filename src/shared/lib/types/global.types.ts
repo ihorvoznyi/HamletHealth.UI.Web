@@ -1,14 +1,15 @@
 import { SVGProps } from 'react';
 
 export interface ISvgProps extends SVGProps<SVGSVGElement> {
-  fill?: string;
+	fill?: string;
 }
 
 export type MoodType = 'great' | 'good' | 'meh' | 'bad' | 'awful';
+export type KeyHealthIndicatorRate = 0 | 1 | 2 | 3 | 4;
 
 export type RecordOf<T extends string | number | symbol, V> = {
-  [key in T]: V
-}
+	[key in T]: V;
+};
 
 interface ISuccessOperation<TData> {
 	isSuccess: true;
@@ -17,20 +18,20 @@ interface ISuccessOperation<TData> {
 
 interface IFailureOperation {
 	isSuccess: false;
-  message: string;
-  data: null;
+	message: string;
+	data: null;
 }
 
 export type OperationResult<T> = ISuccessOperation<T> | IFailureOperation;
 
 export class Operation {
-  static failed(message: string = ''): IFailureOperation {
-    return { isSuccess: false, message, data: null };
-  }
+	static failed(message: string = ''): IFailureOperation {
+		return { isSuccess: false, message, data: null };
+	}
 
-  static success<T>(data: T): ISuccessOperation<T> {
-    return { isSuccess: true, data };
-  }
+	static success<T>(data: T): ISuccessOperation<T> {
+		return { isSuccess: true, data };
+	}
 }
 
 export type SortType = 'ASC' | 'DESC';

@@ -38,6 +38,14 @@ export default {
       'sonic-silver': 'rgb(var(--color-sonic-silver) / <alpha-value>)',
       'white': 'rgb(var(--color-white) / <alpha-value>)',
 
+      'mood': {
+        'great': '#12C28D',
+        'good': '#34BAE4',
+        'meh': '#595959',
+        'bad': '#EF7650',
+        'awful': '#F00000',
+      },
+
       'transparent': 'transparent',
       'inherit': 'inherit'
     },

@@ -1,7 +1,6 @@
-import MoodList from '@components/ui/common/mood-card-list';
+import JorunalEntriesCarousel from '@components/ui/common/mood-card-list';
 
 import { classes } from './index.tailwind';
-import { MOOD_CARDS } from '@components/features/dashboard/patient-card-list/mock';
 
 const EntryCard = () => {
   return (
@@ -11,7 +10,7 @@ const EntryCard = () => {
         <p className={classes.weekday}>Tue</p>
       </div>
       
-      <MoodList items={MOOD_CARDS} />
+      <JorunalEntriesCarousel entries={[]} />
     </div>
   );
 };
