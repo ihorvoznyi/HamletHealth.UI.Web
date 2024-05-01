@@ -3,6 +3,7 @@ import ctl from '@netlify/classnames-template-literals';
 export const classes = {
   container: ctl(`
     min-w-[337px]
+    max-w-[337px]
     flex 
     flex-col
     rounded-[4px] 

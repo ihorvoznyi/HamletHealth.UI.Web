@@ -11,7 +11,7 @@ import {
 
 import { toNormalCase } from '@utils/text.util';
 import { getGenderName } from '@utils/gender.util';
-import { formatISOString, formatTimeISOString } from '@utils/date.util';
+import { formatISOString, formatTimeISOString, monthMap, weekDayMap } from '@utils/date.util';
 
 import type { IPatientCard } from './patient-card';
 import type { JournalEntryProps } from '@components/ui/common/mood-card-list/mood-card';
@@ -23,10 +23,14 @@ const sortByDate = (dateISOA: string, dateISOB: string) => {
 	return dateA - dateB;
 };
 
+export type PatientCardProps = Omit<IPatientCard, 'entries'> & {
+	entries: (JournalEntryProps & { date: string })[]
+}
+
 export const useConnect = () => {
 	const { data = [], isLoading, isError } = useGetPatientsPlansQuery();
 
-	const patients: IPatientCard[] = useMemo(() => {
+	const patientsGroup = useMemo(() => {
 		const items = data.map(patientPlan => {
 			const { userDto: user } = patientPlan;
 
@@ -40,11 +44,13 @@ export const useConnect = () => {
 			};
 		});
 
-		return items;
+		const group = groupPatientCardsByDay(items);
+
+		return Object.entries(group);
 	}, [data, isLoading]);
 
 	return {
-		patients,
+		patientsGroup,
 		isError,
 		isLoading,
 	};
@@ -80,10 +86,11 @@ class JournalEntry {
 		return activityById;
 	}
 
-	private static toProps(entry: EntryDto, activityById: Map<string, any>): JournalEntryProps {
+	private static toProps(entry: EntryDto, activityById: Map<string, any>): JournalEntryProps & { date: string } {
 		return {
 			id: entry.id,
 			time: formatTimeISOString(entry.date),
+			date: entry.date,
 			note: entry.note,
 			recipes: entry.activityIds.map(id => activityById.get(id)).filter(activity => !!activity),
 			keyHealthIndicators: entry.keyHealthIndicatorRates.map(r => ({
@@ -93,4 +100,52 @@ class JournalEntry {
 			})),
 		};
 	}
+}
+
+export type PatientCardGroup = {
+	[key: string]: IPatientCard[]
+}
+
+function groupPatientCardsByDay(patientCards: PatientCardProps[]) {
+  const groupedByDay: PatientCardGroup = {};
+
+	patientCards.forEach(patientCard => {
+		patientCard.entries.forEach(entry => {
+			const key = formatGroupDateKey(entry.date);
+			const groupEntry = groupedByDay[key];
+
+			if (groupEntry) {
+				const exist = groupEntry.find(patient => patient.id === patientCard.id);
+				if (!exist) {
+					const { entries: _, ...patient } = patientCard;
+					groupEntry.push({
+						...patient,
+						entries: [entry]
+					});
+
+					return;
+				}
+
+				exist.entries.push(entry);
+				return;
+			}
+
+			const { entries: _, ...patient } = patientCard;
+			groupedByDay[key] = [{ 
+				...patient,
+				entries: [entry]
+			 }];
+		});
+	});
+
+  return groupedByDay;
+}
+
+function formatGroupDateKey(isoString: string) {
+  const date = new Date(isoString);
+	const day = date.getUTCDate();
+	const month = date.getUTCMonth();
+	const weekDay = date.getUTCDay();
+
+	return `${monthMap[month]} ${day}, ${weekDayMap[weekDay]}`;
 }

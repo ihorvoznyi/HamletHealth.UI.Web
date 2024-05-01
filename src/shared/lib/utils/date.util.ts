@@ -7,21 +7,7 @@ export const convertToISOString = (dateString: string) => {
 
 export const formatDateAndAge = (dateOfBirth: Date) => {
 	const formatDate = (date: Date): string => {
-		const months = [
-			'Jan',
-			'Feb',
-			'Mar',
-			'Apr',
-			'May',
-			'Jun',
-			'Jul',
-			'Aug',
-			'Sep',
-			'Oct',
-			'Nov',
-			'Dec',
-		];
-		const month = months[date.getMonth()];
+		const month = monthMap[date.getMonth()];
 		const day = date.getDate();
 		const year = date.getFullYear();
 
@@ -59,4 +45,29 @@ export const formatTimeISOString = (isoString: string) => {
 	const minutes = date.getUTCMinutes().toString().padStart(2, '0');
 
 	return `${hours} : ${minutes}`;
+};
+
+export const monthMap: { [key: number]: string } = {
+	0: 'Jan',
+	1: 'Feb',
+	2: 'Mar',
+	3: 'Apr',
+	4: 'May',
+	5: 'Jun',
+	6: 'Jul',
+	7: 'Aug',
+	8: 'Sep',
+	9: 'Oct',
+	10: 'Nov',
+	11: 'Dec',
+};
+
+export const weekDayMap: { [key: number]: string } = {
+	0: 'SUN',
+	1: 'MON',
+	2: 'TUE',
+	3: 'WED',
+	4: 'THU',
+	5: 'FRI',
+	6: 'SAT',
 };

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Guest from './guest';
 import Protected from './protected';
 
