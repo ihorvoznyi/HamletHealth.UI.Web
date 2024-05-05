@@ -5,15 +5,15 @@ import type {
   FetchBaseQueryError,
 } from '@reduxjs/toolkit/query';
 
-import { AuthHelper } from '../helpers';
+import { RootState } from '@app/store';
 import { Environment } from '../environment';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: Environment.VITE_API_URL,
-  prepareHeaders(headers) {
-    const token = AuthHelper.retrieveToken();
+  prepareHeaders(headers, { getState }) {
+    const token = (getState() as RootState).userReducer.accessToken;
     if (token) {
-      headers.set('authorization', token);
+      headers.set('Authorization', token);
     }
     return headers;
   },

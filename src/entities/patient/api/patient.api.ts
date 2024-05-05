@@ -9,7 +9,7 @@ import { appActions } from '@app/store';
 
 import { Gender } from '@shared/lib/enums';
 
-import { IServerResponse, KeyHealthIndicatorRate } from '@shared/lib/types';
+import { ApiMethod, IServerResponse, KeyHealthIndicatorRate } from '@shared/lib/types';
 import {
 	IPatient,
 	IDashboardStats,
@@ -47,7 +47,7 @@ export const patientApi = createApi({
 		createTreatmentPlan: builder.mutation<IServerResponse<unknown>, CreateTreatmentPlanDto>({
 			query: body => ({
 				url: PATIENT_API_ENDPOINTS.treatmentPlan,
-				method: 'POST',
+				method: ApiMethod.POST,
 				body,
 			}),
 		}),
