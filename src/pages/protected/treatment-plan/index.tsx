@@ -10,13 +10,14 @@ import { selectTreatmentPlanStage, treatmentPlanActions, useGetDiagnosisQuery } 
 import { APP_ROUTES } from '@configs/routes.config';
 
 import { classes } from './index.tailwind';
+import { isUnauthorizedError } from '@utils/http.util';
 
 const CreateTreatmentPlanPage = () => {
   const dispatch = useAppDispatch();
-  const { isError } = useGetDiagnosisQuery();
+  const { isError, error } = useGetDiagnosisQuery();
   const { stageStatus } = useAppSelector(selectTreatmentPlanStage, shallowEqual);
 
-  if (isError) {
+  if (isError && !isUnauthorizedError(error)) {
     redirect(APP_ROUTES.DASHBOARD);
   }
 

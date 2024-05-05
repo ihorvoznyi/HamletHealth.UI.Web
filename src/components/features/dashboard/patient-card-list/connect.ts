@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-mixed-spaces-and-tabs */
 import { useMemo } from 'react';
+import { endOfDay } from 'date-fns';
 
 import {
 	EntryDto,
@@ -15,6 +16,7 @@ import { formatISOString, formatTimeISOString, monthMap, weekDayMap } from '@uti
 
 import type { IPatientCard } from './patient-card';
 import type { JournalEntryProps } from '@components/ui/common/journal-entries-carousel/mood-card';
+import { useDashboardContext } from '@pages/protected/dashboard/context';
 
 const sortByDate = (dateISOA: string, dateISOB: string) => {
 	const dateA = new Date(dateISOA).getTime();
@@ -29,6 +31,7 @@ export type PatientCardProps = Omit<IPatientCard, 'entries'> & {
 
 export const useConnect = () => {
 	const { data = [], isLoading, isError } = useGetPatientsPlansQuery();
+	const { selectionRange } = useDashboardContext();
 
 	const patientsGroup = useMemo(() => {
 		const items = data.map(patientPlan => {
@@ -45,9 +48,17 @@ export const useConnect = () => {
 		});
 
 		const group = groupPatientCardsByDay(items);
+		const entries = Object.entries(group).sort((a, b) => sortByDate(b[1].date, a[1].date));
 
-		return Object.entries(group).sort((a, b) => sortByDate(b[1].date, a[1].date));
-	}, [data, isLoading]);
+		if (!selectionRange) {
+			return entries;
+		}
+
+		return entries.filter(([_, item]) => {
+			const date = new Date(item.date);
+			return selectionRange.startDate <= date && date <= endOfDay(selectionRange.endDate);
+		});
+	}, [data, isLoading, selectionRange]);
 
 	return {
 		patientsGroup,

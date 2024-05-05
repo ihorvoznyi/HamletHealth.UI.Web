@@ -7,12 +7,13 @@ import { useGetDashboardStatsQuery } from '@entities/patient';
 import { ToastHelper } from '@shared/lib/helpers';
 
 import { classes } from './index.tailwind';
+import { isUnauthorizedError } from '@utils/http.util';
 
 const Statistics = () => {
-	const { data: statistics, isLoading, isError } = useGetDashboardStatsQuery();
+	const { data: statistics, isLoading, isError, error } = useGetDashboardStatsQuery();
 
-	if (isError && !statistics) {
-		ToastHelper.error('Failed to load statistics');
+	if (isError && !isUnauthorizedError(error)) {
+		ToastHelper.error('Failed to load statistics', { toastId: 'dashboard-statistics-error' });
 		return;
 	}
 

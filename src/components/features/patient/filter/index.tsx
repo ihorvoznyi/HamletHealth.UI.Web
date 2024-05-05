@@ -1,4 +1,4 @@
-import { DateItem } from '@components/ui/common';
+import { Calendar } from '@components/ui/controls';
 import FilterItem from './filter-item';
 
 import { classes } from './index.tailwind';
@@ -15,7 +15,7 @@ const Filter = () => {
           <FilterItem onSelect={() => {}} isSelected={false} text="Have a sleep" />
         </ul>
       </div>
-      <DateItem date="June" />
+      <Calendar shownDate={new Date()} />
     </div>
   );
 };

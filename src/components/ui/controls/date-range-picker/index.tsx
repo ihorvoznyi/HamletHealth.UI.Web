@@ -5,10 +5,16 @@ import type { Range, RangeKeyDict } from 'react-date-range';
 import './range-picker.css';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
+import { endOfMonth, startOfMonth } from 'date-fns';
+
+export type RangeType = {
+	startDate: Date;
+	endDate: Date;
+}
 
 interface PropsType {
-	range?: Omit<Range, 'key'>;
-	onSelect?: (ranges: Pick<Range, 'startDate' | 'endDate'>) => void;
+	range?: RangeType
+	onSelect?: (range: RangeType) => void;
 }
 
 const DateRangePicker: React.FC<PropsType> = ({ range, onSelect }) => {
@@ -16,8 +22,8 @@ const DateRangePicker: React.FC<PropsType> = ({ range, onSelect }) => {
 	const [state, setState] = useState<Range[]>([
 		{
 			key: 'selection',
-			startDate: range?.startDate ?? new Date(),
-			endDate: range?.endDate ?? new Date(),
+			startDate: range?.startDate ?? startOfMonth(new Date()),
+			endDate: range?.endDate ?? endOfMonth(new Date()),
 		},
 	]);
 
@@ -32,7 +38,7 @@ const DateRangePicker: React.FC<PropsType> = ({ range, onSelect }) => {
 
 			setIsSelecting(false);
 			const selection = rangesByKey.selection;
-			onSelect?.({ startDate: selection?.startDate, endDate: selection?.endDate });
+			onSelect?.({ startDate: selection.startDate!, endDate: selection.endDate! });
 		},
 		[isSelecting]
 	);
