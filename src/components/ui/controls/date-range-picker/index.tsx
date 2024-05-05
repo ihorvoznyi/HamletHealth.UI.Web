@@ -1,69 +1,68 @@
-import React, { useState } from 'react';
-import { DateRange, DateRangePicker as RangePicker } from 'react-date-range';
-import { addDays, addMonths, subMonths } from 'date-fns';
-import type { Range, RangeKeyDict, DateRangeProps } from 'react-date-range';
+import React, { useCallback, useEffect, useState } from 'react';
+import { DateRange } from 'react-date-range';
+import type { Range, RangeKeyDict } from 'react-date-range';
 
-import { NextIcon, PrevIcon } from '@components/ui/icons/date-picker';
-
-import { classes } from './index.tailwind';
-
-import './custom-picker.css';
+import './range-picker.css';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 
-interface PropsType extends DateRangeProps {
-	onChange?: () => void;
-	styles?: Partial<{
-		container: string;
-	}>;
+interface PropsType {
+	range?: Omit<Range, 'key'>;
+	onSelect?: (ranges: Pick<Range, 'startDate' | 'endDate'>) => void;
 }
 
-const DateRangePicker: React.FC<PropsType> = () => {
-	const [state, setState] = useState([
+const DateRangePicker: React.FC<PropsType> = ({ range, onSelect }) => {
+	const [isSelecting, setIsSelecting] = useState(false);
+	const [state, setState] = useState<Range[]>([
 		{
-			startDate: addDays(new Date(), 1),
-			endDate: addDays(new Date(), 7),
-			key: 'selection'
-		}
+			key: 'selection',
+			startDate: range?.startDate ?? new Date(),
+			endDate: range?.endDate ?? new Date(),
+		},
 	]);
-	
-	const [shownDate, setShownDate] = useState(new Date());
 
-	const handlePrevMonth = () => {
-		const prevMonth = subMonths(shownDate, 1);
-		setShownDate(prevMonth);
-	};
+	const handleChange = useCallback(
+		(rangesByKey: RangeKeyDict) => {
+			setState([rangesByKey.selection]);
 
-	const handleNextMonth = () => {
-		const nextMonth = addMonths(shownDate, 1);
-		setShownDate(nextMonth);
-	};
+			if (!isSelecting) {
+				setIsSelecting(true);
+				return;
+			}
+
+			setIsSelecting(false);
+			const selection = rangesByKey.selection;
+			onSelect?.({ startDate: selection?.startDate, endDate: selection?.endDate });
+		},
+		[isSelecting]
+	);
+
+	useEffect(() => {
+		const changeButtonLabels = () => {
+			const buttons = document.querySelectorAll('.rdrMonthAndYearWrapper button');
+			if (buttons.length === 2) {
+				buttons[0].textContent = '<';
+				buttons[1].textContent = '>';
+			}
+		};
+
+		changeButtonLabels();
+	}, []);
 
 	return (
-		<div className="relative">
-      <div className={classes.controls}>
-        <button onClick={handlePrevMonth}>
-					<PrevIcon className={classes.navArrow} />
-				</button>
-        <button onClick={handleNextMonth}>
-					<NextIcon className={classes.navArrow} />
-				</button>
-      </div>
-			<DateRange
-				className="rounded-md shadow-gray"
-				months={2}
-				ranges={state}
-				shownDate={shownDate}
-				showMonthArrow={false}
-				showDateDisplay={false}
-				showMonthAndYearPickers={false}
-				weekStartsOn={1}
-				direction="horizontal"
-				weekdayDisplayFormat="eeeee"
-				// eslint-disable-next-line @typescript-eslint/no-explicit-any
-				onChange={(item: any) => setState([item.selection])}
-			/>
-		</div>
+		<DateRange
+			className="rounded-md shadow-gray"
+			months={2}
+			ranges={state}
+			showMonthArrow={true}
+			showDateDisplay={false}
+			showMonthAndYearPickers={false}
+			weekStartsOn={1}
+			direction="horizontal"
+			editableDateInputs
+			weekdayDisplayFormat="eeeee"
+			onChange={handleChange}
+		/>
 	);
 };
 

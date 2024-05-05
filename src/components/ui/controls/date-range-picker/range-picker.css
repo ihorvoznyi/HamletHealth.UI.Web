@@ -15,8 +15,8 @@
   color: rgba(0, 0, 0, .6);
 }
 
-.rdrMonthAndYearWrapper,
 .rdrDayInPreview,
+.rdrMonthAndYearPickers,
 .rdrDayToday span::after {
   display: none !important;
 }
@@ -72,13 +72,15 @@ button:has(.rdrEndEdge) .rdrDayNumber {
 }
 
 button:has(.rdrStartEdge) .rdrDayNumber,
-button.rdrDayStartOfWeek:has(.rdrEndEdge) .rdrDayNumber {
+button.rdrDayStartOfWeek:has(.rdrEndEdge) .rdrDayNumber,
+button.rdrDayStartOfMonth:has(.rdrEndEdge) .rdrDayNumber {
   border-top-left-radius: var(--border-radius-large);
   border-bottom-left-radius: var(--border-radius-large);
 }
 
 button:has(.rdrEndEdge) .rdrDayNumber,
-button.rdrDayEndOfWeek:has(.rdrStartEdge) .rdrDayNumber {
+button.rdrDayEndOfWeek:has(.rdrStartEdge) .rdrDayNumber,
+button.rdrDayEndOfMonth:has(.rdrStartEdge) .rdrDayNumber {
   border-top-right-radius: var(--border-radius-large);
   border-bottom-right-radius: var(--border-radius-large);
 }
@@ -86,4 +88,32 @@ button.rdrDayEndOfWeek:has(.rdrStartEdge) .rdrDayNumber {
 /* Visibility */
 .rdrDayPassive {
   visibility: hidden;
+}
+
+/* Controls */
+
+.rdrMonthAndYearWrapper {
+  height: 32px !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0 !important;
+  padding-top: 14px !important;
+}
+
+.rdrMonthAndYearWrapper button {
+  font-size: 16px !important;
+  background: none !important;
+
+  transition: background .2s ease;
+}
+
+.rdrMonthAndYearWrapper button:hover {
+  background: var(--rdr-edge-bg-color) !important;
+}
+
+/* Cursors */
+.rdrCalendarWrapper {
+  cursor: default;
 }

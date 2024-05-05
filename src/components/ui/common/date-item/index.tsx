@@ -21,7 +21,7 @@ const DateItem: React.FC<PropsType> = ({ date }) => {
 
 			{showPicker ? (
 				<div onClick={e => e.stopPropagation()} className="absolute top-[110%] right-0 z-50">
-					<DateRangePicker />
+					<DateRangePicker onSelect={console.log} />
 				</div>
 			) : null}
 		</div>
