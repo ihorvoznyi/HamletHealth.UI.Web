@@ -1,15 +1,11 @@
-import { createApi } from '@reduxjs/toolkit/dist/query/react';
-
-import { baseQueryWithAuth } from '@shared/lib/api';
-
 import { DiagnosisMapper } from '../helpers';
 
 import { treatmentPlanActions } from '../models';
-import { appActions } from '@app/store';
+import { api, appActions } from '@app/store';
 
 import { Gender } from '@shared/lib/enums';
 
-import { ApiMethod, IServerResponse, KeyHealthIndicatorRate } from '@shared/lib/types';
+import { ApiMethod, ApiResponse, KeyHealthIndicatorRate } from '@shared/lib/types';
 import {
 	IPatient,
 	IDashboardStats,
@@ -18,10 +14,7 @@ import {
 } from './patient-api.interfaces';
 import { PATIENT_API_ENDPOINTS } from './patient-api.constants';
 
-export const patientApi = createApi({
-	reducerPath: 'patientApi',
-	baseQuery: baseQueryWithAuth,
-	keepUnusedDataFor: 120,
+const injectedPatientApi = api.injectEndpoints({
 	endpoints: builder => ({
 		getDiagnosis: builder.query<IDiagnosisItemDto[], void>({
 			query: () => ({ url: PATIENT_API_ENDPOINTS.diagnosis }),
@@ -29,7 +22,7 @@ export const patientApi = createApi({
 				try {
 					dispatch(appActions.setGlobalLoader(true));
 					const { data } = (await queryFulfilled) as unknown as {
-						data: IServerResponse<IDiagnosisItemDto[]>;
+						data: ApiResponse<IDiagnosisItemDto[]>;
 					};
 					const diagnosis = data.Data;
 
@@ -44,7 +37,7 @@ export const patientApi = createApi({
 				}
 			},
 		}),
-		createTreatmentPlan: builder.mutation<IServerResponse<unknown>, CreateTreatmentPlanDto>({
+		createTreatmentPlan: builder.mutation<ApiResponse<unknown>, CreateTreatmentPlanDto>({
 			query: body => ({
 				url: PATIENT_API_ENDPOINTS.treatmentPlan,
 				method: ApiMethod.POST,
@@ -53,19 +46,19 @@ export const patientApi = createApi({
 		}),
 		getActivities: builder.query<GetActivitiesResponse, GetActivitiesArg>({
 			query: () => ({ url: PATIENT_API_ENDPOINTS.activities }),
-			transformResponse: (response: IServerResponse<GetActivitiesResponse>) => response.Data,
+			transformResponse: (response: ApiResponse<GetActivitiesResponse>) => response.Data,
 		}),
 		getPatients: builder.query<IPatient[], void>({
 			query: () => ({ url: PATIENT_API_ENDPOINTS.patientsList }),
-			transformResponse: (response: IServerResponse<IPatient[]>) => response.Data,
+			transformResponse: (response: ApiResponse<IPatient[]>) => response.Data,
 		}),
 		getDashboardStats: builder.query<IDashboardStats, void>({
 			query: () => ({ url: PATIENT_API_ENDPOINTS.dashboardStats }),
-			transformResponse: (response: IServerResponse<IDashboardStats>) => response.Data,
+			transformResponse: (response: ApiResponse<IDashboardStats>) => response.Data,
 		}),
 		getPatientsPlans: builder.query<GetPatientsPlansResponse, GetPatientsPlansArg>({
 			query: () => ({ url: PATIENT_API_ENDPOINTS.patientsPlans }),
-			transformResponse: (response: IServerResponse<GetPatientsPlansResponse>) => response.Data,
+			transformResponse: (response: ApiResponse<GetPatientsPlansResponse>) => response.Data,
 		}),
 	}),
 });
@@ -77,7 +70,7 @@ export const {
 	useGetPatientsPlansQuery,
 	useGetDashboardStatsQuery,
 	useCreateTreatmentPlanMutation,
-} = patientApi;
+} = injectedPatientApi;
 
 // API Responses & Request Args
 export type GetPatientsPlansArg = void;

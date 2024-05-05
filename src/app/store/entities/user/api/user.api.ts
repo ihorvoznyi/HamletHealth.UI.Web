@@ -1,12 +1,8 @@
-import { createApi } from '@reduxjs/toolkit/query/react';
-
-import { baseQueryWithAuth } from '@shared/lib/api';
-
 import { onAuthQueryStartedHandler } from '../helpers';
 
 import { USER_API_ENDPOINTS } from './user-api.constants';
 
-import { ApiMethod, IServerResponse } from '@shared/lib/types';
+import { ApiMethod, ApiResponse } from '@shared/lib/types';
 import {
 	CreateDoctorDto,
 	CreatePatientDto,
@@ -14,12 +10,11 @@ import {
 	FindPatientDto,
 	UserDto,
 } from './user-api.interfaces';
+import { api } from '@app/store/app';
 
-export const userApi = createApi({
-	reducerPath: 'userApi',
-	baseQuery: baseQueryWithAuth,
+const injectedUserApi = api.injectEndpoints({
 	endpoints: builder => ({
-		login: builder.mutation<IServerResponse<UserDto>, LoginDto>({
+		login: builder.mutation<ApiResponse<UserDto>, LoginDto>({
 			query: body => ({
 				url: USER_API_ENDPOINTS.login,
 				method: ApiMethod.POST,
@@ -28,7 +23,7 @@ export const userApi = createApi({
 			onQueryStarted: async (_, { queryFulfilled, dispatch }) =>
 				await onAuthQueryStartedHandler(queryFulfilled, dispatch),
 		}),
-		createDoctor: builder.mutation<IServerResponse<UserDto>, CreateDoctorDto>({
+		createDoctor: builder.mutation<ApiResponse<UserDto>, CreateDoctorDto>({
 			query: body => ({
 				url: USER_API_ENDPOINTS.createUser,
 				method: ApiMethod.POST,
@@ -43,7 +38,7 @@ export const userApi = createApi({
 				method: ApiMethod.POST,
 				body,
 			}),
-			transformResponse: (response: IServerResponse<{ id: string }>) => response.Data.id,
+			transformResponse: (response: ApiResponse<{ id: string }>) => response.Data.id,
 		}),
 		findPatient: builder.mutation<string, FindPatientDto>({
 			query: body => ({
@@ -51,7 +46,7 @@ export const userApi = createApi({
 				method: ApiMethod.POST,
 				body,
 			}),
-			transformResponse: (response: IServerResponse<{ id: string }>) => response.Data.id,
+			transformResponse: (response: ApiResponse<{ id: string }>) => response.Data.id,
 		}),
 		addPatient: builder.mutation<string, { id: string; role: 0 }>({
 			query: body => ({
@@ -59,7 +54,7 @@ export const userApi = createApi({
 				method: ApiMethod.POST,
 				body,
 			}),
-			transformResponse: (response: IServerResponse<{ invitedUserId: string }>) => response.Data.invitedUserId,
+			transformResponse: (response: ApiResponse<{ invitedUserId: string }>) => response.Data.invitedUserId,
 		}),
 	}),
 });
@@ -70,4 +65,4 @@ export const {
 	useCreatePatientMutation,
 	useFindPatientMutation,
 	useAddPatientMutation,
-} = userApi;
+} = injectedUserApi;

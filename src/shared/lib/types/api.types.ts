@@ -1,4 +1,4 @@
-export interface IServerResponse<TData> {
+export type ApiResponse<TData> = {
   Data:     TData;
   Messages: string[];
 }
