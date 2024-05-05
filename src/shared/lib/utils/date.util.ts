@@ -7,7 +7,7 @@ export const convertToISOString = (dateString: string) => {
 
 export const formatDateAndAge = (dateOfBirth: Date) => {
 	const formatDate = (date: Date): string => {
-		const month = monthMap[date.getMonth()];
+		const month = monthShortMap[date.getMonth()];
 		const day = date.getDate();
 		const year = date.getFullYear();
 
@@ -47,7 +47,7 @@ export const formatTimeISOString = (isoString: string) => {
 	return `${hours} : ${minutes}`;
 };
 
-export const monthMap: { [key: number]: string } = {
+export const monthShortMap: { [key: number]: string } = {
 	0: 'Jan',
 	1: 'Feb',
 	2: 'Mar',
@@ -60,6 +60,21 @@ export const monthMap: { [key: number]: string } = {
 	9: 'Oct',
 	10: 'Nov',
 	11: 'Dec',
+};
+
+export const monthMap: { [key: number]: string } = {
+	0: 'January',
+	1: 'February',
+	2: 'March',
+	3: 'April',
+	4: 'May',
+	5: 'Jun',
+	6: 'July',
+	7: 'Augest',
+	8: 'September',
+	9: 'October',
+	10: 'November',
+	11: 'December',
 };
 
 export const weekDayMap: { [key: number]: string } = {

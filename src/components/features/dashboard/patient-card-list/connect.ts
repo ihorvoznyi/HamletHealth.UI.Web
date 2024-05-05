@@ -12,7 +12,7 @@ import {
 
 import { toNormalCase } from '@utils/text.util';
 import { getGenderName } from '@utils/gender.util';
-import { formatISOString, formatTimeISOString, monthMap, weekDayMap } from '@utils/date.util';
+import { formatISOString, formatTimeISOString, monthShortMap, weekDayMap } from '@utils/date.util';
 
 import type { IPatientCard } from './patient-card';
 import type { JournalEntryProps } from '@components/ui/common/journal-entries-carousel/mood-card';
@@ -164,5 +164,5 @@ function formatGroupDateKey(isoString: string) {
 	const month = date.getUTCMonth();
 	const weekDay = date.getUTCDay();
 
-	return `${monthMap[month]} ${day}, ${weekDayMap[weekDay]}`;
+	return `${monthShortMap[month]} ${day}, ${weekDayMap[weekDay]}`;
 }
