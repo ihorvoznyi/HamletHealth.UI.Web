@@ -46,7 +46,7 @@ export const useConnect = () => {
 
 		const group = groupPatientCardsByDay(items);
 
-		return Object.entries(group);
+		return Object.entries(group).sort((a, b) => sortByDate(b[1].date, a[1].date));
 	}, [data, isLoading]);
 
 	return {
@@ -103,7 +103,10 @@ class JournalEntry {
 }
 
 export type PatientCardGroup = {
-	[key: string]: IPatientCard[]
+	[key: string]: {
+		date: string
+		items: IPatientCard[]
+	}
 }
 
 function groupPatientCardsByDay(patientCards: PatientCardProps[]) {
@@ -115,10 +118,10 @@ function groupPatientCardsByDay(patientCards: PatientCardProps[]) {
 			const groupEntry = groupedByDay[key];
 
 			if (groupEntry) {
-				const exist = groupEntry.find(patient => patient.id === patientCard.id);
+				const exist = groupEntry.items.find(patient => patient.id === patientCard.id);
 				if (!exist) {
 					const { entries: _, ...patient } = patientCard;
-					groupEntry.push({
+					groupEntry.items.push({
 						...patient,
 						entries: [entry]
 					});
@@ -131,10 +134,13 @@ function groupPatientCardsByDay(patientCards: PatientCardProps[]) {
 			}
 
 			const { entries: _, ...patient } = patientCard;
-			groupedByDay[key] = [{ 
-				...patient,
-				entries: [entry]
-			 }];
+			groupedByDay[key] = {
+				date: entry.date,
+				items: [{ 
+					...patient,
+					entries: [entry]
+				 }]
+			};
 		});
 	});
 

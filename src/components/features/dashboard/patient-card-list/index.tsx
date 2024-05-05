@@ -21,7 +21,7 @@ const PatientCardList = () => {
 	return (
 		<div className={classes.container}>
 			{!isLoading ? (
-				patientsGroup.map(([key, items]) => {
+				patientsGroup.map(([key, { items }]) => {
 					const [day, weekday] = key.split(',');
 
 					return (
