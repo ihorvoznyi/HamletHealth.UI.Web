@@ -1,10 +1,12 @@
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
 
-import JournalEntry, { JournalEntryProps } from './mood-card';
+import JournalEntry from './mood-card';
 import { ArrowRightSvg } from '@components/ui/svg';
+import { useWindowSize } from '@hooks/useWindowSize';
+
+import type { JournalEntryProps } from './mood-card';
 
 import { classes } from './index.tailwind';
-import { useWindowSize } from '@hooks/useWindowSize';
 
 interface PropsType {
 	entries: JournalEntryProps[];
