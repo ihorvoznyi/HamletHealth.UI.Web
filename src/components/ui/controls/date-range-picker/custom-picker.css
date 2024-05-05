@@ -1,0 +1,89 @@
+/* General Styles and Variables */
+:root {
+  --rdr-edge-bg-color: rgba(67, 102, 197, .24);
+  --rdr-edge-active-bg-color: #4366c5;
+  --border-radius-large: 100px;
+}
+
+/* Month and Day Display Styles */
+.rdrMonthName {
+  text-align: center !important;
+  font-size: 14px;
+  font-family: 'Poppins Medium';
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: rgba(0, 0, 0, .6);
+}
+
+.rdrMonthAndYearWrapper,
+.rdrDayInPreview,
+.rdrDayToday span::after {
+  display: none !important;
+}
+
+.rdrMonth {
+  max-width: 256px;
+  padding: 0.5rem 1rem;
+}
+
+.rdrMonth:first-child {
+  border-right: 1px solid rgba(0, 0, 0, .16);
+}
+
+/* Day Styles */
+.rdrDay,
+.rdrWeekDay {
+  flex: 0 0 calc(100% / 7) !important;
+  max-width: calc(100% / 7) !important;
+  font-size: 14px !important;
+}
+
+.rdrDayNumber span {
+  color: black !important;
+}
+
+button:has(.rdrEndEdge) .rdrDayNumber span,
+button:has(.rdrStartEdge) .rdrDayNumber span {
+  color: white !important;
+}
+
+/* Hover and Range styles */
+.rdrDayHovered, .rdrDayHovered::after, span {
+  border: none !important;
+}
+
+.rdrInRange {
+  color: black !important;
+  background-color: var(--rdr-edge-bg-color) !important;
+}
+
+/* Edge Styles */
+.rdrStartEdge,
+.rdrEndEdge {
+  background-color: var(--rdr-edge-active-bg-color) !important;
+  border-radius: var(--border-radius-large) !important;
+  right: 0 !important;
+  left: 0 !important;
+}
+
+button:has(.rdrStartEdge) .rdrDayNumber,
+button:has(.rdrEndEdge) .rdrDayNumber {
+  background-color: var(--rdr-edge-bg-color);
+}
+
+button:has(.rdrStartEdge) .rdrDayNumber,
+button.rdrDayStartOfWeek:has(.rdrEndEdge) .rdrDayNumber {
+  border-top-left-radius: var(--border-radius-large);
+  border-bottom-left-radius: var(--border-radius-large);
+}
+
+button:has(.rdrEndEdge) .rdrDayNumber,
+button.rdrDayEndOfWeek:has(.rdrStartEdge) .rdrDayNumber {
+  border-top-right-radius: var(--border-radius-large);
+  border-bottom-right-radius: var(--border-radius-large);
+}
+
+/* Visibility */
+.rdrDayPassive {
+  visibility: hidden;
+}

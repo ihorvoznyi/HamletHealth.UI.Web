@@ -1,0 +1,94 @@
+/* General Styles and Variables */
+:root {
+  --rdr-edge-bg-color: rgba(67, 102, 197, .24);
+  --rdr-edge-active-bg-color: #4366c5;
+  --border-radius-large: 100px;
+}
+
+/* Month and Day Display Styles */
+.rdrMonthName {
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Poppins Medium', sans-serif; /* Ensure font fallback */
+  line-height: 24px;
+  letter-spacing: 0.1px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.rdrMonthAndYearWrapper,
+.rdrDayInPreview,
+.rdrDayToday span::after {
+  display: none;
+}
+
+.rdrMonth {
+  max-width: 256px;
+  padding: 0.5rem 1rem;
+}
+
+.rdrMonth:first-child {
+  border-right: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+/* Day Styles */
+.rdrDay,
+.rdrWeekDay {
+  flex: 0 0 calc(100% / 7);
+  max-width: calc(100% / 7);
+  height: 32px;
+  font-size: 14px;
+}
+
+.rdrDayNumber span,
+button:has(.rdrEndEdge) .rdrDayNumber span,
+button:has(.rdrStartEdge) .rdrDayNumber span {
+  color: white;
+}
+
+.rdrDayNumber span {
+  color: black;
+}
+
+/* Hover and Range Styles */
+.rdrDayHovered, .rdrDayHovered::after, span {
+  border: none;
+}
+
+.rdrInRange {
+  color: black;
+  background-color: var(--rdr-edge-bg-color);
+}
+
+/* Edge Styles */
+.rdrStartEdge,
+.rdrEndEdge {
+  width: 100%;
+  background-color: var(--rdr-edge-active-bg-color);
+  border-radius: var(--border-radius-large);
+}
+
+button:has(.rdrStartEdge) .rdrDayNumber,
+button:has(.rdrEndEdge) .rdrDayNumber {
+  width: 100%;
+  background-color: var(--rdr-edge-bg-color);
+}
+
+button.rdrDayStartOfWeek:has(.rdrEndEdge) .rdrDayNumber,
+button.rdrDayEndOfWeek:has(.rdrStartEdge) .rdrDayNumber {
+  border-radius: var(--border-radius-large);
+}
+
+button.rdrDayStartOfWeek:has(.rdrEndEdge) .rdrDayNumber {
+  border-top-left-radius: var(--border-radius-large);
+  border-bottom-left-radius: var(--border-radius-large);
+}
+
+button.rdrDayEndOfWeek:has(.rdrStartEdge) .rdrDayNumber {
+  border-top-right-radius: var(--border-radius-large);
+  border-bottom-right-radius: var(--border-radius-large);
+}
+
+/* Visibility */
+.rdrDayPassive {
+  visibility: hidden;
+}

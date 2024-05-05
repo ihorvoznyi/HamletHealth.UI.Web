@@ -11,7 +11,7 @@ import { classes } from './index.tailwind';
 const Statistics = () => {
 	const { data: statistics, isLoading, isError } = useGetDashboardStatsQuery();
 
-	if (isError) {
+	if (isError && !statistics) {
 		ToastHelper.error('Failed to load statistics');
 		return;
 	}

@@ -37,6 +37,7 @@ export default {
       'eerie-black': 'rgb(var(--color-eerie-black) / <alpha-value>)',
       'sonic-silver': 'rgb(var(--color-sonic-silver) / <alpha-value>)',
       'white': 'rgb(var(--color-white) / <alpha-value>)',
+      'platinum': 'rgb(var(--color-platinum) / <alpha-value>)',
 
       'mood': {
         'great': '#12C28D',

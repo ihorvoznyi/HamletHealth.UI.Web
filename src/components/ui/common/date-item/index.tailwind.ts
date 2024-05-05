@@ -4,6 +4,7 @@ export const classes = {
   container: ctl(`
     flex 
     items-center
+    relative
     gap-[12px]
 
     cursor-pointer

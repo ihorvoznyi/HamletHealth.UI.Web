@@ -13,7 +13,7 @@ const PatientCardList = () => {
 	const { patientsGroup, isLoading, isError } = useConnect();
 
 	useEffect(() => {
-		if (isError) {
+		if (isError && !patientsGroup.length) {
 			ToastHelper.error('Failed to load patients. Please, try again later.');
 		}
 	}, [isError]);
