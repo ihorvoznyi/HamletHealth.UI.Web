@@ -1,23 +1,49 @@
 import React, { PropsWithChildren, createContext, useContext, useState } from 'react';
 
 interface ContextType {
-  isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
   isPlanDefined: boolean;
+  showDefineModal: boolean;
+  showTreatmentCreationModal: boolean;
+
   setIsPlanDefined: (isOpen: boolean) => void;
+  openTreatmentPlanCreationModal: () => void;
+  openDefinePlanModal: () => void;
+  closeDefinePlanModal: () => void;
+  closeTreatmentPlanCreationModal: () => void;
 }
 
 const TreatmentPlanStageContext = createContext<ContextType | undefined>(undefined);
 
 export const TreatmentPlanStageContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [showTreatmentCreationModal, setShowTreatmentCreationModal] = useState(false);
+  const [showDefineModal, setShowDefineModal] = useState(false); 
   const [isPlanDefined, setIsPlanDefined] = useState(false);
 
+  const openTreatmentPlanCreationModal = () => {
+    setShowTreatmentCreationModal(true);
+  };
+
+  const closeTreatmentPlanCreationModal = () => {
+    setShowTreatmentCreationModal(false);
+  };
+
+  const openDefinePlanModal = () => {
+    setShowDefineModal(true);
+  };
+
+  const closeDefinePlanModal = () => {
+    setShowDefineModal(false);
+  };
+
   const value = {
-    isOpen,
-    setIsOpen,
     isPlanDefined,
+    showDefineModal,
+    showTreatmentCreationModal,
     setIsPlanDefined,
+    openDefinePlanModal,
+    openTreatmentPlanCreationModal,
+    closeDefinePlanModal,
+    closeTreatmentPlanCreationModal,
   };
 
   return (

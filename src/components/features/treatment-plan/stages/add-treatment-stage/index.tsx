@@ -2,31 +2,40 @@ import { shallowEqual } from 'react-redux';
 import { useEffect } from 'react';
 
 import TreatmentPlan from './sections';
-import DefinePlanModal from './modal';
+import TreatmentPlanCreationModal from './modal';
 import TreatmentPlanStageNavigation from './navigation';
 
 import { useAppDispatch, useAppSelector } from '@shared/model';
 
-import { TreatmentPlanStageContextProvider } from './lib/context';
+import { TreatmentPlanStageContextProvider, useTreatmentPlanStageContext } from './lib/context';
 import { selectTreatmentPlanStage, treatmentPlanActions } from '@entities/patient';
+import DefineGoalModal from './sections/selected-activities-section/goal-modal';
 
-const AddTreatmentStage = () => {
-  const dispatch = useAppDispatch();
-  const { stageStatus } = useAppSelector(selectTreatmentPlanStage, shallowEqual);
+const AddTreatmentStageComponent = () => {
+	const dispatch = useAppDispatch();
+	const { showTreatmentCreationModal, showDefineModal } = useTreatmentPlanStageContext();
+	const { stageStatus } = useAppSelector(selectTreatmentPlanStage, shallowEqual);
 
-  useEffect(() => {
-    if (stageStatus !== 'filled') {
-      dispatch(treatmentPlanActions.setStageStatus('checked'));
-    }
-  }, []);
+	useEffect(() => {
+		if (stageStatus !== 'filled') {
+			dispatch(treatmentPlanActions.setStageStatus('checked'));
+		}
+	}, []);
 
-  return (
-    <TreatmentPlanStageContextProvider>
-      <TreatmentPlan />
-      <TreatmentPlanStageNavigation />
-      <DefinePlanModal />
-    </TreatmentPlanStageContextProvider>
-  );
+	return (
+		<>
+			<TreatmentPlan />
+			<TreatmentPlanStageNavigation />
+			{showDefineModal ? <DefineGoalModal /> : null}
+			{showTreatmentCreationModal ? <TreatmentPlanCreationModal /> : null}
+		</>
+	);
 };
 
-export default AddTreatmentStage;
+export default function AddTreatmentStage () {
+  return (
+    <TreatmentPlanStageContextProvider>
+      <AddTreatmentStageComponent />
+    </TreatmentPlanStageContextProvider>
+  );
+}

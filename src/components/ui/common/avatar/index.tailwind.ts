@@ -3,7 +3,8 @@ import ctl from '@netlify/classnames-template-literals';
 export const classes = {
   container: ctl(`
     w-[40px] 
-    h-[40px] 
+    h-[40px]
+    min-w-[40px]
 
     flex items-center 
     justify-center 

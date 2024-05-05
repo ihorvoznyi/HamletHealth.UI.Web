@@ -20,11 +20,11 @@ import { TreatmentPlanMapper } from '../lib/helpers';
 
 import { classes } from './index.tailwind';
 
-const DefineTreatmentPlanForm = () => {
+const TreatmentPlanCreationForm = () => {
 	const dispatch = useAppDispatch();
 
 	const { setGlobalLoader } = useLoading();
-  const { setIsOpen } = useTreatmentPlanStageContext();
+  const { closeTreatmentPlanCreationModal } = useTreatmentPlanStageContext();
 	const [createTreatmentPlanAsync] = useCreateTreatmentPlanMutation();
 
 	const {
@@ -46,11 +46,12 @@ const DefineTreatmentPlanForm = () => {
 			.then(() => {
         Logger.info('Treatment plan was successfully created.');
 				dispatch(treatmentPlanActions.setStageStatus('filled'));
-        setIsOpen(false);
+        closeTreatmentPlanCreationModal();
       })
-			.catch(({ data }) => {
+			.catch(err => {
+				console.error(err);
 				const defaultMessage = 'Failed to create treatment plan.';
-				toast.error(data.Messages[0] ?? defaultMessage, { position: 'top-center' });
+				toast.error(defaultMessage, { position: 'top-center' });
 			})
 			.finally(() => setGlobalLoader(false));
 	};
@@ -74,4 +75,4 @@ const DefineTreatmentPlanForm = () => {
 	);
 };
 
-export default DefineTreatmentPlanForm;
+export default TreatmentPlanCreationForm;

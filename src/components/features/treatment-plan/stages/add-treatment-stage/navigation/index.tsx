@@ -1,28 +1,29 @@
 import { Button } from '@components/ui/controls';
 import { ArrowLeftSvg } from '@components/ui/svg';
 
-import { useAppDispatch } from '@shared/model';
+import { useAppDispatch, useAppSelector } from '@shared/model';
 import { useTreatmentPlanStageContext } from '../lib/context';
 
-import { treatmentPlanActions } from '@entities/patient';
+import { selectTreatmentPlanStage, treatmentPlanActions } from '@entities/patient';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
+import { shallowEqual } from 'react-redux';
 
 const TreatmentPlanStageNavigation = () => {
   const dispatch = useAppDispatch();
-  const { isPlanDefined } = useTreatmentPlanStageContext();
+  const { selectedActivities } = useAppSelector(selectTreatmentPlanStage, shallowEqual);
+  const { openTreatmentPlanCreationModal } = useTreatmentPlanStageContext();
+
+  const canProceed = selectedActivities.length > 0;
 
   const handlePreviousStage = () => {
     dispatch(treatmentPlanActions.setCurrentStage('addPatient'));
   };
 
   const handleProceed = async () => {
-    if (isPlanDefined) {
-      // TODO:
-      // 1. Create patient and retrieve it's id
-      // 2. Map data using patientId and data from state
-      // 3. Create treatment plan
+    if (canProceed) {
+      openTreatmentPlanCreationModal();
     }
   };
 
@@ -35,10 +36,10 @@ const TreatmentPlanStageNavigation = () => {
         styles={{
           container: cn(
             classes.processBtn.base, 
-            !isPlanDefined && classes.processBtn.disabled
+            !canProceed && classes.processBtn.disabled
           ),
         }}
-        disabled={!isPlanDefined}
+        disabled={!canProceed}
         onClick={handleProceed}
       >
         PROCEED

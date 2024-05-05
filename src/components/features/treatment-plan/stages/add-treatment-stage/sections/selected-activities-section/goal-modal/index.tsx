@@ -1,4 +1,5 @@
-import { FC } from 'react';
+/* eslint-disable max-len */
+import React from 'react';
 
 import Head from './head';
 import Counter from './counter';
@@ -7,31 +8,38 @@ import WeekDays from './week-days';
 import Description from './description';
 import Modal from '@components/ui/common/modal';
 import { Button } from '@components/ui/controls';
+import { useTreatmentPlanStageContext } from '@components/features/treatment-plan/stages/add-treatment-stage/lib/context';
 
 import { classes } from './index.tailwind';
 
 interface PropsType {
-  onClose: () => void;
+  //
 }
 
-const GoalModal: FC<PropsType> = ({ onClose }) => {
-  return (
-    <Modal onClose={onClose}>
-      <Head />
-      
-      <div className={classes.contentContainer}>
-        <Counter />
-        <Duration />
-        <WeekDays />
-        <Description />
+const DefineGoalModal: React.FC<PropsType> = () => {
+	const { closeDefinePlanModal } = useTreatmentPlanStageContext();
 
-        <div className={classes.btnsContainer}>
-          <Button variant="outlined" styles={classes.cancelBtn} onClick={() => onClose()}>Cancel</Button>
-          <Button styles={classes.saveBtn} onClick={() => {}}>Save Goal</Button>
-        </div>
-      </div>
-    </Modal>
-  );
+	return (
+		<Modal onClose={closeDefinePlanModal}>
+			<Head />
+
+			<div className={classes.contentContainer}>
+				<Counter />
+				<Duration />
+				<WeekDays />
+				<Description />
+
+				<div className={classes.btnsContainer}>
+					<Button variant="outlined" styles={classes.cancelBtn} onClick={closeDefinePlanModal}>
+						Cancel
+					</Button>
+					<Button styles={classes.saveBtn} onClick={() => {}}>
+						Save Goal
+					</Button>
+				</div>
+			</div>
+		</Modal>
+	);
 };
 
-export default GoalModal;
+export default DefineGoalModal;

@@ -1,7 +1,6 @@
 import { FC, useState } from 'react';
 
 import Menu from '../item-menu';
-import GoalModal from '../goal-modal';
 import { MoreHorizontalSvg } from '@components/ui/svg';
 
 import { useClickOutside } from '@hooks/useClickOutside';
@@ -12,6 +11,7 @@ import { getTreatmentIcon } from './index.helper';
 import { bindActionCreators } from '@reduxjs/toolkit';
 import { treatmentPlanActions } from '@entities/patient';
 import { useAppDispatch } from '@shared/model';
+import { useTreatmentPlanStageContext } from '../../../lib/context';
 
 interface PropsType {
   id: string;
@@ -25,14 +25,10 @@ const TreatmentItem: FC<PropsType> = ({ id, text, category }) => {
   const { 
     deleteSelectedActivityOrMedication: deleteTreatmentItem 
   } = bindActionCreators(treatmentPlanActions, dispatch);
+  const { openDefinePlanModal } = useTreatmentPlanStageContext();
 
   const ref = useClickOutside<HTMLLIElement>(() => setIsMenuOpen(false));
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-
-  const handleDefine = () => {
-    setShowModal(true);
-  };
   
   return (
     <>
@@ -51,14 +47,12 @@ const TreatmentItem: FC<PropsType> = ({ id, text, category }) => {
           {isMenuOpen ? (
             <Menu 
               onEdit={() => {}} 
-              onDefine={handleDefine} 
+              onDefine={openDefinePlanModal}
               onDelete={() => deleteTreatmentItem(id)}
             />
           ) : null}
         </div>
       </li>
-
-      {showModal ? <GoalModal onClose={() => setShowModal(false)} /> : null}
     </>
   );
 };

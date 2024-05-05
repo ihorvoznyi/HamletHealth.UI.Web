@@ -42,7 +42,7 @@ const PatientCardList = () => {
 					);
 				})
 			) : (
-				<Loader />
+				<Loader styles={{ container: 'text-center' }} />
 			)}
 		</div>
 	);

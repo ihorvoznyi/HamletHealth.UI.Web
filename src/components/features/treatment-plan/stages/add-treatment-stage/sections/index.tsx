@@ -14,14 +14,14 @@ import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
 
 const TreatmentPlan = () => {
-  const { setIsOpen } = useTreatmentPlanStageContext();
+  const { openDefinePlanModal } = useTreatmentPlanStageContext();
   const { selectedActivities } = useAppSelector(selectTreatmentPlanStage, shallowEqual);
   
   const canDefinePlan = !!selectedActivities.length;
 
   const handleShowModal = () => {
     if (canDefinePlan) {
-      setIsOpen(true);
+      openDefinePlanModal();
     }
   };
 
@@ -34,7 +34,7 @@ const TreatmentPlan = () => {
         <Treatments />
       </div>
       <Button 
-        styles={{ 
+        styles={{
           container: cn(
             classes.defineBtn.base,
             !canDefinePlan
