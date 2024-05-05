@@ -12,6 +12,7 @@ export const classes = {
     text-center
     pt-[120px] 
     bg-cultured-primary 
+    -mt-[80px]
   `),
   img: ctl(`
     mx-auto 

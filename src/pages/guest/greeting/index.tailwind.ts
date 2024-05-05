@@ -21,7 +21,6 @@ export const classes = {
     left-1/2
     -translate-x-1/2 
     -translate-y-1/2 
-    mt-[81px]
     fs14Regular 
   `),
   title: 'fs40Bold',

@@ -7,11 +7,10 @@ const Header = ({ isAuth }: { isAuth: boolean  }) => {
   return (
     <header className={cn(
       classes.header,
-      !isAuth && 'bg-inherit'
+      !isAuth && 'bg-inherit',
     )}>
       <Logotype />
-        
-      {/* Provider Authorization block switching functionality */}
+      
       {isAuth ? <AuthHeaderContent /> : <BackButton />}
       {isAuth && <div className={classes.line} />}
     </header>

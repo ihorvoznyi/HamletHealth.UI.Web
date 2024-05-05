@@ -3,10 +3,7 @@ import ctl from '@netlify/classnames-template-literals';
 export const classes = {
   header: ctl(`
     flex 
-    absolute 
-    right-0 
-    left-0 
-    top-0 
+    relative
     h-[80px]
     justify-between 
     items-center 
