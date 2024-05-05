@@ -2,7 +2,7 @@ import { isPhoneNumber } from '@utils/text.util';
 import { convertToISOString } from '@utils/date.util';
 
 import { Role } from '@shared/lib/enums';
-import { CreatePatientDto } from '@entities/user';
+import { CreatePatientDto } from '@app/store/entities/user';
 import { AddPatientFormType } from '../../types';
 
 type PhoneOrEmailType = Pick<CreatePatientDto, 'email'> | Pick<CreatePatientDto, 'phone'>;

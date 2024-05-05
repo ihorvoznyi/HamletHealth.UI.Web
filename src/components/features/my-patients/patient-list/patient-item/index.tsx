@@ -7,7 +7,7 @@ import { combineRoutes, retrieveInitials, toNormalCase } from '@utils/text.util'
 
 import { APP_ROUTES } from '@configs/routes.config';
 
-import type { IPatient } from '@entities/patient';
+import type { IPatient } from '@app/store/entities/patient';
 import type { IPatientItem } from '../index.interfaces';
 
 import { classes } from './index.tailwind';

@@ -8,7 +8,7 @@ export default defineConfig({
     alias: [
       { find: '@', replacement: path.resolve(__dirname, 'src') },
       { find: '@app', replacement: path.resolve(__dirname, 'src/app') },
-      { find: '@app-store', replacement: path.resolve(__dirname, 'src/app/store/app') },
+      { find: '@store', replacement: path.resolve(__dirname, 'src/app/store') },
       { find: '@ui', replacement: path.resolve(__dirname, 'src/components/ui') },
       { find: '@shared', replacement: path.resolve(__dirname, 'src/shared') },
       { find: '@styles', replacement: path.resolve(__dirname, 'src/shared/styles') },
@@ -19,7 +19,7 @@ export default defineConfig({
       { find: '@pages', replacement:  path.resolve(__dirname, 'src/pages')},
       { find: '@components', replacement:  path.resolve(__dirname, 'src/components')},
       { find: '@configs', replacement: path.resolve(__dirname, 'src/shared/lib/configs') },
-      { find: '@entities', replacement: path.resolve(__dirname, 'src/entities') },
+      { find: '@entities', replacement: path.resolve(__dirname, 'src/app/store/entities') },
     ]
   }
 });

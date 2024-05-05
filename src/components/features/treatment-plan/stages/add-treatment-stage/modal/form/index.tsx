@@ -13,7 +13,7 @@ import {
 	selectTreatmentPlanData, 
 	treatmentPlanActions, 
 	useCreateTreatmentPlanMutation 
-} from '@entities/patient';
+} from '@app/store/entities/patient';
 
 import { Logger } from '@shared/lib/helpers';
 import { TreatmentPlanMapper } from '../lib/helpers';

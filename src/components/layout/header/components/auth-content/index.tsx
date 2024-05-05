@@ -8,7 +8,7 @@ import { classes } from './index.tailwind';
 import { APP_ROUTES } from '@configs/routes.config';
 import { useEffect, useState } from 'react';
 import { useActions } from '@hooks/useActions';
-import { logout } from '@entities/user';
+import { logout } from '@app/store/entities/user';
 
 const navLinks = [
   {

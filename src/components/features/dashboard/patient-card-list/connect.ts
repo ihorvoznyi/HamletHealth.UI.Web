@@ -8,7 +8,7 @@ import {
 	PatientPlanDto,
 	TreatmentPlanDto,
 	useGetPatientsPlansQuery,
-} from '@entities/patient';
+} from '@app/store/entities/patient';
 
 import { toNormalCase } from '@utils/text.util';
 import { getGenderName } from '@utils/gender.util';

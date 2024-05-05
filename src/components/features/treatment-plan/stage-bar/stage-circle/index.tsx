@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { cn } from '@utils/style.util';
 import { classes } from '../index.tailwind';
-import { StageStatusType } from '@entities/patient';
+import { StageStatusType } from '@app/store/entities/patient';
 
 interface PropsType {
   isActive: boolean;

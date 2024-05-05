@@ -7,7 +7,7 @@ import { options } from '@components/features/forms/create-account-form/index.sc
 
 import { APP_ROUTES } from '@configs/routes.config';
 
-import { useCreateDoctorMutation } from '@entities/user';
+import { useCreateDoctorMutation } from '@app/store/entities/user';
 
 import { RegistrationMapper } from '@components/features/forms/create-account-form/lib/helpers';
 

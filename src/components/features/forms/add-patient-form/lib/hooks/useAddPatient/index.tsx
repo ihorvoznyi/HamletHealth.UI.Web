@@ -11,8 +11,8 @@ import {
 	useFindPatientMutation,
 	useAddPatientMutation,
 	useCreatePatientMutation,
-} from '@entities/user';
-import { selectAddPatientStateData, treatmentPlanActions } from '@entities/patient';
+} from '@app/store/entities/user';
+import { selectAddPatientStateData, treatmentPlanActions } from '@app/store/entities/patient';
 
 import { options } from '../../schema';
 import { AddPatientFormType } from '../../types';

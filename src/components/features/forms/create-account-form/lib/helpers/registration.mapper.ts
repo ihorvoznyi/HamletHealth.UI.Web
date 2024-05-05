@@ -1,4 +1,4 @@
-import { CreateDoctorDto } from '@entities/user';
+import { CreateDoctorDto } from '@app/store/entities/user';
 import { RegistrationFormType } from '../../index.types';
 
 export class RegistrationMapper {

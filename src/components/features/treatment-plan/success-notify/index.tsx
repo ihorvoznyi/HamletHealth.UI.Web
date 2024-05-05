@@ -5,7 +5,7 @@ import { SuccessCircleCheckIcon } from '@components/ui/icons';
 
 import { useAppSelector } from '@shared/model';
 
-import { selectNormalizedPatientFullname } from '@entities/patient';
+import { selectNormalizedPatientFullname } from '@app/store/entities/patient';
 
 import { APP_ROUTES } from '@configs/routes.config';
 

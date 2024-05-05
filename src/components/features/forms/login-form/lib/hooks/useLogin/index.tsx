@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useLoading } from '@hooks/useLoading';
-import { useLoginMutation } from '@entities/user';
+import { useLoginMutation } from '@app/store/entities/user';
 
 import { options } from '@components/features/forms/login-form/index.schema';
 import { APP_ROUTES } from '@configs/routes.config';

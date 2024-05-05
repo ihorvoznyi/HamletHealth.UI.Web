@@ -6,7 +6,7 @@ import StageCircle from './stage-circle';
 import { useAppSelector } from '@shared/model';
 
 import { getDashedSvgAttrs } from './lib';
-import { selectStageStatusesAndCurrentStage } from '@entities/patient';
+import { selectStageStatusesAndCurrentStage } from '@app/store/entities/patient';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';

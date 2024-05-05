@@ -1,8 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import { patientApi, treatmentPlanReducer } from '@entities/patient';
+import { patientApi, treatmentPlanReducer } from '@app/store/entities/patient';
 import { appReducer } from './app/index.slice';
-import { userReducer, userApi } from '@entities/user';
+import { userReducer, userApi } from '@app/store/entities/user';
 
 export const rootReducer = combineReducers({
   appReducer,

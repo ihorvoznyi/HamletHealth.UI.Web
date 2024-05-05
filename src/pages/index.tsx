@@ -1,7 +1,7 @@
 import Guest from './guest';
 import Protected from './protected';
 
-import { selectIsAuth } from '@entities/user';
+import { selectIsAuth } from '@app/store/entities/user';
 import { useAppSelector } from '@shared/model';
 
 const Auth = () => {

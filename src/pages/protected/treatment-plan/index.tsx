@@ -5,7 +5,7 @@ import { shallowEqual } from 'react-redux';
 import { StageBar, PlanCreationStage, SuccessNotify } from '@components/features/treatment-plan';
 
 import { useAppDispatch, useAppSelector } from '@shared/model';
-import { selectTreatmentPlanStage, treatmentPlanActions, useGetDiagnosisQuery } from '@entities/patient';
+import { selectTreatmentPlanStage, treatmentPlanActions, useGetDiagnosisQuery } from '@app/store/entities/patient';
 
 import { APP_ROUTES } from '@configs/routes.config';
 
