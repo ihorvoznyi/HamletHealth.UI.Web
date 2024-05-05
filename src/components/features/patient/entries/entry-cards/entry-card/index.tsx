@@ -1,4 +1,4 @@
-import JorunalEntriesCarousel from '@components/ui/common/mood-card-list';
+import JorunalEntriesCarousel from '@components/ui/common/journal-entries-carousel';
 
 import { classes } from './index.tailwind';
 

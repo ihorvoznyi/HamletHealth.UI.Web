@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Button } from '@components/ui/controls';
 import { Initials, JournalEntriesCarousel } from '@components/ui/common';
 
-import type { JournalEntryProps } from '@components/ui/common/mood-card-list/mood-card';
+import type { JournalEntryProps } from '@components/ui/common/journal-entries-carousel/mood-card';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';

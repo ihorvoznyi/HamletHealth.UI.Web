@@ -14,7 +14,7 @@ import { getGenderName } from '@utils/gender.util';
 import { formatISOString, formatTimeISOString, monthMap, weekDayMap } from '@utils/date.util';
 
 import type { IPatientCard } from './patient-card';
-import type { JournalEntryProps } from '@components/ui/common/mood-card-list/mood-card';
+import type { JournalEntryProps } from '@components/ui/common/journal-entries-carousel/mood-card';
 
 const sortByDate = (dateISOA: string, dateISOB: string) => {
 	const dateA = new Date(dateISOA).getTime();
