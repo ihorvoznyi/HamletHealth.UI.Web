@@ -8,7 +8,8 @@ import {
   DiagnosIdPayload as DiagnosIdPayload,
   ActivityOrMedicationIdPayload,
   TreatmentPlanMeta,
-  SetPatientIdPayload
+  SetPatientIdPayload,
+  TreatmentStateType
 } from './types';
 
 const initialState: TreatmentPlanState = {
@@ -36,7 +37,7 @@ const initialState: TreatmentPlanState = {
   },
   preparedData: {
     diagnosis: [],
-    activeDiagnosis: null
+    selectedDiagnosis: []
   }
 };
 
@@ -59,15 +60,22 @@ export const treatmentPlanSlice = createSlice({
     resetStages: (state: TreatmentPlanState) => {
       state.currentStage = initialState.currentStage;
       state.stages = {...initialState.stages};
-      state.preparedData.activeDiagnosis = null;
+      state.preparedData.selectedDiagnosis = [];
     },
     setDiagnosis: (state: TreatmentPlanState, { payload }: SetDiagnosisPayload) => {
       state.preparedData.diagnosis = payload;
     },
-    setActiveDiagnosis: (state: TreatmentPlanState, { payload }: DiagnosIdPayload) => {
-      const diagnosis = state.preparedData.diagnosis.find(item => item.id === payload);
-      if (diagnosis) {
-        state.preparedData.activeDiagnosis = diagnosis;
+    selectDiagnos: (state: TreatmentPlanState, { payload }: DiagnosIdPayload) => {
+      const { selectedDiagnosis } = state.preparedData;
+      const alreadySelected = selectedDiagnosis.find(x => x.id === payload);
+      if (alreadySelected) {
+        state.preparedData.selectedDiagnosis = selectedDiagnosis.filter(x => x.id !== alreadySelected.id);
+        return;
+      }
+
+      const diagnos = state.preparedData.diagnosis.find(item => item.id === payload);
+      if (diagnos) {
+        state.preparedData.selectedDiagnosis.push(diagnos);
       }
     },
     setTreatmentPlanMetadata: (state: TreatmentPlanState, { payload }: TreatmentPlanMeta) => {
@@ -76,16 +84,23 @@ export const treatmentPlanSlice = createSlice({
       treatmentPlan.data.name = payload.name;
       treatmentPlan.data.description = payload.description;
     },
-    addSelectedActivityOrMedication: (state: TreatmentPlanState, { payload }: ActivityOrMedicationIdPayload) => {
-      const activeDiagnosis = state.preparedData.activeDiagnosis;
-      if (!activeDiagnosis) {
-        return;
+    selectedActivityOrMedication: (state: TreatmentPlanState, { payload }: ActivityOrMedicationIdPayload) => {
+      const { selectedTreatments } = state.stages.treatmentPlan.data;
+      let activity: TreatmentStateType | null = null;
+      let diagnosId: string = '';
+
+      for (const diagnos of state.preparedData.selectedDiagnosis) {
+        const selectedActivity = diagnos.recommendedActivities.find(item => item.id === payload);
+        if (!selectedActivity) {
+          continue;
+        }
+
+        activity = selectedActivity;
+        diagnosId = diagnos.id;
+        break;
       }
 
-      const { selectedTreatments } = state.stages.treatmentPlan.data;
-      const activity = activeDiagnosis.recommendedActivities.find(item => item.id === payload);
-
-      if (activity) {
+      if (activity !== null) {
         const isAdded = selectedTreatments.find(item => item.treatment.id === activity.id);
 
         if (isAdded) {
@@ -93,7 +108,7 @@ export const treatmentPlanSlice = createSlice({
         }
 
         const selectedTreatment = {
-          diagnosId: activeDiagnosis.id,
+          diagnosId,
           treatment: activity,
         };
 

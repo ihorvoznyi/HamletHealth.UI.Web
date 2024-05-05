@@ -16,7 +16,7 @@ export interface TreatmentPlanState {
     treatmentPlan: Stage<ITreatmentPlanStateData>
   },
   preparedData: {
-    activeDiagnosis: IDiagnosisStateType | null;
+    selectedDiagnosis: IDiagnosisStateType[];
     diagnosis: IDiagnosisStateType[];
   },
 }

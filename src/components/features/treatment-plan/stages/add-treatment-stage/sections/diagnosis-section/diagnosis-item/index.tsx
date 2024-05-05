@@ -9,7 +9,7 @@ import { cn } from '@utils/style.util';
 
 const DiagnosisItem: React.FC<{ id: string; name: string; isActive?: boolean; }> = ({ id, name, isActive = false }) => {
   const dispatch = useAppDispatch();
-  const { setActiveDiagnosis } = bindActionCreators(treatmentPlanActions, dispatch);
+  const { selectDiagnos: setActiveDiagnosis } = bindActionCreators(treatmentPlanActions, dispatch);
 
   return (
     <li 

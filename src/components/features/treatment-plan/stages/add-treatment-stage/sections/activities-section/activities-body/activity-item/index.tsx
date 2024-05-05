@@ -12,7 +12,7 @@ import { useAppDispatch } from '@shared/model';
 const ActivityItem: React.FC<{ id: string; name: string; category: number; }> = ({ id, name, category }) => {
   const isActivity = category === 0;
   const dispatch = useAppDispatch();
-  const { addSelectedActivityOrMedication } = bindActionCreators(treatmentPlanActions, dispatch);
+  const { selectedActivityOrMedication: addSelectedActivityOrMedication } = bindActionCreators(treatmentPlanActions, dispatch);
 
   return (
     <li className={classes.container}>

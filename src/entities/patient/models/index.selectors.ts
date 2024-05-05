@@ -1,5 +1,5 @@
 import { RootState } from '@shared/model';
-import { ActivitiesFilterType, TreatmentPlanDataType } from './types';
+import { ActivitiesFilterType, TreatmentPlanDataType, TreatmentStateType } from './types';
 import { includesCaseInsensitive, toNormalCase } from '@utils/text.util';
 
 export const selectCurrentStage = (state: RootState) => {
@@ -50,7 +50,7 @@ export const selectAddPatientStateData = ({ treatmentPlanReducer }: RootState) =
 
 export const selectTreatmentPlanStage = ({ treatmentPlanReducer }: RootState) => {
 	const { status, data } = treatmentPlanReducer.stages.treatmentPlan;
-	const { diagnosis, activeDiagnosis } = treatmentPlanReducer.preparedData;
+	const { diagnosis, selectedDiagnosis: activeDiagnosis } = treatmentPlanReducer.preparedData;
 
 	return {
 		stageStatus: status,
@@ -69,8 +69,16 @@ export const selectActivities = (
 	{ treatmentPlanReducer }: RootState,
 	options?: Partial<ActivitiesFilterOptions>
 ) => {
-	const recommendedActivities =
-		treatmentPlanReducer.preparedData.activeDiagnosis?.recommendedActivities ?? [];
+	const recommendedActivities: TreatmentStateType[] = [];
+	
+	treatmentPlanReducer.preparedData.selectedDiagnosis.forEach(diagnos => {
+		diagnos.recommendedActivities.forEach(activity => {
+			const exist = recommendedActivities.find(item => item.id === activity.id);
+			if (!exist) {
+				recommendedActivities.push(activity);	
+			}
+		});
+	});
 
 	if (!options || options.filterBy === 'all') {
 		return recommendedActivities.filter(item =>
@@ -114,5 +122,6 @@ export const selectTreatmentPlanData = ({
 	};
 };
 
-export const selectActiveDiagnosId = ({ treatmentPlanReducer }: RootState) =>
-	treatmentPlanReducer.preparedData.activeDiagnosis?.id;
+export const selectActiveDiagnosisIds = ({ treatmentPlanReducer }: RootState) => {
+	return treatmentPlanReducer.preparedData.selectedDiagnosis.map(diagnos => diagnos.id);
+};
