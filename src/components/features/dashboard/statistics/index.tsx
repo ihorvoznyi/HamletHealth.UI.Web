@@ -3,7 +3,6 @@ import { Loader } from '@components/ui/common';
 import { ContentIcon, ErrorIcon, PatientIcon, SettingsIcon } from '@components/ui/icons/dashboard';
 import { useGetDashboardStatsQuery } from '@app/store/entities/patient';
 
-
 import { ToastHelper } from '@shared/lib/helpers';
 
 import { classes } from './index.tailwind';
@@ -20,12 +19,22 @@ const Statistics = () => {
 	return (
 		<div className={classes.container}>
 			{isLoading ? (
-				<Loader styles={{ container: 'w-full h-[174px] flex self-center items-center justify-center' }} />
+				<Loader
+					styles={{ container: 'w-full h-[174px] flex self-center items-center justify-center' }}
+				/>
 			) : (
 				<>
-					<StatCard label="My patients" value={statistics?.patientsCount} Icon={<PatientIcon />} />
-					<StatCard label="Accounts need setup" value={statistics?.accountsSetup} Icon={<SettingsIcon />}/>
-					<StatCard label="Entries to monitor" value={statistics?.entriesTpReview} Icon={<ContentIcon />} />
+					<StatCard label="My patients" value={statistics?.accountsSetup} Icon={<PatientIcon />} />
+					<StatCard
+						label="Accounts need setup"
+						value={(statistics?.patientsCount ?? 0) - (statistics?.accountsSetup ?? 0)}
+						Icon={<SettingsIcon />}
+					/>
+					<StatCard
+						label="Entries to monitor"
+						value={statistics?.entriesTpReview}
+						Icon={<ContentIcon />}
+					/>
 					<StatCard label="Patient has a critical issue" value={undefined} Icon={<ErrorIcon />} />
 				</>
 			)}

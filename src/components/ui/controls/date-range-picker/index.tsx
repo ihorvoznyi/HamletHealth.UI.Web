@@ -60,7 +60,6 @@ const DateRangePicker: React.FC<PropsType> = ({ range, onSelect }) => {
 			className="rounded-md shadow-gray"
 			months={2}
 			ranges={state}
-			showMonthArrow={true}
 			showDateDisplay={false}
 			showMonthAndYearPickers={false}
 			weekStartsOn={1}
