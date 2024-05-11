@@ -7,7 +7,7 @@ import { sortRecordBy } from '@utils/sort.util';
 import { includesCaseInsensitive } from '@utils/text.util';
 import { groupByFirstLetter } from './index.helper';
 
-import { IPatient } from '@app/store/entities/patient';
+import { IPatient } from '@app/store/entities/treatment';
 
 import { classes } from './index.tailwind';
 

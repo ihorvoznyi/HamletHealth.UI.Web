@@ -8,7 +8,7 @@ import TreatmentPlanStageNavigation from './navigation';
 import { useAppDispatch, useAppSelector } from '@shared/model';
 
 import { TreatmentPlanStageContextProvider, useTreatmentPlanStageContext } from './lib/context';
-import { selectTreatmentPlanStage, treatmentPlanActions } from '@app/store/entities/patient';
+import { selectTreatmentPlanStage, treatmentPlanActions } from '@app/store/entities/treatment';
 import DefineGoalModal from './sections/selected-activities-section/goal-modal';
 
 const AddTreatmentStageComponent = () => {

@@ -5,7 +5,7 @@ import { useAppSelector } from '@shared/model';
 import { useActivitiesContext } from '../lib/hooks';
 
 import { classes } from './index.tailwind';
-import { selectActivities } from '@app/store/entities/patient';
+import { selectActivities } from '@app/store/entities/treatment';
 
 export const ActivitiesBody = () => {
   const { filterBy, searchStatement, setSearchStatement, } = useActivitiesContext();

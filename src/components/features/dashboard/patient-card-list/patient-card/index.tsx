@@ -7,6 +7,7 @@ import type { JournalEntryProps } from '@components/ui/common/journal-entries-ca
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
+import { useNavigate } from 'react-router-dom';
 
 export interface IPatientCard {
   id: string;
@@ -22,8 +23,10 @@ interface PropsType {
 }
 
 const PatientCard: FC<PropsType> = ({ patinet }) => {
+  const navigate = useNavigate();
+
   const handleOpenProfile = () => {
-    // 
+    navigate('');
   };
 
   return (

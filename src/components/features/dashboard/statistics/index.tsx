@@ -1,7 +1,7 @@
 import StatCard from './stat-card';
 import { Loader } from '@components/ui/common';
 import { ContentIcon, ErrorIcon, PatientIcon, SettingsIcon } from '@components/ui/icons/dashboard';
-import { useGetDashboardStatsQuery } from '@app/store/entities/patient';
+import { useGetDashboardStatsQuery } from '@app/store/entities/treatment';
 
 import { ToastHelper } from '@shared/lib/helpers';
 

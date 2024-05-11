@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from '@reduxjs/toolkit';
 
 import { useAppDispatch } from '@shared/model';
-import { treatmentPlanActions } from '@app/store/entities/patient';
+import { treatmentPlanActions } from '@app/store/entities/treatment';
 
 import { classes } from './index.tailwind';
 import { cn } from '@utils/style.util';

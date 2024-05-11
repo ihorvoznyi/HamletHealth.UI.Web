@@ -1,4 +1,4 @@
-import { IPatient } from '@app/store/entities/patient';
+import { IPatient } from '@app/store/entities/treatment';
 
 export const groupByFirstLetter = (items: IPatient[]) => {
   const group = items.reduce((acc: Record<string, IPatient[]>, item) => {

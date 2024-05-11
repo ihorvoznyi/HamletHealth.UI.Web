@@ -9,7 +9,7 @@ import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
 import { getTreatmentIcon } from './index.helper';
 import { bindActionCreators } from '@reduxjs/toolkit';
-import { treatmentPlanActions } from '@app/store/entities/patient';
+import { treatmentPlanActions } from '@app/store/entities/treatment';
 import { useAppDispatch } from '@shared/model';
 import { useTreatmentPlanStageContext } from '../../../lib/context';
 

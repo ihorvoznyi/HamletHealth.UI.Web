@@ -1,4 +1,4 @@
-import { StageStatusType } from '@app/store/entities/patient';
+import { StageStatusType } from '@app/store/entities/treatment';
 import { SvgAttrsType } from '../../index.interfaces';
 
 export const statusColors: Record<StageStatusType, string> = {

@@ -3,8 +3,8 @@ import { bindActionCreators } from '@reduxjs/toolkit';
 
 import { useAppDispatch } from '@shared/model';
 
-import { IDiagnosisStateType } from '@app/store/entities/patient/models/types';
-import { IDiagnosisItemDto, treatmentPlanSlice, useGetDiagnosisQuery } from '@app/store/entities/patient';
+import { IDiagnosisStateType } from '@app/store/entities/treatment/models/types';
+import { IDiagnosisItemDto, treatmentPlanSlice, useGetDiagnosisQuery } from '@app/store/entities/treatment';
 
 const mapToDiagnosis = (diagnosis: IDiagnosisItemDto[]): IDiagnosisStateType[] => {
   return diagnosis.map(({ id, name, code, recommendedActivities }) => ({

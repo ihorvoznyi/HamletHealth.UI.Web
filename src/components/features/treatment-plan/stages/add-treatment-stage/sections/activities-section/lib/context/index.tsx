@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, createContext, useState } from 'react';
 
-import { ActivitiesFilterType } from '@app/store/entities/patient';
+import { ActivitiesFilterType } from '@app/store/entities/treatment';
 import { classes } from './index.tailwind';
 
 interface IActivitiesContext {
