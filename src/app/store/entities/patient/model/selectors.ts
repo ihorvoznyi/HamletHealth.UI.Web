@@ -30,12 +30,12 @@ export const selectPatientEntriesGroup = createSelector(
 		});
 
 		const entries = Object.entries(group);
-		if (!selection) {
+		if (!selection.range) {
 			return entries.sort((a, b) => sortByDate(b[1].date, a[1].date));
 		}
 
-		const start = selection.startDate;
-		const end = endOfDay(selection.endDate);
+		const start = selection.range.startDate;
+		const end = endOfDay(selection.range.endDate);
 
 		return entries
 		.filter(([_, item]) => {
@@ -45,6 +45,10 @@ export const selectPatientEntriesGroup = createSelector(
 		.sort((a, b) => sortByDate(b[1].date, a[1].date));
 	}
 );
+
+export const selectPatientSelection = ({ patientReducer }: RootState) => {
+	return patientReducer.selection;
+};
 
 // Types
 type JournalEntriesGroup = {

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import type { PatientState, SetCurrentPatientPayload } from './types';
-import { toNormalCase } from '@utils/text.util';
+import type { PatientState, SetCurrentPatientPayload, SetDateRangePayload } from './types';
+import { endOfMonth, startOfMonth } from 'date-fns';
 
 const initialState: PatientState = {
   current: {
@@ -10,7 +10,7 @@ const initialState: PatientState = {
     lastName: '',
     fullname: '',
     birthDate: '',
-    gender: undefined,
+    gender: '',
     plan: {
       id: '',
       name: '',
@@ -19,6 +19,14 @@ const initialState: PatientState = {
       medications: []
     },
     journalEntries: []
+  },
+  selection: {
+    range: {
+      startDate: startOfMonth(new Date()),
+      endDate: endOfMonth(new Date()),
+    },
+    activities: [],
+    keyHealthIndicator: ''
   }
 };
 
@@ -28,7 +36,10 @@ export const patientSlice = createSlice({
   reducers: {
     setCurrentPatient: (state: PatientState, { payload }: SetCurrentPatientPayload) => {      
       Object.assign(state.current, payload);
-    }
+    },
+    setDateRange: (state: PatientState, { payload }: SetDateRangePayload) => {
+      state.selection.range = payload;
+    },
   }
 });
 

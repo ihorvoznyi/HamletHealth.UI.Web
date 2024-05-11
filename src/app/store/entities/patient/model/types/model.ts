@@ -2,8 +2,8 @@ import { RangeType } from '@components/ui/controls/date-range-picker';
 import { KeyHealthIndicatorRate } from '@shared/lib/types';
 
 export type PatientState = {
-  selection: RangeType,
-  current: Patient
+  current: Patient;
+  selection: PatientSelection;
 }
 
 export type Patient = {
@@ -27,8 +27,8 @@ export interface JournalEntry {
   time: string;
   note: string;
   date: string;
-  keyHealthIndicators: HealthIndicator[];
   recipes?: RecommendedActivity[] | [];
+  keyHealthIndicators: HealthIndicator[];
 }
 
 export type RecommendedActivity = {
@@ -50,4 +50,10 @@ export type TreatmentPlan = {
   goal: string
   diagnos: string
   medications: Medication[]
+}
+
+export type PatientSelection = {
+  range: RangeType;
+  activities: string[];
+  keyHealthIndicator: string;
 }
