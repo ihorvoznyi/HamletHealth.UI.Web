@@ -1,6 +1,8 @@
+import { RangeType } from '@components/ui/controls/date-range-picker';
 import { KeyHealthIndicatorRate } from '@shared/lib/types';
 
 export type PatientState = {
+  selection: RangeType,
   current: Patient
 }
 

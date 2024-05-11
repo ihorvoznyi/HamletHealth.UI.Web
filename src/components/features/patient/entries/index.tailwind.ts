@@ -6,4 +6,5 @@ export const classes = {
     mx-[80px] 
     mt-[56px]
   `),
+  list: 'px-[20px]'
 };
