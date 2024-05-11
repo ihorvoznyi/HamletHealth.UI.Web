@@ -2,12 +2,7 @@ import { FC } from 'react';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
-
-export type RecommendedActivity = {
-  id: string;
-  icon: string;
-  text: string;
-}
+import type { RecommendedActivity } from '@app/store/entities/patient/model/types';
 
 interface PropsType {
   recipes: RecommendedActivity[];

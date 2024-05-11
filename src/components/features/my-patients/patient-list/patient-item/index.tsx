@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { formatISOString } from '@utils/date.util';
+import { formatISOStringAsBirthDate } from '@utils/date.util';
 import { getGenderName } from '@utils/gender.util';
 import { combineRoutes, retrieveInitials, toNormalCase } from '@utils/text.util';
 
@@ -40,7 +40,7 @@ export const renderPatientItem = (patient: IPatient) => {
 	const patientItem: IPatientItem = {
 		id: patient.id,
 		fullname: `${toNormalCase(patient.firstName)} ${toNormalCase(patient.lastName)}`,
-		birthDate: formatISOString(patient.birthDate),
+		birthDate: formatISOStringAsBirthDate(patient.birthDate),
 		gender: getGenderName(patient.gender),
 		diagnos: patient.diagnos.length ? patient.diagnos : '-',
 	};

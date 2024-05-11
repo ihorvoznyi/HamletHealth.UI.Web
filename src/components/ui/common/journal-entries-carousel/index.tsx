@@ -1,15 +1,15 @@
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
 
-import JournalEntry from './mood-card';
+import JournalEntryEl from './mood-card';
 import { ArrowRightSvg } from '@components/ui/svg';
 import { useWindowSize } from '@hooks/useWindowSize';
 
-import type { JournalEntryProps } from './mood-card';
+import type { JournalEntry } from '@app/store/entities/patient/model/types';
 
 import { classes } from './index.tailwind';
 
 interface PropsType {
-	entries: JournalEntryProps[];
+	entries: JournalEntry[];
 }
 
 const JorunalEntriesCarousel: FC<PropsType> = ({ entries }) => {
@@ -67,7 +67,7 @@ const JorunalEntriesCarousel: FC<PropsType> = ({ entries }) => {
 		<div className={classes.container}>
 			<div ref={ref} className={classes.scrollContainer}>
 				{entries.map(item => (
-					<JournalEntry key={item.id} {...item} />
+					<JournalEntryEl key={item.id} {...item} />
 				))}
 			</div>
 

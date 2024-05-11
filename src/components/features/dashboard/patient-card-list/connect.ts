@@ -1,55 +1,23 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-mixed-spaces-and-tabs */
 import { useMemo } from 'react';
 import { endOfDay } from 'date-fns';
 
-import {
-	EntryDto,
-	PatientPlanDto,
-	TreatmentPlanDto,
-	useGetPatientsPlansQuery,
-} from '@app/store/entities/treatment';
-
-import { toNormalCase } from '@utils/text.util';
-import { getGenderName } from '@utils/gender.util';
-import { formatISOString, formatTimeISOString, monthShortMap, weekDayMap } from '@utils/date.util';
-
-import type { IPatientCard } from './patient-card';
-import type { JournalEntryProps } from '@components/ui/common/journal-entries-carousel/mood-card';
 import { useDashboardContext } from '@pages/protected/dashboard/context';
+import { useGetPatientsPlansQuery } from '@app/store/entities/treatment';
 
-const sortByDate = (dateISOA: string, dateISOB: string) => {
-	const dateA = new Date(dateISOA).getTime();
-	const dateB = new Date(dateISOB).getTime();
+import { monthShortMap, weekDayMap, sortByDate } from '@utils/date.util';
+import { mapPatientPlanToPatient } from '@app/store/entities/patient/helpers/patient.mapper';
 
-	return dateA - dateB;
-};
-
-export type PatientCardProps = Omit<IPatientCard, 'entries'> & {
-	entries: (JournalEntryProps & { date: string })[]
-}
+import type { Patient } from '@app/store/entities/patient/model/types';
 
 export const useConnect = () => {
 	const { data = [], isLoading, isError } = useGetPatientsPlansQuery();
 	const { selectionRange } = useDashboardContext();
 
 	const patientsGroup = useMemo(() => {
-		const items = data.map(patientPlan => {
-			const { userDto: user } = patientPlan;
-
-			return {
-				id: user.id,
-				fullname: `${toNormalCase(user.firstName)} ${toNormalCase(user.lastName)}`,
-				gender: getGenderName(user.gender),
-				diagnos: user.diagnos,
-				birthDate: formatISOString(user.birthDate),
-				entries: JournalEntry.from(patientPlan),
-			};
-		});
-
+		const items = data.map(mapPatientPlanToPatient);
 		const group = groupPatientCardsByDay(items);
 		const entries = Object.entries(group).sort((a, b) => sortByDate(b[1].date, a[1].date));
-
 		if (!selectionRange) {
 			return entries;
 		}
@@ -67,89 +35,43 @@ export const useConnect = () => {
 	};
 };
 
-class JournalEntry {
-	public static from(patientPlanDto: PatientPlanDto) {
-		const activityById = this.activitiesMapFrom(patientPlanDto?.plan);
-		const entriesDto = patientPlanDto?.entries ?? [];
-		const sortedEntries = [...entriesDto].sort((a, b) => sortByDate(a.date, b.date));
-
-		return sortedEntries.map(entry => this.toProps(entry, activityById));
-	}
-
-	private static activitiesMapFrom(treatmentPlan?: TreatmentPlanDto) {
-		const activityById = new Map();
-
-		if (!treatmentPlan) {
-			return activityById;
-		}
-
-		const planItems = treatmentPlan?.treatmentPlanItems ?? [];
-		planItems.forEach(planItem => {
-			planItem?.activities.forEach(activity => {
-				activityById.set(activity.id, {
-					id: activity.id,
-					icon: `data:image/svg;base64,${activity.icon}`,
-					text: activity.name,
-				});
-			});
-		});
-
-		return activityById;
-	}
-
-	private static toProps(entry: EntryDto, activityById: Map<string, any>): JournalEntryProps & { date: string } {
-		return {
-			id: entry.id,
-			time: formatTimeISOString(entry.date),
-			date: entry.date,
-			note: entry.note,
-			recipes: entry.activityIds.map(id => activityById.get(id)).filter(activity => !!activity),
-			keyHealthIndicators: entry.keyHealthIndicatorRates.map(r => ({
-				id: r.id,
-				rate: r.rate,
-				name: r.keyHealthIndicator.name.split(' ').pop() ?? '',
-			})),
-		};
-	}
-}
-
 export type PatientCardGroup = {
 	[key: string]: {
 		date: string
-		items: IPatientCard[]
+		items: Patient[]
 	}
 }
 
-function groupPatientCardsByDay(patientCards: PatientCardProps[]) {
+function groupPatientCardsByDay(patients: Patient[]) {
   const groupedByDay: PatientCardGroup = {};
 
-	patientCards.forEach(patientCard => {
-		patientCard.entries.forEach(entry => {
+	patients.forEach(patient => {
+		patient.journalEntries.forEach(entry => {
 			const key = formatGroupDateKey(entry.date);
 			const groupEntry = groupedByDay[key];
 
 			if (groupEntry) {
-				const exist = groupEntry.items.find(patient => patient.id === patientCard.id);
+				const exist = groupEntry.items.find(item => item.id === patient.id);
 				if (!exist) {
-					const { entries: _, ...patient } = patientCard;
+					const { journalEntries: _, ...other } = patient;
 					groupEntry.items.push({
-						...patient,
-						entries: [entry]
+						...other,
+						journalEntries: [entry]
 					});
 
 					return;
 				}
 
-				exist.entries.push(entry);
+				exist.journalEntries.push(entry);
 				return;
 			}
 
-			const { entries: _, ...patient } = patientCard;
+			const { journalEntries: _, ...other } = patient;
 			groupedByDay[key] = {
 				date: entry.date,
 				items: [{ 
-					...patient,
-					entries: [entry]
+					...other,
+					journalEntries: [entry]
 				 }]
 			};
 		});

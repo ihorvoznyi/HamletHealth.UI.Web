@@ -27,6 +27,14 @@ export const includesCaseInsensitive = (value: string, searchTerm?: string) => {
 };
 
 export const retrieveInitials = (fullname: string) => { 
+  if (!fullname) {
+    return '-';
+  }
+
   const splitted = fullname.split(' ');
   return (splitted[0][0] + splitted[splitted.length - 1][0]).toUpperCase();
+};
+
+export const formatFullname = (firstName: string, lastName: string) => {
+  return `${toNormalCase(firstName)} ${toNormalCase(lastName)}`;
 };

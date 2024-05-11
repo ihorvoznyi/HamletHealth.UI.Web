@@ -82,7 +82,7 @@ export type GetActivitiesResponse = ActivityDto[]
 // API DTOs
 export type PatientPlanDto = {
 	userDto: UserDto;
-	entries: EntryDto[];
+	entries: JournalEntryDto[];
 	plan: TreatmentPlanDto;
 }
 
@@ -101,10 +101,11 @@ export type UserDto = {
 };
 
 export type TreatmentPlanDto = {
+	id: string;
 	name: string;
 	description: string;
 	treatmentPlanItems: TreatmentPlanItemDto[];
-	entries: EntryDto[];
+	entries: JournalEntryDto[];
 };
 
 export type TreatmentPlanItemDto = {
@@ -140,7 +141,7 @@ export type ActivityDto = {
 	category: number;
 };
 
-export type EntryDto = {
+export type JournalEntryDto = {
 	id: string;
 	treatmentPlanId: string;
 	date: string;

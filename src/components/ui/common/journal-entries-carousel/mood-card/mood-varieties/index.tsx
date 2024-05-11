@@ -1,9 +1,8 @@
 import { FC, Fragment } from 'react';
 import renderKeyHealthIndicator from '../mood-item';
 
-import { HealthIndicator } from '..';
-
 import { classes } from './index.tailwind';
+import { HealthIndicator } from '@app/store/entities/patient/model/types';
 
 interface PropsType {
   moods: HealthIndicator[];

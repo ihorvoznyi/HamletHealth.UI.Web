@@ -1,32 +1,24 @@
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Button } from '@components/ui/controls';
 import { Initials, JournalEntriesCarousel } from '@components/ui/common';
 
-import type { JournalEntryProps } from '@components/ui/common/journal-entries-carousel/mood-card';
+import type { Patient } from '@app/store/entities/patient/model/types';
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
-import { useNavigate } from 'react-router-dom';
-
-export interface IPatientCard {
-  id: string;
-  fullname: string;
-  gender: string;
-  diagnos: string;
-  birthDate: string;
-  entries: JournalEntryProps[]
-}
+import { APP_ROUTES } from '@configs/routes.config';
 
 interface PropsType {
-  patinet: IPatientCard;
+  patinet: Patient;
 }
 
 const PatientCard: FC<PropsType> = ({ patinet }) => {
   const navigate = useNavigate();
 
   const handleOpenProfile = () => {
-    navigate('');
+    navigate(`${APP_ROUTES.MY_PATIENTS}/${patinet.id}`);
   };
 
   return (
@@ -36,14 +28,14 @@ const PatientCard: FC<PropsType> = ({ patinet }) => {
         <div>
           <p>{patinet.birthDate},</p>
           <p>{patinet.gender}</p>
-          <p className={classes.diagnosis}>{patinet.diagnos}</p>
+          <p className={classes.diagnosis}>{patinet.plan?.diagnos ?? '-'}</p>
         </div>
         <Button variant="outlined" styles={classes.btn} onClick={handleOpenProfile}>
           Go to profile
         </Button>
       </div>
 
-      <JournalEntriesCarousel entries={patinet.entries} />
+      <JournalEntriesCarousel entries={patinet.journalEntries} />
     </div>
   );
 };

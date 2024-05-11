@@ -34,7 +34,7 @@ export const formatDateAndAge = (dateOfBirth: Date) => {
 	return `${formattedDate} (${age} y.o.)`;
 };
 
-export const formatISOString = (date?: string) => {
+export const formatISOStringAsBirthDate = (date?: string) => {
 	return date ? formatDateAndAge(new Date(date)) : '-';
 };
 
@@ -45,6 +45,13 @@ export const formatTimeISOString = (isoString: string) => {
 	const minutes = date.getUTCMinutes().toString().padStart(2, '0');
 
 	return `${hours} : ${minutes}`;
+};
+
+export const sortByDate = (dateISOA: string, dateISOB: string) => {
+	const dateA = new Date(dateISOA).getTime();
+	const dateB = new Date(dateISOB).getTime();
+
+	return dateA - dateB;
 };
 
 export const monthShortMap: { [key: number]: string } = {
