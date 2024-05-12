@@ -20,7 +20,23 @@ export const selectPatientEntriesGroup = createSelector(
 			current: { journalEntries },
 		} = patientReducer;
 
+		const end = endOfDay(selection.range.endDate);
+		const start = selection.range.startDate;
+
 		journalEntries.forEach(entry => {
+			const date = new Date(entry.date);
+			const inRange = start <= date && date <= end;
+			if (!inRange) {
+				return;
+			}
+
+			if (
+				selection.activities.length &&
+				!entry.activities.some(activity => selection.activities.includes(activity.id))
+			) {
+				return;
+			}
+
 			const key = formatGroupDateKey(entry.date);
 			if (group[key]) {
 				group[key].items.push(entry);
@@ -29,25 +45,16 @@ export const selectPatientEntriesGroup = createSelector(
 			}
 		});
 
-		const entries = Object.entries(group);
-		if (!selection.range) {
-			return entries.sort((a, b) => sortByDate(b[1].date, a[1].date));
-		}
-
-		const start = selection.range.startDate;
-		const end = endOfDay(selection.range.endDate);
-
-		return entries
-		.filter(([_, item]) => {
-			const date = new Date(item.date);
-			return start <= date && date <= end;
-		})
-		.sort((a, b) => sortByDate(b[1].date, a[1].date));
+		return Object.entries(group).sort((a, b) => sortByDate(b[1].date, a[1].date));
 	}
 );
 
 export const selectPatientSelection = ({ patientReducer }: RootState) => {
 	return patientReducer.selection;
+};
+
+export const selectPatientActions = ({ patientReducer }: RootState) => {
+	return patientReducer.current.plan?.activities ?? [];
 };
 
 // Types

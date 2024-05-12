@@ -4,11 +4,11 @@ export const classes = {
   container: ctl(`
     flex
     flex-col
-    h-full
+    min-h-[calc(100vh-80px)]
   `),
   tabsContainer: ctl(`
     flex-1 
-    pt-[48px] 
+    py-[48px] 
     bg-[#F8F8F8]
   `),
 };

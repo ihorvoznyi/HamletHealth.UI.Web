@@ -26,7 +26,7 @@ export class JournalEntryHelper {
 				activityById.set(activity.id, {
 					id: activity.id,
 					icon: `data:image/svg;base64,${activity.icon}`,
-					text: activity.name,
+					name: activity.name,
 				});
 			});
 		});
@@ -40,7 +40,7 @@ export class JournalEntryHelper {
 			time: formatTimeISOString(entry.date),
 			date: entry.date,
 			note: entry.note,
-			recipes: entry.activityIds.map(id => activityById.get(id)).filter(activity => !!activity),
+			activities: entry.activityIds.map(id => activityById.get(id)).filter(activity => !!activity),
 			keyHealthIndicators: entry.keyHealthIndicatorRates.map(r => ({
 				id: r.id,
 				rate: r.rate,

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import type { PatientState, SetCurrentPatientPayload, SetDateRangePayload } from './types';
+import type { PatientState, SetCurrentPatientPayload, SetDateRangePayload, SetSelectionPayload } from './types';
 import { endOfMonth, startOfMonth } from 'date-fns';
 
 const initialState: PatientState = {
@@ -16,7 +16,8 @@ const initialState: PatientState = {
       name: '',
       goal: '',
       diagnos: '',
-      medications: []
+      activities: [],
+      medications: [],
     },
     journalEntries: []
   },
@@ -39,6 +40,9 @@ export const patientSlice = createSlice({
     },
     setDateRange: (state: PatientState, { payload }: SetDateRangePayload) => {
       state.selection.range = payload;
+    },
+    setSelection: (state: PatientState, { payload }: SetSelectionPayload) => {
+      Object.assign(state.selection, payload);
     },
   }
 });

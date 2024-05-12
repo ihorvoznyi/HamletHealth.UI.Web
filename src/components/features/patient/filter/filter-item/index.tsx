@@ -6,17 +6,18 @@ import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
 
 interface FilterItemProps {
-  text: string; 
+  id: string
+  text: string;
   isSelected: boolean;
-  onSelect: () => void;
+  onSelect: (id: string) => void;
 }
 
-const FilterItem: FC<FilterItemProps> = ({ text, isSelected: value, onSelect }) => {
+const FilterItem: FC<FilterItemProps> = ({ id, text, isSelected: value, onSelect }) => {
   const [isSelected, setIsSelected] = useState(value);
 
   const handleSelect = () => {
     setIsSelected(prev => !prev);
-    onSelect();
+    onSelect(id);
   };
 
   return (

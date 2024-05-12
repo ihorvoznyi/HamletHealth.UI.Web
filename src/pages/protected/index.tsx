@@ -13,7 +13,7 @@ const Protected = () => {
 	return (
 		<>
 			<Header isAuth={true} />
-			<main>
+			<main className="min-h-[calc(100vh-80px)]">
 				<Routes>
 					<Route index element={<AddNewPatientPage />} />
 					<Route path={APP_ROUTES.APP_PATIENT} element={<TreatmentPlanCreationPage />} />

@@ -5,6 +5,7 @@ export const classes = {
     bg-white 
     mx-[80px] 
     mt-[56px]
+    min-h-[400px]
   `),
   list: 'px-[20px]'
 };

@@ -27,14 +27,14 @@ export interface JournalEntry {
   time: string;
   note: string;
   date: string;
-  recipes?: RecommendedActivity[] | [];
+  activities: Activity[] | [];
   keyHealthIndicators: HealthIndicator[];
 }
 
-export type RecommendedActivity = {
+export type Activity = {
   id: string;
   icon: string;
-  text: string;
+  name: string;
 }
 
 export type Medication = {
@@ -50,6 +50,7 @@ export type TreatmentPlan = {
   goal: string
   diagnos: string
   medications: Medication[]
+  activities: Activity[];
 }
 
 export type PatientSelection = {

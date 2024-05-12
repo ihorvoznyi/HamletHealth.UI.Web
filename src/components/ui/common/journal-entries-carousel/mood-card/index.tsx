@@ -10,19 +10,20 @@ import type { JournalEntry } from '@app/store/entities/patient/model/types';
 
 import { classes } from './index.tailwind';
 
-const JournalEntry: FC<JournalEntry> = ({ time, recipes, keyHealthIndicators: moods, note: text }) => {
+const JournalEntry: FC<JournalEntry> = ({ time, activities, keyHealthIndicators, note }) => {
+  console.log(activities);
   return (
     <div className={classes.container}>
       <p className={classes.time}>{time}</p>
       <Divider />
 
-      <MoodVarieties moods={moods} />
+      <MoodVarieties moods={keyHealthIndicators} />
       <Divider />
       
-      <RecipesList recipes={recipes ?? []} />
+      <RecipesList activities={activities} />
       <Divider />
 
-      <p className={classes.moodText}>{text}</p>
+      <p className={classes.moodText}>{note}</p>
       <div className={classes.btnContainer}>
         <PrimaryButton onClick={() => {}} styles={classes.btn}>
           <ImageSvg />
