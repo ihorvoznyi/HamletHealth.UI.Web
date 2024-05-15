@@ -13,6 +13,7 @@ import {
 	CreateTreatmentPlanDto,
 } from './patient-api.interfaces';
 import { PATIENT_API_ENDPOINTS } from './patient-api.constants';
+import { RangeType } from '@components/ui/controls/date-range-picker';
 
 const injectedPatientApi = api.injectEndpoints({
 	endpoints: builder => ({
@@ -78,6 +79,12 @@ export type GetPatientsPlansResponse = PatientPlanDto[];
 
 export type GetActivitiesArg = void;
 export type GetActivitiesResponse = ActivityDto[]
+
+export type GetFullPatientDataArg = {
+	planId: string;
+	range: RangeType,
+}
+export type GetFullPatientDataResponse = PatientPlanDto[]
 
 // API DTOs
 export type PatientPlanDto = {

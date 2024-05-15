@@ -1,5 +1,4 @@
-import { ISvgProps } from '@shared/lib/types';
-import { ElementType } from 'react';
+import { KeyHealthIndicator } from '@app/store/entities/patient/model/types';
 
 export type DescribeArcType = {
   x: number;
@@ -18,7 +17,7 @@ export type CalculatePositionParams = {
 };
 
 export interface IChartData {
-  color: string;
+  value: number;
   percentage: number;
-  MoodSvg: ElementType<ISvgProps>;
+  rate: KeyHealthIndicator
 }

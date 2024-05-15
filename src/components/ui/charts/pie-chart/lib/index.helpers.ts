@@ -3,7 +3,7 @@ import { CalculatePositionParams, DescribeArcType, IChartData } from './index.in
 export const calculateSliceAngles = (chartData: IChartData[]) => {
   let startAngle = 0;
   
-  return chartData.map(({ percentage, color, MoodSvg }) => {
+  return chartData.map(({ value: percentage, color, MoodSvg }) => {
     const angle = (percentage / 100) * 360;
     const midAngle = startAngle + angle / 2;
     const slice = {

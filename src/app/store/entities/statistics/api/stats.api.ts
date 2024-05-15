@@ -16,7 +16,7 @@ const injectedStatsApi = api.injectEndpoints({
 	}),
 });
 
-export const { useGetStatsForPeriodQuery } = injectedStatsApi;
+export const { useGetStatsForPeriodQuery, useLazyGetStatsForPeriodQuery } = injectedStatsApi;
 
 export type GetTreatmentStatsForPeriodArg = {
 	treatmentPlanId: string;
@@ -27,7 +27,7 @@ export type GetTreatmentStatsForPeriodResponse = {
 	journalEntries: [];
 	activityStatistic: object;
 	activityKhi: object;
-	khiStatistic: object;
+	khiStatistic: { [key in string]: [number, number, number, number, number] };
 	activities: [];
 	modifiedStatistics: object;
 };

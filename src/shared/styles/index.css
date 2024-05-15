@@ -71,6 +71,10 @@ body {
   height: calc(100vh - 160px);
 }
 
+.recharts-wrapper *:focus {
+  outline: none;
+}
+
 @layer base {
   :root {
     --color-black: 0 0 0;

@@ -9,7 +9,9 @@ import { useParams } from 'react-router-dom';
 export const useConnect = () => {
   const dispatch = useAppDispatch();
   const params = useParams();
-  const { data: patients = [], isLoading } = useGetPatientsPlansQuery();
+  const { data: patients = [], isLoading: isPatientLoading } = useGetPatientsPlansQuery();
+
+  const isLoading = isPatientLoading;
 
   const patient: Patient | undefined = useMemo(() => {
     const exist = patients.find(p => p.userDto.id === params.id);
@@ -19,6 +21,7 @@ export const useConnect = () => {
   useEffect(() => {
     if (patient) {
       dispatch(patientActions.setCurrentPatient(patient));
+      dispatch(patientActions.setKeyHealthIndicator(patient.keyHealthIndicators[0]?.id ?? ''));
     }
   }, [patient]);
 

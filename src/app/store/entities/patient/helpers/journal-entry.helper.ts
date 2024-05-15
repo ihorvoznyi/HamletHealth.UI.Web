@@ -1,8 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { sortByDate, formatTimeISOString } from '@utils/date.util';
 
-import type { JournalEntry } from '../model/types';
-import type { PatientPlanDto, TreatmentPlanDto, JournalEntryDto } from '@app/store/entities/treatment';
+import type { JournalEntry, KeyHealthIndicator } from '../model/types';
+import type {
+	PatientPlanDto,
+	TreatmentPlanDto,
+	JournalEntryDto,
+} from '@app/store/entities/treatment';
+import { sortByKey } from '@utils/text.util';
 
 export class JournalEntryHelper {
 	public static from(patientPlanDto: PatientPlanDto) {
@@ -34,7 +39,10 @@ export class JournalEntryHelper {
 		return activityById;
 	}
 
-	private static toProps(entry: JournalEntryDto, activityById: Map<string, any>): JournalEntry & { date: string } {
+	private static toProps(
+		entry: JournalEntryDto,
+		activityById: Map<string, any>
+	): JournalEntry & { date: string } {
 		return {
 			id: entry.id,
 			time: formatTimeISOString(entry.date),
@@ -52,3 +60,21 @@ export class JournalEntryHelper {
 		};
 	}
 }
+
+export const getKeyHealthIndicators = (journalEntries: JournalEntry[]) => {
+	const keyHealthIndicators: KeyHealthIndicator[] = [];
+
+	journalEntries.forEach(entry => {
+		entry.healthIndicatorRates.forEach(healthRate => {
+			const keyHealthIndicator = healthRate.keyHealthIndicator;
+			const exist = keyHealthIndicators.find(i => i.id === keyHealthIndicator.id);
+			if (exist) {
+				return;
+			}
+
+			keyHealthIndicators.push(keyHealthIndicator);
+		});
+	});
+
+	return sortByKey(keyHealthIndicators, 'name');
+};

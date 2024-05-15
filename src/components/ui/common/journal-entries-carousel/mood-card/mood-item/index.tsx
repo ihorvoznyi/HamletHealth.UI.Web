@@ -10,12 +10,10 @@ import {
 
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
-import { KeyHealthIndicatorRate } from '@shared/lib/types';
+import type { KeyHealthIndicatorRate } from '@shared/lib/types';
+import { HealthIndicatorRate } from '@app/store/entities/patient/model/types';
 
-interface PropsType {
-	rate: KeyHealthIndicatorRate;
-	name: string;
-}
+type PropsType = Omit<HealthIndicatorRate, 'id'>
 
 type KeyHealthIndicatorMap = {
 	[key in KeyHealthIndicatorRate]: {
@@ -53,14 +51,14 @@ export const healthIndicatorMap: KeyHealthIndicatorMap = {
 	},
 };
 
-const renderKeyHealthIndicator: FC<PropsType> = ({ rate, name }) => {
+const renderKeyHealthIndicator: FC<PropsType> = ({ rate, keyHealthIndicator }) => {
 	const { color, indicator, Icon } = healthIndicatorMap[rate];
 
 	return (
 		<div className={cn(classes.container)} style={{ color }}>
 			<Icon width={32} height={32} color={color} />
 			<p className={classes.p}>{indicator}</p>
-			<span className={classes.span}>({name})</span>
+			<span className={classes.span}>({keyHealthIndicator.name})</span>
 		</div>
 	);
 };

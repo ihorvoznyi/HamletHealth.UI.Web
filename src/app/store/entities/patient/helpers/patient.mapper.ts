@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { getGenderName } from '@utils/gender.util';
 import { formatFullname } from '@utils/text.util';
-import { JournalEntryHelper } from './journal-entry.helper';
+import { JournalEntryHelper, getKeyHealthIndicators } from './journal-entry.helper';
 import { formatISOStringAsBirthDate } from '@utils/date.util';
 
 import type { Patient, Medication, Activity } from '../model/types';
@@ -9,6 +9,9 @@ import type { PatientPlanDto } from '@app/store/entities/treatment';
 
 export const mapPatientPlanToPatient = (patientPlan: PatientPlanDto): Patient => {
   const { userDto: user, plan } = patientPlan;
+
+  const journalEntries = JournalEntryHelper.from(patientPlan);
+  const keyHealthIndicators = getKeyHealthIndicators(journalEntries);
 
   return {
     id: user.id,
@@ -45,6 +48,7 @@ export const mapPatientPlanToPatient = (patientPlan: PatientPlanDto): Patient =>
         return acc;
       }, []),
     } : null,
-    journalEntries: JournalEntryHelper.from(patientPlan)
+    journalEntries,
+    keyHealthIndicators,
   };
 };

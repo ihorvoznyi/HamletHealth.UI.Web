@@ -1,9 +1,11 @@
-import { RangeType } from '@components/ui/controls/date-range-picker';
-import { KeyHealthIndicatorRate } from '@shared/lib/types';
+import type { ElementType } from 'react';
+import type { RangeType } from '@components/ui/controls/date-range-picker';
+import type { ISvgProps, KeyHealthIndicatorRate } from '@shared/lib/types';
 
 export type PatientState = {
   current: Patient;
   selection: PatientSelection;
+  statistics: Statistics,
 }
 
 export type Patient = {
@@ -15,6 +17,7 @@ export type Patient = {
   gender: string;
   plan: TreatmentPlan | null
   journalEntries: JournalEntry[]
+  keyHealthIndicators: KeyHealthIndicator[]
 }
 
 export type HealthIndicatorRate = {
@@ -63,4 +66,14 @@ export type PatientSelection = {
   range: RangeType;
   activities: string[];
   keyHealthIndicator: string;
+}
+
+export type Statistics = {
+  khiStatistics: {
+    value: number;
+    percentage: number;
+    rate: KeyHealthIndicator;
+    // MoodSvg: ElementType<ISvgProps>
+  }[],
+  activityKhi: object,
 }

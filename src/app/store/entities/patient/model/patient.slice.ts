@@ -6,6 +6,7 @@ import type {
 	SetCurrentPatientPayload,
 	SetDateRangePayload,
 	SetKeyHealthIndicatorPayload,
+	SetPatientStatisticsPayload,
 	SetSelectionPayload,
 } from './types';
 
@@ -26,6 +27,7 @@ const initialState: PatientState = {
 			medications: [],
 		},
 		journalEntries: [],
+		keyHealthIndicators: []
 	},
 	selection: {
 		range: {
@@ -34,6 +36,10 @@ const initialState: PatientState = {
 		},
 		activities: [],
 		keyHealthIndicator: '',
+	},
+	statistics: {
+		khiStatistics: [],
+		activityKhi: []
 	},
 };
 
@@ -53,6 +59,9 @@ export const patientSlice = createSlice({
 		setKeyHealthIndicator: (state: PatientState, { payload }: SetKeyHealthIndicatorPayload) => {
 			state.selection.keyHealthIndicator = payload;
 		},
+		setStatistics: (state: PatientState, { payload }: SetPatientStatisticsPayload) => {
+			Object.assign(state.statistics, payload);
+		}
 	},
 });
 

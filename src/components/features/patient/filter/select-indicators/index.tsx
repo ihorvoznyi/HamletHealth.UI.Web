@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { bindActionCreators } from '@reduxjs/toolkit';
 
 import { useAppDispatch, useAppSelector } from '@shared/model';
@@ -9,9 +9,8 @@ import { classes } from './index.tailwind';
 
 const IndicatorsFilter: FC = () => {
   const dispatch = useAppDispatch();
-	const { setKeyHealthIndicator } = bindActionCreators(patientActions, dispatch);
 	const { keyHealthIndicator } = useAppSelector(selectPatientSelection);
-  
+	const { setKeyHealthIndicator } = bindActionCreators(patientActions, dispatch);
 	const keyHealthIndicators = useAppSelector(selectPatientKeyHealthIndicators);
 
 	const handleSelect = (id: string) => {
@@ -19,12 +18,6 @@ const IndicatorsFilter: FC = () => {
       setKeyHealthIndicator(id);
     }
 	};
-
-  useEffect(() => {
-    if (keyHealthIndicators.length) {
-      setKeyHealthIndicator(keyHealthIndicators[0].id ?? '');
-    }
-  }, [keyHealthIndicators]);
 
 	return (
 		<div>
