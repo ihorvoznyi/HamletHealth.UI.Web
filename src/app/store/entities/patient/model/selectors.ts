@@ -5,7 +5,7 @@ import { sortByDate } from '@utils/date.util';
 import { formatGroupDateKey } from '@utils/patient.utils';
 
 import type { RootState } from '@shared/model';
-import type { JournalEntry, Patient } from './types';
+import type { JournalEntry, KeyHealthIndicator, Patient } from './types';
 
 export const selectCurrentPatient = ({ patientReducer }: RootState): Patient => {
 	return patientReducer.current;
@@ -57,6 +57,28 @@ export const selectPatientActions = ({ patientReducer }: RootState) => {
 	return patientReducer.current.plan?.activities ?? [];
 };
 
+export const selectPatientKeyHealthIndicators = createSelector(
+	[(state: RootState) => state.patientReducer],
+	patientReducer => {
+		const { journalEntries } = patientReducer.current;
+		const keyHealthIndicators: KeyHealthIndicator[] = [];
+
+		journalEntries.forEach(entry => {
+			entry.healthIndicatorRates.forEach(healthRate => {
+				const keyHealthIndicator = healthRate.keyHealthIndicator;
+				const exist = keyHealthIndicators.find(i => i.id === keyHealthIndicator.id);
+				if (exist) {
+					return;
+				}
+
+				keyHealthIndicators.push(keyHealthIndicator);
+			});
+		});
+
+		return keyHealthIndicators.sort(sortByName);
+	}
+);
+
 // Types
 type JournalEntriesGroup = {
 	[key in string]: {
@@ -64,3 +86,13 @@ type JournalEntriesGroup = {
 		items: JournalEntry[];
 	};
 };
+
+function sortByName<T extends { name: string }>(a: T, b: T) {
+	if (a.name < b.name) {
+		return -1;
+	}
+	if (a.name > b.name) {
+		return 1;
+	}
+	return 0;
+}

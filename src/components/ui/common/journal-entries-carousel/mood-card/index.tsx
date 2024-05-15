@@ -10,7 +10,7 @@ import type { JournalEntry } from '@app/store/entities/patient/model/types';
 
 import { classes } from './index.tailwind';
 
-const JournalEntry: FC<JournalEntry> = ({ time, activities, keyHealthIndicators, note }) => {
+const JournalEntry: FC<JournalEntry> = ({ time, activities, healthIndicatorRates: keyHealthIndicators, note }) => {
   console.log(activities);
   return (
     <div className={classes.container}>

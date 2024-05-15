@@ -17,8 +17,14 @@ export type Patient = {
   journalEntries: JournalEntry[]
 }
 
-export type HealthIndicator = {
+export type HealthIndicatorRate = {
+  id: string;
   rate: KeyHealthIndicatorRate;
+  keyHealthIndicator: KeyHealthIndicator;
+}
+
+export type KeyHealthIndicator = {
+  id: string;
   name: string;
 }
 
@@ -28,7 +34,7 @@ export interface JournalEntry {
   note: string;
   date: string;
   activities: Activity[] | [];
-  keyHealthIndicators: HealthIndicator[];
+  healthIndicatorRates: HealthIndicatorRate[];
 }
 
 export type Activity = {

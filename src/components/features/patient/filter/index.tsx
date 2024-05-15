@@ -1,4 +1,7 @@
+import { bindActionCreators } from '@reduxjs/toolkit';
+
 import FilterItem from './filter-item';
+import IndicatorsFilter from './select-indicators';
 import { Calendar } from '@components/ui/controls';
 
 import { useAppDispatch, useAppSelector } from '@shared/model';
@@ -11,12 +14,12 @@ import {
 import type { RangeType } from '@components/ui/controls/date-range-picker';
 
 import { classes } from './index.tailwind';
-import { bindActionCreators } from '@reduxjs/toolkit';
 
 const Filter = () => {
 	const dispatch = useAppDispatch();
-	const { setSelection, setDateRange } = bindActionCreators(patientActions, dispatch);
 	const { range, activities } = useAppSelector(selectPatientSelection);
+	const { setSelection, setDateRange } = bindActionCreators(patientActions, dispatch);
+
 	const patientActivities = useAppSelector(selectPatientActions);
 
 	const handleRangeSelect = (range: RangeType) => {
@@ -39,22 +42,26 @@ const Filter = () => {
 
 	return (
 		<div className={classes.filterContainer}>
-			<div>
-				<p className={classes.paragraph}>Filter by tasks:</p>
-				<ul className={classes.container}>
-					{patientActivities.map(activity => {
-						const isSelected = !!activities.find(activityId => activityId === activity.id);
-						return (
-							<FilterItem
-								key={activity.id}
-								id={activity.id}
-								isSelected={isSelected}
-								text={activity.name}
-								onSelect={handleSelectAction}
-							/>
-						);
-					})}
-				</ul>
+			<div className="flex flex-col gap-4">
+				<div>
+					<p className={classes.paragraph}>Filter by tasks:</p>
+					<ul className={classes.container}>
+						{patientActivities.map(activity => {
+							const isSelected = !!activities.find(activityId => activityId === activity.id);
+							return (
+								<FilterItem
+									key={activity.id}
+									id={activity.id}
+									isSelected={isSelected}
+									text={activity.name}
+									onSelect={handleSelectAction}
+								/>
+							);
+						})}
+					</ul>
+				</div>
+
+				<IndicatorsFilter />
 			</div>
 			<Calendar shownDate={range.startDate} range={range} onSelect={handleRangeSelect} />
 		</div>

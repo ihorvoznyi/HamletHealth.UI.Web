@@ -41,10 +41,13 @@ export class JournalEntryHelper {
 			date: entry.date,
 			note: entry.note,
 			activities: entry.activityIds.map(id => activityById.get(id)).filter(activity => !!activity),
-			keyHealthIndicators: entry.keyHealthIndicatorRates.map(r => ({
+			healthIndicatorRates: entry.keyHealthIndicatorRates.map(r => ({
 				id: r.id,
 				rate: r.rate,
-				name: r.keyHealthIndicator.name.split(' ').pop() ?? '',
+				keyHealthIndicator: {
+					id: r.keyHealthIndicator.id,
+					name: r.keyHealthIndicator.name.split(' ').pop() ?? '',
+				},
 			})),
 		};
 	}

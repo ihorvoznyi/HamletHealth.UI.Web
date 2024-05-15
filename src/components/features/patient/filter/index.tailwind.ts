@@ -1,7 +1,7 @@
 import ctl from '@netlify/classnames-template-literals';
 
 export const classes = {
-  filterContainer: 'flex items-end justify-between px-[40px] py-[16px]',
+  filterContainer: 'flex items-start justify-between px-[40px] py-[16px]',
   container: ctl(`
     flex
     items-center 

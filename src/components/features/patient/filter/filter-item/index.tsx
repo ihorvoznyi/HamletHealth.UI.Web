@@ -12,11 +12,11 @@ interface FilterItemProps {
   onSelect: (id: string) => void;
 }
 
-const FilterItem: FC<FilterItemProps> = ({ id, text, isSelected: value, onSelect }) => {
-  const [isSelected, setIsSelected] = useState(value);
+const FilterItem: FC<FilterItemProps> = ({ id, text, isSelected, onSelect }) => {
+  // const [isSelected, setIsSelected] = useState(value);
 
   const handleSelect = () => {
-    setIsSelected(prev => !prev);
+    // setIsSelected(prev => !prev);
     onSelect(id);
   };
 
