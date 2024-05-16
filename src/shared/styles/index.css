@@ -127,6 +127,7 @@ body {
 }
 
 /* Poppins */
+.fs10Regular { @apply text-[10px] leading-[16px] tracking-[0.4px] font-poppins-400 }
 .fs12Regular { @apply text-[12px] leading-[16px] tracking-[0.4px] font-poppins-400 }
 .fs14Regular { @apply text-[14px] leading-[20px] tracking-[0.25px] font-poppins-400 }
 .fs15Regular { @apply text-[15px] leading-normal tracking-[0.15px] }
