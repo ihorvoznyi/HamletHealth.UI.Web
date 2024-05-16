@@ -1,83 +1,97 @@
-import React, { ElementType } from 'react';
+import React, { ElementType } from "react";
 
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import {
-	MoodAwfulSvg,
-	MoodMehSvg,
-	MoodBadSvg,
-	MoodGoodSvg,
-	MoodGreatSvg,
-} from '@components/ui/svg';
-import { IChartData } from '../pie-chart/lib';
-import { ISvgProps } from '@shared/lib/types';
+  MoodAwfulSvg,
+  MoodMehSvg,
+  MoodBadSvg,
+  MoodGoodSvg,
+  MoodGreatSvg,
+} from "@components/ui/svg";
+import { IChartData } from "../pie-chart/lib";
+import { ISvgProps } from "@shared/lib/types";
 
 export const chartVisualization: {
-	[key in number]: { color: string; MoodSvg: ElementType<ISvgProps> };
+  [key in number]: { color: string; MoodSvg: ElementType<ISvgProps> };
 } = {
-	0: { color: '#12C28D', MoodSvg: MoodGreatSvg },
-	1: { color: '#34BAE4', MoodSvg: MoodGoodSvg },
-	2: { color: '#595959', MoodSvg: MoodMehSvg },
-	3: { color: '#EF7650', MoodSvg: MoodBadSvg },
-	4: { color: '#F00000', MoodSvg: MoodAwfulSvg },
+  0: { color: "#12C28D", MoodSvg: MoodGreatSvg },
+  1: { color: "#34BAE4", MoodSvg: MoodGoodSvg },
+  2: { color: "#595959", MoodSvg: MoodMehSvg },
+  3: { color: "#EF7650", MoodSvg: MoodBadSvg },
+  4: { color: "#F00000", MoodSvg: MoodAwfulSvg },
 };
 
 const RADIAN = Math.PI / 180;
 
 const renderCustomizedLabel = ({
-	cx,
-	cy,
-	midAngle,
-	innerRadius,
-	outerRadius,
-	index,
-	data,
+  cx,
+  cy,
+  midAngle,
+  innerRadius,
+  outerRadius,
+  index,
+  data,
 }: // eslint-disable-next-line @typescript-eslint/no-explicit-any
 any) => {
-	const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-	const x = cx + radius * Math.cos(-midAngle * RADIAN);
-	const y = cy + radius * Math.sin(-midAngle * RADIAN);
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
-	const { rate, percentage } = data[index];
-	const { MoodSvg } = chartVisualization[rate];
+  const { rate, percentage } = data[index];
+  const { MoodSvg } = chartVisualization[rate];
 
-	return (
-		<g transform={`translate(${x},${y})`} textAnchor="middle" dominantBaseline="end">
-			{percentage > 10 ? (
-				<>
-					<foreignObject x="-12" y="-24" width="24" height="24">
-						<MoodSvg color="white" width={24} height={24} />
-					</foreignObject>
-					<text x={-2} y={16} fill="white" style={{ marginTop: 100 }} fontSize="12" offset={12}>
-						%{Math.round(percentage)}
-					</text>
-				</>
-			) : null}
-		</g>
-	);
+  return (
+    <g
+      transform={`translate(${x},${y})`}
+      textAnchor="middle"
+      dominantBaseline="end"
+    >
+      {percentage > 10 ? (
+        <>
+          <foreignObject x="-12" y="-24" width="24" height="24">
+            <MoodSvg color="white" width={24} height={24} />
+          </foreignObject>
+          <text
+            x={-2}
+            y={16}
+            fill="white"
+            style={{ marginTop: 100 }}
+            fontSize="12"
+            offset={12}
+          >
+            %{Math.round(percentage)}
+          </text>
+        </>
+      ) : null}
+    </g>
+  );
 };
 
 const MoodPieChart: React.FC<{ data: IChartData[] }> = ({ data }) => {
-	return (
-		<ResponsiveContainer width={350} height={350}>
-			<PieChart>
-				<Pie
-					data={data}
-					cx="50data"
-					cy="50%"
-					labelLine={false}
-					label={label => renderCustomizedLabel({ ...label, data })}
-					outerRadius={150}
-					fill="#8884d8"
-					dataKey="value"
-					offset={80}
-				>
-					{data.map((entry, index) => (
-						<Cell key={`cell-${index}`} fill={chartVisualization[index].color} />
-					))}
-				</Pie>
-			</PieChart>
-		</ResponsiveContainer>
-	);
+  return (
+    <ResponsiveContainer width={350} height={350}>
+      <PieChart>
+        <Pie
+          data={data}
+          cx="50data"
+          cy="50%"
+          labelLine={false}
+          label={(label) => renderCustomizedLabel({ ...label, data })}
+          outerRadius={150}
+          fill="#8884d8"
+          dataKey="value"
+          offset={80}
+        >
+          {data.map((entry, index) => (
+            <Cell
+              key={`cell-${index}`}
+              fill={chartVisualization[index].color}
+            />
+          ))}
+        </Pie>
+      </PieChart>
+    </ResponsiveContainer>
+  );
 };
 
 export default MoodPieChart;
