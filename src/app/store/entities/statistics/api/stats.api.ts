@@ -26,8 +26,20 @@ export type GetTreatmentStatsForPeriodArg = {
 export type GetTreatmentStatsForPeriodResponse = {
 	journalEntries: [];
 	activityStatistic: object;
-	activityKhi: object;
-	khiStatistic: { [key in string]: [number, number, number, number, number] };
+	activityKhi: ActivityKhiDto;
+	khiStatistic: KhiStatisticDto;
 	activities: [];
 	modifiedStatistics: object;
 };
+
+// DTOs
+export type ActivityKhiDto = {
+	[key in KeyPattern]: HealthIndicatorRates;
+}
+
+export type KhiStatisticDto = {
+	[key in string]: HealthIndicatorRates;
+}
+
+export type KeyPattern = `${string}_${string}`
+export type HealthIndicatorRates = [number, number, number, number, number];

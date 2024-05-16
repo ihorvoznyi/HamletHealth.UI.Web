@@ -1,17 +1,17 @@
-import { Fragment, useState } from "react";
-import { MoodType } from "@shared/lib/types";
-import MoodSvg from "./mood-svg";
-import Activity, { IActivity } from "./activity";
-import { classes } from "./index.tailwind";
-import { useAppSelector } from "@shared/model";
+import { Fragment, useState } from 'react';
+import { MoodType } from '@shared/lib/types';
+import MoodSvg from './mood-svg';
+import Activity from './activity';
+import { classes } from './index.tailwind';
+import { useAppSelector } from '@shared/model';
+import { selectPatientActivities } from '@app/store/entities/patient';
+import { ActivityKhiDto } from '@app/store/entities/statistics/api/stats.api';
 
-const moods: MoodType[] = ["great", "good", "meh", "bad", "awful"];
+const moods: MoodType[] = ['great', 'good', 'meh', 'bad', 'awful'];
 
 const RelatedActivities = () => {
   const [activeMood, setActiveMood] = useState<number>(0);
-  const { activityKhi, activities } = useAppSelector(
-    (state) => state.patientReducer.statistics
-  );
+  const { activityKhi, activities } = useAppSelector(selectPatientActivities);
 
   const handleMoodClick = (index: number) => {
     setActiveMood(index);
@@ -24,12 +24,12 @@ const RelatedActivities = () => {
           mood={mood}
           width={45}
           height={45}
-          color={activeMood === index ? "#12C28D" : "black"}
+          color={activeMood === index ? '#12C28D' : 'black'}
           styles={{
             text:
               activeMood === index
-                ? `text-[#12C28D] border-b-2 border-[#12C28D]`
-                : `text-[black]`,
+                ? 'text-[#12C28D] border-b-2 border-[#12C28D]'
+                : 'text-[black]',
           }}
           onClick={() => handleMoodClick(index)}
         />
@@ -50,21 +50,22 @@ const RelatedActivities = () => {
     );
 
     if (totalMoodCounts === 0) {
-      return <p>No data available for this mood.</p>;
+      return <p className="whitespace-nowrap">No data available for this mood.</p>;
     }
 
     return activities.map((activity) => {
       const activityKey = Object.keys(activityKhi).find((key) =>
         key.includes(activity.id.toString())
-      );
-      const moodCounts = activityKey ? activityKhi[activityKey] : {};
-      const moodCount = moodCounts ? moodCounts[activeMood] || 0 : 0;
+      ) as keyof ActivityKhiDto;
+
+      const moodCounts = activityKey ? activityKhi[activityKey] : [];
+      const moodCount = moodCounts[activeMood] || 0;
       const percentage = (moodCount / totalMoodCounts) * 100;
 
       return (
-        <li key={activity.id} className={classes.activityItem}>
+        <li key={activity.id} className="flex-[25%]">
           <Activity
-            icon={activity.icon}
+            icon={`data:image/svg;base64,${activity.icon}`}
             text={activity.name}
             times={moodCount}
             percentage={percentage}

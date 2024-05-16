@@ -1,27 +1,27 @@
-import Chart from "./chart";
-import Filter from "../filter";
-import RelatedActivities from "./related-activities";
-import DailyActivityMoods from "./daily-activity-moods";
+import Filter from '../filter';
+import RelatedActivities from './related-activities';
+import DailyActivityMoods from './daily-activity-moods';
 
-import { ACTIVITY_STREAKS } from "./daily-activity-moods/constants";
+import { ACTIVITY_STREAKS } from './daily-activity-moods/constants';
 
-import { classes } from "./index.tailwind";
-import { useConnect } from "./connect";
-import { Loader } from "@components/ui/common";
-import { useAppSelector } from "@shared/model";
+import { classes } from './index.tailwind';
+import { useConnect } from './connect';
+import { useAppSelector } from '@shared/model';
 
-import MoodPieChart from "@components/ui/charts/chart";
+import { MoodPieChart } from '@components/ui/charts';
+import { selectPatientStatistics } from '@app/store/entities/patient';
+import { useEffect } from 'react';
+import { useLoading } from '@hooks/useLoading';
+import { Loader } from '@components/ui/common';
 
 const Stats = () => {
+  const { setGlobalLoader } = useLoading();
   const { isLoading } = useConnect();
-  const { khiStatistics } = useAppSelector(
-    (state) => state.patientReducer.statistics
-  );
+  const { khiStatistics } = useAppSelector(selectPatientStatistics);
 
   if (isLoading) {
-    return <Loader />;
+    return <Loader styles={{ container: 'text-center' }}/>;
   }
-
   return (
     <div className={classes.container}>
       <Filter />
@@ -37,6 +37,7 @@ const Stats = () => {
           <h2 className="fs22SemiBold">Mood Count</h2>
           <MoodPieChart data={khiStatistics} />
         </div>
+        
         <RelatedActivities />
       </div>
     </div>

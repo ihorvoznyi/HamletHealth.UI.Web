@@ -17,7 +17,7 @@ import { classes } from './index.tailwind';
 
 const Filter = () => {
 	const dispatch = useAppDispatch();
-	const { range, activities } = useAppSelector(selectPatientSelection);
+	const { range, activities: activities } = useAppSelector(selectPatientSelection);
 	const { setSelection, setDateRange } = bindActionCreators(patientActions, dispatch);
 
 	const patientActivities = useAppSelector(selectPatientActions);

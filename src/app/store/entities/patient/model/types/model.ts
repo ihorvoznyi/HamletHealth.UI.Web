@@ -1,6 +1,6 @@
-import type { ElementType } from 'react';
+import { ActivityKhiDto } from '@app/store/entities/statistics/api/stats.api';
 import type { RangeType } from '@components/ui/controls/date-range-picker';
-import type { ISvgProps, KeyHealthIndicatorRate } from '@shared/lib/types';
+import type { KeyHealthIndicatorRate } from '@shared/lib/types';
 
 export type PatientState = {
   current: Patient;
@@ -69,11 +69,13 @@ export type PatientSelection = {
 }
 
 export type Statistics = {
-  khiStatistics: {
-    value: number;
-    percentage: number;
-    rate: KeyHealthIndicator;
-    // MoodSvg: ElementType<ISvgProps>
-  }[],
-  activityKhi: object,
+  khiStatistics: KhiStatisticsItem[],
+  activityKhi: ActivityKhiDto,
+  relatedActivities: []
+}
+
+export type KhiStatisticsItem = {
+  value: number;
+  percentage: number;
+  rate: KeyHealthIndicatorRate;
 }

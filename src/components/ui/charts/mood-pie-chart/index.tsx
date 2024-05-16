@@ -1,24 +1,24 @@
-import React, { ElementType } from "react";
+import React, { ElementType } from 'react';
 
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import {
   MoodAwfulSvg,
   MoodMehSvg,
   MoodBadSvg,
   MoodGoodSvg,
   MoodGreatSvg,
-} from "@components/ui/svg";
-import { IChartData } from "../pie-chart/lib";
-import { ISvgProps } from "@shared/lib/types";
+} from '@components/ui/svg';
+import { ISvgProps, KeyHealthIndicatorRate } from '@shared/lib/types';
+import { KhiStatisticsItem } from '@app/store/entities/patient/model/types';
 
 export const chartVisualization: {
   [key in number]: { color: string; MoodSvg: ElementType<ISvgProps> };
 } = {
-  0: { color: "#12C28D", MoodSvg: MoodGreatSvg },
-  1: { color: "#34BAE4", MoodSvg: MoodGoodSvg },
-  2: { color: "#595959", MoodSvg: MoodMehSvg },
-  3: { color: "#EF7650", MoodSvg: MoodBadSvg },
-  4: { color: "#F00000", MoodSvg: MoodAwfulSvg },
+  0: { color: '#12C28D', MoodSvg: MoodGreatSvg },
+  1: { color: '#34BAE4', MoodSvg: MoodGoodSvg },
+  2: { color: '#595959', MoodSvg: MoodMehSvg },
+  3: { color: '#EF7650', MoodSvg: MoodBadSvg },
+  4: { color: '#F00000', MoodSvg: MoodAwfulSvg },
 };
 
 const RADIAN = Math.PI / 180;
@@ -67,7 +67,11 @@ any) => {
   );
 };
 
-const MoodPieChart: React.FC<{ data: IChartData[] }> = ({ data }) => {
+interface PropsType {
+  data: KhiStatisticsItem[]
+}
+
+const MoodPieChart: React.FC<PropsType> = ({ data }) => {
   return (
     <ResponsiveContainer width={350} height={350}>
       <PieChart>

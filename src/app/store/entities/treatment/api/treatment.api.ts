@@ -11,11 +11,11 @@ import {
 	IDashboardStats,
 	IDiagnosisItemDto,
 	CreateTreatmentPlanDto,
-} from './patient-api.interfaces';
-import { PATIENT_API_ENDPOINTS } from './patient-api.constants';
+} from './treatment-api.interfaces';
+import { PATIENT_API_ENDPOINTS } from './treatment-api.constants';
 import { RangeType } from '@components/ui/controls/date-range-picker';
 
-const injectedPatientApi = api.injectEndpoints({
+const injectedTreatmentApi = api.injectEndpoints({
 	endpoints: builder => ({
 		getDiagnosis: builder.query<IDiagnosisItemDto[], void>({
 			query: () => ({ url: PATIENT_API_ENDPOINTS.diagnosis }),
@@ -71,7 +71,7 @@ export const {
 	useGetPatientsPlansQuery,
 	useGetDashboardStatsQuery,
 	useCreateTreatmentPlanMutation,
-} = injectedPatientApi;
+} = injectedTreatmentApi;
 
 // API Responses & Request Args
 export type GetPatientsPlansArg = void;

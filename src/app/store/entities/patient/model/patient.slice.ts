@@ -39,7 +39,8 @@ const initialState: PatientState = {
 	},
 	statistics: {
 		khiStatistics: [],
-		activityKhi: []
+		activityKhi: {},
+		relatedActivities: []
 	},
 };
 

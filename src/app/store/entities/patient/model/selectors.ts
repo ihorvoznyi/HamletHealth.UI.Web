@@ -5,8 +5,7 @@ import { sortByDate } from '@utils/date.util';
 import { formatGroupDateKey } from '@utils/patient.utils';
 
 import type { RootState } from '@shared/model';
-import type { JournalEntry, KeyHealthIndicator, Patient } from './types';
-import { sortByKey } from '@utils/text.util';
+import type { JournalEntry, Patient } from './types';
 
 export const selectCurrentPatient = ({ patientReducer }: RootState): Patient => {
 	return patientReducer.current;
@@ -60,6 +59,17 @@ export const selectPatientActions = ({ patientReducer }: RootState) => {
 
 export const selectPatientKeyHealthIndicators = ({ patientReducer }: RootState) => {
 	return patientReducer.current.keyHealthIndicators;
+};
+
+export const selectPatientStatistics = ({ patientReducer }: RootState) => {
+	return patientReducer.statistics;
+};
+
+export const selectPatientActivities = ({ patientReducer }: RootState) => {
+	return {
+		activities: patientReducer.current.plan?.activities ?? [],
+		activityKhi: patientReducer.statistics.activityKhi
+	};
 };
 
 // Types

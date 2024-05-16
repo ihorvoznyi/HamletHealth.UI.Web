@@ -2,7 +2,7 @@ import ctl from '@netlify/classnames-template-literals';
 
 export const classes = {
   container: ctl(`
-    absolute 
+    fixed 
     inset-0
     overflow-hidden
     z-[99999999]

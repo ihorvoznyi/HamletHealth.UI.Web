@@ -1,1 +1,1 @@
-export * from './pie-chart';
+export { default as MoodPieChart } from './mood-pie-chart';

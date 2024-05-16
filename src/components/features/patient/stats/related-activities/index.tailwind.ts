@@ -2,7 +2,7 @@ import ctl from '@netlify/classnames-template-literals';
 
 export const classes = {
   container: ctl(`
-    max-w-[374px]
+    max-w-[450px]
 
     flex 
     flex-col 
@@ -24,7 +24,7 @@ export const classes = {
   activities: ctl(`
     grid
     grid-cols-4
-    gap-x-[26px]
+    gap-x-[30px]
     gap-y-[20px]
   `),
 };

@@ -6,6 +6,6 @@ export const classes = {
     flex-col 
     items-center 
   `),
-  text: 'fs16SemiBold',
+  text: 'fs14SemiBold text-center',
   span: 'fs11SemiBold whitespace-nowrap'
 };
