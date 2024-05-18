@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
+import ActivityStreakLine from './mood-streak';
 import ActivityHeader from './activity-header';
-import ActivityStreak from './mood-streak';
 
 import { classes } from './index.tailwind';
 
@@ -9,13 +9,13 @@ interface PropsType {
   activity: string;
 }
 
-const DailyActivityMoods: FC<PropsType> = ({ activity }) => {
+const ActivityStreak: FC<PropsType> = ({ activity }) => {
   return (
     <div className={classes.container}>
       <ActivityHeader activity={activity} />
-      <ActivityStreak />
+      <ActivityStreakLine />
     </div>
   );
 };
 
-export default DailyActivityMoods;
+export default ActivityStreak;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { classes } from './index.tailwind';
 
-const StreakLine: React.FC<{ streak: number }> = ({ streak }) => {
+const StreakIndicator: React.FC<{ streak: number }> = ({ streak }) => {
   return (
     <div className={classes.container}>
       <div className={classes.line} />
@@ -10,4 +10,4 @@ const StreakLine: React.FC<{ streak: number }> = ({ streak }) => {
   );
 };
 
-export default StreakLine;
+export default StreakIndicator;

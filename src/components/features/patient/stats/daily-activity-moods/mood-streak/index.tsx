@@ -8,7 +8,7 @@ import { getMoodColor } from '../lib/helpers';
 import { STREAKS_MOCK } from '../constants';
 import { classes } from './index.tailwind';
 
-const ActivityStreak = () => {
+const ActivityStreakLine = () => {
   return (
     <ul className={classes.container}>
       {STREAKS_MOCK.map(({ isStreak, days }) => {
@@ -29,7 +29,7 @@ const ActivityStreak = () => {
                 return (
                   <li key={date} className={classes.item}>
                     <p className="fs12Regular text-black/[.40]">{date}</p>
-                    {Component ? <Component color={color} width={20} height={20} />: null}
+                    {Component ? <Component color={color} width={20} height={20} /> : null}
                   </li>
                 );
               })}
@@ -43,4 +43,4 @@ const ActivityStreak = () => {
   );
 };
 
-export default ActivityStreak;
+export default ActivityStreakLine;
