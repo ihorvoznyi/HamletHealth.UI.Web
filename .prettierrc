@@ -1,0 +1,11 @@
+{
+  "useTabs": false,
+  "tabWidth": 2,
+  "endOfLine": "auto",
+  "singleQuote": true,
+  "semi": true,
+  "printWidth": 120,
+  "importOrder": ["^@?\\w", "^[./]"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}

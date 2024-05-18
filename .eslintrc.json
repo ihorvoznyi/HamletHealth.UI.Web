@@ -1,44 +1,60 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:react/recommended"
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "react", "prettier", "import"],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "semi": "error",
+    "indent": ["error", 2],
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": ["warn", { "extensions": [".ts", ".tsx"] }],
+    "react/display-name": "warn",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "ignoreUrls": true,
+        "ignoreComments": true,
+        "ignoreRegExpLiterals": true
+      }
     ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "@typescript-eslint",
-        "react"
+    "prettier/prettier": [
+      "error",
+      {
+        "useTabs": false,
+        "tabWidth": 2,
+        "endOfLine": "auto",
+        "singleQuote": true,
+        "semi": true
+      }
     ],
-    "rules": {
-        "@typescript-eslint/no-unused-vars": "warn",
-        "@typescript-eslint/no-explicit-any": "error",
-        "@typescript-eslint/no-non-null-assertion": 0,
-        "semi": "error",
-        "react/react-in-jsx-scope": "off",
-        "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
-        "react/display-name": 1,
-        "jsx-a11y/click-events-have-key-events": 0,
-        "jsx-a11y/no-static-element-interactions": 0,
-        "max-len": [
-          2,
-          {
-            "code": 120,
-            "ignoreUrls": true,
-            "ignoreComments": true,
-            "ignoreRegExpLiterals": true
-          }
-        ],
-        "quotes": ["error", "single"],
-        "eqeqeq": 2,
-        "no-eval": 2,
-        "curly": 2
-    }
+    "quotes": ["error", "single"],
+    "eqeqeq": "error",
+    "no-eval": "error",
+    "curly": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": [["builtin", "external", "internal"]],
+        "newlines-between": "always"
+      }
+    ]
+  }
 }
