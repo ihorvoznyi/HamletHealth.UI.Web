@@ -20,7 +20,6 @@ import {
 } from '@app/store/entities/patient';
 import { isObjectEmpty } from '@utils/object.util';
 import { KeyHealthIndicatorRate } from '@shared/lib/types';
-import { useLoading } from '@hooks/useLoading';
 
 export const khiVisualizationMap = {
 	0: { color: '#595959', MoodSvg: MoodMehSvg },
@@ -31,13 +30,10 @@ export const khiVisualizationMap = {
 };
 
 export const useConnect = () => {
-	const { isLoading: isGlobalLoading, setGlobalLoader } = useLoading();
 	const dispatch = useAppDispatch();
 	const patient = useAppSelector(selectCurrentPatient);
 	const selection = useAppSelector(selectPatientSelection);
-	const [getStatsByPeriodAsync, { isLoading: isQuering }] = useLazyGetStatsForPeriodQuery();
-
-	const isLoading = isQuering || isGlobalLoading;
+	const [getStatsByPeriodAsync, { isLoading, isFetching }] = useLazyGetStatsForPeriodQuery();
 
 	useEffect(() => {
 		const beginAction = async () => {
@@ -45,7 +41,6 @@ export const useConnect = () => {
 				return;
 			}
 
-			setGlobalLoader(true);
 			const { data } = await getStatsByPeriodAsync({
 				treatmentPlanId: patient.plan.id,
 				startDate: selection.range.startDate.toISOString(),
@@ -86,8 +81,8 @@ export const useConnect = () => {
 			}
 		};
 
-		beginAction().finally(() => setGlobalLoader(false));
+		beginAction();
 	}, [patient, selection.range, selection.keyHealthIndicator]);
 
-	return { isLoading };
+	return { isLoading: isLoading || isFetching };
 };
