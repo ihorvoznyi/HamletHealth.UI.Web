@@ -1,13 +1,7 @@
 import React, { ElementType } from 'react';
 
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import {
-  MoodAwfulSvg,
-  MoodMehSvg,
-  MoodBadSvg,
-  MoodGoodSvg,
-  MoodGreatSvg,
-} from '@components/ui/svg';
+import { MoodAwfulSvg, MoodMehSvg, MoodBadSvg, MoodGoodSvg, MoodGreatSvg } from '@components/ui/svg';
 import { ISvgProps, KeyHealthIndicatorRate } from '@shared/lib/types';
 import { KhiStatisticsItem } from '@app/store/entities/patient/model/types';
 
@@ -41,24 +35,13 @@ any) => {
   const { MoodSvg } = chartVisualization[rate];
 
   return (
-    <g
-      transform={`translate(${x},${y})`}
-      textAnchor="middle"
-      dominantBaseline="end"
-    >
+    <g transform={`translate(${x},${y})`} textAnchor="middle" dominantBaseline="end">
       {percentage > 10 ? (
         <>
           <foreignObject x="-12" y="-24" width="24" height="24">
             <MoodSvg color="white" width={24} height={24} />
           </foreignObject>
-          <text
-            x={-2}
-            y={16}
-            fill="white"
-            style={{ marginTop: 100 }}
-            fontSize="12"
-            offset={12}
-          >
+          <text x={-2} y={16} fill="white" style={{ marginTop: 100 }} fontSize="12" offset={12}>
             %{Math.round(percentage)}
           </text>
         </>
@@ -68,10 +51,14 @@ any) => {
 };
 
 interface PropsType {
-  data: KhiStatisticsItem[]
+  data: KhiStatisticsItem[];
 }
 
 const MoodPieChart: React.FC<PropsType> = ({ data }) => {
+  if (!data.length) {
+    return <p className="text-[14px] mt-2">No data available.</p>;
+  }
+
   return (
     <ResponsiveContainer width={350} height={350}>
       <PieChart>
@@ -87,10 +74,7 @@ const MoodPieChart: React.FC<PropsType> = ({ data }) => {
           offset={80}
         >
           {data.map((entry, index) => (
-            <Cell
-              key={`cell-${index}`}
-              fill={chartVisualization[index].color}
-            />
+            <Cell key={`cell-${index}`} fill={chartVisualization[index].color} />
           ))}
         </Pie>
       </PieChart>

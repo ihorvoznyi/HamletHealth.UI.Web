@@ -31,8 +31,8 @@ const initialState: PatientState = {
 	},
 	selection: {
 		range: {
-			startDate: startOfMonth(new Date()),
-			endDate: endOfMonth(new Date()),
+			startDate: startOfMonth(new Date()).toISOString(),
+			endDate: endOfMonth(new Date()).toISOString(),
 		},
 		activities: [],
 		keyHealthIndicator: '',

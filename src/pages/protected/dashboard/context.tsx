@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, createContext, useContext, useState } from 'react';
-import { endOfMonth, startOfMonth } from 'date-fns';
 
 import { RangeType } from '@components/ui/controls/date-range-picker';
+import { endOfMonthISO, startOfMonthISO } from '@utils/date.util';
 
 interface IDashboardContext {
 	selectionRange: RangeType,
@@ -10,8 +10,8 @@ interface IDashboardContext {
 
 const DashboardContext = createContext<IDashboardContext>({
 	selectionRange: {
-    startDate: startOfMonth(new Date()),
-    endDate: endOfMonth(new Date())
+    startDate: startOfMonthISO(),
+    endDate: endOfMonthISO()
   },
 	
 	setRange: () => undefined,
@@ -19,8 +19,8 @@ const DashboardContext = createContext<IDashboardContext>({
 
 export const DashboardProvider: React.FC<PropsWithChildren> = ({ children }) => {
 	const [range, setRange] = useState<RangeType>({
-    startDate: startOfMonth(new Date()),
-    endDate: endOfMonth(new Date()),
+    startDate: startOfMonthISO(),
+    endDate: endOfMonthISO(),
   });
 
   const value = {

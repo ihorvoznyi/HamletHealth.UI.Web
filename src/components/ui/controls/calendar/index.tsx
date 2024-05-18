@@ -9,15 +9,16 @@ import { monthMap } from '@utils/date.util';
 import type { RangeType } from '@components/ui/controls/date-range-picker';
 
 import { classes } from './index.tailwind';
+import { parseISO } from 'date-fns';
 
 interface PropsType {
-	shownDate: Date;
+	shownDate: string;
 	range?: RangeType;
 	onSelect?: (range: RangeType) => void
 }
 
 const Calendar: React.FC<PropsType> = ({ shownDate, range, onSelect }) => {
-	const [displayDate, setDisplayDate] = useState<Date>(shownDate);
+	const [displayDate, setDisplayDate] = useState<string>(shownDate);
 	const ref = useClickOutside<HTMLDivElement>(() => setShowPicker(false));
 	const [showPicker, setShowPicker] = useState(false);
 
@@ -30,7 +31,7 @@ const Calendar: React.FC<PropsType> = ({ shownDate, range, onSelect }) => {
 	return (
 		<div ref={ref} className={classes.container} onClick={() => setShowPicker(prev => !prev)}>
 			<DateSvg className={classes.icon} />
-			<p className={classes.month}>{monthMap[displayDate?.getMonth()]}</p>
+			<p className={classes.month}>{monthMap[parseISO(displayDate)?.getMonth()]}</p>
 
 			{showPicker ? (
 				<div onClick={e => e.stopPropagation()} className="absolute top-[110%] right-0 z-50">

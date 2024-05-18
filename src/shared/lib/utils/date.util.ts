@@ -1,3 +1,5 @@
+import { endOfMonth, parseISO, startOfMonth } from 'date-fns';
+
 export const convertToISOString = (dateString: string) => {
 	const dateParts = dateString.split('/');
 	const date = new Date(+dateParts[2], +dateParts[1] - 1, +dateParts[0]);
@@ -35,11 +37,11 @@ export const formatDateAndAge = (dateOfBirth: Date) => {
 };
 
 export const formatISOStringAsBirthDate = (date?: string) => {
-	return date ? formatDateAndAge(new Date(date)) : '-';
+	return date ? formatDateAndAge(parseISO(date)) : '-';
 };
 
 export const formatTimeISOString = (isoString: string) => {
-	const date = new Date(isoString);
+	const date = parseISO(isoString);
 
 	const hours = date.getUTCHours().toString().padStart(2, '0');
 	const minutes = date.getUTCMinutes().toString().padStart(2, '0');
@@ -48,12 +50,21 @@ export const formatTimeISOString = (isoString: string) => {
 };
 
 export const sortByDate = (dateISOA: string, dateISOB: string) => {
-	const dateA = new Date(dateISOA).getTime();
-	const dateB = new Date(dateISOB).getTime();
+	const dateA = parseISO(dateISOA).getTime();
+	const dateB = parseISO(dateISOB).getTime();
 
 	return dateA - dateB;
 };
 
+export const endOfMonthISO = (date: Date = new Date()) => {
+	return endOfMonth(date).toISOString();
+};
+
+export const startOfMonthISO = (date: Date = new Date()) => {
+	return startOfMonth(date).toISOString();
+};
+
+// Mappers
 export const monthShortMap: { [key: number]: string } = {
 	0: 'Jan',
 	1: 'Feb',

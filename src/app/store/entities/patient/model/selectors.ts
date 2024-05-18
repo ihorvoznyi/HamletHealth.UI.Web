@@ -1,4 +1,4 @@
-import { endOfDay } from 'date-fns';
+import { endOfDay, parseISO } from 'date-fns';
 import { createSelector } from 'reselect';
 
 import { sortByDate } from '@utils/date.util';
@@ -20,11 +20,11 @@ export const selectPatientEntriesGroup = createSelector(
 			current: { journalEntries },
 		} = patientReducer;
 
-		const end = endOfDay(selection.range.endDate);
-		const start = selection.range.startDate;
+		const end = endOfDay(parseISO(selection.range.endDate));
+		const start = parseISO(selection.range.startDate);
 
 		journalEntries.forEach(entry => {
-			const date = new Date(entry.date);
+			const date = parseISO(entry.date);
 			const inRange = start <= date && date <= end;
 			if (!inRange) {
 				return;

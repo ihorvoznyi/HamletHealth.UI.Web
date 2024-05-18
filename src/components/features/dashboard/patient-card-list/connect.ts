@@ -1,6 +1,6 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import { useMemo } from 'react';
-import { endOfDay } from 'date-fns';
+import { endOfDay, parseISO } from 'date-fns';
 
 import { useDashboardContext } from '@pages/protected/dashboard/context';
 import { useGetPatientsPlansQuery } from '@app/store/entities/treatment';
@@ -23,8 +23,8 @@ export const useConnect = () => {
 		}
 
 		return entries.filter(([_, item]) => {
-			const date = new Date(item.date);
-			return selectionRange.startDate <= date && date <= endOfDay(selectionRange.endDate);
+			const date = parseISO(item.date);
+			return parseISO(selectionRange.startDate) <= date && date <= endOfDay(parseISO(selectionRange.endDate));
 		});
 	}, [data, isLoading, selectionRange]);
 
