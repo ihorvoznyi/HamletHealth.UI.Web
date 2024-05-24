@@ -25,4 +25,12 @@ export const classes = {
     justify-between 
     pl-[40px]
   `),
+  pieChartContainer: ctl(`
+    flex 
+    flex-col 
+    mt-[32px] 
+    ml-10
+  `),
+  pieChartTitle: 'fs22SemiBold',
+  loader: { container: 'text-center' },
 };

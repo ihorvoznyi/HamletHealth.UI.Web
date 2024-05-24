@@ -33,8 +33,8 @@ const Stats = () => {
           </div>
 
           <div className={classes.chart}>
-            <div className="flex flex-col mt-[32px] ml-10">
-              <h2 className="fs22SemiBold">Mood Count</h2>
+            <div className={classes.pieChartContainer}>
+              <h2 className={classes.pieChartTitle}>Mood Count</h2>
               <MoodPieChart data={khiStatistics} />
             </div>
 
@@ -42,7 +42,7 @@ const Stats = () => {
           </div>
         </Fragment>
       ) : (
-        <Loader styles={{ container: 'text-center' }} />
+        <Loader styles={classes.loader} />
       )}
     </div>
   );

@@ -7,6 +7,7 @@ import { DataPoint, formatXAxisLabel, mapRate } from './utils';
 import { healthIndicatorMap } from '@components/ui/common/journal-entries-carousel/mood-card/mood-item';
 
 import type { KeyHealthIndicatorRate } from '@shared/lib/types';
+import { classes } from './index.tailwind';
 
 type TLinearChartProps = {
   data: DataPoint[];
@@ -14,20 +15,24 @@ type TLinearChartProps = {
 
 const LinearChart: React.FC<TLinearChartProps> = ({ data }) => {
   return (
-    <ResponsiveContainer width="95%" height={274} className="mx-10">
-      <LineChart data={data}>
-        <CartesianGrid strokeDasharray="3 2" opacity={0.3} />
-        <XAxis
-          dataKey="date"
-          axisLine={false}
-          tickFormatter={formatXAxisLabel}
-          className="text-[12px]"
-          tickLine={false}
-        />
-        <YAxis domain={[0, 4]} axisLine={false} tick={renderCustomYAxisTick} tickLine={false} />
-        <Tooltip content={JournalTooltip} />
-        <Line type="linear" dataKey="rate" stroke="#323232" connectNulls={false} dot={false} />
-      </LineChart>
+    <ResponsiveContainer width="95%" height={274} className={classes.container}>
+      {data.length ? (
+        <LineChart data={data}>
+          <CartesianGrid strokeDasharray="3 2" opacity={0.3} />
+          <XAxis
+            dataKey="date"
+            axisLine={false}
+            tickFormatter={formatXAxisLabel}
+            className="text-[12px]"
+            tickLine={false}
+          />
+          <YAxis domain={[0, 4]} axisLine={false} tick={renderCustomYAxisTick} tickLine={false} />
+          <Tooltip content={JournalTooltip} />
+          <Line type="linear" dataKey="rate" stroke="#323232" connectNulls={false} dot={false} />
+        </LineChart>
+      ) : (
+        <p className={classes.noData}>No data available.</p>
+      )}
     </ResponsiveContainer>
   );
 };
