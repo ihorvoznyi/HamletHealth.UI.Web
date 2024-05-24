@@ -1,26 +1,44 @@
-import { useEffect } from 'react';
-
-import { MoodMehSvg, MoodGoodSvg, MoodBadSvg, MoodAwfulSvg, MoodGreatSvg } from '@components/ui/svg';
+import { useEffect, useMemo } from 'react';
 
 import { useAppDispatch, useAppSelector } from '@shared/model';
-import { HealthIndicatorRates, useLazyGetStatsForPeriodQuery } from '@app/store/entities/statistics/api/stats.api';
-import { patientActions, selectCurrentPatient, selectPatientSelection } from '@app/store/entities/patient';
-import { isObjectEmpty } from '@utils/object.util';
-import { KeyHealthIndicatorRate } from '@shared/lib/types';
 
-export const khiVisualizationMap = {
-  0: { color: '#595959', MoodSvg: MoodMehSvg },
-  1: { color: '#34BAE4', MoodSvg: MoodGoodSvg },
-  2: { color: '#EF7650', MoodSvg: MoodBadSvg },
-  3: { color: '#F00000', MoodSvg: MoodAwfulSvg },
-  4: { color: '#12C28D', MoodSvg: MoodGreatSvg },
-};
+import { fillMissingDates } from './utils';
+import { isObjectEmpty } from '@utils/object.util';
+import { useLazyGetStatsForPeriodQuery } from '@app/store/entities/statistics/api/stats.api';
+import { patientActions, selectCurrentPatient, selectPatientSelection } from '@app/store/entities/patient';
+
+import type { DataPoint } from '@components/ui/charts/linear-chart/utils';
+import type { HealthIndicatorRates } from '@app/store/entities/statistics/api/stats.api';
+import type { KeyHealthIndicatorRate } from '@shared/lib/types';
 
 export const useConnect = () => {
   const dispatch = useAppDispatch();
   const patient = useAppSelector(selectCurrentPatient);
   const selection = useAppSelector(selectPatientSelection);
   const [getStatsByPeriodAsync, { isLoading, isFetching }] = useLazyGetStatsForPeriodQuery();
+
+  const lineChartData: DataPoint[] = useMemo(() => {
+    const { range, keyHealthIndicator } = selection;
+    const journalEntries = patient.journalEntries.filter((entry) => {
+      if (entry.date < range.startDate || entry.date > range.endDate) {
+        return false;
+      }
+
+      const isKeyHealthIndicatorMatch = entry.healthIndicatorRates.some(
+        (k) => k.keyHealthIndicator.id === keyHealthIndicator,
+      );
+      return isKeyHealthIndicatorMatch;
+    });
+
+    const dataPoints: DataPoint[] = journalEntries.map((e) => ({
+      id: e.id,
+      date: e.date,
+      rate: e.healthIndicatorRates.find((k) => k.keyHealthIndicator.id === keyHealthIndicator)?.rate ?? null,
+    }));
+
+    const filledData = fillMissingDates(dataPoints, range);
+    return filledData;
+  }, [patient.journalEntries, selection.keyHealthIndicator, selection.range]);
 
   useEffect(() => {
     const beginAction = async () => {
@@ -35,7 +53,6 @@ export const useConnect = () => {
       });
 
       if (data?.khiStatistic && data?.activityKhi) {
-        console.info('here');
         const khi = data.khiStatistic[selection.keyHealthIndicator];
         const activityKhi = Object.entries(data.activityKhi).reduce(
           (acc: { [key in string]: HealthIndicatorRates }, [key, value]) => {
@@ -50,7 +67,6 @@ export const useConnect = () => {
         );
 
         const isEmptyStatistics = isObjectEmpty(khi) || isObjectEmpty(activityKhi);
-
         const khiStatistics = !isEmptyStatistics
           ? (() => {
               const total = khi.reduce((acc, item) => acc + item, 0);
@@ -74,5 +90,5 @@ export const useConnect = () => {
     beginAction();
   }, [patient, selection.range, selection.keyHealthIndicator]);
 
-  return { isLoading: isLoading || isFetching };
+  return { isLoading: isLoading || isFetching, lineChartData };
 };

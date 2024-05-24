@@ -1,0 +1,56 @@
+import React from 'react';
+import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+
+import JournalTooltip from './components/tooltip';
+
+import { DataPoint, formatXAxisLabel, mapRate } from './utils';
+import { healthIndicatorMap } from '@components/ui/common/journal-entries-carousel/mood-card/mood-item';
+
+import type { KeyHealthIndicatorRate } from '@shared/lib/types';
+
+type TLinearChartProps = {
+  data: DataPoint[];
+};
+
+const LinearChart: React.FC<TLinearChartProps> = ({ data }) => {
+  return (
+    <ResponsiveContainer width="95%" height={274} className="mx-10">
+      <LineChart data={data}>
+        <CartesianGrid strokeDasharray="3 2" opacity={0.3} />
+        <XAxis
+          dataKey="date"
+          axisLine={false}
+          tickFormatter={formatXAxisLabel}
+          className="text-[12px]"
+          tickLine={false}
+        />
+        <YAxis domain={[0, 4]} axisLine={false} tick={renderCustomYAxisTick} tickLine={false} />
+        <Tooltip content={JournalTooltip} />
+        <Line type="linear" dataKey="rate" stroke="#323232" connectNulls={false} dot={false} />
+      </LineChart>
+    </ResponsiveContainer>
+  );
+};
+
+export default LinearChart;
+
+const renderCustomYAxisTick = ({ payload, ...props }: CustomTickProps) => {
+  const { Icon, color } = healthIndicatorMap[mapRate(payload.value) as KeyHealthIndicatorRate];
+
+  const x = props.x - 30;
+  const y = payload.value === 0 ? props.y - 18 : props.y - 12;
+
+  return (
+    <foreignObject x={x} y={y} width={24} height={24}>
+      <Icon width={24} height={24} color={color} />
+    </foreignObject>
+  );
+};
+
+type CustomTickProps = {
+  x: number;
+  y: number;
+  payload: {
+    value: KeyHealthIndicatorRate;
+  };
+};

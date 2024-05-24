@@ -9,17 +9,29 @@ import { ImageSvg } from '@components/ui/svg';
 import type { JournalEntry } from '@app/store/entities/patient/model/types';
 
 import { classes } from './index.tailwind';
+import { cn } from '@utils/style.util';
 
-const JournalEntry: FC<JournalEntry> = ({ time, activities, healthIndicatorRates: keyHealthIndicators, note }) => {
-  console.log(activities);
+type TJournalEntryProps = {
+  styles?: Partial<{
+    container: string;
+  }>;
+} & JournalEntry;
+
+const JournalEntry: FC<TJournalEntryProps> = ({
+  note,
+  time,
+  styles,
+  activities,
+  healthIndicatorRates: keyHealthIndicators,
+}) => {
   return (
-    <div className={classes.container}>
+    <div className={cn(classes.container, styles?.container)}>
       <p className={classes.time}>{time}</p>
       <Divider />
 
       <MoodVarieties moods={keyHealthIndicators} />
       <Divider />
-      
+
       <RecipesList activities={activities} />
       <Divider />
 

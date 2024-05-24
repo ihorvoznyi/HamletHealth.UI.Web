@@ -4,7 +4,7 @@ import Filter from '../filter';
 import RelatedActivities from './related-activities';
 import ActivityStreakLine from './daily-activity-moods';
 import { Loader } from '@components/ui/common';
-import { MoodPieChart } from '@components/ui/charts';
+import { LinearChart, MoodPieChart } from '@components/ui/charts';
 
 import { useConnect } from './connect';
 import { useAppSelector } from '@shared/model';
@@ -15,12 +15,14 @@ import { selectPatientStatistics } from '@app/store/entities/patient';
 import { classes } from './index.tailwind';
 
 const Stats = () => {
-  const { isLoading } = useConnect();
+  const { isLoading, lineChartData } = useConnect();
   const { khiStatistics } = useAppSelector(selectPatientStatistics);
 
   return (
     <div className={classes.container}>
       <Filter />
+
+      <LinearChart data={lineChartData} />
 
       {!isLoading ? (
         <Fragment>
