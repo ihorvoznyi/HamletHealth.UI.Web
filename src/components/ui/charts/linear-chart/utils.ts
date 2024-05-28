@@ -1,10 +1,9 @@
-import { parseISO, format, formatISO, addDays, differenceInDays, startOfDay } from 'date-fns';
 import { MoodMehSvg, MoodGoodSvg, MoodBadSvg, MoodAwfulSvg, MoodGreatSvg } from '@components/ui/svg';
 import { KeyHealthIndicatorRate } from '@shared/lib/types';
+import { formatDateToDM } from '@utils/date.util';
 
-export const formatXAxisLabel = (label: string): string => {
-  const date = parseISO(label);
-  return format(date, 'd.MM');
+export const formatXAxisLabel = (dateISO: string): string => {
+  return formatDateToDM(dateISO);
 };
 
 export type DataPoint = {

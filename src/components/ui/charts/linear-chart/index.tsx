@@ -28,7 +28,14 @@ const LinearChart: React.FC<TLinearChartProps> = ({ data }) => {
           />
           <YAxis domain={[0, 4]} axisLine={false} tick={renderCustomYAxisTick} tickLine={false} />
           <Tooltip content={JournalTooltip} />
-          <Line type="linear" dataKey="rate" stroke="#323232" connectNulls={false} dot={false} />
+          <Line
+            type="linear"
+            dataKey="rate"
+            stroke="#323232"
+            strokeWidth={2}
+            connectNulls={false}
+            dot={{ fill: '#323232', strokeWidth: 2 }}
+          />
         </LineChart>
       ) : (
         <p className={classes.noData}>No data available.</p>
@@ -58,4 +65,22 @@ type CustomTickProps = {
   payload: {
     value: KeyHealthIndicatorRate;
   };
+};
+
+import { Dot } from 'recharts';
+
+interface CustomDotProps {
+  cx?: number;
+  cy?: number;
+  payload?: any;
+}
+
+const CustomDot: React.FC<CustomDotProps> = (props) => {
+  const { cx, cy, payload } = props;
+
+  if (payload && payload.gap) {
+    return null;
+  }
+
+  return <Dot cx={cx} cy={cy} r={5} fill="#323232" />;
 };

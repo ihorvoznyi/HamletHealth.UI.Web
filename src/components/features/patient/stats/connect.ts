@@ -1,15 +1,26 @@
 import { useEffect, useMemo } from 'react';
+import { isAfter, isBefore, parseISO, endOfDay } from 'date-fns';
 
 import { useAppDispatch, useAppSelector } from '@shared/model';
 
-import { fillMissingDates } from './utils';
 import { isObjectEmpty } from '@utils/object.util';
 import { useLazyGetStatsForPeriodQuery } from '@app/store/entities/statistics/api/stats.api';
 import { patientActions, selectCurrentPatient, selectPatientSelection } from '@app/store/entities/patient';
 
-import type { DataPoint } from '@components/ui/charts/linear-chart/utils';
+import { mapRate, type DataPoint } from '@components/ui/charts/linear-chart/utils';
 import type { HealthIndicatorRates } from '@app/store/entities/statistics/api/stats.api';
 import type { KeyHealthIndicatorRate } from '@shared/lib/types';
+import { RangeType } from '@components/ui/controls/date-range-picker';
+import { sortByDate } from '@utils/date.util';
+
+const withinRange = (date: string, range: RangeType) => {
+  const entryDate = parseISO(date);
+  const startDate = parseISO(range.startDate);
+  const endDate = endOfDay(parseISO(range.endDate));
+
+  const isWithinRange = !isBefore(entryDate, startDate) && !isAfter(entryDate, endDate);
+  return isWithinRange;
+};
 
 export const useConnect = () => {
   const dispatch = useAppDispatch();
@@ -19,25 +30,30 @@ export const useConnect = () => {
 
   const lineChartData: DataPoint[] = useMemo(() => {
     const { range, keyHealthIndicator } = selection;
-    const journalEntries = patient.journalEntries.filter((entry) => {
-      if (entry.date < range.startDate || entry.date > range.endDate) {
-        return false;
+
+    const dataPoints = patient.journalEntries.reduce((acc: DataPoint[], entry) => {
+      if (!withinRange(entry.date, range)) {
+        return acc;
       }
 
-      const isKeyHealthIndicatorMatch = entry.healthIndicatorRates.some(
+      const keyHealthIndicatorRate = entry.healthIndicatorRates.find(
         (k) => k.keyHealthIndicator.id === keyHealthIndicator,
       );
-      return isKeyHealthIndicatorMatch;
-    });
 
-    const dataPoints: DataPoint[] = journalEntries.map((e) => ({
-      id: e.id,
-      date: e.date,
-      rate: e.healthIndicatorRates.find((k) => k.keyHealthIndicator.id === keyHealthIndicator)?.rate ?? null,
-    }));
+      if (keyHealthIndicatorRate) {
+        const dataPoint: DataPoint = {
+          id: entry.id,
+          date: entry.date,
+          rate: mapRate(keyHealthIndicatorRate.rate),
+        };
 
-    const filledData = fillMissingDates(dataPoints, range);
-    return filledData;
+        acc.push(dataPoint);
+      }
+
+      return acc;
+    }, []);
+
+    return dataPoints.sort((a, b) => sortByDate(a.date, b.date));
   }, [patient.journalEntries, selection.keyHealthIndicator, selection.range]);
 
   useEffect(() => {

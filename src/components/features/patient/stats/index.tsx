@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 
 import Filter from '../filter';
 import RelatedActivities from './related-activities';

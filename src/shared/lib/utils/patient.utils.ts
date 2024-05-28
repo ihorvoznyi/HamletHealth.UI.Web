@@ -3,9 +3,9 @@ import { monthShortMap, weekDayMap } from './date.util';
 
 export function formatGroupDateKey(isoString: string) {
   const date = parseISO(isoString);
-	const day = date.getUTCDate();
-	const month = date.getUTCMonth();
-	const weekDay = date.getUTCDay();
+  const day = date.getDate();
+  const month = date.getMonth();
+  const weekDay = date.getDay();
 
-	return `${monthShortMap[month]} ${day}, ${weekDayMap[weekDay]}`;
+  return `${monthShortMap[month]} ${day}, ${weekDayMap[weekDay]}`;
 }
