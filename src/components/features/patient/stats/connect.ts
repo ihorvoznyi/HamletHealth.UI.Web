@@ -12,6 +12,7 @@ import type { HealthIndicatorRates } from '@app/store/entities/statistics/api/st
 import type { KeyHealthIndicatorRate } from '@shared/lib/types';
 import { RangeType } from '@components/ui/controls/date-range-picker';
 import { sortByDate } from '@utils/date.util';
+import { TCommitment, TCommitmentData } from '@app/store/entities/patient/model/types';
 
 const withinRange = (date: string, range: RangeType) => {
   const entryDate = parseISO(date);
@@ -55,6 +56,8 @@ export const useConnect = () => {
 
     return dataPoints.sort((a, b) => sortByDate(a.date, b.date));
   }, [patient.journalEntries, selection.keyHealthIndicator, selection.range]);
+
+  const commitments = useMemo(() => {}, [selection.activities, selection.range]);
 
   useEffect(() => {
     const beginAction = async () => {
@@ -101,10 +104,65 @@ export const useConnect = () => {
           }),
         );
       }
+
+      const keyHealthIndicatorCommitmentsRecord = data?.modifiedStatistics?.[selection.keyHealthIndicator];
+      if (!keyHealthIndicatorCommitmentsRecord || Object.keys(keyHealthIndicatorCommitmentsRecord).length === 0) {
+        dispatch(
+          patientActions.setStatistics({
+            commitments: [],
+          }),
+        );
+        return;
+      }
+
+      const activityRecords: Map<string, Record<string, object>> = new Map();
+      for (const activityId in keyHealthIndicatorCommitmentsRecord) {
+        if (selection.activities.includes(activityId)) {
+          activityRecords.set(activityId, keyHealthIndicatorCommitmentsRecord[activityId]);
+        }
+      }
+
+      if (activityRecords.size === 0) {
+        dispatch(
+          patientActions.setStatistics({
+            commitments: [],
+          }),
+        );
+        return;
+      }
+
+      const commitments: TCommitment[] = [];
+      activityRecords.forEach((value, key) => {
+        const commitmentData: TCommitmentData[] = [];
+        const commitment: TCommitment = {
+          id: key,
+          activity: data.activities.find((a) => a.id === key)?.name ?? '',
+          data: commitmentData,
+        };
+
+        for (const dateKey in value) {
+          const record = value[dateKey];
+          const moods = Object.entries(record).map(
+            ([rate, count]) => ({ rate, count }) as unknown as { rate: KeyHealthIndicatorRate; count: number },
+          );
+          commitmentData.push({
+            date: dateKey,
+            moods,
+          });
+        }
+
+        commitments.push(commitment);
+      });
+
+      dispatch(
+        patientActions.setStatistics({
+          commitments,
+        }),
+      );
     };
 
     beginAction();
-  }, [patient, selection.range, selection.keyHealthIndicator]);
+  }, [patient, selection.range, selection.keyHealthIndicator, selection.activities]);
 
   return { isLoading: isLoading || isFetching, lineChartData };
 };

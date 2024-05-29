@@ -3,21 +3,24 @@ import React from 'react';
 import CommitmentRange from '../commitment-range';
 import CommitmentHeader from '../commitment-header';
 
-import type { MoodType } from '@shared/lib/types';
-import type { TCommitmentRangeProps } from '../commitment-range';
+import type { KeyHealthIndicatorRate } from '@shared/lib/types';
 
 import { classes } from './index.tailwind';
+import { TCommitmentData } from '@app/store/entities/patient/model/types';
 
 interface PropsType {
   activity: string;
-  streaks: Array<{ mood: MoodType; streak: number }>;
-  commitmentRange: TCommitmentRangeProps;
+  data: TCommitmentData[];
 }
 
-const CommitmentCard: React.FC<PropsType> = ({ activity, streaks }) => {
+const CommitmentCard: React.FC<PropsType> = ({ activity, data }) => {
+  if (data.length === 0) {
+    return;
+  }
+
   return (
     <div className={classes.container}>
-      <CommitmentHeader activity={activity} streaks={streaks} />
+      <CommitmentHeader activity={activity} data={data} />
       <CommitmentRange data={[]} />
     </div>
   );

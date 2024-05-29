@@ -50,6 +50,10 @@ export const selectPatientEntriesGroup = createSelector(
   },
 );
 
+export const selectPatientCommitments = ({ patientReducer }: RootState) => {
+  return patientReducer.statistics.commitments;
+};
+
 export const selectPatientSelection = ({ patientReducer }: RootState) => {
   return patientReducer.selection;
 };

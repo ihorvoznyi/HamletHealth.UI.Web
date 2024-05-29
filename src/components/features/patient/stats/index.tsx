@@ -13,6 +13,7 @@ import { ACTIVITY_STREAKS } from './daily-activity-moods/constants';
 import { selectPatientStatistics } from '@app/store/entities/patient';
 
 import { classes } from './index.tailwind';
+import Commitments from './commitments';
 
 const Stats = () => {
   const { isLoading, lineChartData } = useConnect();
@@ -22,16 +23,10 @@ const Stats = () => {
     <div className={classes.container}>
       <Filter />
 
-      <LinearChart data={lineChartData} />
-
       {!isLoading ? (
         <Fragment>
-          <div className={classes.streaks}>
-            {ACTIVITY_STREAKS.map(({ activity }) => (
-              <ActivityStreakLine key={activity} activity={activity} />
-            ))}
-          </div>
-
+          <LinearChart data={lineChartData} />
+          <Commitments />
           <div className={classes.chart}>
             <div className={classes.pieChartContainer}>
               <h2 className={classes.pieChartTitle}>Mood Count</h2>

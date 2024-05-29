@@ -60,25 +60,23 @@ const MoodPieChart: React.FC<PropsType> = ({ data }) => {
   }
 
   return (
-    <ResponsiveContainer width={350} height={350}>
-      <PieChart>
-        <Pie
-          data={data}
-          cx="50data"
-          cy="50%"
-          labelLine={false}
-          label={(label) => renderCustomizedLabel({ ...label, data })}
-          outerRadius={150}
-          fill="#8884d8"
-          dataKey="value"
-          offset={80}
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={chartVisualization[index].color} />
-          ))}
-        </Pie>
-      </PieChart>
-    </ResponsiveContainer>
+    <PieChart width={350} height={350}>
+      <Pie
+        data={data}
+        cx="50data"
+        cy="50%"
+        labelLine={false}
+        label={(label) => renderCustomizedLabel({ ...label, data })}
+        outerRadius={150}
+        fill="#8884d8"
+        dataKey="value"
+        offset={80}
+      >
+        {data.map((_, index) => (
+          <Cell key={`cell-${index}`} fill={chartVisualization[index].color} />
+        ))}
+      </Pie>
+    </PieChart>
   );
 };
 

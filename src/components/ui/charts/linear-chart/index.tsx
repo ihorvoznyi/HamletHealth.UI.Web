@@ -14,6 +14,8 @@ type TLinearChartProps = {
 };
 
 const LinearChart: React.FC<TLinearChartProps> = ({ data }) => {
+  const { current, selection } = useAppSelector(({ patientReducer }) => patientReducer);
+
   return (
     <ResponsiveContainer width="95%" height={274} className={classes.container}>
       {data.length ? (
@@ -27,7 +29,14 @@ const LinearChart: React.FC<TLinearChartProps> = ({ data }) => {
             tickLine={false}
           />
           <YAxis domain={[0, 4]} axisLine={false} tick={renderCustomYAxisTick} tickLine={false} />
-          <Tooltip content={JournalTooltip} />
+          <Tooltip
+            content={
+              <JournalTooltip
+                journalEntries={current.journalEntries}
+                keyHealthIndicator={selection.keyHealthIndicator}
+              />
+            }
+          />
           <Line
             type="linear"
             dataKey="rate"
@@ -68,6 +77,10 @@ type CustomTickProps = {
 };
 
 import { Dot } from 'recharts';
+import { selectJournalEntryBy } from '@app/store/entities/patient';
+import { useAppSelector } from '@shared/model';
+import { JournalEntry } from '@app/store/entities/patient/model/types';
+import { RootState } from '@reduxjs/toolkit/query';
 
 interface CustomDotProps {
   cx?: number;

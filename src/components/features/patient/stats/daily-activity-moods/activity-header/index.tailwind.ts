@@ -13,6 +13,7 @@ export const classes = {
     border 
     border-black 
     rounded-[4px]
+    sticky
   `),
   activity: ctl(`
     text-[14px] 

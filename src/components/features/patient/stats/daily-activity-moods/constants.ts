@@ -34,7 +34,7 @@ export const DAILY_HITS_MOCK: IDailyHits = {
     { date: '28.06', mood: 'good', isDone: false },
     { date: '29.06', mood: 'good', isDone: false },
     { date: '30.06', mood: 'good', isDone: false },
-  ]
+  ],
 };
 
 export const STREAKS_MOCK: IStreakItem[] = [
@@ -65,7 +65,7 @@ export const STREAKS_MOCK: IStreakItem[] = [
   },
   {
     isStreak: false,
-    days: [{ date: '13.06', mood: 'meh', isDone: false }]
+    days: [{ date: '13.06', mood: 'meh', isDone: false }],
   },
   {
     isStreak: true,
@@ -106,7 +106,7 @@ export const STREAKS_MOCK: IStreakItem[] = [
       { date: '29.06', mood: 'good', isDone: false },
       { date: '30.06', mood: 'good', isDone: false },
     ],
-  }
+  },
 ];
 
 export const ACTIVITY_STREAKS = [
