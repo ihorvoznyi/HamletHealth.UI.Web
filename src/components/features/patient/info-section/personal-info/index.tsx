@@ -21,12 +21,16 @@ const PersonalInfo = () => {
             <EditOutlinedSvg className={classes.editIcon} />
           </button>
         </div>
-        
+
         <p className={classes.paragraph}>{patient.birthDate},</p>
         <p className={classes.paragraph}>{patient.gender}</p>
 
-        <PrimaryButton variant="outlined" onClick={() => {}} styles={classes.assignBtn}>Assign doctor</PrimaryButton>
-        <PrimaryButton variant="outlined" onClick={() => {}} styles={classes.addBtn}>Add treatment plan</PrimaryButton>
+        <PrimaryButton disabled variant="outlined" onClick={() => {}} styles={classes.assignBtn}>
+          Assign doctor
+        </PrimaryButton>
+        <PrimaryButton disabled variant="outlined" onClick={() => {}} styles={classes.addBtn}>
+          Add treatment plan
+        </PrimaryButton>
       </div>
     </div>
   );

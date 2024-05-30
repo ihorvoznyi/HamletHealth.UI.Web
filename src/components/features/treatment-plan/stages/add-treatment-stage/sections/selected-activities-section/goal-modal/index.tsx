@@ -17,29 +17,29 @@ interface PropsType {
 }
 
 const DefineGoalModal: React.FC<PropsType> = () => {
-	const { closeDefinePlanModal } = useTreatmentPlanStageContext();
+  const { closeDefinePlanModal } = useTreatmentPlanStageContext();
 
-	return (
-		<Modal onClose={closeDefinePlanModal}>
-			<Head />
+  return (
+    <Modal onClose={closeDefinePlanModal}>
+      <Head />
 
-			<div className={classes.contentContainer}>
-				<Counter />
-				<Duration />
-				<WeekDays />
-				<Description />
+      <div className={classes.contentContainer}>
+        <Counter />
+        <Duration />
+        <WeekDays />
+        <Description />
 
-				<div className={classes.btnsContainer}>
-					<Button variant="outlined" styles={classes.cancelBtn} onClick={closeDefinePlanModal}>
-						Cancel
-					</Button>
-					<Button styles={classes.saveBtn} onClick={() => {}}>
-						Save Goal
-					</Button>
-				</div>
-			</div>
-		</Modal>
-	);
+        <div className={classes.btnsContainer}>
+          <Button variant="outlined" styles={classes.cancelBtn} onClick={closeDefinePlanModal}>
+            Cancel
+          </Button>
+          <Button styles={classes.saveBtn} onClick={() => {}}>
+            Save Goal
+          </Button>
+        </div>
+      </div>
+    </Modal>
+  );
 };
 
 export default DefineGoalModal;

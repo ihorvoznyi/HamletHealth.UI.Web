@@ -14,6 +14,10 @@ export const classes = {
     tracking-[1px]
     uppercase
     rounded-[4px]
+
+    disabled:opacity-60
+    disabled:border-black/[.80]
+    disabled:cursor-no-drop
   `),
   primary: ctl(`
     bg-green
@@ -28,5 +32,5 @@ export const classes = {
   inherit: ctl(`
     inherit 
     text-green
-  `)
+  `),
 };

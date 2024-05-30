@@ -20,7 +20,7 @@ const Breadcrumb = () => {
         Your patients
       </Button>
 
-      <Button variant="outlined" onClick={() => setShowModal(true)} styles={classes.connectBtn}>
+      <Button variant="outlined" disabled onClick={() => setShowModal(true)} styles={classes.connectBtn}>
         Connect to hamlet health
       </Button>
 

@@ -16,7 +16,7 @@ import { classes } from './index.tailwind';
 const TreatmentPlan = () => {
   const { openDefinePlanModal } = useTreatmentPlanStageContext();
   const { selectedActivities } = useAppSelector(selectTreatmentPlanStage, shallowEqual);
-  
+
   const canDefinePlan = !!selectedActivities.length;
 
   const handleShowModal = () => {
@@ -33,15 +33,11 @@ const TreatmentPlan = () => {
         <ActivitiesMedicine />
         <Treatments />
       </div>
-      <Button 
+      <Button
         styles={{
-          container: cn(
-            classes.defineBtn.base,
-            !canDefinePlan
-              ? classes.defineBtn.disabled 
-              : classes.defineBtn.active
-          )}}
-        disabled={!canDefinePlan}
+          container: cn(classes.defineBtn.base, !canDefinePlan ? classes.defineBtn.disabled : classes.defineBtn.active),
+        }}
+        disabled
         onClick={handleShowModal}
       >
         Define all as a plan

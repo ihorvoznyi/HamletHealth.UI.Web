@@ -24,16 +24,21 @@ const Search: FC<PropsType> = ({ styles, onChange, placeholder = 'Search', isClo
     onChange(statement);
   };
 
+  const clearValue = () => {
+    setValue('');
+    onChange('');
+  };
+
   return (
     <div className={cn(classes.container, styles?.container)}>
       <SearchSvg className={cn(classes.searchIcon, styles?.searchIcon)} />
-      <input 
-        placeholder={placeholder} 
-        className={cn(classes.input, styles?.input)} 
+      <input
+        placeholder={placeholder}
+        className={cn(classes.input, styles?.input)}
         value={value}
         onChange={handleChange}
       />
-      {isCloseIcon ? <CircleCrossSvg className={classes.crossIcon} /> : null}
+      {isCloseIcon ? <CircleCrossSvg onClick={clearValue} className={classes.crossIcon} /> : null}
     </div>
   );
 };

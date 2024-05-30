@@ -11,7 +11,7 @@ import { mapPatientPlanToPatient } from '@app/store/entities/patient/helpers/pat
 import type { Patient } from '@app/store/entities/patient/model/types';
 
 export const useConnect = () => {
-  const { data = [], isLoading, isError } = useGetPatientsPlansQuery();
+  const { data = [], isLoading, isError, error } = useGetPatientsPlansQuery();
   const { selectionRange } = useDashboardContext();
 
   const patientsGroup = useMemo(() => {
@@ -30,6 +30,7 @@ export const useConnect = () => {
 
   return {
     patientsGroup,
+    error,
     isError,
     isLoading,
   };

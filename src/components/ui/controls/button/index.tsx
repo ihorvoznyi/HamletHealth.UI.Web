@@ -7,7 +7,7 @@ import { ButtonProps } from './index.interfaces';
 import { cn } from '@utils/style.util';
 import { classes } from './index.tailwind';
 
-const Button: FC<ButtonProps> = ({ variant = 'primary', children, styles, onClick, ...props}) => {
+const Button: FC<ButtonProps> = ({ variant = 'primary', children, styles, onClick, ...props }) => {
   const handleClick = (event: MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
@@ -18,11 +18,7 @@ const Button: FC<ButtonProps> = ({ variant = 'primary', children, styles, onClic
   };
 
   return (
-    <button
-      className={cn(classes.container, styleMapper(variant), styles?.container)}
-      onClick={handleClick}
-      {...props}
-    >
+    <button className={cn(classes.container, styleMapper(variant), styles?.container)} onClick={handleClick} {...props}>
       {children}
     </button>
   );

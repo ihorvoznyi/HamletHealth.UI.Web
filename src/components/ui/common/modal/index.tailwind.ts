@@ -6,7 +6,7 @@ export const classes = {
     items-center 
     justify-center
     
-    absolute 
+    fixed 
     inset-0 
     z-[9999] 
 

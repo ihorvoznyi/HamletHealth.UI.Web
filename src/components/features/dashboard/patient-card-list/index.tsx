@@ -8,44 +8,45 @@ import { useConnect } from './connect';
 import { ToastHelper } from '@shared/lib/helpers';
 
 import { classes } from './index.tailwind';
+import { isUnauthorizedError } from '@utils/http.util';
 
 const PatientCardList = () => {
-	const { patientsGroup, isLoading, isError } = useConnect();
+  const { patientsGroup, isLoading, isError, error } = useConnect();
 
-	useEffect(() => {
-		if (isError && !patientsGroup.length) {
-			ToastHelper.error('Failed to load patients. Please, try again later.');
-		}
-	}, [isError]);
+  useEffect(() => {
+    if (isError && !isUnauthorizedError(error)) {
+      ToastHelper.error('Failed to load patients. Please, try again later.');
+    }
+  }, [isError]);
 
-	return (
-		<div className={classes.container}>
-			{!isLoading ? (
-				patientsGroup.map(([key, { items }]) => {
-					const [day, weekday] = key.split(',');
+  return (
+    <div className={classes.container}>
+      {!isLoading ? (
+        patientsGroup.map(([key, { items }]) => {
+          const [day, weekday] = key.split(',');
 
-					return (
-						<Fragment key={key}>
-							<div>
-								<h2 className={classes.title}>{day}</h2>
-								<p className={classes.weekday}>{weekday}</p>
+          return (
+            <Fragment key={key}>
+              <div>
+                <h2 className={classes.title}>{day}</h2>
+                <p className={classes.weekday}>{weekday}</p>
 
-								<ul className={classes.list}>
-									{items.map(item => (
-										<Fragment key={item.id}>
-											<PatientCard patinet={item} />
-										</Fragment>
-									))}
-								</ul>
-							</div>
-						</Fragment>
-					);
-				})
-			) : (
-				<Loader styles={{ container: 'text-center' }} />
-			)}
-		</div>
-	);
+                <ul className={classes.list}>
+                  {items.map((item) => (
+                    <Fragment key={item.id}>
+                      <PatientCard patinet={item} />
+                    </Fragment>
+                  ))}
+                </ul>
+              </div>
+            </Fragment>
+          );
+        })
+      ) : (
+        <Loader styles={{ container: 'text-center' }} />
+      )}
+    </div>
+  );
 };
 
 export default PatientCardList;
